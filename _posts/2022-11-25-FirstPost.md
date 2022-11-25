@@ -1,7 +1,7 @@
 ---
 title: Automatic Sharing su Github
 date: 2022-05-23 12:00:00 -500
-categories: [automation]
+categories: [Automation]
 tags: [gitub,automation,sharing,jekyll,chirpy]
 ---
 
