@@ -5,10 +5,6 @@ categories: [automation]
 tags: [gitub,automation,sharing,jekyll,chirpy]
 ---
 
-# Welcome
-
-Hallo and welcome to my homelab site
-
 ## Jekyll
 
 Il tool Jekyll per GitHub Pages è un tool che consente di creare e gestire facilmente i propri siti web statici, utilizzando la piattaforma GitHub Pages. Jekyll consente di generare automaticamente il codice HTML del sito web, in base al contenuto scritto in un semplice formato di testo, come ad esempio Markdown o Liquid. Inoltre, Jekyll è in grado di generare automaticamente RSS feed e file di mappa del sito (sitemap.xml), in modo da rendere il sito web più facilmente scansionabile dai motori di ricerca.
