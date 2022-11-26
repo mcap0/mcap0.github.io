@@ -1,6 +1,6 @@
 ---
 title: Python Sockets and Nmap Fundamentals
-date: 2022-11-26 12:00:00 -500
+date: 2022-11-26 00:00:00 -500
 categories: [Hacking from 0, Networking, Python]
 tags: [networking,python,enumeration,scanning,tools,nmap]
 --- 
