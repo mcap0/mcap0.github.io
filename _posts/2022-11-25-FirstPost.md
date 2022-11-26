@@ -1,7 +1,7 @@
 ---
-title: Automatic Sharing su Github
+title: Automatic Sharing su Github Pages
 date: 2022-05-23 12:00:00 -500
-categories: [Automation]
+categories: [Security Research]
 tags: [gitub,automation,sharing,jekyll,chirpy]
 ---
 

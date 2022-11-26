@@ -24,6 +24,7 @@ Some of the topics you'll find:
 	- Enumeration  
 	- Bind & Reverse Shell  
 	- File Transfer  
+    - Tools
 	- Linux - Privilege Escalation  
 	- Windows - Privilege Escalation  
 	- Buffer Overflow  

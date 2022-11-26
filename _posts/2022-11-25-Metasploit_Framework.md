@@ -1,7 +1,7 @@
 ---
 title: Metasploit Framework.md
 date: 2022-11-25 12:00:00 -500
-categories: [Tech]
+categories: [Hacking from 0,Tools]
 tags: [tech]
 --- 
 
