@@ -1,8 +1,8 @@
 ---
 title: Come usare GPT-3 con OpenAI su Logseq.md
 date: 2022-11-26 12:00:00 -500
-categories: [Tech]
-tags: [tech]
+categories: [Security Research, Tools]
+tags: [tools,ai,gpt-3]
 --- 
 
 ## Cos'è Logseq
