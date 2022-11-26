@@ -1,8 +1,8 @@
 ---
-title: ReadmeEsercitazione20_04.md
+title: Esercitazione C++ Programmazione 2
 date: 2022-11-26 12:00:00 -500
-categories: [Tech]
-tags: [tech]
+categories: [Computer Science, Prog2]
+tags: [c++]
 --- 
 
 # Progetto
@@ -25,7 +25,7 @@ temporale stimando il tempo di esecuzione.
 
 ## Idea
 
-Una [[ReadmeEsercitazione20_04#Classe utenti|Classe]] utenti che assegna ad ogni oggetto i propri attributi ricavati dal file utenti.txt, insieme ad un algoritmo di ordinamento, creano una lista di oggetti `utenti` ordinata in modo crescente per il parametro `popolarità`, nel quale si può portare in output ogni `User` conoscendone ID, nome e/o cognome;
+Una Classe utenti che assegna ad ogni oggetto i propri attributi ricavati dal file utenti.txt, insieme ad un algoritmo di ordinamento, creano una lista di oggetti `utenti` ordinata in modo crescente per il parametro `popolarità`, nel quale si può portare in output ogni `User` conoscendone ID, nome e/o cognome;
 
 ### Classe utenti
 ```c++
