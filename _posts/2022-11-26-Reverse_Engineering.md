@@ -3,6 +3,7 @@ title: Reverse Engineering - Le basi per l'analisi malware
 date: 2022-06-18 12:00:00 -500
 categories: [Security Research, Malware Analysis]
 tags: [reverse engineering, malware analysis]
+pin: true
 ---
 
 In questo articolo vi guiderò tra i migliori metodi per aumentare di qualche livello le vostre skill da Reverse Engineer, vi spiegherò perché amo questo ruolo e in cosa consiste. Cercherò di essere sintetico e conciso, per poi presentarvi strumenti, tool e tecniche che sono fondamentali per l’analisi di malware.
