@@ -1,11 +1,10 @@
 ---
-title: Metasploit Framework.md
+title: Metasploit Framework Cheatsheet
 date: 2022-11-25 12:00:00 -500
 categories: [Hacking from 0,Tools]
-tags: [tech]
+tags: [metasploit,tools,cheatsheet]
 --- 
 
-#InfoSec #Framework
 # Basic Commands
 
 `msfconsole` to start

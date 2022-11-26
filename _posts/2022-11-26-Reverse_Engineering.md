@@ -53,15 +53,15 @@ Dato un file lo scopo dell’analisi in realtà va ben oltre la lettura di ogni 
 
 Anche per questo un numero non meglio definito di geni ha programmato strumenti come:
 
-- Disassemblers 
+- `Disassemblers`
     che scompongono file eseguibili in operazioni elementari (assembly code).
-- Debuggers
+- `Debuggers`
     che aiutano nel tracciamento del “code flow” e nello studio del comportamento di un programma. Un debugger permette ad esempio di eseguire il programma un’istruzione alla volta, utile per la comprensione di certi codici.
-- Decompilers
+- `Decompilers`
     strumenti che hanno il compito di provare ad estrapolare il codice sorgente originale di un programma compilato.
-- Strumenti per analisi binaria
+- `Strumenti per analisi binaria`
     permettono di identificare svariate informazioni grazie a bit specifici all’interno del file.
-- Strumenti per il monitoraggio
+- `Strumenti per il monitoraggio`
     che aiutano a tenere traccia del comportamento del programma, come l’uso della memoria o delle interfacce network.
 
 Con esempi pratici adesso ti guiderò in due analisi elementari per porre le basi di come un processo di reverse engineering si presenta.
@@ -79,20 +79,19 @@ Il codice in questione contiene una vulnerabilità che ci permette di corrompere
 Il codice si presenta in questo modo:
 
 ```c
-1 int main(int argc, char **argv)
-2 {
-3   volatile int modified;
-4   char buffer[64];
-5 
-6   modified = 0;
-7   gets(buffer);
-8 
-9   if(modified != 0) {
-10      printf("you have changed the 'modified' variable\n");
-11  } else {
-12      printf("Try again?\n");
-13    }
-14 }
+int main(int argc, char **argv)
+{
+    volatile int modified;
+    char buffer[64];
+
+    modified = 0;
+    gets(buffer);
+ 
+    if(modified != 0) {
+        printf("you have changed the 'modified' variable\n");
+    } else {
+        printf("Try again?\n");}
+}
 ```
 
 In pratica abbiamo una variabile int chiamata modified ed un buffer di caratteri da 64 byte.
@@ -152,11 +151,11 @@ v                   # apri la visual mode
 # per dubbi su comandi basta scrivere un ? ed il terminale vi fornirà una lista di opzioni.
 ```
 
-In questo caso grazie al comando “ii” avremo letto il seguente:
+In questo caso grazie al comando `ii` avremo letto il seguente:
 
 ![radare2](https://mcap0.altervista.org/wp-content/uploads/2022/08/image-960x336.png)
 
-radare2 – il tool che preferisco per analisi statica
+## radare2 – il tool che preferisco per analisi statica
 La funzione di indice 2 “gets” ci avrebbe rivelato la vulnerabilità di memoria del programma. Basta una ricerca su google per verificare che questa funzione prende in input da tastiera un buffer di caratteri, senza un controllo dei limiti, lasciando aperti possibili overflow e corruzioni di memoria.
 
 Adesso che sappiamo qual è la vulnerabilità mi sembra un buon esercizio sfruttarla e studiarla grazie ad un analisi dinamica con gdb.
@@ -254,7 +253,7 @@ x /50x $sp               # stampa 50 celle di memoria da $sp
 x /d $sp + 0x3a          # stampa il contenuto di [sp+0x3a]
 ```
 
-Il comando “x” è il nostro migliore amico nella risoluzione di problemi che riguardano la memoria. Eseguendo questa riga durante il debug, noteremo che la variabile $sp punta allo stesso indirizzo durante tutta la permanenza del programma in memoria.
+Il comando `x` è il nostro migliore amico nella risoluzione di problemi che riguardano la memoria. Eseguendo questa riga durante il debug, noteremo che la variabile $sp punta allo stesso indirizzo durante tutta la permanenza del programma in memoria.
 
 GDB è uno strumento molto potente, in questo caso ci aiuterà nel calcolare quante celle di memoria distano le due variabili del nostro programma: buffer e modified.
 
@@ -276,7 +275,7 @@ Secondo i nostri calcoli, qualche istruzione dopo dovrebbe esserci un confronto 
 
 La riga evidenziata <main+32> mostra che il registro w0 è ciò che cercavamo. E’ la variabile ‘modified’, e viene salvata nel registro w0 solo un’operazione prima, in questo modo possiamo vedere in che parte dello stack questa variabile è stata collocata dal computer.
 
-``<main+28> w0 <– sp+108
+`<main+28> w0 <– sp+108`
 
 La funzione gets subito prima ci chiede di inserire ‘buffer’ di 64 caratteri (o byte), che verrà salvato nello stack.
 
@@ -317,12 +316,12 @@ Per terminare la challenge a questo punto basta un po’ di matematica:
     La prima A è all’indirizzo 0x____efd8
     La sua distanza da $sp è 0x28 = 40
 5. La variabile modified (w0) è salvata in $sp+108
-    ``(gdb) x /x $sp+108
-    ``Oxfffffffff01c: 0x00000000
+    `(gdb) x /x $sp+108`
+    `Oxfffffffff01c: 0x00000000`
 6. La distanza tra il buffer e la variabile da modificare:
-    ``python3 >>> 0xefd8 – 0xf01c = 0x44 = 68 bytes
+    `python3 >>> 0xefd8 – 0xf01c = 0x44 = 68 bytes`
 7. Creiamo una stringa da 68 bytes:
-    ``python3 >>> print(‘A’ *68)
+    `python3 >>> print(‘A’ *68)`
 
 Copiando ed incollando direttamente questa stringa andremo a sovrascrivere la memoria dello stack fino all’indirizzo subito prima della variabile da modificare.
 
