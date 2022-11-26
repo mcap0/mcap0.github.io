@@ -16,11 +16,18 @@ Department of Maths and Computer Science.
 
 I'm a self-employed tech researcher. 
 
-My interests:
-- Security Research
-- Networking
-- CTFs
-- Hacking
-- Python Scripting
-- Guidelines and Cheatsheet
-- Computer Science related Topics
+Some of the topics you'll find:
+
+- Security Research  
+- Hacking from 0  
+	- Scanning  
+	- Enumeration  
+	- Bind & Reverse Shell  
+	- File Transfer  
+	- Linux - Privilege Escalation  
+	- Windows - Privilege Escalation  
+	- Buffer Overflow  
+    - Wireless Hacking
+	- HTB  
+- OSINT  
+- Computer Science  
