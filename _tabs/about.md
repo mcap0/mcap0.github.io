@@ -24,6 +24,7 @@ Some of the topics you'll find:
 	- Enumeration  
 	- Bind & Reverse Shell  
 	- File Transfer  
+    - Python and Bash Scripting
     - Tools
 	- Linux - Privilege Escalation  
 	- Windows - Privilege Escalation  
