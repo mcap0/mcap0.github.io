@@ -40,7 +40,7 @@ Nel caso in cui la porta di rete del nostro computer è in attesa per una connes
 
 Il seguente è il pacchetto di rete TCP contenente 'ciao', mandato con Netcat.
 
-!Pasted image 20221127223534.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%20221127223534.pn(https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%20221127223534002020221127223534.png)
+![Pasted image 20221127223534.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%20221127223534.png)
 _Wireshark è un tool indispensabile nell'analisi di pacchetti di rete_
 
 La comunicazione è completamente in 'plain text' cioè è possibile leggerla senza doverla decriptare. Inoltre in questo canale che abbiamo creato i due computer comunicano con un protocollo chiamato [TCP](https://it.wikipedia.org/wiki/Transmission_Control_Protocol). Esistono molti protocolli, spesso con scopi differenti e alcuni più sicuri di altri, problema che affronteremo in un prossimo post che spiegherà il processo di Enumerazione.
@@ -57,7 +57,7 @@ Se vogliamo 'scovare' tutti i dispositivi connessi alla nostra rete un tool molt
 sudo netdiscover
 ```
 
-!Pasted image 20221127225042.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%20221127225042.pn(https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%20221127225042002020221127225042.png)
+![Pasted image 20221127225042.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%20221127225042.png)
 
 Se vi state chiedendo come funziona questo tool, semplicemente manda un pacchetto (ARP) ad ogni indirizzo esistente in un network, segnando poi quegli IP che mandano un pacchetto di risposta. [Qui](https://www.youtube.com/watch?v=H-rANwaumfM) un video approfondimento su ARP (Address Resolution Protocol) dal canale Informaticaso su YouTube.
 
