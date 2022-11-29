@@ -1,6 +1,6 @@
 ---
 title: Scansione delle Reti per CTFs
-date: 2022-11-29 00:00:00 -500
+date: 2022-11-29 02:00:00 -500
 categories: [Hacking from 0, Scanning]
 tags: [netcat,scan,nmap]
 image_path: /assets/
