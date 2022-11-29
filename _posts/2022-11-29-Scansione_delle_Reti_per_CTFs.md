@@ -1,10 +1,5 @@
 ---
-title: Scansione
-delle
-Reti
-per
-CTFs.md
-.md
+title: Scansione delle Reti per CTFs
 date: 2022-11-29 00:00:00 -500
 categories: [Tech]
 tags: [tech]
