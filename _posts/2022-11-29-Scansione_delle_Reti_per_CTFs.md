@@ -1,8 +1,8 @@
 ---
 title: Scansione delle Reti per CTFs.md
 date: 2022-11-29 00:00:00 -500
-categories: [Tech]
-tags: [tech]
+categories: [Hacking from 0, Scanning]
+tags: [ctf,scanning,netcat,nmap,nessus,wireshark]
 image_path: /assets/
 --- 
 
