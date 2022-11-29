@@ -1,8 +1,8 @@
 ---
 title: Scansione delle Reti per CTFs
 date: 2022-11-29 00:00:00 -500
-categories: [Tech]
-tags: [tech]
+categories: [Hacking from 0, Scanning]
+tags: [netcat,nmap,nessus,wireshark,scan,ctf]
 image_path: /assets/
 --- 
 
