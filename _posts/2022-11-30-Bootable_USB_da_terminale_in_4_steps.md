@@ -15,7 +15,7 @@ Questa è una guida per il terminale Linux / MacOS.
 1. Apri il terminale
 2. Ottieni una lista dei dischi connessi con:
 	`df -H`
-![[Pasted image 20221130112055.png]]
+![Pasted image 20221130112055.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020221130112055.png)
 3. Una volta individuato il dispositivo, nel mio caso `disk4s1`, dobbiamo eseguire un `umount`
 	`sudo umount /dev/disk4s1`
 4. Andiamo adesso a masterizzare il sistema operativo vero e proprio, usando il comando `dd`
