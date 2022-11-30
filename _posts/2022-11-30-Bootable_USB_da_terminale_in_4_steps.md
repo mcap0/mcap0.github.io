@@ -1,8 +1,8 @@
 ---
 title: Bootable USB da terminale in 4 steps
 date: 2022-11-30 00:00:00 -500
-categories: [Tech]
-tags: [tech]
+categories: [Security Research]
+tags: [df,dd,diskutil,bootable,usb]
 image_path: /assets/
 --- 
 
