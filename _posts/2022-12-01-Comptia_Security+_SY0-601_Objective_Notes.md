@@ -21,7 +21,7 @@ Navigazione:
     - 4.0 Operations and Incident Response
     - 5.0 Governance, Risk and Compliance
 
-[Qui](https://www.comptia.jp/pdf/Security%2B%20SY0-501%20Exam%20Objectives.pdf) una lista completa degli objectives.
+[Qui](https://www.comptia.jp/pdf/CompTIA%20Security+%20SY0-601%20Exam%20Objectives%20(3.0).pdf) una lista completa degli objectives.
 
 # 1.0 - Threats, Attacks and Vulnerabilities
 
