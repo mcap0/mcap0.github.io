@@ -17,7 +17,7 @@ Argomenti trattati:
 
 Quando si parla di Porte Aperte, parlando di computer, ci riferiamo alle vie di comunicazione network che un computer attiva (o apre) quando gli ordiniamo di comunicare con altri computer nella rete.
 
-Apriamo una porta nel nostro computer (che simulerà un client) easpettiamo per un messaggio da parte di un server per comprendere meglio questo concetto:
+Apriamo una porta nel nostro computer (che simulerà un server) ed aspettiamo per un messaggio da parte di un client per comprendere meglio questo concetto:
 
 ```bash
 nc -l 4444
@@ -65,7 +65,7 @@ Avendo una lista di indirizzi IP dei computer connessi alla nostra rete adesso p
 
 Un altro metodo per scansionare automaticamente ogni dispositivo in una rete è usare [Nessus](https://www.tenable.com/products/nessus), uno dei migliori tool di scansione di rete progettato per riconoscere vulnerabilità nei sistemi informatici.
 
-## Scan completo di un computer con nmap e python
+## Scan completo di un computer con nmap 
 
 Supponiamo adesso di sapere l'indirizzo IP di un computer che abbiamo intenzione di scansionare, ma di cui non sappiamo nient'altro. Adesso vorremmo conoscere i servizi e i protocolli che quel computer utilizza nelle sue porte aperte, in modo da poter avere un'idea di come sfruttarlo per i nostri scopi.
 
