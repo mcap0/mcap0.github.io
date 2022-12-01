@@ -1,7 +1,7 @@
 ---
 title: CompTIA Security+ Objective Notes
-date: 2022-12-01 00:00:00 -500
-categories: [Security Research]
+date: 2022-12-01 02:00:00 -500
+categories: [Security Research, Certifications]
 tags: [comptia,sec+,certification,notes]
 image_path: /assets/
 --- 
