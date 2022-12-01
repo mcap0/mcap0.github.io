@@ -54,7 +54,7 @@ Navigazione:
     
     To protect yourself:
     
-    ![Schermata_2021-06-29_alle_19.36.15.png](Schermata_2021-06-29_alle_19.36.15.png)
+    ![Schermata_2021-06-29_alle_19.36.15.png](/assets/Schermata_2021-06-29_alle_19.36.15.png)
     
 - Dumpster Diving
     
