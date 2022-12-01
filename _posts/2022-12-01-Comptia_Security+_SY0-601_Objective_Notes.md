@@ -25,7 +25,7 @@ Navigazione:
 
 # 1.0 - Threats, Attacks and Vulnerabilities
 
-# 1.1 Terminology
+## 1.1 Terminology
 
 - Phishing
     
@@ -95,7 +95,7 @@ Navigazione:
     Someone that gains access with your credentials, for example someone you keep the door open for
     
 
-# 1.2
+## 1.2
 
 ### Viruses and Worms
 
@@ -284,7 +284,7 @@ Navigazione:
     ![Schermata 2021-08-27 alle 09.34.27.png](/assets/Schermata_2021-08-27_alle_09.34.27.png)
     
 
-# 1.3
+## 1.3
 
 ### Privilege escalation
 
@@ -537,7 +537,7 @@ Navigazione:
     ![Schermata 2021-08-30 alle 15.24.36.png](/assets/Schermata_2021-08-30_alle_15.24.36.png)
     
 
-# 1.4
+## 1.4
 
 ### Wireless Common Attacks
 
@@ -677,7 +677,7 @@ Navigazione:
     - Automate the attack
     - The hacker is on borrowed time
 
-# 1.5
+## 1.5
 
 - Difference between threat actors and Attack Vectors and Attack Surface
 
@@ -756,7 +756,7 @@ Indicator Information (TAXII)
     A Threat Model and Problem Statement
     
 
-# 1.6
+## 1.6
 
 ### Vulnerability Attacks
 
@@ -805,7 +805,7 @@ Indicator Information (TAXII)
 - Reputation Impact
 - Availability Loss
 
-# 1.7
+## 1.7
 
 ### Threat Hunting
 
