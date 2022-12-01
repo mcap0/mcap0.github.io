@@ -1,8 +1,8 @@
 ---
 title: C++ Template of Binary Search Tree
 date: 2022-12-01 00:00:00 -500
-categories: [Tech]
-tags: [tech]
+categories: [Computer Science]
+tags: [c++,template,bst]
 image_path: /assets/
 --- 
 
