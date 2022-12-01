@@ -1,5 +1,5 @@
 ---
-title: Esercitazione C++ Programmazione 2
+title: Prog 2 - Esempio Esercitazione C++
 date: 2022-11-26 00:00:00 -500
 categories: [Computer Science, Prog2]
 tags: [c++]

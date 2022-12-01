@@ -1,5 +1,5 @@
 ---
-title: C++ Template of Binary Search Tree
+title: Prog2 - Template of Binary Search Tree in C++
 date: 2022-12-01 00:00:00 -500
 categories: [Computer Science]
 tags: [c++,template,bst]
