@@ -63,15 +63,15 @@ Uno dei più completi e utili strumenti per i professionisti del web è il proxy
 
 Oggi useremo BurpSuite per creare una mappa del sito target. Iniziamo aprendo un nuovo progetto, e spostandoci sulla tab: "Target".
 
-![[Pasted image 20221203114803.png]]
+![Pasted image 20221203114803.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020221203114803.png)
 _Burp Suite ci permette di filtrare le informazioni che riceviamo dal browser in base al sito web target_
 
 Adesso spostiamoci su Scope, e inseriamo l'url del sito di cui ci stiamo occupando:
 
-![[Pasted image 20221203115139.png]]
+![Pasted image 20221203115139.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020221203115139.png)
 
 Nel browser dove è configurato il proxy possiamo adesso iniziare a cliccare un po' ovunque, e il proxy si occuperà di creare una site-map per noi.
 
-![[Pasted image 20221203115530.png]]
+![Pasted image 20221203115530.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020221203115530.png)
 
 > Questo proxy può fare molto di più di quanto ho mostrato io oggi, è il non plus ultra del web-app pentesting e le sue funzioni variano dal permetterci di leggere le richieste/risposte in plain text, modificarle prima di inviarle, usare wordlist o payload, analizzare e decriptare pacchetti di rete o effettuare operazioni automatiche simili a quelle che abbiamo visto con altri tool, ma con molte più funzionalità e tutte in un unica Suite. Il punto forte di questo tool è la sua versatilità anche nella versione [Community](https://portswigger.net/burp/communitydownload) completamente gratuita.
