@@ -1,8 +1,8 @@
 ---
 title: Web Enumeration - Guida alle Subdomain
 date: 2022-12-03 00:00:00 -500
-categories: [Tech]
-tags: [tech]
+categories: [Hacking from 0, Enumeration]
+tags: [web,osint,burpsuite]
 image_path: /assets/
 --- 
 
