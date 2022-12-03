@@ -6,13 +6,13 @@ tags: [web,osint,burpsuite]
 image_path: /assets/
 --- 
 
-# Intro
+# Intro - Ricerca di Subdomain 
 
 In questo articolo troverete tutto ciò che vi serve sapere sull'enumerazione di un sito web e i suoi sottodomini.
 
 La enumeration consiste nell'analizzare una rete o un sistema avendo come scopo l'identificazione delle componenti vulnerabili (chiamata anche `attack surface`). In questo caso ci concentreremo nel cercare tutti i sottodomini di un web host.
 
-# In che modo si trovano i subdomain di un sito Web
+## In che modo si trovano i subdomain di un sito Web
 
 Oggi ci concentreremo su 3 strategie:
 - Brute forcing
@@ -57,7 +57,7 @@ gobuster dir -u http://<ip>:<port> -w <word_list_location>
 
 Ad esempio https://crt.sh o https://ui.ctsearch.entrust.com/ui/ctsearchui sono database di siti web e relativi sottodomini in cui è installato un certificato, entrambi permettono di filtrare i risultati per aiutarci nelle nostre ricerche.
 
-# Site Mapping con BurpSuite
+## Site Mapping con BurpSuite
 
 Uno dei più completi e utili strumenti per i professionisti del web è il proxy BurpSuite, la cui installazione e funzionamento esulano dallo scope di questo articolo. Tuttavia in [questa](https://www.html.it/guide/burp-e-penetration-test-la-guida/) guida di html.it potete trovare una dettagliata introduzione sull'installazione e sulle principali funzioni di BurpSuite.
 
