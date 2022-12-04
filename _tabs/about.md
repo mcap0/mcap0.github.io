@@ -21,8 +21,7 @@ Some of the topics you'll find:
 - Security Research  
 - Hacking from 0  
 	- Scanning  
-	- Enumeration  
-	- Bind & Reverse Shell  
+	- Enumeration   
 	- File Transfer  
     - Python and Bash Scripting
     - Tools
