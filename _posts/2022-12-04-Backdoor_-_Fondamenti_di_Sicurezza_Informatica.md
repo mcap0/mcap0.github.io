@@ -1,8 +1,8 @@
 ---
 title: Backdoor - Fondamenti di Sicurezza Informatica
 date: 2022-12-04 00:00:00 -500
-categories: [Tech]
-tags: [tech]
+categories: [Security Research, Malware Analysis]
+tags: [backdoor,shadyshell,c,msfvenom]
 image_path: /assets/
 --- 
 
