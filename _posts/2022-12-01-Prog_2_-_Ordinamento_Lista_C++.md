@@ -1,8 +1,8 @@
 ---
 title: Prog 2 - Ordinamento Lista C++
 date: 2022-12-01 00:00:00 -500
-categories: [Tech]
-tags: [tech]
+categories: [Computer Science, Programming]
+tags: [c++,ordinamento,selection,insterion]
 image_path: /assets/
 --- 
 
