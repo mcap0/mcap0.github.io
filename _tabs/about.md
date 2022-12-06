@@ -19,16 +19,13 @@ I'm a self-employed tech researcher.
 Some of the topics you'll find:
 
 - Security Research  
-- Hacking from 0  
-	- Scanning  
-	- Enumeration   
-	- File Transfer  
+- Hacking from 0 
+	- Tools
+	- Networks Hacking
     - Python and Bash Scripting
-    - Tools
 	- Linux - Privilege Escalation  
 	- Windows - Privilege Escalation  
-	- Buffer Overflow  
-    - Wireless Hacking
-	- HTB  
+	- Binary Exploitation  
+	- CTFs walktrough
 - OSINT  
 - Computer Science  
