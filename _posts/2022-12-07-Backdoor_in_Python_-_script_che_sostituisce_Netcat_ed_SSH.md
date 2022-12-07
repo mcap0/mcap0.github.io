@@ -1,8 +1,8 @@
 ---
 title: Backdoor in Python - script che sostituisce Netcat ed SSH
 date: 2022-12-07 00:00:00 -500
-categories: [Tech]
-tags: [tech]
+categories: [Hacking from 0, Networking]
+tags: [scripting, ssh, netcat, python]
 image_path: /assets/
 --- 
 
