@@ -166,7 +166,7 @@ def handle(self, client_socket):
 In questo caso la funzione main dovrà occuparsi di valutare gli argomenti passati quando il programma viene eseguito. 
 
 Per comprenderci, gli argomenti di cui parlo sono quelli a destra del nome del programma:
-![Pasted image 20221207105227.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020221207105227.png)
+!Pasted image 20221207105227.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020221207105227.png(https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%202022120710522700202020221207105227.png)
 Inoltre dovrà permetterci di avere una descrizione delle funzioni del programma quando scriveremo qualcosa come:
 ```bash
 $ python3 NetCat.py --help
@@ -209,11 +209,11 @@ Con i metodi `execute()` e `handle()` il programma permette di eseguire comandi 
 
 Nella mia macchina virtuale, che ha l'impostazione di rete settata su `bridge`, trovo l'IP in modo da potermi connettermi da remoto.
 
-![[Pasted image 20221210125440.png]]
+![Pasted image 20221210125440.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020221210125440.png)
 
 Bene, adesso che so l'IP della mia macchina virtuale, vediamo come usare il programma per ottenere una interfaccia `command line` come stessimo usando ssh.
 
-![[Pasted image 20221210131554.png]]
+![Pasted image 20221210131554.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020221210131554.png)
 
 Usando lo switch `--help` otteniamo questa lista di opzioni. Avviamo nel computer vittima il processo `command shell` per poi connetterci da remoto.
 
@@ -225,13 +225,13 @@ Adesso la macchina virtuale aspetterà per una connessione nella porta `5555`.
 
 Noi possiamo connetterci in vari modi a quella porta, uno di questi è usando il normale tool netcat:
 
-![[Pasted image 20221210132126.png]]
+![Pasted image 20221210132126.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020221210132126.png)
 
 Questa command line shell è programmata in modo da terminare il processo nel caso in cui si dovesse immettere un comando non valido.
 
-![[Pasted image 20221210132359.png]]
+![Pasted image 20221210132359.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020221210132359.png)
 _quando il comando non può essere valutato il processo del server viene terminato_
-![[Pasted image 20221210132417.png]]
+![Pasted image 20221210132417.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020221210132417.png)
 _la feature di `server killed` è molto utile in fase di debug_
 
 ## Comando singolo
@@ -249,7 +249,7 @@ Nel nostro computer:
 nc 192.168.1.133 5555
 ```
 
-![[Pasted image 20221210133607.png]]
+![Pasted image 20221210133607.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020221210133607.png)
 
 >Usando questa funzione verrà valutato solo il comando specificato come argomento, non si potranno eseguire altri comandi da remoto
 
