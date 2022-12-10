@@ -18,7 +18,7 @@ In questo articolo andrò a dissezionare e cercare di spiegare nel modo più sem
 - funzionare da [`backdoor`](https://mcap0.it/posts/Backdoor_-_Fondamenti_di_Sicurezza_Informatica/)
 - sostituire `netcat` ed `SSH`
 
-> ci tengo a precisare che IL SEGUENTE CODICE NON E' MIO. Nell'approfondire il Network Hacking sto seguendo le linee guida del Libro "[Black Hat Python 2]()", che è probabilmente il miglior libro per imparare a creare i propri python tools in ambito PenTesting. 
+> ci tengo a precisare che IL SEGUENTE CODICE NON E' MIO. Nell'approfondire il Network Hacking sto seguendo le linee guida del Libro "[Black Hat Python 2](https://www.amazon.com/Black-Hat-Python-2nd-Programming-ebook/dp/B08CTGR1XC)", che è probabilmente il miglior libro per imparare a creare i propri python tools in ambito PenTesting. 
 
 Questo codice è interamente presente nella primo capitolo “Python Networking in a Paragraph“. Se vi interessa solo leggere e avere il codice per intero, [qui](https://github.com/mcap0/CodeSamples/blob/main/NetCat.py) un link alla cartella github dove l'ho salvato.
 
