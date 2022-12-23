@@ -87,8 +87,8 @@ array post heapify 2: [-1, 15, **13**, 11, **2**, 10, 4, 2, 3, 2, 3]
 array post heapify 3: [-1, 15, 13, 11, **3**, 10, 4, 2, **2**, 2, 3]
 ## Costruzione grafica MaxHeap
 
-			 15
-		     /	     \
+			    15
+		    /         \
 		  13            11
 		 /  \           /  \
 	    3     10       4    2
@@ -97,8 +97,8 @@ array post heapify 3: [-1, 15, 13, 11, **3**, 10, 4, 2, **2**, 2, 3]
 
 ## CODICE MAX_HEAPIFY
 
-```c++
-// ripristina le prorietà dell'albero binario in modo che soddisfi le proprietà di un maxHeap
+```cpp
+    //ripristina le prorietà dell'albero binario in modo che soddisfi le proprietà di un maxHeap
     void maxHeapify(int i){
 		if (i > size_heap()) return;
         int max = i;    // indice del massimo
@@ -122,7 +122,7 @@ array post heapify 3: [-1, 15, 13, 11, **3**, 10, 4, 2, **2**, 2, 3]
 
 ## CODICE BUILD_MAX_HEAP
 
-```c++
+```cpp
 void heapbuild() {
 
         for (int i = size_heap()/2; i > 0; i--){
