@@ -166,7 +166,8 @@ def handle(self, client_socket):
 In questo caso la funzione main dovrà occuparsi di valutare gli argomenti passati quando il programma viene eseguito. 
 
 Per comprenderci, gli argomenti di cui parlo sono quelli a destra del nome del programma:
-!Pasted image 20221207105227.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020221207105227.png(https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%202022120710522700202020221207105227.png)
+![Pasted image 20221207105227.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020221207105227.png)
+
 Inoltre dovrà permetterci di avere una descrizione delle funzioni del programma quando scriveremo qualcosa come:
 ```bash
 $ python3 NetCat.py --help
