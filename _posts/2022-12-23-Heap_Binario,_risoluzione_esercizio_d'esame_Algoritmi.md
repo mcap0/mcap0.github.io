@@ -57,42 +57,54 @@ Applichiamo la funzione `BUILD_MAX_HEAP` sull'array [2, 4, 10, 2, 2, 11, 13, 3, 
 
 **build_max_heap** tramite un ciclo itera l'array partendo dall'elemento di indice `size_array/2` per poi terminare appena raggiunge il primo elemento. L'array in questione ha lunghezza 11 (poichè l'indice `0` è riservato ad un elemento arbitrario che non serve nell'ordinamento, in questo caso `-1`), per questo si itera partendo dall'elemento di indice 5:
 
-**i = 5:**
-array pre heapify: [-1, 2, 4, 10, 2, **2**, 11, 13, 3, 15, 3]
-array post heapify 1: [-1, 2, 4, 10, 2, **15**, 11, 13, 3, **2**, 3]
+### **i = 5:**
+
+array pre heapify: [-1, 2, 4, 10, 2, `2`, 11, 13, 3, 15, 3]
+
+array post heapify 1: [-1, 2, 4, 10, 2, `15`, 11, 13, 3, `2`, 3]
+
 >c'è stato uno scambio, quindi heapify si esegue di nuovo sull'indice del nuovo massimo, in questo caso i=4, max=8, si eseguirà heapify(8).
 
-array post heapify 2: [-1, 2, 4, 10, 2, 15, 11, 13, 3, **2**, 3]
+array post heapify 2: [-1, 2, 4, 10, 2, 15, 11, 13, 3, `2`, 3]
 
-**i = 4:**
-array pre heapify: [-1, 2, 4, 10, **2**, 15, 11, 13, 3, 2, 3]
-array post heapify 1: [-1, 2, 4, 10, **13**, 15, 11, **2** 3, 2, 3]
-array post heapify 2: [-1, 2, 4, 10, 13, 15, 11, **2**, 3, 2, 3]
+### **i = 4:**
 
-**i = 3:**
-array pre heapify: [-1, 2, 4, **10**, 13, 15, 11, 2, 3, 2, 3]
-array post heapify 1: [-1, 2, 4, **15**, 13, **10**, 11, 2, 3, 2, 3]
-array post heapify 2: [-1, 2, 4, 15, 13, **10**, 11, 2, 3, 2, 3]
+array pre heapify: [-1, 2, 4, 10, `2`, 15, 11, 13, 3, 2, 3]
 
-**i = 2:**
-array pre heapify: [-1, 2, **4**, 15, 13, 10, 11, 2, 3, 2, 3]
-array post heapify 1: [-1, 2, **15**, **4**, 13, 10, 11, 2, 3, 2, 3]
-array post heapify 2: [-1, 2, 15, **11**, 13, 10, **4**, 2, 3, 2, 3]
-array post heapify 3: [-1, 2, 15, 11, 13, 10, **4**, 2, 3, 2, 3]
+array post heapify 1: [-1, 2, 4, 10, `13`, 15, 11, `2`, 3, 2, 3]
 
-**i = 1:**
-array pre heapify: [-1, 2, 15, 11, 13, 10, 4, 2, 3, 2, 3]
-array post heapify 1: [-1, **15**, **2**, 11, 13, 10, 4, 2, 3, 2, 3]
-array post heapify 2: [-1, 15, **13**, 11, **2**, 10, 4, 2, 3, 2, 3]
-array post heapify 3: [-1, 15, 13, 11, **3**, 10, 4, 2, **2**, 2, 3]
+### **i = 3:**
+
+array pre heapify: [-1, 2, 4, `10`, 13, 15, 11, 2, 3, 2, 3]
+
+array post heapify 1: [-1, 2, 4, `15`, 13, `10`, 11, 2, 3, 2, 3]
+
+### **i = 2:**
+
+array pre heapify: [-1, 2, `4`, 15, 13, 10, 11, 2, 3, 2, 3]
+
+array post heapify 1: [-1, 2, `15`, `4`, 13, 10, 11, 2, 3, 2, 3]
+
+array post heapify 2: [-1, 2, 15, `11`, 13, 10, `4`, 2, 3, 2, 3]
+
+### **i = 1:**
+
+array pre heapify: [-1, `2`, 15, 11, 13, 10, 4, 2, 3, 2, 3]
+
+array post heapify 1: [-1, `15`, `2`, 11, 13, 10, 4, 2, 3, 2, 3]
+
+array post heapify 2: [-1, 15, `13`, 11, `2`, 10, 4, 2, 3, 2, 3]
+
+array post heapify 3: [-1, 15, 13, 11, `3`, 10, 4, 2, `2`, 2, 3]
+
 ## Costruzione grafica MaxHeap
 
-			    15
+			 15
 		    /         \
-		  13            11
-		 /  \           /  \
-	    3     10       4    2
-	  /  \    /
+         13                11
+        /  \              /   \
+	   3     10           4    2
+	 /   \    /
 	 3    2   3
 
 ## CODICE MAX_HEAPIFY
