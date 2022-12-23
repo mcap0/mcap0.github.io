@@ -55,7 +55,7 @@ Dato un array, in questo caso di valori interi, le procedure che generano la str
 
 Applichiamo la funzione `BUILD_MAX_HEAP` sull'array [2, 4, 10, 2, 2, 11, 13, 3, 15, 3].
 
-**build_max_heap** tramite un ciclo itera l'array partendo dall'elemento di indice `size_array/2` per poi terminare appena raggiunge il primo elemento. L'array in questione ha lunghezza 10, per questo si itera partendo dall'elemento di indice 5:
+**build_max_heap** tramite un ciclo itera l'array partendo dall'elemento di indice `size_array/2` per poi terminare appena raggiunge il primo elemento. L'array in questione ha lunghezza 11 (poichè l'indice `0` è riservato ad un elemento arbitrario che non serve nell'ordinamento, in questo caso `-1`), per questo si itera partendo dall'elemento di indice 5:
 
 **i = 5:**
 array pre heapify: [-1, 2, 4, 10, 2, **2**, 11, 13, 3, 15, 3]
