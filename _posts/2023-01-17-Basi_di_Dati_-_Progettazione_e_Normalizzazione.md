@@ -22,7 +22,7 @@ Durante la progettazione di una base di dati si viene provvisti di un testo dal 
 
 Durante la lezione viene svolto un esercizio sulla realizzazione di una base di dati per la gestione dei Telepass presso le autostrade italiane.
 
- ![[Pasted image 20230117143800.png]]
+ [[Pasted image 20230117143800.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020230117143800.png)
 
 Se vi sembra un esercizio troppo complesso, o troppo lungo, sappiate che più informazioni avete sul database e i suoi oggetti, più sarà facile stilare la progettazione nel modo corretto.
 
@@ -30,7 +30,7 @@ Se vi sembra un esercizio troppo complesso, o troppo lungo, sappiate che più in
 
 Nel corso delle prime letture del testo sarà di fondamentale importanza carpire e illustrare le entità che saltano all'occhio, e collegarle tra loro attraverso relazioni in una prima bozza del modello.
 
-![[Pasted image 20230117144459.png]]
+![Pasted image 20230117144459.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020230117144459.png)
 
 In questa prima parte del testo si evincono due entità: autostrada e casello, collegate tra loro dalla relazione 'casello **si trova in** autostrada'.
 
@@ -49,7 +49,7 @@ Proviamo quindi a fare le prime due bozze di entità **CASELLO** e **AUTOSTRADA*
 
 Fatte le due tabelle, e selezionate propriamente le chiavi (in grassetto), notiamo subito alcune proprietà delle entità che trattiamo. Un casello infatti non ha un singolo attributo come chiave, bensì due: il codice che lo identifica all'interno dell'autostrada, ed il codice dell'autostrada stessa. Abbiamo una relazione tra Casello e Autostrada che segneremo come rombo tra le due tabelle.
 
-![[Pasted image 20230117150146.png]]
+![Pasted image 20230117150146.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020230117150146.png)
 
 Bene, notiamo subito due cose non discusse:
 - Il verbo 'Appartiene' è il 'nome' della relazione, serve a noi progettatori più che al database, anche se alcune relazioni hanno inevitabilmente attributi o tabelle proprie (vedremo più avanti);
@@ -76,14 +76,14 @@ Continuiamo con la progettazione del database.
 ### Generalizzazione Entità
 
 Andiamo al **punto 2** del problema.
-![[Pasted image 20230117155545.png]]
+![Pasted image 20230117155545.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020230117155545.png)
 
 Commentando le cardinalità di questo sistema, vediamo come per ogni Telepass descritto possa esistere un solo un titolare, mentre un utente può essere titolare di N telepass.
 
-![[Pasted image 20230117155802.png]]
+![Pasted image 20230117155802.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020230117155802.png)
 
 Prendendo invece il **punto 3** dell'esercizio troviamo una richiesta particolare per l'entità veicolo:
-![[Pasted image 20230117160712.png]]
+![Pasted image 20230117160712.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020230117160712.png)
 
 La richiesta si soddiasfa se ogni tipo di veicolo è descrivibile. Noteremo come veicolo è la generalizzazione delle entità figlie specifiche: "Automobile", " Motocicletta", "Furgone" e "Camion".
 
@@ -92,7 +92,7 @@ Le generalizzazioni hanno due proprietà nella progettazione di basi di dati.
 
 2. Una generalizzazione può essere di tipo **esclusivo** o **sovrapposto**. Esclusivo se ogni istanza dell'entità padre rientra in una e una sola entità figlia, sovrapposto se c'è almeno un'istanza che appartiene a più entità figlie
 
-![[Pasted image 20230117162213.png]]
+![Pasted image 20230117162213.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020230117162213.png)
 _notiamo come questa generalizzazione è di tipo totale ed esclusivo (t,e)_
 
 ### Collegamenti tra entità
@@ -103,12 +103,12 @@ Un telepass **è valido** per uno o più veicoli.
 
 Quindi per ogni telepass avremo N relazioni di validità per un numero di veicoli sconosciuto (1,N), mentre dato un veicolo **può** essere associato uno o più telepass (1,1)(1,N). 1,N non è sbagliato perchè in un veicolo possono essere usati telepass diversi (pensa a marito e moglie). 1,1 non è sbagliato perchè si può dare per scontato che ad un veicolo sia collegato solo un utente.
 
-![[Pasted image 20230117163952.png]]
+![Pasted image 20230117163952.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020230117163952.png)
 
 ### Punto 4
 
 Terminiamo la progettazione concettuale con l'ultimo punto.
-![[Pasted image 20230117164055.png]]
+![Pasted image 20230117164055.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020230117164055.png)
 
 ---
 
@@ -124,7 +124,7 @@ Per comprendere i concetti di normalizzazione bisogna definire alcune proprietà
 
 L'ipotesi che è alla base della normalizzazione assume che uno schema relazionale è descrivibile nella sua interezza attraverso un unico schema di relazione universale.
 
-![[Pasted image 20230116140932.png]]
+![Pasted image 20230116140932.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020230116140932.png)
 
 ## Dipendenza funzionale
 
