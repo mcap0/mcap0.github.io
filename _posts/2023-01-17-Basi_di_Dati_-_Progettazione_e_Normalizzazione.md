@@ -22,7 +22,7 @@ Durante la progettazione di una base di dati si viene provvisti di un testo dal 
 
 Durante la lezione viene svolto un esercizio sulla realizzazione di una base di dati per la gestione dei Telepass presso le autostrade italiane.
 
- [[Pasted image 20230117143800.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020230117143800.png)
+ ![Pasted image 20230117143800.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020230117143800.png)
 
 Se vi sembra un esercizio troppo complesso, o troppo lungo, sappiate che più informazioni avete sul database e i suoi oggetti, più sarà facile stilare la progettazione nel modo corretto.
 
