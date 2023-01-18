@@ -4,6 +4,8 @@ date: 2022-12-10 00:00:00 -500
 categories: [Hacking from 0, Networking]
 tags: [scripting, ssh, netcat, python]
 image_path: /assets/
+pin: true
+
 --- 
 
 # Intro - il potere dello scripting

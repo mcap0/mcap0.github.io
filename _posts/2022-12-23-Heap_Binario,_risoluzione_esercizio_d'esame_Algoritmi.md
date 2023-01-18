@@ -4,6 +4,8 @@ date: 2022-12-23 00:00:00 -500
 categories: [Computer Science, Algoritmi]
 tags: [heap, heapsort, esame]
 image_path: /assets/
+pin: true
+
 --- 
 
 # Intro
