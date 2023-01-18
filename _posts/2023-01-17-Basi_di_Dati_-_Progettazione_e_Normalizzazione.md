@@ -1,12 +1,12 @@
 ---
 title: Basi di Dati - Progettazione e Normalizzazione
 date: 2023-01-17 00:00:00 -500
-categories: [Tech]
-tags: [tech]
+categories: [Computer Science]
+tags: [database,progettazione,normalizzazione]
 image_path: /assets/
 --- 
 
-In questo articolo andrò ad illustrare i punti chiave della progettazione di basi di dati e della normalizzazione, nonchè andare a risolvere esercizi d'esame per la prova del 26 Gennaio.
+In questo articolo andrò ad illustrare i punti chiave della progettazione di basi di dati e della normalizzazione, nonchè andare a risolvere esercizi d'esame per preparazione alla prova del 26 Gennaio.
 
 Bibliografia:
 - [Fondamenti di Basi di Dati, A.Albano, G.Ghelli, R.Orsini](http://fondamentidibasididati.it/wp-content/uploads/2020/11/FondamentiBD-Edizione-C30-11-21.pdf)
@@ -32,7 +32,7 @@ Nel corso delle prime letture del testo sarà di fondamentale importanza carpire
 
 ![Pasted image 20230117144459.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020230117144459.png)
 
-In questa prima parte del testo si evincono due entità: autostrada e casello, collegate tra loro dalla relazione 'casello **si trova in** autostrada'.
+In questa prima parte del testo si evincono due entità: autostrada e casello, collegate tra loro dalla relazione 'casello **appartiene a** autostrada'.
 
 Proviamo quindi a fare le prime due bozze di entità **CASELLO** e **AUTOSTRADA** con le informazioni fornite dal testo.
 
@@ -47,12 +47,12 @@ Proviamo quindi a fare le prime due bozze di entità **CASELLO** e **AUTOSTRADA*
 | nome_autostrada       |
 | lunghezza_km          |
 
-Fatte le due tabelle, e selezionate propriamente le chiavi (in grassetto), notiamo subito alcune proprietà delle entità che trattiamo. Un casello infatti non ha un singolo attributo come chiave, bensì due: il codice che lo identifica all'interno dell'autostrada, ed il codice dell'autostrada stessa. Abbiamo una relazione tra Casello e Autostrada che segneremo come rombo tra le due tabelle.
+Fatte le due tabelle, e selezionate propriamente le chiavi (in grassetto), notiamo subito alcune proprietà delle entità che trattiamo. Un casello infatti non ha un singolo attributo come chiave, bensì due: il codice che lo identifica all'interno dell'autostrada, ed il codice dell'autostrada stessa. Abbiamo una relazione tra Casello e Autostrada che segneremo come un rombo tra le due tabelle.
 
 ![Pasted image 20230117150146.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020230117150146.png)
 
 Bene, notiamo subito due cose non discusse:
-- Il verbo 'Appartiene' è il 'nome' della relazione, serve a noi progettatori più che al database, anche se alcune relazioni hanno inevitabilmente attributi o tabelle proprie (vedremo più avanti);
+- Il verbo 'Appartiene' è il 'nome' della relazione, alcune relazioni hanno inevitabilmente attributi o tabelle proprie (vedremo più avanti);
 - Le coppie di numeri tra parentesi vicino alla relazione sono chiamate "Cardinalità" relazionali. Vanno definite in ogni relazione, da entrambi i 'lati' del collegamento. 
 
 ### Cardinalità
@@ -67,7 +67,7 @@ La risposta sarà che ad ogni autostrada potrò avere un numero N di relazioni a
 I numeri nella cardinalità di relazione quindi, possono essere descritti nel seguente modo:
 (x,y) ->
 x : numero entità descritte nell'insieme di partenza
-y : numero entità previste dalla relazione nell'insieme di arrivo
+y : numero di relazioni possibili nell'insieme di arrivo
 
 Continuiamo con la progettazione del database.
 
@@ -129,7 +129,7 @@ L'ipotesi che è alla base della normalizzazione assume che uno schema relaziona
 ## Dipendenza funzionale
 
 Costruiamo un esempio di un insieme di generiche dipendenze funzionali.
-Dato uno schema relazionale R(T), una dipendenza funzionale è definita come una relazione tra piùà attributi.
+Dato uno schema relazionale R(T), una dipendenza funzionale è definita come una relazione tra più attributi.
 
 Avendo uno schema relazione del tipo R(A,B,C,D,E) le dipendenze funzionali sono le possibili relazioni tra gli attributi A,B,C,D,E. Supponiamo ipoteticamente che A e C siano in relazione, in modo che A implica C, e che invece l'attributo B implichi l'attributo D. Queste relazioni prese singolarmente si definiscono come dipendenze funzionali. Avremo allora l'insieme delle dipendenze funzionali dello schema R:
 **F** = {AC -> E, B -> D} 
