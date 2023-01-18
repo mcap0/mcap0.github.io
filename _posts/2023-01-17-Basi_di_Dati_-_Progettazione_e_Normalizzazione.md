@@ -4,6 +4,7 @@ date: 2023-01-17 00:00:00 -500
 categories: [Computer Science, Database]
 tags: [database,progettazione,normalizzazione]
 image_path: /assets/
+hidden: true
 --- 
 
 In questo articolo andrò ad illustrare i punti chiave della progettazione di basi di dati e della normalizzazione, nonchè andare a risolvere esercizi d'esame per preparazione alla prova del 26 Gennaio.
