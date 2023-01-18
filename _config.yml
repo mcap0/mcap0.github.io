@@ -19,12 +19,12 @@ timezone: Europe/Rome
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: mcap0 ./Documentation                  # the main title
+title: mcap0 ./Notes                  # the main title
 
 tagline: Publication site for my Notes    # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  Tech Blog for Cybersecurity, Computer Science and Research Papers
+  Tech Publication Website for Cybersecurity, Computer Science and Research Papers
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://matteocapo.it'
