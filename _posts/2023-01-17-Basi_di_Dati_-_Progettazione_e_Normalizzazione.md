@@ -1,7 +1,7 @@
 ---
 title: Basi di Dati - Progettazione e Normalizzazione
 date: 2023-01-17 00:00:00 -500
-categories: [Computer Science]
+categories: [Computer Science, Database]
 tags: [database,progettazione,normalizzazione]
 image_path: /assets/
 --- 
