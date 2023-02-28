@@ -130,6 +130,7 @@ La tabella di associazione contiene solo gli identificatori delle due entità co
 ![Pasted image 20230228125616.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020230228125616.png)
 
 ## 1.5 Dizionario dei Dati 
+
 | **Entità**         | **Descrizione**                                                                                                                 | **Attributi**                            | **Indentificatiori**                          |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------- |
 | User               | Componente attiva nelle chat. Può creare chat e modificare lo stato del proprio account                                         | username, public_key, hashed_private_key | username                                      |
