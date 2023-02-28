@@ -129,7 +129,7 @@ La tabella di associazione contiene solo gli identificatori delle due entità co
 ## Schema Finale
 ![Pasted image 20230228125616.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020230228125616.png)
 
-# 1.5 Dizionario dei Dati 
+## 1.5 Dizionario dei Dati 
 | **Entità**         | **Descrizione**                                                                                                                 | **Attributi**                            | **Indentificatiori**                          |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------- |
 | User               | Componente attiva nelle chat. Può creare chat e modificare lo stato del proprio account                                         | username, public_key, hashed_private_key | username                                      |
@@ -140,6 +140,7 @@ La tabella di associazione contiene solo gli identificatori delle due entità co
 | public_key         | Chiava pubblica dell'utente. Chiunque può ottenerla per cifrari i messaggi da mandare                                           |                                          |                                               |
 
 ## 1.6 Dizionario delle Relazioni
+
 | Relazione | Descrizione | Cardinalità | Entità coinvolte |
 | --- | --- | --- | --- |
 | partecipa | Un utente può partecipare a molte chat e ogni chat è associata a più utenti. | molti-a-molti | User, Chat, Chat_User_Relations |
@@ -150,7 +151,6 @@ La tabella di associazione contiene solo gli identificatori delle due entità co
 | contiene_hashed_pk | Ogni utente possiede una sola hashed_private_key e permette al database di autenticare le operazioni effettuate  | uno-a-uno | User, hashed_private_key |
 | contiene_partecipante | Ogni chat ha esattamente un partecipante e ogni partecipante può partecipare a molte chat. | molti-a-molti | User, Chat, Chat_User_Relations |
 | autenticazione | L'autenticazione di un messaggio viene effettuata tramite il confronto tra l'header_test della chat e la combinazione cifrata di chiave privata del mittente e username. | uno-a-uno | User, Chat, Message, Header_Test, Public_Key |
-
 
 ## 1.7 Vincoli non esprimibili e dati derivabili
 
