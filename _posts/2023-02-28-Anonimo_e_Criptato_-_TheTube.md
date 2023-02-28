@@ -185,6 +185,7 @@ In questa sezione, descriveremo la stima del volume di dati che il database dovr
 ## 2.1 Stime e Tavola dei volumi
 
 Per stimare il volume di dati che il database dovrà gestire, abbiamo identificato i seguenti concetti:
+
 | **Concetto**                | **Tipo** | **Volume** |
 | --------------------------- | -------- | ---------- |
 | Utente                      | E        | 1000       |
