@@ -95,7 +95,7 @@ Per ogni messaggio inviato si effettua una operazione di verifica del mittente e
 ## 1.4 Schema concettuale e strategia di progetto, modello E/R
 
 ### Schema Scheletro
-![[Pasted image 20230216130115.png]]
+![Pasted image 20230216130115.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020230216130115.png)
 
 La strategia di progetto scelta per la costruzione dello schema Entità-Relazione (E/R) è la strategia mista, che prevede l'utilizzo di uno schema iniziale, detto schema scheletro, al quale si effettuano dei passaggi di raffinamento per ottenere uno schema E/R finale e completo.
 
@@ -109,7 +109,7 @@ Inoltre, l'entità private_key, che rappresenta la chiave privata dell'utente, i
 
 La cardinalità dell'associazione tra l'entità utente e l'entità chat è "uno a molti", poiché un utente può creare molte chat, ma ogni chat ha un solo creatore.
 
-![[Pasted image 20230228114635.png]]
+![Pasted image 20230228114635.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020230228114635.png)
 
 ### Raffinamento Entità Chat
 
@@ -126,7 +126,7 @@ L'entità di associazione `Chat_User_Relations`, che possiede solo "chatid" e "u
 La tabella di associazione contiene solo gli identificatori delle due entità correlate, ovvero "chatid" e "username". Non ha attributi aggiuntivi, poiché non rappresenta una vera e propria entità, ma solo un modo per gestire la relazione molti-a-molti.
 
 ## Schema Finale
-![[Pasted image 20230228125616.png]]
+![Pasted image 20230228125616.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020230228125616.png)
 
 # 1.5 Dizionario dei Dati 
 | **Entità**         | **Descrizione**                                                                                                                 | **Attributi**                            | **Indentificatiori**                          |
