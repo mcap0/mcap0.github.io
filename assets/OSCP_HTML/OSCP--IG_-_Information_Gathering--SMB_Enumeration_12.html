@@ -1,0 +1,12 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>SMB Enumeration</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="res/styles4.css" type="text/css" />
+</head>
+<body>
+<div class='page'><h1 class='title'>SMB Enumeration</h1><br/><p><h1>bash</h1></p><p><div class="codebox"><pre><br /><span style="color:#0088ff;font-weight:400"># nmap check for smb open</span><br />nmap -v 139,445 -oG smb.txt 192.168.50.1-254<br /><br /><span style="color:#0088ff;font-weight:400"># nmap enum with nse</span><br /><span style="color:#ff9d00;font-weight:700">ls</span> <span style="color:#ff9d00;font-weight:700">/</span>usr<span style="color:#ff9d00;font-weight:700">/</span>share<span style="color:#ff9d00;font-weight:700">/</span>nmap<span style="color:#ff9d00;font-weight:700">/</span>scripts<span style="color:#ff9d00;font-weight:700">/</span>smb*<br />nmap -v -p 139,445 --script smb-os-discovery 192.168.50.152<br /><br /><span style="color:#0088ff;font-weight:400"># nbtscan to query NetBIOS names of services</span><br /><span style="color:#ff9d00;font-weight:700">sudo</span> nbtscan -r 192.168.50.0<span style="color:#ff9d00;font-weight:700">/</span>24<span style="color:#ff9d00;font-weight:700">/</span><br /><br />smbclient -L ip -u user<br /><br /></pre></div></p><p></p><p><h1>powershell</h1></p><p><div class="codebox"><pre>net view <span style="color:#ff9d00;font-weight:700">\\</span>dc01 <span style="color:#ff9d00;font-weight:700">/</span>all</pre></div></p><p>SMB retrieve flag</p><p><div class="codebox"><pre>smbmap -d active.htb -u SVC_TGS -p password -H 10.10.10.100</pre></div></p><p> GetUserSPNs from impacket</p><p><div class="codebox"><pre>python getUserSPNs.py -outputfile file.txt -dc-ip 10.10.10.100 ‘domain/User:pass’<br /><br /># than crack hash with hashcat -m 13100</pre></div></p><p>use wmiexec.py if you get credentials</p><p><div class="codebox"><pre></p></div>
+</body>
+</html>
