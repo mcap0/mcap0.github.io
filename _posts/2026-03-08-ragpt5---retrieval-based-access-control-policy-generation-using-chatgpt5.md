@@ -1,18 +1,18 @@
 ---
 title: "RAGPT5 - Retrieval-based Access control policy Generation using ChatGPT5"
-date: 2026-03-08 15:35:42 +0100
-categories: [Hacking Projects]
+date: 2026-03-08 16:45:43 +0100
+categories: [Hacking,Projects]
 tags: ["ai hacking", "prompt injection"]
 ---
 
 ```table-of-contents
 
 ```
-# 1.0 - Introduzione a RAGPT5
+## 1.0 - Introduzione a RAGPT5
 
 RAGPT5 è un'implementazione a scopo didattico e di sperimentazione avversaria del framework [RAGent](https://arxiv.org/abs/2409.07489), da Matteo Capodicasa.
 
-## 1.1 - RAGent Framework
+### 1.1 - RAGent Framework
 
 Un framework atto alla generazione automatica di Access Control Policy partendo da liste di Requisiti di Accesso ("Retrieval-based Access Control Policy Generation").
 
@@ -23,7 +23,7 @@ Novità cardine che vengono presentate in RAGent sono
 - l'utilizzo di un approccio di "Recupero delle Informazioni" (RAG è acronimo di Retrieval Augmented Generation), che permette di associare in modo deterministico le entità delle policy generate alle effettive entità del sistema di accessi target, 
 - raffinamento delle policy dopo una verifica di correttezza delle stesse.
 
-## 1.2 - RAGPT5
+### 1.2 - RAGPT5
 
 "**R**etrieval-based **A**ccess control policy Generation using Chat **GPT5**" è un'implementazione sperimentale del framework RAGent.
 
@@ -34,7 +34,7 @@ Ultimatamente, RAGPT5 prende in input un testo descrittivo di Requisiti di Acces
 Esistono differenze fondamentali tra RAGPT5 e i presupposti di RAGent, ad esempio, RAGent lavora in locale per evitare l'invio di dati confidenziali di un'azienda a società proprietarie di LLM come OpenAI.
 
 
-## 1.3 - 6 step di RAGent
+### 1.3 - 6 step di RAGent
 
 Qui vengono descritti gli step del framework.
 1. Pre-processamento dell'input sui requisiti AC inseriti -> divisione in paragrafi, risoluzione di coreferenze attraverso la sostituzione di pronomi ed espressioni di referenza. 
@@ -44,7 +44,7 @@ Qui vengono descritti gli step del framework.
    4.1 Post-Processing: viene effettuata un'operazione di nearest tra le entità della ACP generata, e i componenti della policy salvati allo step 3. Vengono sostituiti i componenti della policy nella ACP generata, in modo da eliminare la possibilità di mismatch.
 5. Verifica ACP -> Un modello BART viene modificato con l'aggiunta di FFN (Forward-Feedback Network) e viene sottoposto a fine tuning allo scopo di verificare se la policy generata sia corretta o no. Una volta data in pasto la ACP generata al modello BART, questa viene categorizzata come corretta o come non-corretta, e nel secondo caso viene fornita una motivazione compresa tra 11 tipi di errore (decisione incorretta, soggetto incorretto, mancanza soggetto, etc.)
 6. Raffinamento Iterativo -> Le policy incorrette a questo punto vengono rimandate allo Step 4 con il feedback fornito dallo step di verifica. Dopo k iterazioni, la policy viene inviata all'amministratore per revisione manuale.
-## 1.4 - Differenze RAGent e RAGPT5
+### 1.4 - Differenze RAGent e RAGPT5
 
 Alcune delle differenze implementative sono le seguenti:
 - Tutti gli step -> sono implementati con un Agente GPT5 e le relative API. Ogni Agente è parte di una pipeline, ed è implementato tramite Prompt.
@@ -54,9 +54,9 @@ Alcune delle differenze implementative sono le seguenti:
 In RAGPT5 un `environment file` con il formato `<environment>.txt` contiene tutte le entità DSARCP che è possibile inserire nelle policy. Questo passaggio rende impossibile il mismatch di entità tra il sistema di accessi target e la policy generata, rispecchiando  quasi completamente l'idea base di RAGent, che in realtà non specifica se le entità "Purpose" e "Condition" devono essere ristretti ad una lista predefinita o no come le entità "Soggetti", "Azioni" o "Risorse".
 
 Infine una differenza degna di nota è che RAGPT5 è molto più lento dei paradigmi di RAGent, soprattutto se viene inviata una NLACP alla volta.
-# 2.0 - Architettura RAGPT5
+## 2.0 - Architettura RAGPT5
 
-## 2.1 - Ambiente Virtuale
+### 2.1 - Ambiente Virtuale
 
 RAGPT5 implementa la catena a 6 passi del framework RAGent.
 
@@ -66,19 +66,19 @@ Il servizio espone una porta interna del container, che permette la visita web, 
 
 Non appena si esegue il comando `docker compose up --build` un container che effettua il deploy dell'applicazione inizierà a fare il setup dell'ambiente virtuale. Le istruzioni che esegue in questo passaggio sono contenute nel file `Dockerfile`, in particolare installa i pacchetti python "`flask`" e "`openai`", dopo di che espone la porta 8000 ed esegue `app.py`.
 
-## 2.1 - `app.py`
+### 2.1 - `app.py`
 
 Questo file appena aperto mostra l'interdipendenza tra i componenti di RAGPT5. Il suo scopo principale è servire l'applicazione web, e orchestrare gli agenti in sequenza, non appena richiesto dall'utente tramite l'interfaccia web.
 
 In particolare sono presenti 2 API, `/api/generate` inizializza una struttura JSON che rappresenta lo stato della pipeline RAGent, e orchestra l'uso degli agenti , e `/api/log` che mostra ogni azione in tempo reale nel frontend, a scopo sperimentale.
-## 2.2 - `agents.py`
+### 2.2 - `agents.py`
 
 Qui le azioni di ogni agente della pipeline RAGent vengono definite. Viene importato dal file `prompt.py` i prompt di ogni agente, per ragioni di forma. Il file si occupa di effettuare le chiamate ad OpenAI API, nonchè effettua il passaggio deterministico di `ensure_policy_parameters`  importato dal file `tools.py`
 
-## 2.3 - `environment.txt`
+### 2.3 - `environment.txt`
 
 Da richiesta Web viene selezionato un parametro environment. Il programma cercherà tale file nella cartella readonly `app/data`. Attualmente da frontend è possibile selezionare solo 2 environment, e andrebbe modificato il file index.html per poter aggiungere environment all'interfaccia web. 
-# 3.0 - Analisi Superficie d'attacco di RAGent
+## 3.0 - Analisi Superficie d'attacco di RAGent
 
 Qui valuto esclusivamente la superficie d’attacco contenuta nel framework RAGent, cioè le vulnerabilità che emergono dal flusso logico descritto nel paper. Non vengono trattate vulnerabilità di potenziali implementazioni e la loro infrastruttura (container, networking, UI, logging esterno), che meritano un’analisi separata. L’obiettivo è mettere in luce i limiti di design descritti nel paper indipendentemente dall’ambiente di deploy.
 
@@ -106,7 +106,7 @@ In casi d'uso reali possiamo notare come la stesura regole di accesso siano effe
 In questi ambienti è possibile che le implementazioni RAGent potrebbero non essere messe in sicurezza nel modo inteso dagli autori del paper.
 
 
-# 4.0 - Tentativi di Attacco LLM-based a RAGPT5
+## 4.0 - Tentativi di Attacco LLM-based a RAGPT5
 
 Sono stati effettuati test di sicurezza alla pipeline dell'implementazione RAGPT5. Gli attacchi comprendevano: iniezioni mascherate in linuaggio naturale, payload html, istruzioni camuffate. L'obiettivo era verificare se una policy con testo arbitrario in uno o più campi viene prodotta.
 
@@ -129,16 +129,16 @@ Degno di nota è questo esempio in cui una frase semanticamente ambigua è stata
 
 Durante i test sono stati anche resi meno stretti i prompt ed è stato rimosso il passaggio di normalizzazione deterministica di Scopo e Condizione, ma tutti i tentativi di attacco sono stati bloccati e non sono andati a buon fine. Sicuramente però, con implementazioni ancora meno strette e/o attacchi llm più efficaci ed avanzati, la policy finale potrebbe essere iniettata con testo arbitrario sui campi non deterministici.
 
-# 5.0 - Conclusioni
+## 5.0 - Conclusioni
 
 L'esperimento RAGPT5 conferma la robustezza del framework RAGent per generare ACP ma mette in luce rischi concreti dovuti ad ambiguità linguistiche, injection, mismatch di entità e difficoltà implementative.  
 Per l'uso in produzione servono normalizzazione deterministica più rigida, restrizioni sui campi liberi e allo stato tecnologico attuale, a mio parere non è possibile evitare una revisione manuale delle policy prima dell'applicazione delle stesse in un sistema di accessi.
 
 
-# 6.0 - Appendix - Some Other OWASP Top10 GenAI Attempts
+## 6.0 - Appendix - Some Other OWASP Top10 GenAI Attempts
 
 Nei TextBlock è presente il testo relativo all'user prompt.
-## 6.1 - LLM01:2025 Prompt Injection Attempt
+### 6.1 - LLM01:2025 Prompt Injection Attempt
 **1st Attempt - Direct Prompt Injection via payload splitting**
 
 ```
@@ -183,7 +183,7 @@ Nel log sottostante si nota come nelle note viene riconosciuto lo scope escalati
 Tuttavia in questo caso siamo riusciti ad ottenere una prompt injection con successo perchè il verifier ha considerato corretta una policy incorretta, ritornando ultimatamente la policy incompleta e considerandola corretta
 ![b72703b78b68053aa0ff17e9ca7896aa.png](/assets/img/b72703b78b68053aa0ff17e9ca7896aa.png)
 
-## 6.2 - LLM05:2025 Improper Output Handling Attempt
+### 6.2 - LLM05:2025 Improper Output Handling Attempt
 
 In questo tentativo, si cerca di avere un output potenzialmente dannoso nei log.
 ```
@@ -194,7 +194,7 @@ L'attacco è quasi andato a buon fine.
 ![32d092bdc75ed19babb8c82c1de9db26.png](/assets/img/32d092bdc75ed19babb8c82c1de9db26.png)
 
 
-## 6.3 - LLM07:2025 Leak System Prompt Attempt
+### 6.3 - LLM07:2025 Leak System Prompt Attempt
 
 **1st Attempt**
 ```
