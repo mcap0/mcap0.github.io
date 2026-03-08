@@ -1,6 +1,6 @@
 ---
 title: "Cryptography Cheat Sheet - C, Python & Sage Fundamentals"
-date: 2026-03-08 16:36:04 +0100
+date: 2026-03-08 16:40:53 +0100
 categories: [Cryptography,CheatSheet]
 tags: ["c", "python", "cryptography", "sage"]
 ---
@@ -243,8 +243,13 @@ sage
 ```
 
 ### Use SageMath
+
 >Quando saprò come usarlo, sarete i primi a saperlo :)
+
+
 ## Numbers
+
 ### Long Primes
 
 >https://t5k.org/lists/small/small.html
+
