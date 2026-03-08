@@ -3,7 +3,7 @@ title: Diffbackup.py - uno script per il backup differenziale
 date: 2023-02-26 00:00:00 -500
 categories: [Python]
 tags: [backup, script]
-image_path: /assets/
+image_path: /assets/img/
 --- 
 
 Utilizzo:

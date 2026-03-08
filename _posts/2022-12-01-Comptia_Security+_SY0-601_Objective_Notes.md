@@ -3,7 +3,7 @@ title: CompTIA Security+ Objective Notes
 date: 2022-12-01 02:00:00 -500
 categories: [Security Research, Certifications]
 tags: [comptia,sec+,certification,notes]
-image_path: /assets/
+image_path: /assets/img/
 pin: true
 
 --- 
@@ -56,7 +56,7 @@ Navigazione:
     
     To protect yourself:
     
-    ![Schermata_2021-06-29_alle_19.36.15.png](/assets/Schermata_2021-06-29_alle_19.36.15.png)
+    ![Schermata_2021-06-29_alle_19.36.15.png](/assets/img/Schermata_2021-06-29_alle_19.36.15.png)
     
 - Dumpster Diving
     
@@ -90,7 +90,7 @@ Navigazione:
     
     Social Engeneering
     
-    ![Schermata 2021-08-26 alle 16.48.25.png](/assets/Schermata_2021-08-26_alle_16.48.25.png)
+    ![Schermata 2021-08-26 alle 16.48.25.png](/assets/img/Schermata_2021-08-26_alle_16.48.25.png)
     
 - Tailgating
     
@@ -103,7 +103,7 @@ Navigazione:
 
 - Name at least 5 types of malware
     
-    ![Schermata 2021-08-26 alle 17.36.26.png](/assets/Schermata_2021-08-26_alle_17.36.26.png)
+    ![Schermata 2021-08-26 alle 17.36.26.png](/assets/img/Schermata_2021-08-26_alle_17.36.26.png)
     
 - Differences between viruses and worms
     
@@ -113,7 +113,7 @@ Navigazione:
     
 - Virus Types
     
-    ![Schermata 2021-08-26 alle 17.45.38.png](/assets/Schermata_2021-08-26_alle_17.45.38.png)
+    ![Schermata 2021-08-26 alle 17.45.38.png](/assets/img/Schermata_2021-08-26_alle_17.45.38.png)
     
 - Fileless Viruses
     
@@ -128,11 +128,11 @@ Navigazione:
 
 - Features of Crypto-Malware
     
-    ![Schermata 2021-08-26 alle 17.54.16.png](/assets/Schermata_2021-08-26_alle_17.54.16.png)
+    ![Schermata 2021-08-26 alle 17.54.16.png](/assets/img/Schermata_2021-08-26_alle_17.54.16.png)
     
 - How to be protected against Ransomware
     
-    ![Schermata 2021-08-26 alle 17.55.16.png](/assets/Schermata_2021-08-26_alle_17.55.16.png)
+    ![Schermata 2021-08-26 alle 17.55.16.png](/assets/img/Schermata_2021-08-26_alle_17.55.16.png)
     
 
 ### Trojan and RATs
@@ -155,7 +155,7 @@ Navigazione:
     
 - What can a RAT do?
     
-    ![Schermata 2021-08-26 alle 18.01.46.png](/assets/Schermata_2021-08-26_alle_18.01.46.png)
+    ![Schermata 2021-08-26 alle 18.01.46.png](/assets/img/Schermata_2021-08-26_alle_18.01.46.png)
     
 
 ### Rootkit
@@ -177,14 +177,14 @@ Navigazione:
     
 - What does a Spyware tries to do?
     
-    ![Schermata 2021-08-26 alle 18.12.29.png](/assets/Schermata_2021-08-26_alle_18.12.29.png)
+    ![Schermata 2021-08-26 alle 18.12.29.png](/assets/img/Schermata_2021-08-26_alle_18.12.29.png)
     
 
 ### Bots and BotNets
 
 - Botnets
     
-    ![Schermata 2021-08-26 alle 18.32.02.png](/assets/Schermata_2021-08-26_alle_18.32.02.png)
+    ![Schermata 2021-08-26 alle 18.32.02.png](/assets/img/Schermata_2021-08-26_alle_18.32.02.png)
     
 - How to spot them
     
@@ -205,7 +205,7 @@ Navigazione:
     
     You can't
     
-    ![Schermata 2021-08-26 alle 18.40.10.png](/assets/Schermata_2021-08-26_alle_18.40.10.png)
+    ![Schermata 2021-08-26 alle 18.40.10.png](/assets/img/Schermata_2021-08-26_alle_18.40.10.png)
     
 
 ### Password Attacks
@@ -231,13 +231,13 @@ Navigazione:
     
 - Malicious Flash drive
     
-    ![Schermata 2021-08-27 alle 09.00.13.png](/assets/Schermata_2021-08-27_alle_09.00.13.png)
+    ![Schermata 2021-08-27 alle 09.00.13.png](/assets/img/Schermata_2021-08-27_alle_09.00.13.png)
     
-    ![Schermata 2021-08-27 alle 09.01.18.png](/assets/Schermata_2021-08-27_alle_09.01.18.png)
+    ![Schermata 2021-08-27 alle 09.01.18.png](/assets/img/Schermata_2021-08-27_alle_09.01.18.png)
     
 - What does Skimming means?
     
-    ![Schermata 2021-08-27 alle 09.02.30.png](/assets/Schermata_2021-08-27_alle_09.02.30.png)
+    ![Schermata 2021-08-27 alle 09.02.30.png](/assets/img/Schermata_2021-08-27_alle_09.02.30.png)
     
 
 ### Adversarial Artificial intelligence
@@ -246,14 +246,14 @@ Navigazione:
     
     Requires a lot of training data
     
-    ![Schermata 2021-08-27 alle 09.09.21.png](/assets/Schermata_2021-08-27_alle_09.09.21.png)
+    ![Schermata 2021-08-27 alle 09.09.21.png](/assets/img/Schermata_2021-08-27_alle_09.09.21.png)
     
 
 ### Supply Chain Attacks
 
 - What does a supply chain is made of?
     
-    ![Schermata 2021-08-27 alle 09.13.44.png](/assets/Schermata_2021-08-27_alle_09.13.44.png)
+    ![Schermata 2021-08-27 alle 09.13.44.png](/assets/img/Schermata_2021-08-27_alle_09.13.44.png)
     
 - How does someone gain access thanks to Supply Chains?
     
@@ -268,11 +268,11 @@ Navigazione:
 
 - Upsides and Downsides of the on-premises Security
     
-    ![Schermata 2021-08-27 alle 09.27.05.png](/assets/Schermata_2021-08-27_alle_09.27.05.png)
+    ![Schermata 2021-08-27 alle 09.27.05.png](/assets/img/Schermata_2021-08-27_alle_09.27.05.png)
     
 - Upsides and Downsides of the Cloud Based choice
     
-    ![Schermata 2021-08-27 alle 09.28.20.png](/assets/Schermata_2021-08-27_alle_09.28.20.png)
+    ![Schermata 2021-08-27 alle 09.28.20.png](/assets/img/Schermata_2021-08-27_alle_09.28.20.png)
     
 
 ### Cryptographic Attacks
@@ -283,7 +283,7 @@ Navigazione:
     
 - What is a Downgrade Attack
     
-    ![Schermata 2021-08-27 alle 09.34.27.png](/assets/Schermata_2021-08-27_alle_09.34.27.png)
+    ![Schermata 2021-08-27 alle 09.34.27.png](/assets/img/Schermata_2021-08-27_alle_09.34.27.png)
     
 
 ## 1.3
@@ -296,20 +296,20 @@ Navigazione:
     
 - This are the most important to patch. Do you remember how to mitigate it?
     
-    ![Schermata 2021-08-27 alle 09.39.35.png](/assets/Schermata_2021-08-27_alle_09.39.35.png)
+    ![Schermata 2021-08-27 alle 09.39.35.png](/assets/img/Schermata_2021-08-27_alle_09.39.35.png)
     
 
 ### Cross-Site Scripting (XSS)
 
 - XSS
     
-    ![Schermata 2021-08-28 alle 12.01.21.png](/assets/Schermata_2021-08-28_alle_12.01.21.png)
+    ![Schermata 2021-08-28 alle 12.01.21.png](/assets/img/Schermata_2021-08-28_alle_12.01.21.png)
     
 - Non persistent (reflected) XSS process
     
     Usually takes advantage of the search box or any user input
     
-    ![Schermata 2021-08-28 alle 12.05.18.png](/assets/Schermata_2021-08-28_alle_12.05.18.png)
+    ![Schermata 2021-08-28 alle 12.05.18.png](/assets/img/Schermata_2021-08-28_alle_12.05.18.png)
     
 - Persistent (stored) XSS
     
@@ -317,11 +317,11 @@ Navigazione:
     
 - Subaru Hacked
     
-    ![Schermata 2021-08-28 alle 12.10.10.png](/assets/Schermata_2021-08-28_alle_12.10.10.png)
+    ![Schermata 2021-08-28 alle 12.10.10.png](/assets/img/Schermata_2021-08-28_alle_12.10.10.png)
     
 - Protect against XSS
     
-    ![Schermata 2021-08-28 alle 12.11.54.png](/assets/Schermata_2021-08-28_alle_12.11.54.png)
+    ![Schermata 2021-08-28 alle 12.11.54.png](/assets/img/Schermata_2021-08-28_alle_12.11.54.png)
     
 
 ### Injection Attack
@@ -385,7 +385,7 @@ Navigazione:
     
     One that the attacker can control and that doesn't cause issues to the system
     
-    ![Schermata 2021-08-28 alle 12.29.10.png](/assets/Schermata_2021-08-28_alle_12.29.10.png)
+    ![Schermata 2021-08-28 alle 12.29.10.png](/assets/img/Schermata_2021-08-28_alle_12.29.10.png)
     
 
 ### Replay Attacks
@@ -412,18 +412,18 @@ Navigazione:
     
     If the cookie stores the session ID someone who has access to that cookie could login in your session.
     
-    ![Schermata 2021-08-28 alle 12.41.00.png](/assets/Schermata_2021-08-28_alle_12.41.00.png)
+    ![Schermata 2021-08-28 alle 12.41.00.png](/assets/img/Schermata_2021-08-28_alle_12.41.00.png)
     
 - Ways an attacker could perform some sort of Replay Attack and useful tools
     
-    ![Schermata 2021-08-28 alle 12.44.30.png](/assets/Schermata_2021-08-28_alle_12.44.30.png)
+    ![Schermata 2021-08-28 alle 12.44.30.png](/assets/img/Schermata_2021-08-28_alle_12.44.30.png)
     
 
 ### Request Forgeries
 
 - Cross site request explain
     
-    ![Schermata 2021-08-28 alle 14.56.19.png](/assets/Schermata_2021-08-28_alle_14.56.19.png)
+    ![Schermata 2021-08-28 alle 14.56.19.png](/assets/img/Schermata_2021-08-28_alle_14.56.19.png)
     
 - Cross site request forgery Acronym
     
@@ -431,7 +431,7 @@ Navigazione:
     
     It's also called one-click attack, it takes advantages of the trust that a web application has for the user
     
-    ![Schermata 2021-08-29 alle 15.56.32.png](/assets/Schermata_2021-08-29_alle_15.56.32.png)
+    ![Schermata 2021-08-29 alle 15.56.32.png](/assets/img/Schermata_2021-08-29_alle_15.56.32.png)
     
 - How to Prevent a one-click attack?
     
@@ -445,11 +445,11 @@ Navigazione:
     
     The attacker will find a vulnerability in a web server and than send some sort of script
     
-    ![Schermata 2021-08-29 alle 15.59.23.png](/assets/Schermata_2021-08-29_alle_15.59.23.png)
+    ![Schermata 2021-08-29 alle 15.59.23.png](/assets/img/Schermata_2021-08-29_alle_15.59.23.png)
     
 - Capital One Attack
     
-    ![Schermata 2021-08-29 alle 16.02.02.png](/assets/Schermata_2021-08-29_alle_16.02.02.png)
+    ![Schermata 2021-08-29 alle 16.02.02.png](/assets/img/Schermata_2021-08-29_alle_16.02.02.png)
     
 
 ### Driver Manipulation
@@ -464,7 +464,7 @@ Navigazione:
     
 - In IT, what is a Shimmer?
     
-    ![Schermata 2021-08-29 alle 16.10.40.png](/assets/Schermata_2021-08-29_alle_16.10.40.png)
+    ![Schermata 2021-08-29 alle 16.10.40.png](/assets/img/Schermata_2021-08-29_alle_16.10.40.png)
     
 - In what 'Malware refactoring' consists?
     
@@ -472,7 +472,7 @@ Navigazione:
     
 - What could an hacker refactor?
     
-    ![Schermata 2021-08-29 alle 16.14.56.png](/assets/Schermata_2021-08-29_alle_16.14.56.png)
+    ![Schermata 2021-08-29 alle 16.14.56.png](/assets/img/Schermata_2021-08-29_alle_16.14.56.png)
     
 
 ### SSL Stripping
@@ -483,7 +483,7 @@ Navigazione:
     
     You can see it's a SSL stripping or HTTP downgrade because the page that normally would have been encrypted it's not. (the term stripping means that the SSL protocol is stripped away)
     
-    ![Schermata 2021-08-29 alle 16.23.58.png](/assets/Schermata_2021-08-29_alle_16.23.58.png)
+    ![Schermata 2021-08-29 alle 16.23.58.png](/assets/img/Schermata_2021-08-29_alle_16.23.58.png)
     
 - Acronym SSL (... socket ...)
     
@@ -496,7 +496,7 @@ Navigazione:
     
     Taking advantage of simultaneous events to alterate normal flow of a website
     
-    ![Schermata 2021-08-29 alle 16.28.29.png](/assets/Schermata_2021-08-29_alle_16.28.29.png)
+    ![Schermata 2021-08-29 alle 16.28.29.png](/assets/img/Schermata_2021-08-29_alle_16.28.29.png)
     
 
 ### Other Application Attacks
@@ -536,7 +536,7 @@ Navigazione:
     
 - DHCP Starvation
     
-    ![Schermata 2021-08-30 alle 15.24.36.png](/assets/Schermata_2021-08-30_alle_15.24.36.png)
+    ![Schermata 2021-08-30 alle 15.24.36.png](/assets/img/Schermata_2021-08-30_alle_15.24.36.png)
     
 
 ## 1.4
@@ -558,7 +558,7 @@ Navigazione:
     
     You send ACKS to denial of service. aireplay-ng
     
-    ![Untitled](/assets/Untitled.png)
+    ![Untitled](/assets/img/Untitled.png)
     
 
 ### Wireless Jamming Attack
@@ -580,17 +580,17 @@ Navigazione:
     
     Radio Frequency Identification
     
-    ![Schermata 2021-08-30 alle 16.10.23.png](/assets/Schermata_2021-08-30_alle_16.10.23.png)
+    ![Schermata 2021-08-30 alle 16.10.23.png](/assets/img/Schermata_2021-08-30_alle_16.10.23.png)
     
 - NFC (near...)
     
     Near Field Communication
     
-    ![Schermata 2021-08-30 alle 16.16.48.png](/assets/Schermata_2021-08-30_alle_16.16.48.png)
+    ![Schermata 2021-08-30 alle 16.16.48.png](/assets/img/Schermata_2021-08-30_alle_16.16.48.png)
     
 - NFC Security concerns
     
-    ![Schermata 2021-08-30 alle 16.17.57.png](/assets/Schermata_2021-08-30_alle_16.17.57.png)
+    ![Schermata 2021-08-30 alle 16.17.57.png](/assets/img/Schermata_2021-08-30_alle_16.17.57.png)
     
 
 ### Randomization of Cryptography
@@ -612,7 +612,7 @@ Navigazione:
 
 - What is Spoofing
     
-    ![Schermata 2021-08-30 alle 16.44.36.png](/assets/Schermata_2021-08-30_alle_16.44.36.png)
+    ![Schermata 2021-08-30 alle 16.44.36.png](/assets/img/Schermata_2021-08-30_alle_16.44.36.png)
     
 - What's APR and how it's done
     
@@ -635,7 +635,7 @@ Navigazione:
     
     Modify Source MAC address to match someone else's
     
-    ![Schermata 2021-08-30 alle 17.12.49.png](/assets/Schermata_2021-08-30_alle_17.12.49.png)
+    ![Schermata 2021-08-30 alle 17.12.49.png](/assets/img/Schermata_2021-08-30_alle_17.12.49.png)
     
 
 ### DNS Poisoning
@@ -652,11 +652,11 @@ Navigazione:
     
 - URL Hijacking
     
-    ![Schermata 2021-08-30 alle 17.21.05.png](/assets/Schermata_2021-08-30_alle_17.21.05.png)
+    ![Schermata 2021-08-30 alle 17.21.05.png](/assets/img/Schermata_2021-08-30_alle_17.21.05.png)
     
 - Domain Reputation
     
-    ![Schermata 2021-08-30 alle 17.23.41.png](/assets/Schermata_2021-08-30_alle_17.23.41.png)
+    ![Schermata 2021-08-30 alle 17.23.41.png](/assets/img/Schermata_2021-08-30_alle_17.23.41.png)
     
 
 ### Denial of Service
@@ -667,7 +667,7 @@ Navigazione:
     
 - DDoS amplification
     
-    ![Untitled](/assets/Untitled%201.png)
+    ![Untitled](/assets/img/Untitled%201.png)
     
 
 ### Malicious Scripts
@@ -765,38 +765,38 @@ Indicator Information (TAXII)
 - What are 0-day attacks
 - Unsecured root accounts
     
-    ![Schermata 2021-09-02 alle 14.54.35.png](/assets/Schermata_2021-09-02_alle_14.54.35.png)
+    ![Schermata 2021-09-02 alle 14.54.35.png](/assets/img/Schermata_2021-09-02_alle_14.54.35.png)
     
 - Error messages
     
-    ![Schermata 2021-09-02 alle 14.55.16.png](/assets/Schermata_2021-09-02_alle_14.55.16.png)
+    ![Schermata 2021-09-02 alle 14.55.16.png](/assets/img/Schermata_2021-09-02_alle_14.55.16.png)
     
 - Weak encryption
     
-    ![Schermata 2021-09-02 alle 14.57.12.png](/assets/Schermata_2021-09-02_alle_14.57.12.png)
+    ![Schermata 2021-09-02 alle 14.57.12.png](/assets/img/Schermata_2021-09-02_alle_14.57.12.png)
     
 - Insecure Protocols
     
-    ![Schermata 2021-09-02 alle 14.58.40.png](/assets/Schermata_2021-09-02_alle_14.58.40.png)
+    ![Schermata 2021-09-02 alle 14.58.40.png](/assets/img/Schermata_2021-09-02_alle_14.58.40.png)
     
 - Default Settings
     
-    ![Schermata 2021-09-02 alle 15.00.35.png](/assets/Schermata_2021-09-02_alle_15.00.35.png)
+    ![Schermata 2021-09-02 alle 15.00.35.png](/assets/img/Schermata_2021-09-02_alle_15.00.35.png)
     
 - Open Ports and services
     
-    ![Untitled](/assets/Untitled%202.png)
+    ![Untitled](/assets/img/Untitled%202.png)
     
 - Not up to date softwares
     
-    ![Untitled](/assets/Untitled%203.png)
+    ![Untitled](/assets/img/Untitled%203.png)
     
 
 ### Third Party Risks
 
 - Supply Chain Risk
     
-    ![Schermata 2021-09-02 alle 15.17.32.png](/assets/Schermata_2021-09-02_alle_15.17.32.png)
+    ![Schermata 2021-09-02 alle 15.17.32.png](/assets/img/Schermata_2021-09-02_alle_15.17.32.png)
     
 
 ### Vulnerability Impacts
@@ -813,19 +813,19 @@ Indicator Information (TAXII)
 
 - Threat hunt
     
-    ![Untitled](/assets/Untitled%204.png)
+    ![Untitled](/assets/img/Untitled%204.png)
     
 - Intelligence fusion
     
-    ![Untitled](/assets/Untitled%205.png)
+    ![Untitled](/assets/img/Untitled%205.png)
     
 - Data Fusion
     
-    ![Untitled](/assets/Untitled%206.png)
+    ![Untitled](/assets/img/Untitled%206.png)
     
 - Automation of cybersecurity process
     
-    ![Untitled](/assets/Untitled%207.png)
+    ![Untitled](/assets/img/Untitled%207.png)
     
 
 ### Vulnerability Scans
@@ -836,21 +836,21 @@ Indicator Information (TAXII)
     
     example: look at the terminal and tell me a possible vuln of 192.168.1.1
     
-    ![Untitled](/assets/Untitled%208.png)
+    ![Untitled](/assets/img/Untitled%208.png)
     
 - What Scan Types you know?
     
     We could use powerful scanners to identify vulns or we could:
     
-    ![Untitled](/assets/Untitled%209.png)
+    ![Untitled](/assets/img/Untitled%209.png)
     
 - Scan log review
     
-    ![Schermata 2021-09-08 alle 13.48.10.png](/assets/Schermata_2021-09-08_alle_13.48.10.png)
+    ![Schermata 2021-09-08 alle 13.48.10.png](/assets/img/Schermata_2021-09-08_alle_13.48.10.png)
     
 - What do we mean by false positives and how we handle them
     
-    ![Schermata 2021-09-08 alle 13.49.55.png](/assets/Schermata_2021-09-08_alle_13.49.55.png)
+    ![Schermata 2021-09-08 alle 13.49.55.png](/assets/img/Schermata_2021-09-08_alle_13.49.55.png)
     
 
 ### SIEM
@@ -880,7 +880,7 @@ Indicator Information (TAXII)
     Often associated with a critical alert
     Some organizations capture everything
     
-    ![Schermata 2021-09-08 alle 13.59.33.png](/assets/Schermata_2021-09-08_alle_13.59.33.png)
+    ![Schermata 2021-09-08 alle 13.59.33.png](/assets/img/Schermata_2021-09-08_alle_13.59.33.png)
     
 
 # 2.0 - Architecture and Design
@@ -891,7 +891,7 @@ Indicator Information (TAXII)
     
     a documentation of wires and devices
     
-    ![Untitled](/assets/Untitled%2010.png)
+    ![Untitled](/assets/img/Untitled%2010.png)
     
 - What’s baseline configuration and what do we mean by integrity measurement checks?
     
@@ -905,7 +905,7 @@ Indicator Information (TAXII)
     
     example for a device
     
-    ![Untitled](/assets/Untitled%2011.png)
+    ![Untitled](/assets/img/Untitled%2011.png)
     
 - Why do we need an IP schema?
     
@@ -966,7 +966,7 @@ Indicator Information (TAXII)
     
     To add a security layer. Also anything that’s going inside can be decrypted, analyzed and then send to the hosts in the network. 
     
-    ![Untitled](/assets/Untitled%2012.png)
+    ![Untitled](/assets/img/Untitled%2012.png)
     
 - What does APIs do? We need to do some considerations about security?
     
@@ -1041,7 +1041,7 @@ Indicator Information (TAXII)
 
 - When talking about Secure coding techniques, what does server-side vs client-side execution\validation stand for?
     
-    ![Untitled](/assets/Untitled%2013.png)
+    ![Untitled](/assets/img/Untitled%2013.png)
     
 - How could memory management be a security concern?
     
@@ -1105,7 +1105,7 @@ MFA
     
     FPGA Field programmable gate array
     
-    ![Untitled](/assets/Untitled%2014.png)
+    ![Untitled](/assets/img/Untitled%2014.png)
     
     Arduino 
     
@@ -1347,7 +1347,7 @@ MFA
 
 - What’s a VPN concentrator?
     
-    ![Untitled](/assets/Untitled%2015.png)
+    ![Untitled](/assets/img/Untitled%2015.png)
     
 - What protocol grants tunneling functions?
     
@@ -1600,7 +1600,7 @@ MFA
     
     After, the authenticator provides the username to the server and enstablishes a secure connection to ask for the credentials, that if provided correctly are send in the backend (server) that ultimately authenticates the user
     
-    ![Untitled](/assets/Untitled%2016.png)
+    ![Untitled](/assets/img/Untitled%2016.png)
     
 - EAP-FAST stands for? what’s the shared secret name?
     
@@ -1921,7 +1921,7 @@ MFA
     
     `logger`
     
-    ![Untitled](/assets/Untitled%2017.png)
+    ![Untitled](/assets/img/Untitled%2017.png)
     
 
 ---
@@ -2093,7 +2093,7 @@ MFA
     
     Cyber Kill Chain
     
-    ![Untitled](/assets/Untitled%2018.png)
+    ![Untitled](/assets/img/Untitled%2018.png)
     
 
 ---
@@ -2189,7 +2189,7 @@ MFA
     
     Through segmentation of the internal network
     
-    ![Untitled](/assets/Untitled%2019.png)
+    ![Untitled](/assets/img/Untitled%2019.png)
     
 - What’s a SOAR? How is it linked to Runbooks and Playbooks?
     
@@ -2227,7 +2227,7 @@ MFA
 
 - What are order of volatility?
     
-    ![Untitled](/assets/Untitled%2020.png)
+    ![Untitled](/assets/img/Untitled%2020.png)
     
 - The first step you would perform when dealing with disks in forensic analysis.
     
@@ -2387,7 +2387,7 @@ MFA
     
     you’re a commercial wanting to implement high level view of cybersecurity
     
-    ![Untitled](/assets/Untitled%2021.png)
+    ![Untitled](/assets/img/Untitled%2021.png)
     
 - Be able to tell the purpose of each ISO/IEC Standard:
 27001, 27002, 27701, 31000.
@@ -2494,7 +2494,7 @@ MFA
     
     The Data Steward
     
-    ![Untitled](/assets/Untitled%2022.png)
+    ![Untitled](/assets/img/Untitled%2022.png)
     
 - Difference between change management and change control
     

@@ -3,7 +3,7 @@ title: SQL injection - intro
 date: 2023-03-25 00:00:00 -500
 categories: [Hacking from 0, Web Security]
 tags: [sql,sql injection,database]
-image_path: /assets/
+image_path: /assets/img/
 --- 
 
 # Database Vulnerabilities

@@ -3,7 +3,7 @@ title: Bootable USB da terminale in 4 steps
 date: 2022-11-30 00:00:00 -500
 categories: [Security Research]
 tags: [df,dd,diskutil,bootable,usb]
-image_path: /assets/
+image_path: /assets/img/
 --- 
 
 Ti sei mai chiesto come masterizzare un Sistema Operativo nella tua USB senza usare tool automatici come [Rufus](https://rufus.ie/it/)?
@@ -15,7 +15,7 @@ Questa è una guida per il terminale Linux / MacOS.
 1. Apri il terminale
 2. Ottieni una lista dei dischi connessi con:
 	`df -H`
-![Pasted image 20221130112055.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/Pasted%20image%2020221130112055.png)
+![Pasted image 20221130112055.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/img/Pasted%20image%2020221130112055.png)
 3. Una volta individuato il dispositivo, nel mio caso `disk4s1`, dobbiamo eseguire un `umount`
 	`sudo umount /dev/disk4s1`
 4. Andiamo adesso a masterizzare il sistema operativo vero e proprio, usando il comando `dd`

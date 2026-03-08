@@ -3,7 +3,7 @@ title: Heap Binario, risoluzione esercizio d'esame - Algoritmi
 date: 2022-12-23 00:00:00 -500
 categories: [Computer Science, Algoritmi]
 tags: [heap, heapsort, esame]
-image_path: /assets/
+image_path: /assets/img/
 pin: true
 
 --- 
