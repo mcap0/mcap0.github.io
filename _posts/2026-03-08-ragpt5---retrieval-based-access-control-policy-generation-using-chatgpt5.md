@@ -1,8 +1,8 @@
 ---
 title: "RAGPT5 - Retrieval-based Access control policy Generation using ChatGPT5"
-date: 2026-03-08 15:23:32 +0100
-categories: [Appunti]
-tags: []
+date: 2026-03-08 15:35:42 +0100
+categories: [Hacking Projects]
+tags: ["ai hacking", "prompt injection"]
 ---
 
 ```table-of-contents
