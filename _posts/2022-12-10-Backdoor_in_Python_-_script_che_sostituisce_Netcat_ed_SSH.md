@@ -7,7 +7,7 @@ image_path: /assets/img/
 
 --- 
 
-# Intro - il potere dello scripting
+## Intro - il potere dello scripting
 
 Non mi sono mai ritenuto un programmatore, ho sempre avuto interessi che vanno oltre la mera creazione di software, soprattutto se si parla di programmare ore e ore al giorno per qualcuno.
 
@@ -23,7 +23,7 @@ In questo articolo andrò a dissezionare e cercare di spiegare nel modo più sem
 
 Questo codice è interamente presente nella primo capitolo “Python Networking in a Paragraph“. Se vi interessa solo leggere e avere il codice per intero, [qui](https://github.com/mcap0/CodeSamples/blob/main/NetCat.py) un link alla cartella github dove l'ho salvato.
 
-# Python Sockets - aprire un tunnel di comunicazione
+## Python Sockets - aprire un tunnel di comunicazione
 
 Iniziamo importando tutte le librerie che ci serviranno più tardi
 
@@ -40,7 +40,7 @@ import threading
 Per scrivere la classe NetCat, che ci permette di comunicare via TCP con un altro host su cui è installato questo programma, useremo lo stesso principio degli script [TCP Server e Client](https://mcap0.it/posts/PY_Networking/), ma renderemo capace questo script di potersi comportare sia da server che da client.
 
 
-## classe Netcat
+### classe Netcat
 
 Inizializziamo la classe con degli argomenti `args` (in questo caso i toggle `-c` e `-l` che definiranno il comportamento dello script) di cui ci occuperemo più tardi nella funzione main.
 
@@ -65,7 +65,7 @@ Nella funzione `run` vediamo come la Socket che abbiamo definito prima si compor
 
 La linea che appare più strana è l'ultima della funzione `__init__`, che serve a indicare alla socket di utilizzare in modo forzato la porta, anche se essa è usata da un altro processo. Infatti se date un'occhiata alle librerie importate, lo script avrà funzioni di multithreading, per gestire più connessioni in entrata contemporaneamente.
 
-## funzioni `send()` e `listen()`
+### funzioni `send()` e `listen()`
 
 Le funzioni `send()` e `listen()`, due facce della stessa medaglia, vengono definite da noi all'interno della classe e vanno architettate ad-hoc per ciò che serve a noi, ovvero la possibilità di scrivere comandi e mandarli, oppure di riceverli ed eseguirli con la funzione `execute()`.
 
@@ -107,7 +107,7 @@ while True:
 ```
 Non sono un esperto di Threads ma questo pezzo di codice fa in modo di aspettare per istruzioni dal client (noi che inviamo i comandi da eseguire in remoto) per poi chiamare la funzione handle che si occupa di eseguire tali istruzioni.
 
-## funzioni `execute()` e `handle()`
+### funzioni `execute()` e `handle()`
 
 La funzione execute va scritta prima della classe NetCat, serve a far eseguire con interprete locale i comandi che vengono inviati.
 
@@ -126,11 +126,11 @@ In questa funzione viene passato un comando `cmd`, che viene eseguito da un `sub
 Ora vediamo la funzione handle, metodo della classe NetCat, serve a gestire gli argomenti che passeremo al programma in python ed interpretarli, ad esempio se nell'eseguire il programma passeremo l'argomento `-c` questa funzione farà in modo di eseguire una command-line interface nella quale potremo scrivere comandi ed eseguirli stile SSH.
 ```python
 def handle(self, client_socket):
-# se l'argomento 'execute' è presente manda il comando alla funzione execute
+## se l'argomento 'execute' è presente manda il comando alla funzione execute
         if self.args.execute:
             output = execute(self.args.execute)
             client_socket.send(output.encode())
-# funzione per l'upload di file
+## funzione per l'upload di file
         elif self.args.upload:
             file_buffer = b''
             while True:
@@ -144,7 +144,7 @@ def handle(self, client_socket):
                 f.write(file_buffer)
             message = f'Saved file {self.args.upload}'
             client_socket.send(message.encode())
-# funzione per gestire il terminale in stile simil-ssh
+## funzione per gestire il terminale in stile simil-ssh
         elif self.args.command:
             cmd_buffer = b''
             while True:
@@ -162,7 +162,7 @@ def handle(self, client_socket):
                     sys.exit()
 ```
 
-## funzione `main()`
+### funzione `main()`
 
 In questo caso la funzione main dovrà occuparsi di valutare gli argomenti passati quando il programma viene eseguito. 
 
@@ -201,11 +201,11 @@ if __name__=='__main__':
     nc.run()
 ```
 
-# Funzionamento
+## Funzionamento
 
 Adesso vediamo in che modi possiamo sfruttare questo script.
 
-## command line interface
+### command line interface
 
 Con i metodi `execute()` e `handle()` il programma permette di eseguire comandi da remoto nel computer vittima, i quali output vengono mandati a noi tramite i metodi `send()` e `listen`.
 
@@ -236,7 +236,7 @@ _quando il comando non può essere valutato il processo del server viene termina
 ![Pasted image 20221210132417.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/img/Pasted%20image%2020221210132417.png)
 _la feature di `server killed` è molto utile in fase di debug_
 
-## Comando singolo
+### Comando singolo
 
 Se volessimo valutare il testo in output di un singolo comando, per poi poterlo recuperare da remoto, basterebbe usare l'opzione `-e execute`:
 quest'ultima eseguirà il comando e non appena si avrà una connessione in entrata, l'output del comando verrà inviato a noi che ci saremo connessi alla porta 5555:

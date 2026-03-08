@@ -8,7 +8,7 @@ pin: true
 
 --- 
 
-# CompTIA Security+ SY0-601 - Objectives Notes
+## CompTIA Security+ SY0-601 - Objectives Notes
 
 Queste sono le mie personali note prese durante lo studio per la CompTIA Security+. Sono quasi interamente definizioni e domande di pratica per testare la comprensione di alcuni termini e fare in modo ricordare anche i più complessi.
 
@@ -25,9 +25,9 @@ Navigazione:
 
 [Qui](https://www.comptia.jp/pdf/CompTIA%20Security+%20SY0-601%20Exam%20Objectives%20(3.0).pdf) una lista completa degli objectives.
 
-# 1.0 - Threats, Attacks and Vulnerabilities
+## 1.0 - Threats, Attacks and Vulnerabilities
 
-## 1.1 Terminology
+### 1.1 Terminology
 
 - Phishing
     
@@ -97,9 +97,9 @@ Navigazione:
     Someone that gains access with your credentials, for example someone you keep the door open for
     
 
-## 1.2
+### 1.2
 
-### Viruses and Worms
+#### Viruses and Worms
 
 - Name at least 5 types of malware
     
@@ -124,7 +124,7 @@ Navigazione:
     WannaCry Ransomware
     
 
-### Ransomware and Crypto-malware
+#### Ransomware and Crypto-malware
 
 - Features of Crypto-Malware
     
@@ -135,7 +135,7 @@ Navigazione:
     ![Schermata 2021-08-26 alle 17.55.16.png](/assets/img/Schermata_2021-08-26_alle_17.55.16.png)
     
 
-### Trojan and RATs
+#### Trojan and RATs
 
 - Trojan
     
@@ -158,7 +158,7 @@ Navigazione:
     ![Schermata 2021-08-26 alle 18.01.46.png](/assets/img/Schermata_2021-08-26_alle_18.01.46.png)
     
 
-### Rootkit
+#### Rootkit
 
 - What does a Rootkit do?
     
@@ -169,7 +169,7 @@ Navigazione:
     Using the rootkit to block the possibility of deleting the malware and terminates its processes
     
 
-### Spyware
+#### Spyware
 
 - How not to remove adware
     
@@ -180,7 +180,7 @@ Navigazione:
     ![Schermata 2021-08-26 alle 18.12.29.png](/assets/img/Schermata_2021-08-26_alle_18.12.29.png)
     
 
-### Bots and BotNets
+#### Bots and BotNets
 
 - Botnets
     
@@ -195,7 +195,7 @@ Navigazione:
     Prevent for C&C (command and control) and block it at the firewall
     
 
-### Logic Bombs
+#### Logic Bombs
 
 - What is a Logic Bomb
     
@@ -208,7 +208,7 @@ Navigazione:
     ![Schermata 2021-08-26 alle 18.40.10.png](/assets/img/Schermata_2021-08-26_alle_18.40.10.png)
     
 
-### Password Attacks
+#### Password Attacks
 
 - Spring
     
@@ -223,7 +223,7 @@ Navigazione:
     Adding Salt
     
 
-### Physical Attacks
+#### Physical Attacks
 
 - Malicious USB cable
     
@@ -240,7 +240,7 @@ Navigazione:
     ![Schermata 2021-08-27 alle 09.02.30.png](/assets/img/Schermata_2021-08-27_alle_09.02.30.png)
     
 
-### Adversarial Artificial intelligence
+#### Adversarial Artificial intelligence
 
 - Tell me one downside of Machine learning
     
@@ -249,7 +249,7 @@ Navigazione:
     ![Schermata 2021-08-27 alle 09.09.21.png](/assets/img/Schermata_2021-08-27_alle_09.09.21.png)
     
 
-### Supply Chain Attacks
+#### Supply Chain Attacks
 
 - What does a supply chain is made of?
     
@@ -264,7 +264,7 @@ Navigazione:
     Put internal protections. Separate networks.
     
 
-### On-Premises vs Cloud Based Attacks
+#### On-Premises vs Cloud Based Attacks
 
 - Upsides and Downsides of the on-premises Security
     
@@ -275,7 +275,7 @@ Navigazione:
     ![Schermata 2021-08-27 alle 09.28.20.png](/assets/img/Schermata_2021-08-27_alle_09.28.20.png)
     
 
-### Cryptographic Attacks
+#### Cryptographic Attacks
 
 - Are hash digests supposed to be unique?
     
@@ -286,9 +286,9 @@ Navigazione:
     ![Schermata 2021-08-27 alle 09.34.27.png](/assets/img/Schermata_2021-08-27_alle_09.34.27.png)
     
 
-## 1.3
+### 1.3
 
-### Privilege escalation
+#### Privilege escalation
 
 - How can a normal user gain root access in a network?
     
@@ -299,7 +299,7 @@ Navigazione:
     ![Schermata 2021-08-27 alle 09.39.35.png](/assets/img/Schermata_2021-08-27_alle_09.39.35.png)
     
 
-### Cross-Site Scripting (XSS)
+#### Cross-Site Scripting (XSS)
 
 - XSS
     
@@ -324,7 +324,7 @@ Navigazione:
     ![Schermata 2021-08-28 alle 12.11.54.png](/assets/img/Schermata_2021-08-28_alle_12.11.54.png)
     
 
-### Injection Attack
+#### Injection Attack
 
 - In what an injection attack consists of?
     
@@ -373,7 +373,7 @@ Navigazione:
     Because Process A could have more right and permissions than a malicious process B
     
 
-### Buffer Overflow
+#### Buffer Overflow
 
 - In what this attack consists?
     
@@ -388,7 +388,7 @@ Navigazione:
     ![Schermata 2021-08-28 alle 12.29.10.png](/assets/img/Schermata_2021-08-28_alle_12.29.10.png)
     
 
-### Replay Attacks
+#### Replay Attacks
 
 - Replay Attack
     
@@ -419,7 +419,7 @@ Navigazione:
     ![Schermata 2021-08-28 alle 12.44.30.png](/assets/img/Schermata_2021-08-28_alle_12.44.30.png)
     
 
-### Request Forgeries
+#### Request Forgeries
 
 - Cross site request explain
     
@@ -452,7 +452,7 @@ Navigazione:
     ![Schermata 2021-08-29 alle 16.02.02.png](/assets/img/Schermata_2021-08-29_alle_16.02.02.png)
     
 
-### Driver Manipulation
+#### Driver Manipulation
 
 - Why is a driver a potential security issue if manipulated?
     
@@ -475,7 +475,7 @@ Navigazione:
     ![Schermata 2021-08-29 alle 16.14.56.png](/assets/img/Schermata_2021-08-29_alle_16.14.56.png)
     
 
-### SSL Stripping
+#### SSL Stripping
 
 - In what an HTTP downgrade consists?
     
@@ -490,7 +490,7 @@ Navigazione:
     Secure Socket Layers
     
 
-### Race Conditions
+#### Race Conditions
 
 - Consists in
     
@@ -499,7 +499,7 @@ Navigazione:
     ![Schermata 2021-08-29 alle 16.28.29.png](/assets/img/Schermata_2021-08-29_alle_16.28.29.png)
     
 
-### Other Application Attacks
+#### Other Application Attacks
 
 - Memory Vulnerabilities, 1 upside 1 downside
     
@@ -539,16 +539,16 @@ Navigazione:
     ![Schermata 2021-08-30 alle 15.24.36.png](/assets/img/Schermata_2021-08-30_alle_15.24.36.png)
     
 
-## 1.4
+### 1.4
 
-### Wireless Common Attacks
+#### Wireless Common Attacks
 
 - BlueJacking
 - BlueSnarfing
 - Rogue AP
 - Evil Twin
 
-### Wireless Disassociation Attack
+#### Wireless Disassociation Attack
 
 - Wireless deauthentication
     
@@ -561,7 +561,7 @@ Navigazione:
     ![Untitled](/assets/img/Untitled.png)
     
 
-### Wireless Jamming Attack
+#### Wireless Jamming Attack
 
 - RF Jamming
     
@@ -574,7 +574,7 @@ Navigazione:
     The attacker could send costant random bits in the same frequency of the Access Point (AP) and cause a DoS
     
 
-### RFID and NFC Attacks
+#### RFID and NFC Attacks
 
 - RFID
     
@@ -593,7 +593,7 @@ Navigazione:
     ![Schermata 2021-08-30 alle 16.17.57.png](/assets/img/Schermata_2021-08-30_alle_16.17.57.png)
     
 
-### Randomization of Cryptography
+#### Randomization of Cryptography
 
 - nonce
     
@@ -608,7 +608,7 @@ Navigazione:
     Added to the password and then encrypted to differentiate hashes even for accounts with the same passwords
     
 
-### On-Path Attack
+#### On-Path Attack
 
 - What is Spoofing
     
@@ -625,7 +625,7 @@ Navigazione:
     If you just login into your bank the malware registers the credentials and sends them
     
 
-### MAC flooding and Cloning
+#### MAC flooding and Cloning
 
 - MAC flooding
     
@@ -638,7 +638,7 @@ Navigazione:
     ![Schermata 2021-08-30 alle 17.12.49.png](/assets/img/Schermata_2021-08-30_alle_17.12.49.png)
     
 
-### DNS Poisoning
+#### DNS Poisoning
 
 - DNS Spoofing / poisoning
     
@@ -659,7 +659,7 @@ Navigazione:
     ![Schermata 2021-08-30 alle 17.23.41.png](/assets/img/Schermata_2021-08-30_alle_17.23.41.png)
     
 
-### Denial of Service
+#### Denial of Service
 
 - DDoS
     
@@ -670,7 +670,7 @@ Navigazione:
     ![Untitled](/assets/img/Untitled%201.png)
     
 
-### Malicious Scripts
+#### Malicious Scripts
 
 - Automated Attacks
     - The script is as fast as the computer
@@ -679,11 +679,11 @@ Navigazione:
     - Automate the attack
     - The hacker is on borrowed time
 
-## 1.5
+### 1.5
 
 - Difference between threat actors and Attack Vectors and Attack Surface
 
-### Attack Vectors Examples
+#### Attack Vectors Examples
 
 - if the attacker has physical access
     - Keyloggers
@@ -715,7 +715,7 @@ Navigazione:
     Disable the cloud services for everyone
     
 
-### Threats Intelligence
+#### Threats Intelligence
 
 - Automated indicator sharing
     
@@ -742,7 +742,7 @@ Indicator Information (TAXII)
     Spikes of read requests to certain files
     
 
-### Threats Research
+#### Threats Research
 
 - Governative Databases
     
@@ -758,9 +758,9 @@ Indicator Information (TAXII)
     A Threat Model and Problem Statement
     
 
-## 1.6
+### 1.6
 
-### Vulnerability Attacks
+#### Vulnerability Attacks
 
 - What are 0-day attacks
 - Unsecured root accounts
@@ -792,14 +792,14 @@ Indicator Information (TAXII)
     ![Untitled](/assets/img/Untitled%203.png)
     
 
-### Third Party Risks
+#### Third Party Risks
 
 - Supply Chain Risk
     
     ![Schermata 2021-09-02 alle 15.17.32.png](/assets/img/Schermata_2021-09-02_alle_15.17.32.png)
     
 
-### Vulnerability Impacts
+#### Vulnerability Impacts
 
 - Identity Theft
 - Billions of dollars
@@ -807,9 +807,9 @@ Indicator Information (TAXII)
 - Reputation Impact
 - Availability Loss
 
-## 1.7
+### 1.7
 
-### Threat Hunting
+#### Threat Hunting
 
 - Threat hunt
     
@@ -828,7 +828,7 @@ Indicator Information (TAXII)
     ![Untitled](/assets/img/Untitled%207.png)
     
 
-### Vulnerability Scans
+#### Vulnerability Scans
 
 - Scans
     
@@ -853,7 +853,7 @@ Indicator Information (TAXII)
     ![Schermata 2021-09-08 alle 13.49.55.png](/assets/img/Schermata_2021-09-08_alle_13.49.55.png)
     
 
-### SIEM
+#### SIEM
 
 - What is a SIEM?
     
@@ -883,9 +883,9 @@ Indicator Information (TAXII)
     ![Schermata 2021-09-08 alle 13.59.33.png](/assets/img/Schermata_2021-09-08_alle_13.59.33.png)
     
 
-# 2.0 - Architecture and Design
+## 2.0 - Architecture and Design
 
-## 2.1 - Explain the importance of security concepts in an enterprise environment
+### 2.1 - Explain the importance of security concepts in an enterprise environment
 
 - What’s a network diagram?
     
@@ -1006,7 +1006,7 @@ Indicator Information (TAXII)
 
 ---
 
-## 2.2 - Cloud / Infrastructure as a code
+### 2.2 - Cloud / Infrastructure as a code
 
 [https://www.youtube.com/watch?v=QNoQCZdWEOE&list=PLG49S3nxzAnkL2ulFS3132mOVKuzzBxA8&index=68](https://www.youtube.com/watch?v=QNoQCZdWEOE&list=PLG49S3nxzAnkL2ulFS3132mOVKuzzBxA8&index=68)
 
@@ -1014,7 +1014,7 @@ Indicator Information (TAXII)
 
 ---
 
-## 2.3 - Summarize secure application development, deployment, and automation concepts
+### 2.3 - Summarize secure application development, deployment, and automation concepts
 
 - Why is sandboxing useful in secure deployments
     
@@ -1070,7 +1070,7 @@ Indicator Information (TAXII)
 
 ---
 
-## 2.4 - Summarize authentication and authorization design concepts
+### 2.4 - Summarize authentication and authorization design concepts
 
 Auth-methods 
 
@@ -1080,7 +1080,7 @@ MFA
 
 ---
 
-## 2.5 - Given a scenario, implement cybersecurity resilience
+### 2.5 - Given a scenario, implement cybersecurity resilience
 
 - How do we call when you provide redundancy between multiple geographical areas
     
@@ -1093,7 +1093,7 @@ MFA
 
 ---
 
-## 2.6 - Explain the security implications of embedded and specialized systems
+### 2.6 - Explain the security implications of embedded and specialized systems
 
 - Generally, what are embedded systems?
     
@@ -1173,13 +1173,13 @@ MFA
 
 - Constrains like power source, compute power, network connectability, cryptographic obfuscation, inability to patch, no authentication of use, contained functionalities (often single function), low cost, no direct access to system or software.
 
-# 3.0 - Implementation
+## 3.0 - Implementation
 
-## 3.1 - Given a scenario, implement secure protocols
+### 3.1 - Given a scenario, implement secure protocols
 
 ---
 
-## 3.2 - Given a scenario, implement host or applications security solutions
+### 3.2 - Given a scenario, implement host or applications security solutions
 
 - What does EDR has changed when attackers learned how to fool signature-based AV solutions?
     
@@ -1310,7 +1310,7 @@ MFA
 
 ---
 
-## 3.3 - Given a scenario, implement secure network designs
+### 3.3 - Given a scenario, implement secure network designs
 
 - When we say active / active we’re referring to ______.
     
@@ -1542,7 +1542,7 @@ MFA
 
 ---
 
-## 3.4 - Given a scenario, implement and configure wireless security settings
+### 3.4 - Given a scenario, implement and configure wireless security settings
 
 - What message should we send over a wireless network to provide integrity?
     
@@ -1650,7 +1650,7 @@ MFA
 
 ---
 
-## 3.5 - Given a scenario, implement secure mobile solutions
+### 3.5 - Given a scenario, implement secure mobile solutions
 
 - What are cells referring to cellular networks?
     
@@ -1799,9 +1799,9 @@ MFA
 
 ---
 
-# 4.0 - Operations and Incident Response
+## 4.0 - Operations and Incident Response
 
-## 4.1 - Given a scenario, use the appropriate tool to assess organizational security
+### 4.1 - Given a scenario, use the appropriate tool to assess organizational security
 
 - Command to determine the route of a packet
     
@@ -1997,7 +1997,7 @@ MFA
 
 ---
 
-## 4.2 - Summarize the importance of policies, processes, and procedures for incident response
+### 4.2 - Summarize the importance of policies, processes, and procedures for incident response
 
 - What’s an IRP?
     
@@ -2098,7 +2098,7 @@ MFA
 
 ---
 
-## 4.3 - Given an incident, utilize appropriate data sources to support an investigation
+### 4.3 - Given an incident, utilize appropriate data sources to support an investigation
 
 - You have been notified of a trend change from the SIEM. What has happened?
     
@@ -2173,7 +2173,7 @@ MFA
 
 ---
 
-## 4.4 - Given an incident, apply mitigation techniques or controls to secure an environment
+### 4.4 - Given an incident, apply mitigation techniques or controls to secure an environment
 
 - How does an anti-virus application blocks a known malicious executable?
     
@@ -2200,7 +2200,7 @@ MFA
 
 ---
 
-## 4.5 - Explain the key aspect of digital forensics
+### 4.5 - Explain the key aspect of digital forensics
 
 - What document set guidelines for evidence collection and archiving?
     
@@ -2294,9 +2294,9 @@ MFA
     In trying to stop someone trying to gather information on us through OSINT.
     
 
-# 5.0 - Governance, Risk and Compliance
+## 5.0 - Governance, Risk and Compliance
 
-## 5.1 - Compare and contrast various types of controls
+### 5.1 - Compare and contrast various types of controls
 
 - Name the three main categories of security controls.
     
@@ -2346,7 +2346,7 @@ MFA
 
 ---
 
-## 5.2 Explain the importance of applicable regulations, standards, or frameworks that impact organizational security posture.
+### 5.2 Explain the importance of applicable regulations, standards, or frameworks that impact organizational security posture.
 
 - Who addresses the GDPR?
     
@@ -2422,7 +2422,7 @@ MFA
 
 ---
 
-## 5.3 - Explain the importance of policies to organizational security
+### 5.3 - Explain the importance of policies to organizational security
 
 - We have detailed documentation called AUP. Explain it’s functionality-
     

@@ -7,7 +7,7 @@ image_path: /assets/img/
 
 --- 
 
-# Intro
+## Intro
 
 UniCT Informatica L-31, Matteo Capodicasa, A.A. 2022-2023.
 Il seguente esercizio è preso dal testo di un esame. Andrò a risolverlo illustrando la mia soluzione.
@@ -21,7 +21,7 @@ sequenza di interi [2, 4, 10, 2, 2, 11, 13, 3, 15, 3]
 (c) Si descriva l'algoritmo Heapsort.
 ```
 
-# Risoluzione
+## Risoluzione
 >In questa sezione andrò ad analizzare le domande e il metodo di risoluzione / risposta.
 
 Nota che le seguenti risposte potrebbero contenere errori, essendo le mie personali risposte a domande di un test universitario.
@@ -32,7 +32,7 @@ Nota che le seguenti risposte potrebbero contenere errori, essendo le mie person
 
 In questa domanda ci viene chiesto di definire la struttura del max-heap, descrivendone la derivazione (dagli alberi di ricerca binaria) e le proprietà (definizione max-heap, ordine dei nodi); inoltre indicare le relazioni con l'array che genera l'heap.
 
-## **Risoluzione Domanda `a`:**
+### **Risoluzione Domanda `a`:**
 La struttura dati di un max-heap binario riceve i valori da inserire al suo interno attraverso un array, valori i quali vengono posti in un albero binario completo o bilanciato, albero binario nel quale tutte le foglie sono di livello `h o h-1` con `h` altezza dell'albero, e l'altezza `h` sempre uguale a `log n` con `n` numero di nodi. Un heap di `n` nodi ha sempre `n/2` foglie. 
 In un max-heap la proprietà caratteristica è che la radice dell'albero ha sempre valore maggiore delle sue foglie.
 
@@ -49,7 +49,7 @@ Avendo un max-heap e relativo array (coda con priorità) ordinato con algoritmo 
 
 La domanda ci chiede di spiegare le procedure citate, per poi chiederci di svolgerle su un array di interi.
 
-## **Risoluzione Domanda `b`:**
+### **Risoluzione Domanda `b`:**
 Dato un array, in questo caso di valori interi, le procedure che generano la struttura heap a partire dal suddetto vettore sono:
 **MAX_HEAPIFY**: è la funzione che ripristina le proprietà heap di un albero, dato un indice `i`. In particolare confronta il nodo `i` con i suoi due figli e nel caso in cui uno dei figli sia maggiore del nodo padre, la funzione effettua uno swap tra essi, per poi ricorrere sul nuovo nodo massimo.
 **BUILD_MAX_HEAP**: che genera un max-heap da un array in input, anche non ordinato, richiamando la funzione `MAX_HEAPIFY` in ciascun nodo che non è una foglia.
@@ -58,7 +58,7 @@ Applichiamo la funzione `BUILD_MAX_HEAP` sull'array [2, 4, 10, 2, 2, 11, 13, 3, 
 
 **build_max_heap** tramite un ciclo itera l'array partendo dall'elemento di indice `size_array/2` per poi terminare appena raggiunge il primo elemento. L'array in questione ha lunghezza 11 (poichè l'indice `0` è riservato ad un elemento arbitrario che non serve nell'ordinamento, in questo caso `-1`), per questo si itera partendo dall'elemento di indice 5:
 
-### **i = 5:**
+#### **i = 5:**
 
 array pre heapify: [-1, 2, 4, 10, 2, `2`, 11, 13, 3, 15, 3]
 
@@ -68,19 +68,19 @@ array post heapify 1: [-1, 2, 4, 10, 2, `15`, 11, 13, 3, `2`, 3]
 
 array post heapify 2: [-1, 2, 4, 10, 2, 15, 11, 13, 3, `2`, 3]
 
-### **i = 4:**
+#### **i = 4:**
 
 array pre heapify: [-1, 2, 4, 10, `2`, 15, 11, 13, 3, 2, 3]
 
 array post heapify 1: [-1, 2, 4, 10, `13`, 15, 11, `2`, 3, 2, 3]
 
-### **i = 3:**
+#### **i = 3:**
 
 array pre heapify: [-1, 2, 4, `10`, 13, 15, 11, 2, 3, 2, 3]
 
 array post heapify 1: [-1, 2, 4, `15`, 13, `10`, 11, 2, 3, 2, 3]
 
-### **i = 2:**
+#### **i = 2:**
 
 array pre heapify: [-1, 2, `4`, 15, 13, 10, 11, 2, 3, 2, 3]
 
@@ -88,7 +88,7 @@ array post heapify 1: [-1, 2, `15`, `4`, 13, 10, 11, 2, 3, 2, 3]
 
 array post heapify 2: [-1, 2, 15, `11`, 13, 10, `4`, 2, 3, 2, 3]
 
-### **i = 1:**
+#### **i = 1:**
 
 array pre heapify: [-1, `2`, 15, 11, 13, 10, 4, 2, 3, 2, 3]
 
@@ -98,7 +98,7 @@ array post heapify 2: [-1, 15, `13`, 11, `2`, 10, 4, 2, 3, 2, 3]
 
 array post heapify 3: [-1, 15, 13, 11, `3`, 10, 4, 2, `2`, 2, 3]
 
-## Costruzione grafica MaxHeap
+### Costruzione grafica MaxHeap
 
 			 15
 		    /         \
@@ -108,7 +108,7 @@ array post heapify 3: [-1, 15, 13, 11, `3`, 10, 4, 2, `2`, 2, 3]
 	 /   \    /
 	 3    2   3
 
-## CODICE MAX_HEAPIFY
+### CODICE MAX_HEAPIFY
 
 ```cpp
     //ripristina le prorietà dell'albero binario in modo che soddisfi le proprietà di un maxHeap
@@ -133,7 +133,7 @@ array post heapify 3: [-1, 15, 13, 11, `3`, 10, 4, 2, `2`, 2, 3]
     }
 ```
 
-## CODICE BUILD_MAX_HEAP
+### CODICE BUILD_MAX_HEAP
 
 ```cpp
 void heapbuild() {
@@ -144,7 +144,7 @@ void heapbuild() {
     }
 ```
 
-## Risoluzione domanda `c`:
+### Risoluzione domanda `c`:
 Si descriva l'algoritmo Heapsort.
 L'algoritmo heapsort ordina l'array in input usando le propreietà della struttura dati heap, in un tempo massimo di O(n\*log n).
 Iniziando con un **build_max_heap**, heapsort genera un max_heap dall'array A, per poi sfruttare un ciclo che parte da un indice `i = lunghezza(array)` per **scambiare l'elemento radice** (che ha valore massimo in tutto l'heap) con **l'ultimo elemento dell'array** (una foglia). Adesso il valore massimo avrà la corretta posizione all'interno dell'array, e la foglia sarà la nuova radice dell'heap. 

