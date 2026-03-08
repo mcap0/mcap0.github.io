@@ -1,7 +1,7 @@
 ---
 title: "Cryptography Cheat Sheet - C, Python & Sage Fundamentals"
-date: 2026-03-08 16:33:00 +0100
-categories: [Cryptography]
+date: 2026-03-08 16:36:04 +0100
+categories: [Cryptography,CheatSheet]
 tags: ["c", "python", "cryptography", "sage"]
 ---
 
@@ -12,8 +12,8 @@ This document is a work in progress! I will update every time I learn something 
 It will contain solution to my recurrent problems for Cryptography CTFs.
 
 Sorry for any bad code, please reach out if you have suggestions or concerns. As this are my personal studies (and I'm almost not using AI) there WILL be errors and weird stuff. 
-# C
-## Write a function that Returns Multiple Variables
+## C
+### Write a function that Returns Multiple Variables
 
 ```c
 typedef struct result{
@@ -29,7 +29,7 @@ result xgcd(int a, int b){
 }
 ```
 
-## ReadFile
+### ReadFile
 
 >returns a char* containing the entire file as an array
 
@@ -63,7 +63,7 @@ char* file = readFile("output_legendre.txt");
 ```
 
 
-## Install libgmp for arbitrary precision numbers
+### Install libgmp for arbitrary precision numbers
 
 ```bash
 # install the library
@@ -76,7 +76,7 @@ sudo apt install libgmp-dev
 gcc file.c -o file -lgmp
 ```
 
-## Use libgmp for arbitrary precision numbers
+### Use libgmp for arbitrary precision numbers
 
 https://gmplib.org/manual/
 
@@ -136,7 +136,7 @@ int fun(mpz_t a, mpz_t b){
 ```
 
 
-## Extract variable from file
+### Extract variable from file
 
 > For when you have a file containing something like: "p = 1337..."
 
@@ -181,7 +181,7 @@ while (atoi(temp_ints)){
 
 ```
 
-## Chronometer
+### Chronometer
 
 > Disclaimer: Gemini wrote this
 
@@ -203,9 +203,9 @@ int main(){
 }
 ```
 
-# Python
+## Python
 
-## Manipulation Snippets
+### Manipulation Snippets
 
 ```python
 chr(c) # from ascii(Dec) to char
@@ -223,17 +223,17 @@ bytes_to_long()
 new = ''.join([chr(ord(c)^13) for c in string])
 ```
 
-# Sage
+## Sage
 
 https://doc.sagemath.org/html/en/installation/index.html
 
-## Install conda
+### Install conda
 
 ```bash
 curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
 bash Miniforge3-$(uname)-$(uname -m).sh
 ```
-## Install SageMath
+### Install SageMath
 
 ```bash
 # remember to reboot since conda installation
@@ -242,9 +242,9 @@ conda activate sage
 sage
 ```
 
-## Use SageMath
+### Use SageMath
 >Quando saprò come usarlo, sarete i primi a saperlo :)
-# Numbers
-## Long Primes
+## Numbers
+### Long Primes
 
 >https://t5k.org/lists/small/small.html
