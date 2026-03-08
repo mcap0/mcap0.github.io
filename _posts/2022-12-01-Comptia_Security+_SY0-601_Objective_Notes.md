@@ -747,7 +747,7 @@ Indicator Information (TAXII)
 - Governative Databases
     
     National Vulnerability Database ([https://nvd.nist.gov](https://nvd.nist.gov/))
-    CVE Data Feeds ([https://cve](https://cve/).[mitre.org](http://mitre.org/))
+    CVE Data Feeds ([https://cve](https://cve/).[mitre.org](https://mitre.org/))
     
 - RFC (request ...)
     

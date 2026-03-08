@@ -10,7 +10,7 @@ hidden: true
 In questo articolo andrò ad illustrare i punti chiave della progettazione di basi di dati e della normalizzazione, nonchè andare a risolvere esercizi d'esame per preparazione alla prova del 26 Gennaio.
 
 Bibliografia:
-- [Fondamenti di Basi di Dati, A.Albano, G.Ghelli, R.Orsini](http://fondamentidibasididati.it/wp-content/uploads/2020/11/FondamentiBD-Edizione-C30-11-21.pdf)
+- [Fondamenti di Basi di Dati, A.Albano, G.Ghelli, R.Orsini](https://fondamentidibasididati.it/wp-content/uploads/2020/11/FondamentiBD-Edizione-C30-11-21.pdf)
 - Dispense corso Basi di Dati - UniCT L31 Informatica - [Prof. A.Pulvirenti](https://www.medclin.unict.it/docenti/alfredo.pulvirenti)
 
 # Progettazione
