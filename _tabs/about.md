@@ -20,11 +20,8 @@ I have almost 2 years of Penetration Testing experience working as Analyst and O
 Currently interested in:
 
 	- Cryptography
-
 	- CTF
-
 	- OSCP
-
 	- Mobile Pentesting
 
 Here I share my journey with you! Hope it is beneficial to you in any way. Feel free to reach out.
