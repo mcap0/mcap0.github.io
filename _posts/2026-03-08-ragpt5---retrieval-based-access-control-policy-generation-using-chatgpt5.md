@@ -1,8 +1,8 @@
 ---
 title: "RAGPT5 - Retrieval-based Access control policy Generation using ChatGPT5"
-date: 2026-03-08 13:30:27 +0100
+date: 2026-03-08 13:34:33 +0100
 categories: [Appunti]
-tags: ["{{prompt:Inserisci i tag separati da virgola:}}"]
+tags: ["{{_tags}}"]
 ---
 
 ```table-of-contents
