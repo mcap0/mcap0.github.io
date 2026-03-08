@@ -13,7 +13,7 @@ Se vi siete mai interessati di sicurezza informatica, avrete sicuramente un’id
 In particolare vedremo:
 
 1.  Funzionamento Backdoor
-2.  Shadyshell.c | codice sorgente di una Backdoor scritta in C
+2.  Shadyshell.c - codice sorgente di una Backdoor scritta in C
 3.  Creazione backdoor con msfvenom + connessione remota da terminale
 
 Alla fine di questa lettura potrai spiegare ai tuoi amici le magie di un codice di queste proporzioni:
