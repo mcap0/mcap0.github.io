@@ -1,8 +1,8 @@
 ---
 title: "Cryptography Cheat Sheet - C, Python & Sage Fundamentals"
-date: 2026-03-09 16:43:49 +0100
-categories: [Appunti]
-tags: []
+date: 2026-03-09 16:45:41 +0100
+categories: [Cryptography,Cheatsheet,]
+tags: ["c", "python", "sage"]
 ---
 
 ```table-of-contents
