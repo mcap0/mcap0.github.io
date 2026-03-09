@@ -19,7 +19,7 @@ Un framework atto alla generazione automatica di Access Control Policy partendo 
 Vengono descritti 6 step che pongono una base solida per la generazione di ACP attraverso strumenti di Machine Learning, nonché raffinamento e passaggi deterministici, di fatto affrontando i limiti naturali della AI Generativa.
 
 Il framework si presenta come la naturale evoluzione di precedenti lavori analoghi. 
-Novità cardine che vengono presentate in RAGent sono
+Novità cardine che vengono presentate in RAGent sono:
 - l'utilizzo di un approccio di "Recupero delle Informazioni" (RAG è acronimo di Retrieval Augmented Generation), che permette di associare in modo deterministico le entità delle policy generate alle effettive entità del sistema di accessi target, 
 - raffinamento delle policy dopo una verifica di correttezza delle stesse.
 
