@@ -1,8 +1,8 @@
 ---
 title: "Cryptography Cheat Sheet - C, Python & Sage Fundamentals"
-date: 2026-03-09 14:59:37 +0100
-categories: [Cryptography,Cheatsheet,]
-tags: ["c", "python", "sage"]
+date: 2026-03-09 16:43:49 +0100
+categories: [Appunti]
+tags: []
 ---
 
 ```table-of-contents
@@ -173,26 +173,37 @@ extractVarFromString(file,p,"p");
 > Code for an array of values. Remember strtok removes the values (e.g.`[,] \n=`)
 
 ```c
-// extract array
-file_copy = strdup(file);
+void extractVarsFromString(char* string_array, mpz_t* nums, char* srch, int size){
+    // extract array
+	char* string_copy = strdup(string_array);
 
-// file is like "ints = [1,2,3..." put string "ints" instead of "array"
-char* temp_ints = strtok(file_copy, "[,] \n=");
-while (strcmp(temp_ints,"array")){
-//		printf("%s\n",temp_ints); // debug
+	// file contains smth like "ints = [1,2,3..."
+	char* temp_ints = strtok(string_copy, "[,] \n=");
+	// trova il nome dell'array
+	while (strcmp(temp_ints,srch)){
+			//debug
+//          printf("%s\n",temp_ints);
+			temp_ints = strtok(NULL,"[,] \n=");
+	}
+	// salta il nome dell'array
 	temp_ints = strtok(NULL,"[,] \n=");
-}
-// skippa la parola chiave ()
-temp_ints = strtok(NULL,"[,] \n=");
-// inizializzo ints
-int i = 0;
-while (atoi(temp_ints)){
-	mpz_init_set_str(ints[i],temp_ints,10);
-//		gmp_printf("ints[%d] = %Zd\n",i,ints[i]);
-	temp_ints = strtok(NULL,"[,] \n=");
-	i++;
+
+	// assegno i valori a nums
+	int i = 0;
+	while (atoi(temp_ints) && (i < size)){
+			mpz_set_str(nums[i],temp_ints,10);
+//          gmp_printf("nums[%d] = %Zd\n",i,nums[i]);
+			temp_ints = strtok(NULL,"[,] \n=");
+			i++;
+	}
 }
 
+//usage
+char* file = readFile("output_legendre.txt");
+mpz_t ints[10];
+for (int i = 0; i < 10; i++) mpz_init(ints[i]);
+// p è il nome della variabile nel file
+extractVarsFromString(file,ints,"ints",10);
 ```
 
 ### Chronometer
