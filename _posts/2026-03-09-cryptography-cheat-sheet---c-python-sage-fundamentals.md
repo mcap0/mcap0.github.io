@@ -170,7 +170,7 @@ extractVarFromString(file,p,"p");
 ```
 
 
-> Code for an array of values. Remember strtok removes the values (e.g.`[,] \n=`)
+> Code for an array of values.
 
 ```c
 void extractVarsFromString(char* string_array, mpz_t* nums, char* srch, int size){
