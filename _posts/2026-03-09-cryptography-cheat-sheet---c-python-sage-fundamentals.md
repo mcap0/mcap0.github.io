@@ -35,26 +35,27 @@ result xgcd(int a, int b){
 
 ```c
 char* readFile(char filename[]){
-
         //open file
-        FILE *file;
-        file = fopen(filename,"r");
-        if (file == NULL){
-           printf("Cannot open file");
-           return -1;
+        FILE *file = fopen(filename,"r");
+        if (file == NULL){ 
+	        printf("Cannot open file"); 
+	        return NULL;
         }
-
+        
         // get file size for memory allocation
         fseek(file, 0, SEEK_END);
         long size = ftell(file);
         fseek(file, 0, SEEK_SET);
 
         // allocate memory
-        char *text_array = (char*)malloc(size*(sizeof(char)+1));
+        char *text_array = (char*)malloc(size*(sizeof(char))+1);
 
         // info store
-        fread(text_array, 1, size, file);
-        text_array[size] = '\0';
+        if(text_array){
+	        fread(text_array, 1, size, file);
+	        text_array[size] = '\0';
+        }
+        
         fclose(file);
         return text_array;
 }
@@ -81,23 +82,21 @@ gcc file.c -o file -lgmp
 https://gmplib.org/manual/
 
 ```c
-// declare numbers
+// declare numbers and assign variables
 mpz_t a,b;
-
 
 // initialize single numbers to 0
 mpz_init(a);
 
-
 // initialize multiple numbers at once to 0 (last element must be NULL)
 mpz_inits(a,b,NULL);
-
 
 // initialize number from string (2nd is char*, 3rd is base)
 mpz_init_set_str(a,"1337",10);
 
-
-// set value to mpz_t from int (initialize first)
+// set value 
+mpz_set(a,b); // a = b (both mpz_t)
+//to mpz_t from int (initialize first)
 mpz_set_ui(a,1337); //unsigned long
 mpz_set_si(a,1337); //signed long
 
@@ -108,17 +107,38 @@ mpz_set_si(a,1337); //signed long
 // first is always the result
 // when without _si or _ui, the function is between mpz_t, else you can use normal integers
 
-//divisione intera
-mpz_tdiv_q(res, (mpz_t) num, (mpz_t) den);
-mpz_tdiv_q_ui(res, (mpz_t) num, (unsigned long) den);
+// + addition
+mpz_add(res, x, y);
+mpz_add_ui(res, x, 2);
 
-mpz_powm(res,qr,exp,p); // power with module
-mpz_sub_ui(a,a,1); // a = a-1
-mpz_add(res,a,b); // res = a-b
+// - subtraction
+mpz_sub(res, x, y);
+mpz_sub_ui(res,x,5);
 
+// * multiplication
+mpz_mul(res,a,b);
+
+// / integer division 
+mpz_tdiv_q(res, num, den);
+mpz_tdiv_q_ui(res, num, 3);
+
+// ** power 
+mpz_powm(res,x,exp,p); // power with module (all mpz_t)
+mpz_powm_ui(res,x,2,p); // exp is unsigned long 
+mpz_pow(res,base,exp);
+mpz_ui_pow_ui(res,3,5); // base and exp are unsigned long
+
+// % modular
+mpz_mod(res,a,p);
+mpz_mod_ui(res,a,3);
 
 // print mpz type
 gmp_printf("a = %Zd\n",a);
+
+
+// compare (returns 0 if equal, >0 if a>b, <0 if a<b)
+mpz_cmp(a,b);
+mpz_cmp_si(a,1);
 
 
 // write functions for mpz_t (pass result as param)
@@ -141,25 +161,31 @@ int fun(mpz_t a, mpz_t b){
 > For when you have a file containing something like: "p = 1337..."
 
 ```c
-void extractVarFromString(char* string_array, mpz_t num, char* srch){
+int extractVarFromString(const char* string_array, mpz_t num, char* srch){
+		if (!string_array) return 0;
         // copio la stringa (strtok modifica la stringa in locale)
         char* string_copy = strdup(string_array);
+        
         // rimuovo caratteri dal file
         char* temp_num = strtok(string_copy, "[,] \n=");
+        
         // cerco il nome della variabile nel file
-        while(strcmp(temp_num,srch)){ temp_num = strtok(NULL,"[,] \n=");}
+        while((tmp_num != NULL) && (strcmp(temp_num,srch))){ temp_num = strtok(NULL,"[,] \n=");}
+        
         // salto il nome della variabile
         temp_num = strtok(NULL,"[,] \n=");
+        
         // inizializzo num a temp_num
-        if(mpz_init_set_str(num,temp_num,10) < 0){
-                printf("La variabile %s non è stata trovata nel file\n",srch);
-                // debug print
+        if((tmp_num != NULL) && mpz_init_set_str(num,temp_num,10) == 0){
+                free(string_copy);
 //              printf("%s = %s\n",srch,temp_num);
-                return;
+                return 1;
         }
-        // debug print
+		// debug print
 //      gmp_printf("%s = %Zd\n",srch,num);
-
+        printf("La variabile %s non è stata trovata nel file\n",srch);
+		free(string_copy);
+		return 0;
 }
 // usage
 char* file = readFile("output_legendre.txt");
@@ -173,29 +199,34 @@ extractVarFromString(file,p,"p");
 > Code for an array of values.
 
 ```c
-void extractVarsFromString(char* string_array, mpz_t* nums, char* srch, int size){
-    // extract array
+int extractVarsFromString(const char* string_array, mpz_t* nums, const char* srch, int size){
+	if (!string_array) return 0;
 	char* string_copy = strdup(string_array);
 
 	// file contains smth like "ints = [1,2,3..."
 	char* temp_ints = strtok(string_copy, "[,] \n=");
-	// trova il nome dell'array
-	while (strcmp(temp_ints,srch)){
-			//debug
-//          printf("%s\n",temp_ints);
+	
+	while (temp_ints != NULL){
+		// trova il nome dell'array
+		if (strcmp(temp_ints,srch) == 0){
+			// salta il nome dell'array
 			temp_ints = strtok(NULL,"[,] \n=");
+			// assegno i valori a nums
+			int i = 0;
+			while ((temp_ints != NULL) && (i < size)){
+				if (mpz_set_str(nums[i],temp_ints,10)==0) i++;
+//		        gmp_printf("nums[%d] = %Zd\n",i,nums[i]);
+				temp_ints = strtok(NULL,"[,] \n=");
+			}
+			free(string_copy);
+			return i;			
+		}
+//      printf("%s\n",temp_ints);
+		temp_ints = strtok(NULL,"[,] \n=");
 	}
-	// salta il nome dell'array
-	temp_ints = strtok(NULL,"[,] \n=");
-
-	// assegno i valori a nums
-	int i = 0;
-	while (atoi(temp_ints) && (i < size)){
-			mpz_set_str(nums[i],temp_ints,10);
-//          gmp_printf("nums[%d] = %Zd\n",i,nums[i]);
-			temp_ints = strtok(NULL,"[,] \n=");
-			i++;
-	}
+	printf("Array '%s' non trovato nel file.\n", srch);
+	free(string_copy);
+	return 0;
 }
 
 //usage
