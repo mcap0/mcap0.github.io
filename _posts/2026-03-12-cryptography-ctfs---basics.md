@@ -153,6 +153,7 @@ L'operatore logico bit a bit (Exclusive OR). È la base di tantissimi cifrari. I
 Proprietà matematiche fondamentali dello XOR:
 
 XOR di un elemento con zero ritorna l'elemento stesso
+
  $$A \oplus 0 = A$$    
 XOR di un elemento con sè stesso dà zero:
 
