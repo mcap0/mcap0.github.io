@@ -6,8 +6,6 @@ tags: ["crypto", "ctf", "c", "python", "gmp"]
 math: true
 ---
 
-```table-of-contents
-```
 ## Introduzione
 
 Per risolvere challenge CTF di crittografia serve mettere in pratica competenze di lettura e scrittura codice e comprensione matematica più o meno avanzata.
