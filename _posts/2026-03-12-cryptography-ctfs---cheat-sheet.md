@@ -8,7 +8,7 @@ math: true
 
 ```table-of-contents
 ```
-This document is a work in progress! I will update it every time I learn something new. 
+This document is work in progress! I will update it every time I learn something new.
 
 It will contain solution to my recurrent problems for Cryptography CTFs.
 
