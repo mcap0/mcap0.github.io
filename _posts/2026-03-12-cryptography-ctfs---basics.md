@@ -142,7 +142,7 @@ Nella crittografia asimmetrica (come RSA) si usano numeri lunghi centinaia di ci
 - **Python:** Python gestisce interi di grandezza infinita in modo nativo.
 - **C:** I tipi base (`int`, `long long`) non bastano. Bisogna usare librerie esterne specifiche, come la **GNU Multiple Precision Arithmetic Library (GMP)**. Utilizzerò principalmente questa nei prossimi articoli e ne farò di appositi, tanto per velocità quanto per puro sport.
 
-[Qui](https://matteocapo.it/posts/cryptography-ctfs-cheat-sheet/#use-libgmp-for-arbitrary-precision-numbers) un mio piccolo cheatsheet per libgmp su C:
+[Qui](https://matteocapo.it/posts/cryptography-ctfs-cheat-sheet/#install-libgmp-for-arbitrary-precision-numbers) un mio piccolo cheatsheet per libgmp su C:
 
 
 ## XOR
