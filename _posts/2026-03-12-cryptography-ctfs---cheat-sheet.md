@@ -1,8 +1,8 @@
 ---
-title: "Cryptography Cheat Sheet - C, Python & Sage Fundamentals"
-date: 2026-03-09 16:46:22 +0100
-categories: [Cryptography,Cheatsheet,]
-tags: ["c", "python", "sage"]
+title: "Cryptography CTFs - Cheat Sheet"
+date: 2026-03-12 14:02:12 +0100
+categories: [Cryptography,Cheatsheet]
+tags: ["c", "python", "sage", "gmp"]
 ---
 
 ```table-of-contents
