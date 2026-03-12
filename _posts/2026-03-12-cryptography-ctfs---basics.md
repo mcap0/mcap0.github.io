@@ -80,7 +80,7 @@ numero = int(testo)
 
 ### Manipolazione Esadecimale
 
-L'esadecimale (base 16) è ovunque nei CTF, specialmente per rappresentare dati grezzi e ciphertext.
+L'esadecimale (base 16) è ovunque nelle CTF, specialmente per rappresentare dati grezzi e ciphertext.
 
 **Python:**
 ```python
@@ -98,7 +98,7 @@ testo_originale = bytes.fromhex(testo_hex) # b'CTF
 
 ### Manipolazione Bytes
 
-In Python 3 c'è una netta differenza tra le stringhe (`"testo"`) e i byte (`b"testo"`). La crittografia opera quasi esclusivamente sui byte.
+In Python3 c'è una netta differenza tra le stringhe (`"testo"`) e i byte (`b"testo"`). La crittografia opera quasi esclusivamente sui byte.
 
 ```python
 stringa = "ciao"
