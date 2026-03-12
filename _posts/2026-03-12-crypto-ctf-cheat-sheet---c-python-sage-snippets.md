@@ -1,8 +1,8 @@
 ---
 title: "Crypto CTF Cheat Sheet - C, Python & Sage Snippets"
 date: 2026-03-12 13:59:04 +0100
-categories: [Appunti]
-tags: []
+categories: [Cryptograohy,Cheatsheet]
+tags: ["c", "python", "sage", "gmp"]
 ---
 
 ```table-of-contents
