@@ -238,9 +238,8 @@ extractVarsFromString(file,ints,"ints",10);
 
 ### Chronometer
 
-> Disclaimer: Gemini wrote this
-
 ```c
+// Disclaimer: Gemini wrote this
 double get_time_ms(struct timespec start, struct timespec end){
         return (end.tv_sec - start.tv_sec) * 1000.0 + (end.tv_nsec - start.tv_nsec) / 1000000.0;
 }
@@ -256,6 +255,11 @@ int main(){
 
     printf("Calcolato in: %.6f ms\n\n", tempo);
 }
+```
+
+```bash
+#oppure da bash cronometrare la velocità di esecuzione di un binario
+time ./programma
 ```
 
 ## Python
