@@ -3,6 +3,7 @@ title: "Cryptography CTFs - Basics"
 date: 2026-03-12 15:32:01 +0100
 categories: [Cryptography,CTF]
 tags: ["crypto", "ctf", "c", "python", "gmp"]
+math: true
 ---
 
 ```table-of-contents
