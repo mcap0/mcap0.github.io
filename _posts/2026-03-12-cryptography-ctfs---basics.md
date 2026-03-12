@@ -123,6 +123,8 @@ testo_orig = long_to_bytes(numero)
 
 Un encoding che trasforma qualsiasi dato binario in una stringa di testo leggibile composta da 64 caratteri (A-Z, a-z, 0-9, +, /). Riconoscibile perché spesso finisce con uno o due segni di uguale (`=` o `==`) usati come padding.
 
+Prende l'input a blocchi di **3 byte** alla volta. Poiché 1 byte = 8 bit, un blocco intero è composto da 24 bit (3 x 8). Spezza quei 24 bit in **4 gruppi da 6 bit** ciascuno (4 x 6 = 24) e mappa ogni gruppo (6 bit possono rappresentare 64 caratteri) al suo carattere decimale corrispondente (0=A, 1=B, ..., 62=+, 63=/).
+
 ```python
 import base64
 
