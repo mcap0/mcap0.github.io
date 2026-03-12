@@ -3,9 +3,10 @@ title: "Cryptography CTFs - Basics"
 date: 2026-03-12 15:32:01 +0100
 categories: [Cryptography,CTF]
 tags: ["crypto", "ctf", "c", "python", "gmp"]
-math: true
 ---
 
+```table-of-contents
+```
 ## Introduzione
 
 Per risolvere challenge CTF di crittografia serve mettere in pratica competenze di lettura e scrittura codice e comprensione matematica più o meno avanzata.
@@ -152,15 +153,22 @@ Proprietà matematiche fondamentali dello XOR:
 
 XOR di un elemento con zero ritorna l'elemento stesso
  $$A \oplus 0 = A$$    
-XOR di un elemento con sè stesso dà zero
+XOR di un elemento con sè stesso dà zero:
+
 $$A \oplus A = 0$$ esempi:
 
 ---
 $$A \oplus A \oplus B = B$$
+
 $$A \oplus B \oplus C \oplus B \oplus C = A$$
+
+
 ---
+
 proprietà di invertibilità
+
 $$A \oplus B = C \implies C \oplus B = A$$
+
 
 
 ```python
