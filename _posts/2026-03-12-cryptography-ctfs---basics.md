@@ -155,9 +155,12 @@ XOR di un elemento con zero ritorna l'elemento stesso
  $$A \oplus 0 = A$$    
 XOR di un elemento con sè stesso dà zero:
 
-$$A \oplus A = 0$$ esempi:
+$$A \oplus A = 0$$
+
+esempi:
 
 ---
+
 $$A \oplus A \oplus B = B$$
 
 $$A \oplus B \oplus C \oplus B \oplus C = A$$
@@ -168,8 +171,6 @@ $$A \oplus B \oplus C \oplus B \oplus C = A$$
 proprietà di invertibilità
 
 $$A \oplus B = C \implies C \oplus B = A$$
-
-
 
 ```python
 # XOR singolo
