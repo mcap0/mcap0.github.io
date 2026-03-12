@@ -181,10 +181,9 @@ int extractVarFromString(const char* string_array, mpz_t num, char* srch){
 //              printf("%s = %s\n",srch,temp_num);
                 return 1;
         }
-		// debug print
-//      gmp_printf("%s = %Zd\n",srch,num);
+        //gmp_printf("%s = %Zd\n",srch,num);
         printf("La variabile %s non è stata trovata nel file\n",srch);
-		free(string_copy);
+        free(string_copy);
 		return 0;
 }
 // usage
