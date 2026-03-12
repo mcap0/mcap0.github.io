@@ -3,11 +3,12 @@ title: "Cryptography CTFs - Cheat Sheet"
 date: 2026-03-12 14:02:12 +0100
 categories: [Cryptography,Cheatsheet]
 tags: ["c", "python", "sage", "gmp"]
+math: true
 ---
 
 ```table-of-contents
 ```
-This document is a work in progress! I will update every time I learn something new.
+This document is a work in progress! I will update it every time I learn something new.
 
 It will contain solution to my recurrent problems for Cryptography CTFs.
 
