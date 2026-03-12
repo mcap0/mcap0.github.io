@@ -151,12 +151,18 @@ L'operatore logico bit a bit (Exclusive OR). È la base di tantissimi cifrari. I
 
 Proprietà matematiche fondamentali dello XOR:
 
-1. $A \oplus 0 = A$    
-2. $A \oplus A = 0$ (Uno XOR con sé stesso si annulla)
-	-esempi: 
-	- $A \oplus A \oplus B = B$
-	- $A \oplus B \oplus C \oplus B \oplus C = A$
-3. $A \oplus B = C \implies C \oplus B = A$ (invertibililità)
+XOR di un elemento con zero ritorna l'elemento stesso
+ $$A \oplus 0 = A$$    
+XOR di un elemento con sè stesso dà zero
+$$A \oplus A = 0$$ esempi:
+
+---
+$$A \oplus A \oplus B = B$$
+$$A \oplus B \oplus C \oplus B \oplus C = A$$
+---
+proprietà di invertibilità
+$$A \oplus B = C \implies C \oplus B = A$$
+
 
 ```python
 # XOR singolo
