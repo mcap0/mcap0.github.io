@@ -12,7 +12,7 @@ This document is work in progress! I will update it every time I learn something
 
 It will contain solution to my recurrent problems for Cryptography CTFs.
 
-Sorry for any bad code, please reach out if you have suggestions or concerns. As this are my personal studies (and I'm almost not using AI) there WILL be errors and weird stuff. 
+Sorry for any bad code, please reach out if you have suggestions or concerns. As this are my personal studies (and I'm almost not using AI) there WILL be errors and weird stuff.  
 ## C
 ### Write a function that Returns Multiple Variables
 
