@@ -28,10 +28,6 @@ L'algoritmo controlla se `b` è zero. Se lo è, `a` è il MCD (o GCD, greatest c
 ## Algoritmo di Eulero Esteso
 
 Fa essenzialmente due cose contemporaneamente, entrambe molto utili e ricorrenti nell'aritmetica modulare `a` e `b`:
-    - trovare in modo efficiente l'inverso modulare (se `a` e `b` sono coprimi)
-    - trovare i coefficienti `x` e `y` tali che $a \cdot x + b \cdot y \equiv 1$
-
-
-
-
+   - trovare in modo efficiente l'inverso modulare (se `a` e `b` sono coprimi)
+   - trovare i coefficienti `x` e `y` tali che $a \cdot x + b \cdot y \equiv 1$
 
