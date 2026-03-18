@@ -15,8 +15,8 @@ Algoritmo [Wikipedia](https://it.wikipedia.org/wiki/Algoritmo_di_Euclide#Codici)
 int euclide(int a, int b){
   int r = 0;
   while (b != 0){
-      r = b % a;  // calcola il resto tra a e b
-      a = b;      // a 
+      r = a % b;  // calcola il resto tra a e b
+      a = b;     
       b = r;
   }
   return a;
@@ -112,6 +112,16 @@ $$a \equiv b (mod n)$$
 
 ## Anelli e Campi
 
+Da qui inizio a scusarmi per la matematica fatta a patatine e kinder bueno, ma la linea che c'è tra crypto ctf e teoria dei numeri a volte non è molto d'aiuto.
 
+Pragmaticamente:
+- Un insieme di interi modulo `N` con `N` non primo può essere chiamato Anello
+- Un insieme di interi modulo `p` con `p` primo definisce un Campo
 
+In un Anello possiamo sommare, sottrarre e moltiplicare. La divisione non è garantita.
 
+In un campo, ogni numero ha un suo inverso moltiplicativo, cioè un numero `s` per cui $a \cdot s \equiv 1 (mod p)$. Per questo motivo, in un campo, possiamo effettuare anche la divisione.
+
+>Esempi di uso reale sono RSA, che lavora in un anello, Diffie-Hellman e Elliptic Curve Cryptography (ECC) che lavorano in un Campo.
+
+##
