@@ -39,7 +39,7 @@ Fa essenzialmente due cose contemporaneamente, entrambe molto utili e ricorrenti
    - trovare i coefficienti `p` e `n` tali che $p \cdot x + s \cdot n = MCD(x,n)$ [Identità di Bézout](https://it.wikipedia.org/wiki/Identit%C3%A0_di_B%C3%A9zout) 
 
 [Qui](https://web.archive.org/web/20230511143526/http://www-math.ucdenver.edu/~wcherowi/courses/m5410/exeucalg.html) un deep dive dell'algoritmo. In pratica viene iterato il normale algoritmo di Euclide e vengono mantenuti registri aggiuntivi. 
-- `p[]` -> conterrà 0 nella prima posizione, 1 nella seconda, successivamente verrà calcolato `p[k] = (p[k-2] - p[k-1]*q[k-2]) % n`. 
+- `p[]` -> conterrà 0 nella prima posizione, 1 nella seconda, successivamente verrà calcolato `p[k] = p[k-2] - p[k-1]*q[k-2] (mod p)`. 
 - `q[]` -> contiene i quozienti della divisione intera `n / x`
 - `r[]` -> contiene i resti della divisione euclidea
 
@@ -71,6 +71,7 @@ int inverso_modulare_euclide(int x, int n){
 
   if (r[k-2] == 1){ // penultimo resto (qui, r[k-1] è l'ultimo)
     p[k] = p[k-2]-p[k-1]*q[k-2]; // questo è il p[k+2] discusso prima
+    // qui è possibile fare normalizzazione di p[k] = p[k](mod n)
     return p[k];
   }
 
@@ -80,6 +81,11 @@ int inverso_modulare_euclide(int x, int n){
 
 In libgmp esiste una funzione specifica [mpz_gxcdext()](https://gmplib.org/manual/Number-Theoretic-Functions#index-mpz_005fgcdext). 
 
+## Modulo 
+
+Abbiamo quasi dato per scontato fin ora la 
+
 ## Anelli e Campi
+
 
 
