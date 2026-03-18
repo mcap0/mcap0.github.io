@@ -122,6 +122,9 @@ In un Anello possiamo sommare, sottrarre e moltiplicare. La divisione non è gar
 
 In un campo, ogni numero ha un suo inverso moltiplicativo, cioè un numero `s` per cui $a \cdot s \equiv 1 (mod p)$. Per questo motivo, in un campo, possiamo effettuare anche la divisione.
 
+> Cosa si intende per "possiamo"? 
+> In questo caso, vogliamo dire che per un anello, aggiungere e moltiplicare, e per un campo, anche dividere, due operatori `a` e `b`, produrrà un risultato appartenente all'anello (o campo) iniziale. (a patto che vi ricordate di fare il modulo!) 
+
 >Esempi di uso reale sono RSA, che lavora in un anello, Diffie-Hellman e Elliptic Curve Cryptography (ECC) che lavorano in un Campo.
 
 ##
