@@ -127,4 +127,19 @@ In un campo, ogni numero diverso da 0 ha un suo inverso moltiplicativo, cioè un
 
 >Esempi di uso reale sono RSA, che lavora in un anello, Diffie-Hellman e Elliptic Curve Cryptography (ECC) che lavorano in un Campo.
 
-##
+## Piccolo Teorema di Fermat
+
+O [Little Fermat Theorem](https://it.wikipedia.org/wiki/Piccolo_teorema_di_Fermat). Denota proprietà curiose ed interessanti dell'esponenziazione nei Campi e permette il calcolo veloce dell'inverso modulare.
+
+Si nota che:
+
+$$b^{p} (mod p) \equiv b$$
+
+$$b^{p-1} (mod p) \equiv b^{p} \cdot b^{-1} (mod p) \equiv 1$$
+
+$$b^{p - 2} (mod p) \equiv b^{p-1} \cdot b^{-1} (mod p) \equiv b^{-1} (mod p)$$
+
+
+
+
+
