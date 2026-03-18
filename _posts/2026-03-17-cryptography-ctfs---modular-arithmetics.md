@@ -94,7 +94,7 @@ $$-10 \equiv 4 (mod 7)$$
 $$15 \equiv 0 (mod 5)$$
 
 Vale la relazione fondamentale:
-$$a = b + k\cdotn$$ 
+$$a = b + k \cdot n$$ 
 Dove `k` è un numero arbitrario.
 
 ### Relazione di Congruenza
