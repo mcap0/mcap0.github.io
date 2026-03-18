@@ -87,7 +87,7 @@ Un sistema di aritmetica degli interi, in cui ogni volta che questi raggiungono 
 
 Si scrive 
 
-$$a \equiv b ($$mod$$ n)$$
+$$a \equiv b (mod n)$$
 
 Esempi:
 
@@ -111,6 +111,7 @@ $$a \equiv b (mod n)$$
 
 
 ## Anelli e Campi
+
 
 
 
