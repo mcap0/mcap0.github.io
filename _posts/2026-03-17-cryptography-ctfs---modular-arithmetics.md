@@ -79,11 +79,29 @@ int inverso_modulare_euclide(int x, int n){
 }
 ```
 
-In libgmp esiste una funzione specifica [mpz_gxcdext()](https://gmplib.org/manual/Number-Theoretic-Functions#index-mpz_005fgcdext). 
+In libgmp esiste una funzione specifica [mpz_gxcdext()](https://gmplib.org/manual/Number-Theoretic-Functions#index-mpz_005fgcdext).
 
-## Modulo 
+## Aritmetica modulare
 
-Abbiamo quasi dato per scontato fin ora la 
+Un sistema di aritmetica degli interi, in cui ogni volta che questi raggiungono un determinato numero `n`, detto **modulo**, questi si "riavvolgono", ripartendo da zero. [Wikipedia](https://it.wikipedia.org/wiki/Aritmetica_modulare)
+
+Si scrive 
+$$a \equiv b (mod n)$$
+
+Esempi:
+$$10 \equiv 3 (mod 7)$$
+$$-10 \equiv 4 (mod 7)$$
+$$15 \equiv 0 (mod 5)$$
+
+Vale la relazione fondamentale:
+$$a = b + k\cdotn$$ 
+Dove `k` è un numero arbitrario.
+
+### Relazione di Congruenza
+
+Due numeri `a` e `b` si dicono congruenti modulo `n` se
+$$a \equiv b (mod n)$$ 
+
 
 ## Anelli e Campi
 
