@@ -43,7 +43,7 @@ Fa essenzialmente due cose contemporaneamente, entrambe molto utili e ricorrenti
 - `q[]` -> contiene i quozienti della divisione intera `n / x`
 - `r[]` -> contiene i resti della divisione euclidea
 
-Non è necessario rendere questi array più lungo di 3 elementi.
+Non è necessario rendere questi array più lunghi di 3 elementi.
 
 Per il calcolo dell'inverso modulare la procedura è la seguente:
 1. Si effettua la divisione euclidea di `n` per `x`
@@ -70,7 +70,7 @@ int inverso_modulare_euclide(int x, int n){
   }
 
   if (r[k-2] == 1){ // penultimo resto (qui, r[k-1] è l'ultimo)
-    p[k] = p[k-2]-p[k-1]*q[k-2]; // 
+    p[k] = p[k-2]-p[k-1]*q[k-2]; // questo è il p[k+2] discusso prima
     return p[k];
   }
 
