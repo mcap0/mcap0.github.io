@@ -71,7 +71,7 @@ int inverso_modulare_euclide(int x, int n){
 
   if (r[k-2] == 1){ // penultimo resto (qui, r[k-1] è l'ultimo)
     p[k] = p[k-2]-p[k-1]*q[k-2]; // questo è il p[k+2] discusso prima
-    // qui è possibile fare normalizzazione di p[k] = p[k](mod n)
+    // è possibile fare normalizzazione di p[k] = p[k](mod n)
     return p[k];
   }
 
