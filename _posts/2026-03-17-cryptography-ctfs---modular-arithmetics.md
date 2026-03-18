@@ -39,7 +39,7 @@ Fa essenzialmente due cose contemporaneamente, entrambe molto utili e ricorrenti
    - trovare i coefficienti `p` e `n` tali che $p \cdot x + s \cdot n = MCD(x,n)$ [Identità di Bézout](https://it.wikipedia.org/wiki/Identit%C3%A0_di_B%C3%A9zout) 
 
 [Qui](https://web.archive.org/web/20230511143526/http://www-math.ucdenver.edu/~wcherowi/courses/m5410/exeucalg.html) un deep dive dell'algoritmo. In pratica viene iterato il normale algoritmo di Euclide e vengono mantenuti registri aggiuntivi. 
-- `p[]` -> conterrà 0 nella prima posizione, 1 nella seconda, successivamente verrà calcolato `p[k] = p[k-2] - p[k-1]*q[k-2] (mod p)`. 
+- `p[]` -> conterrà 0 nella prima posizione, 1 nella seconda, successivamente verrà calcolato `p[k] = p[k-2] - p[k-1]*q[k-2] `. 
 - `q[]` -> contiene i quozienti della divisione intera `n / x`
 - `r[]` -> contiene i resti della divisione euclidea
 
@@ -133,15 +133,15 @@ O [Little Fermat Theorem](https://it.wikipedia.org/wiki/Piccolo_teorema_di_Ferma
 
 Si nota che:
 
-$$b^{p} (mod p) \equiv b$$
+$$b^{p} \equiv b (mod p)$$
 
-$$b^{p-1} (mod p) \equiv b^{p} \cdot b^{-1} (mod p) \equiv 1$$
+$$b^{p-1}  \equiv b^{p} \cdot b^{-1} \equiv 1 (mod p)$$
 
-$$b^{p - 2} (mod p) \equiv b^{p-1} \cdot b^{-1} (mod p) \equiv b^{-1} (mod p)$$
+$$b^{p - 2}  \equiv b^{p-1} \cdot b^{-1} \equiv b^{-1} (mod p)$$
 
 >Nota: la seconda e la terza formula non valgono per `b = 0` o multipli di `p`
 
+## Radice Modulare e Residui Quadratici
 
-
-
+Un intero `x` è un re
 
