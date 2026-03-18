@@ -49,6 +49,8 @@ Per il calcolo dell'inverso modulare la procedura è la seguente:
 1. Si effettua la divisione euclidea di `n` per `x`
 2. Se l'ultimo resto è zero, e il resto precedente a questo è uno, `x` possiede l'inverso modulo `n`, e il suo inverso è `p[k+2]`.
 
+>Nota: il codice è volutamente un misto tra pseudo codice e C. Questo perché trovo essere il miglior modo per me di comprendere la logica di un algoritmo, esente di parti necessarie al C quali la grandezza del array e ottimizzazioni varie, ma inutili alla comprensione dell'algoritmo in sé. Ha senso la riscrittura dell'algoritmo come esercizio. Ovviamente il codice qui presente non compilerà.  
+
 ```c 
 int inverso_modulare_euclide(int x, int n){
   int p[], q[], r[];
