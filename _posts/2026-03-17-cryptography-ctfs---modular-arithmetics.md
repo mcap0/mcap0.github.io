@@ -139,6 +139,8 @@ $$b^{p-1} (mod p) \equiv b^{p} \cdot b^{-1} (mod p) \equiv 1$$
 
 $$b^{p - 2} (mod p) \equiv b^{p-1} \cdot b^{-1} (mod p) \equiv b^{-1} (mod p)$$
 
+>Nota: la seconda e la terza formula non valgono per `b = 0` o multipli di `p`
+
 
 
 
