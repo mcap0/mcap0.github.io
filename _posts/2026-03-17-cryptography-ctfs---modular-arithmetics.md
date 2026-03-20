@@ -159,7 +159,7 @@ $$NQR \cdot NQR = QR$$
 
 ## Simbolo di Legendre 
 
-Il simbolo di Legendre permette di verificare che un numero `a` sia un residuo quadratico modulo `p`.
+Il [Simbolo di Legendre](https://en.wikipedia.org/wiki/Legendre_symbol) permette di verificare che un numero `a` sia un residuo quadratico modulo `p`.
 
 Si indica con la notazione $(\frac{a}{p})$
 
