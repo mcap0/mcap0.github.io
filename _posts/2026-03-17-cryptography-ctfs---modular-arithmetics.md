@@ -161,6 +161,8 @@ $$NQR \cdot NQR = QR$$
 
 Il simbolo di Legendre permette di verificare che un numero `a` sia un residuo quadratico modulo `p`.
 
+Si indica con la notazione $(\frac{a}{p})$
+
 Il simbolo di Legendre è una funzione di `a` e `p` definita come segue:
 
 $$(\frac{a}{p})=a^{\frac{p-1}{2}}(mod p)$$
