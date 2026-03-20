@@ -143,7 +143,7 @@ $$b^{p - 2}  \equiv b^{p-1} \cdot b^{-1} \equiv b^{-1} (mod p)$$
 
 ## Radice Modulare e Residui Quadratici
 
-Un intero `x` è un residuo quadratico modulo `p` se esiste un numero `a` tale che $a^{2} \equiv x (mod p)$
+Un intero `x` è un residuo quadratico modulo `p` (numero primo dispari) se esiste un numero `a` tale che $a^{2} \equiv x (mod p)$
 
 In altri termini, se numero possiede una radice quadrata nel campo, esso è un residuo quadratico.
 
@@ -156,6 +156,16 @@ $$QR \cdot QR = QR$$
 $$QR \cdot NQR = NQR$$
 
 $$NQR \cdot NQR = QR$$
+
+## Simbolo di Legendre 
+
+Il simbolo di Legendre permette di verificare che un numero `a` sia un residuo quadratico modulo `p`.
+
+Il simbolo di Legendre è una funzione di `a` e `p` definita come segue:
+
+$$(\frac{a}{p}) = a^{\frac{p-1}{2} (mod p)$$
+
+Quest'ultimo assumerà i valori $1$ se `a` è un residuo quadratico, `-1` se `a` è un residuo non quadratico, e `0` se $a \equiv 0 (mod p).
 
 
 
