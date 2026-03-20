@@ -35,30 +35,30 @@ result xgcd(int a, int b){
 >returns a char* containing the entire file as an array
 
 ```c
-char* readFile(char filename[]){
-        //open file
-        FILE *file = fopen(filename,"r");
-        if (file == NULL){ 
-	        printf("Cannot open file"); 
-	        return NULL;
-        }
-        
-        // get file size for memory allocation
-        fseek(file, 0, SEEK_END);
-        long size = ftell(file);
-        fseek(file, 0, SEEK_SET);
+char *readFile(char filename[]) {
+  // open file
+  FILE *file = fopen(filename, "r");
+  if (file == NULL) {
+    printf("Cannot open file");
+    return NULL;
+  }
 
-        // allocate memory
-        char *text_array = (char*)malloc(size*(sizeof(char))+1);
+  // get file size for memory allocation
+  fseek(file, 0, SEEK_END);
+  long size = ftell(file);
+  fseek(file, 0, SEEK_SET);
 
-        // info store
-        if(text_array){
-	        fread(text_array, 1, size, file);
-	        text_array[size] = '\0';
-        }
-        
-        fclose(file);
-        return text_array;
+  // allocate memory
+  char *text_array = (char *)malloc(size * (sizeof(char)) + 1);
+
+  // info store
+  if (text_array) {
+    fread(text_array, 1, size, file);
+    text_array[size] = '\0';
+  }
+
+  fclose(file);
+  return text_array;
 }
 // usage
 char* file = readFile("output_legendre.txt");
@@ -162,30 +162,33 @@ int fun(mpz_t a, mpz_t b){
 > For when you have a file containing something like: "p = 1337..."
 
 ```c
-int extractVarFromString(const char* string_array, mpz_t num, char* srch){
-		if (!string_array) return 0;
-        // copio la stringa (strtok modifica la stringa in locale)
-        char* string_copy = strdup(string_array);
-        
-        // rimuovo caratteri dal file
-        char* temp_num = strtok(string_copy, "[,] \n=");
-        
-        // cerco il nome della variabile nel file
-        while((tmp_num != NULL) && (strcmp(temp_num,srch))){ temp_num = strtok(NULL,"[,] \n=");}
-        
-        // salto il nome della variabile
-        temp_num = strtok(NULL,"[,] \n=");
-        
-        // inizializzo num a temp_num
-        if((tmp_num != NULL) && mpz_init_set_str(num,temp_num,10) == 0){
-                free(string_copy);
-//              printf("%s = %s\n",srch,temp_num);
-                return 1;
-        }
-        //gmp_printf("%s = %Zd\n",srch,num);
-        printf("La variabile %s non è stata trovata nel file\n",srch);
-        free(string_copy);
-		return 0;
+int extractVarFromString(const char *string_array, mpz_t num, char *srch) {
+  if (!string_array)
+    return 0;
+  // copio la stringa (strtok modifica la stringa in locale)
+  char *string_copy = strdup(string_array);
+
+  // rimuovo caratteri dal file
+  char *temp_num = strtok(string_copy, "[,] \n=");
+
+  // cerco il nome della variabile nel file
+  while ((temp_num != NULL) && (strcmp(temp_num, srch))) {
+    temp_num = strtok(NULL, "[,] \n=");
+  }
+
+  // salto il nome della variabile
+  temp_num = strtok(NULL, "[,] \n=");
+
+  // inizializzo num a temp_num
+  if ((temp_num != NULL) && mpz_init_set_str(num, temp_num, 10) == 0) {
+    free(string_copy);
+    //              printf("%s = %s\n",srch,temp_num);
+    return 1;
+  }
+  // gmp_printf("%s = %Zd\n",srch,num);
+  printf("La variabile %s non è stata trovata nel file\n", srch);
+  free(string_copy);
+  return 0;
 }
 // usage
 char* file = readFile("output_legendre.txt");
