@@ -165,7 +165,7 @@ Il simbolo di Legendre è una funzione di `a` e `p` definita come segue:
 
 $$\frac{a}{p}=a^{\frac{p-1}{2}}(mod p)$$
 
-Quest'ultimo assumerà il valore $1$ se `a` è un residuo quadratico, `-1` se `a` è un residuo non quadratico, e `0` se $a \equiv 0 (mod p).
+Quest'ultimo assumerà il valore $1$ se `a` è un residuo quadratico, `-1` se `a` è un residuo non quadratico, e `0` se $a \equiv 0 (mod p)$.
 
 
 
