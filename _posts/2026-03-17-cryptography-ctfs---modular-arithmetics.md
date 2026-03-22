@@ -201,7 +201,7 @@ Nel secondo caso viene in nostro soccorso l'algoritmo di Tonelli-Shanks, attualm
 
 Se $r^{2} \equiv a (mod p)$, Tonelli-Shanks calcola $r$.
 
->L'algoritmo Tonelli-Shanks non funziona nel caso di moduli non primi, (esempio $N = p*q$). Trovare la radice quadrata modulo numeri compositi è un problema equivalente alla fattorizzazione, ossia, un Hard Problem (HP).
+>L'algoritmo Tonelli-Shanks non funziona nel caso di moduli non primi, (esempio $N = p*q$). Trovare la radice quadrata modulo numeri compositi è un problema equivalente alla fattorizzazione, ossia, un NP-Hard Problem.
 
 L'algoritmo di Tonelli-Shanks viene usato anche per trovare le coordinate di Elliptic Curve Cryptography.
 
