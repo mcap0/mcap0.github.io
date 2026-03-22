@@ -188,7 +188,7 @@ void sqrtmodFermat(mpz_t res, mpz_t qr, mpz_t p) {
 
 ### Usage
 ```c
-if (mpz_legendre(a, p) == 1) {
+if (mpz_legendre(a, p) != -1) {
   tonelliShanks(res, a, p);
   gmp_printf("%Zd is a quadratic residue!\n", a);
   gmp_printf("I tried to calculate the sqrt...\n%Zd\n", res);
