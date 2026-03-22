@@ -169,5 +169,51 @@ $$(\frac{a}{p})=a^{\frac{p-1}{2}}(mod p)$$
 
 Quest'ultimo assumerà il valore $1$ se `a` è un residuo quadratico, `-1` se `a` è un residuo non quadratico, e `0` se $a \equiv 0 (mod p)$.
 
+```c
+mpz_legendre(a,p); // (output sarà int 1, 0 o -1)
+```
+
+## Radice Modulare
+
+Dopo aver verificato che un numero possiede una radice quadrata modulare con una singola formula grazie al simbolo di Legendre, ovviamente abbiamo bisogno di algoritmi efficienti per calcolare questa radice quadrata.
+
+Abbiamo due casi. Il primo, molto semplice, per $p \equiv 3 (mod 4)$, mentre il secondo $p \equiv 1 (mod 4)$ richiederà l'algoritmo di Tonelli-Shanks.
+
+### Radice modulare nel primo caso $p \equiv 3 (mod 4)$
+
+Nei casi particolari in cui il numero primo $p \equiv 3 mod 4$ possiamo ragionare sul piccolo teorema di Fermat e sul criterio di Eulero per ricavare una formula per calcolare la radice modulare istantaneamente.
+
+Il criterio di Eulero è pressoché equivalente al simbolo di Legendre, serve a verificare che un dato intero è un residuo quadratico modulo `p`. 
+
+Infatti ci dice che
+
+$$a^{\frac{p-1}{2}} \equiv 1 (mod p)$$
+
+se `a` è un residuo quadratico.
+
+Da qui possiamo ricavare, tramite i seguenti [calcoli](https://math.stackexchange.com/questions/1273690/when-p-3-pmod-4-show-that-ap1-4-pmod-p-is-a-square-root-of-a), questa formula che calcola direttamente la radice quadrata modulare che cercavamo.
+
+$$a^{\frac{p+1}{4}}$$
+
+### Algoritmo di Tonelli-Shanks
+
+Nel secondo caso viene in nostro soccorso l'algoritmo di Tonelli-Shanks, attualmente il più utilizzato per il calcolo della radice modulare, quando `p = 1 (mod 4)`.
+
+Se $r^{2} \equiv a (mod p)$, Tonelli-Shanks calcola $r$.
+
+>L'algoritmo Tonelli-Shanks non funziona nel caso di moduli non primi, (esempio $N = p*q$). Trovare la radice quadrata modulo numeri compositi è un problema equivalente alla fattorizzazione, ossia, un Hard Problem (HP).
+
+L'algoritmo di Tonelli-Shanks viene usato anche per trovare le coordinate di Elliptic Curve Cryptography.
+
+>C'è anche [questo](https://eprint.iacr.org/2020/1407.pdf) paper che sostiene di avere un algoritmo più efficiente di Tonelli-Shanks per trovare la radice modulare nello stesso caso. Non l'ho effettivamente testato.
+
+Un esercizio di stile molto utile è tentare l'implementazione di Tonelli-Shanks seguendo [Wikipedia](https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm) e [Rosetta](https://rosettacode.org/wiki/Tonelli-Shanks_algorithm), usando Python che permette la gestione di numeri arbitrariamente grandi nativamente, oppure libgmp, la libreria per la Multi-Precision Arithmetics per eccellenza.
+
+Altrimenti trovate la mia implementazione in C su questo [link](). 
+
+
+
+
+
 
 
