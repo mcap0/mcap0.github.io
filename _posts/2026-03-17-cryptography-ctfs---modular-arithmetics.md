@@ -191,9 +191,9 @@ $$a^{\frac{p-1}{2}} \equiv 1 (mod p)$$
 
 se `a` è un residuo quadratico.
 
-Da qui possiamo ricavare, tramite i seguenti [calcoli](https://math.stackexchange.com/questions/1273690/when-p-3-pmod-4-show-that-ap1-4-pmod-p-is-a-square-root-of-a), questa formula che calcola direttamente la radice quadrata modulare che cercavamo.
+Da qui possiamo ricavare, dopo semplici [calcoli](https://math.stackexchange.com/questions/1273690/when-p-3-pmod-4-show-that-ap1-4-pmod-p-is-a-square-root-of-a), questa formula che calcola direttamente la radice quadrata modulare che cercavamo.
 
-$$a^{\frac{p+1}{4}}$$
+$$a^{\frac{p+1}{4}}(mod p)$$
 
 ### Algoritmo di Tonelli-Shanks
 
