@@ -2,7 +2,7 @@
 title: "Algoritmi Crittografici"
 date: 2026-03-22 19:23:24 +0100
 categories: [Cryptography,Codici]
-tags: ["C", "libgmp", "tonellishanks"]
+tags: ["c", "libgmp", "tonellishanks"]
 math: true
 ---
 
