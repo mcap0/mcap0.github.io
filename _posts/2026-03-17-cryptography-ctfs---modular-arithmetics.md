@@ -209,7 +209,7 @@ L'algoritmo di Tonelli-Shanks viene usato anche per trovare le coordinate di Ell
 
 Un esercizio di stile molto utile è tentare l'implementazione di Tonelli-Shanks seguendo [Wikipedia](https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm) e [Rosetta](https://rosettacode.org/wiki/Tonelli-Shanks_algorithm), usando Python che permette la gestione di numeri arbitrariamente grandi nativamente, oppure libgmp, la libreria per la Multi-Precision Arithmetics per eccellenza.
 
-Altrimenti trovate la mia implementazione in C su questo [link](). 
+Altrimenti trovate la mia implementazione in C su questo link. 
 
 
 
