@@ -141,11 +141,11 @@ $$b^{p - 2}  \equiv b^{p-1} \cdot b^{-1} \equiv b^{-1} (mod p)$$
 
 >Nota: la seconda e la terza formula non valgono per `b = 0` o multipli di `p`
 
-## Radice Modulare e Residui Quadratici
+## Residui Quadratici
 
 Un intero `x` è un residuo quadratico modulo `p` (numero primo dispari) se esiste un numero `a` tale che $a^{2} \equiv x (mod p)$
 
-In altri termini, se numero possiede una radice quadrata nel campo, esso è un residuo quadratico.
+In altri termini, se numero possiede una [radice modulare](#Radice-Modulare) nel campo, esso è un residuo quadratico.
 
 Non tutti gli elementi di un campo hanno una radice modulare. In pratica, $\frac{p+1}{2}$ degli elementi in un campo sono residui quadratici (includendo lo 0), e  $\frac{p-1}{2}$ sono residui non quadratici, secondo il [Criterio di Eulero](https://en.wikipedia.org/wiki/Euler%27s_criterion).
 
