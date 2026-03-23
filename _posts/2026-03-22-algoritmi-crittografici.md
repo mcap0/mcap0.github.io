@@ -196,4 +196,105 @@ if (mpz_legendre(a, p) != -1) {
 ```
 
 
+## Chinese Remainder Theorem (CRT)
 
+### Headers
+
+```c
+#include <gmp.h>
+
+void initmpzArray(mpz_t a[], int size);
+void copympzArray(mpz_t a[], mpz_t b[], int size);
+int chineseRemainder(mpz_t res, mpz_t bigN, mpz_t a[], mpz_t n[], int size);
+```
+
+### Functions
+
+```c
+int chineseRemainder(mpz_t res, mpz_t bigN, mpz_t a[], mpz_t n[], int size) {
+  int status_code = 0;
+  mpz_t m1, m2, a12, temp1, temp2;
+  mpz_inits(a12, temp1, temp2, m1, m2, NULL);
+
+  // copio A ed N per non modificare l'array originale
+  mpz_t A[size], N[size];
+  initmpzArray(A, size);
+  initmpzArray(N, size);
+  copympzArray(A, a, size);
+  copympzArray(N, n, size);
+
+  for (int i = 0; i < size - 1; i++) {
+    // extended euclidean to find m1,m2 : m1n1 + m2n2 = 1
+    mpz_gcdext(a12, m1, m2, N[i], N[i + 1]);
+    if (mpz_cmp_ui(a12, 1) != 0) {
+      status_code = -1;
+      goto cleanup;
+    }
+
+    // a12 = a1*m2*n2+a2*m1*n1
+    mpz_mul(temp1, N[i + 1], m2);
+    mpz_mul(temp1, temp1, A[i]);
+    mpz_mul(temp2, N[i], m1);
+    mpz_mul(temp2, temp2, A[i + 1]);
+    mpz_add(a12, temp1, temp2);
+
+    // riduco il problema a k-1
+    // metto la a successiva a a12
+    mpz_set(A[i + 1], a12);
+
+    // la n successiva è n1*n2
+    mpz_mul(N[i + 1], N[i], N[i + 1]);
+
+    // modulo per restare nel ring
+    mpz_mod(A[i + 1], A[i + 1], N[i + 1]);
+  }
+  // set results
+  mpz_set(res, A[size - 1]);
+  mpz_set(bigN, N[size - 1]);
+
+cleanup:
+  // clears
+  mpz_clears(a12, temp1, temp2, m1, m2, NULL);
+  for (int i = 0; i < size; i++)
+    mpz_clears(A[i], N[i], NULL);
+
+  return status_code;
+}
+
+void initmpzArray(mpz_t a[], int size) {
+  for (int i = 0; i < size; i++) {
+    mpz_init(a[i]);
+  }
+}
+
+void copympzArray(mpz_t a[], mpz_t b[], int size) {
+  for (int i = 0; i < size; i++) {
+    mpz_set(a[i], b[i]);
+  }
+}
+
+```
+
+### Usage
+
+```c
+// esempio per k = 3
+mpz_t a[3], n[3];
+for (int i = 0; i < 3; i++)
+  mpz_init(a[i]);
+mpz_set_ui(a[0], 2);
+mpz_set_ui(a[1], 3);
+mpz_set_ui(a[2], 5);
+
+for (int i = 0; i < 3; i++)
+  mpz_init(n[i]);
+mpz_set_ui(n[0], 5);
+mpz_set_ui(n[1], 11);
+mpz_set_ui(n[2], 17);
+
+mpz_t res, bigN;
+mpz_inits(res, bigN, NULL);
+
+chineseRemainder(res, bigN, a, n, 3);
+gmp_printf("il risultato è %Zd (mod %Zd)\n", res, bigN); 
+```
