@@ -211,9 +211,13 @@ Un esercizio di stile molto utile è tentare l'implementazione di Tonelli-Shanks
 
 Altrimenti trovate la mia implementazione in C su questo [link](https://matteocapo.it/posts/algoritmi-crittografici/#algoritmo-di-tonelli-shanks). 
 
+## (CRT) Chinese Remainder Theorem 
 
+Il CRT ci dice che se conosciamo i resto $r_{i}$ di un intero $x$ che viene diviso (in divisione euclidea) per molteplici interi $N_{i}$, si può trovare in modo univoco l'intero $x$. [Wikipedia](https://en.wikipedia.org/wiki/Chinese_remainder_theorem#)
 
+I casi d'uso per le CTF sono molteplici, l'esempio tipico è dover ricavare un messaggio `M` avendo un certo numero `k` di resti $r_{i}$ e moduli $N_{i}$ con $0 < i \leq k$. 
 
+L'algoritmo che conviene implementare nei propri codici è la [Constructive Proof](https://en.wikipedia.org/wiki/Chinese_remainder_theorem#Existence_(constructive_proof)) che calcola il CRT per `k=2` e poi generalizza il problema a `k=k+1`.
 
-
+[Qui](https://matteocapo.it/posts/algoritmi-crittografici/#chinese-remainder-theorem-crt) la mia implementazione in C con buon vecchio libgmp.
 
