@@ -195,7 +195,7 @@ Da qui possiamo ricavare, dopo semplici [calcoli](https://math.stackexchange.com
 
 $$a^{\frac{p+1}{4}}(mod p)$$
 
-### Algoritmo di Tonelli-Shanks
+### (TS) Algoritmo di Tonelli-Shanks
 
 Nel secondo caso viene in nostro soccorso l'algoritmo di Tonelli-Shanks, attualmente il più utilizzato per il calcolo della radice modulare, quando `p = 1 (mod 4)`.
 
@@ -213,7 +213,7 @@ Altrimenti trovate la mia implementazione in C su questo [link](https://matteoca
 
 ## (CRT) Chinese Remainder Theorem 
 
-Il CRT ci dice che se conosciamo i resto $r_{i}$ di un intero $x$ che viene diviso (in divisione euclidea) per molteplici interi $N_{i}$, si può trovare in modo univoco l'intero $x$. [Wikipedia](https://en.wikipedia.org/wiki/Chinese_remainder_theorem#)
+Il CRT ci dice che se conosciamo i resti $r_{i}$ di un intero $x$ che viene diviso (in divisione euclidea) per molteplici interi $N_{i}$, si può trovare in modo univoco l'intero $x$. [Wikipedia](https://en.wikipedia.org/wiki/Chinese_remainder_theorem#)
 
 I casi d'uso per le CTF sono molteplici, l'esempio tipico è dover ricavare un messaggio `M` avendo un certo numero `k` di resti $r_{i}$ e moduli $N_{i}$ con $0 < i \leq k$. 
 
