@@ -310,25 +310,23 @@ gmp_printf("il risultato è %Zd (mod %Zd)\n", res, bigN);
 #include <stdio.h>
 #include <sys/types.h>
 
-
 void decryptAES128block(uint8_t pt[16], uint8_t ct[16], uint8_t k[16]);
-void invSubBytes(uint8_t state[4][4]);
-void invShiftRows(uint8_t state[4][4]);
-void mixColumns(uint8_t state[4][4]);
-uint8_t xtime(uint8_t value);
-void invMixColumns(uint8_t state[4][4]);
-void extract_4x4(uint8_t roundKey[4][4], uint8_t roundKeyColumns[44][4], int idx);
-void addRoundKey(uint8_t state[4][4], uint8_t roundKey[4][4]);
-void col_bytes2matrix(uint8_t state[4][4], uint8_t ct[16]);
+void invSubBytes(uint8_t s[4][4]);
+void invShiftRows(uint8_t s[4][4]);
+void mixColumns(uint8_t s[4][4]);
+uint8_t xtime(uint8_t val);
+void invMixColumns(uint8_t s[4][4]);
+void extract_4x4(uint8_t roundKey[4][4], uint8_t keyColumns[44][4], int idx);
+void addRoundKey(uint8_t s[4][4], uint8_t roundKey[4][4]);
+void col_bytes2matrix(uint8_t s[4][4], uint8_t ct[16]);
 uint8_t s_box(uint8_t item);
-void appendRoundKey(uint8_t roundKey[44][4],uint8_t word[4], int idx);
-void xor_4x1(uint8_t word[4], uint8_t prev[4]);
+void appendRoundKey(uint8_t roundKey[44][4], uint8_t word[4], int idx);
+void xor_4x1(uint8_t w1[4], uint8_t w2[4]);
 void rCircularShift(uint8_t word[4]);
 void lCircularShift(uint8_t word[4]);
-void expandKey(uint8_t roundKey[44][4],uint8_t key[4][4]);
-void bytes2matrix(uint8_t mat[4][4], uint8_t arr[16]);
+void expandKey(uint8_t roundKey[44][4],uint8_t master_key[4][4]);
+void bytes2matrix(uint8_t mat[4][4], uint8_t arr[16]) ;
 void matrix2bytes(uint8_t arr[16], uint8_t mat[4][4]);
-
 ```
 
 ### Functions
