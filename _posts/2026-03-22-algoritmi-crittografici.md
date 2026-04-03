@@ -6,6 +6,8 @@ tags: ["c", "libgmp", "tonellishanks", "AES"]
 math: true
 ---
 
+
+
 Questo articolo contiene snippets di codice prodotto a scopo accademico per la comprensione di algoritmi crittografici. Alcuni esempi sono: Algoritmo di Tonelli-Shanks, Chinese Remainder Theorem, AES.
 
 ## Algoritmo di Tonelli-Shanks
