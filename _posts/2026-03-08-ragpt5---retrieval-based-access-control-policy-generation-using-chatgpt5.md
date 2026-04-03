@@ -10,7 +10,7 @@ tags: ["ai hacking", "prompt injection"]
 ```
 ## 1.0 - Introduzione a RAGPT5
 
-RAGPT5 è un'implementazione a scopo didattico e di sperimentazione avversaria del framework [RAGent](https://arxiv.org/abs/2409.07489), da Matteo Capodicasa.
+RAGPT5 è un'implementazione a scopo didattico e di sperimentazione avversaria del framework [RAGent](https://arxiv.org/abs/2409.07489), da Matteo Capodicasa. Repo ->[RAGPT5](https://github.com/mcap0/RAGPT5)
 
 ### 1.1 - RAGent Framework
 
