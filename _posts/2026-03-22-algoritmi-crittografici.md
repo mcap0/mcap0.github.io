@@ -304,7 +304,7 @@ gmp_printf("il risultato è %Zd (mod %Zd)\n", res, bigN);
 ```
 
 
-## AES128 Decryption
+## AES128 block cipher 
 
 ### Headers
 
@@ -314,7 +314,10 @@ gmp_printf("il risultato è %Zd (mod %Zd)\n", res, bigN);
 #include <stdio.h>
 #include <sys/types.h>
 
+void encryptAES128block(uint8_t ct[16], uint8_t pt[16], uint8_t k[16]);
 void decryptAES128block(uint8_t pt[16], uint8_t ct[16], uint8_t k[16]);
+void subBytes(uint8_t s[4][4]);
+void shiftRows(uint8_t s[4][4]);
 void invSubBytes(uint8_t s[4][4]);
 void invShiftRows(uint8_t s[4][4]);
 void mixColumns(uint8_t s[4][4]);
@@ -336,6 +339,34 @@ void matrix2bytes(uint8_t arr[16], uint8_t mat[4][4]);
 ### Functions
 
 ```c
+void encryptAES128block(uint8_t ct[16], uint8_t pt[16], uint8_t k[16]){
+    /* -- Performs a block AES encryption given the plaintext and the key -- */
+    
+    uint8_t key_m[4][4], keyColumns[44][4], state[4][4], rk[4][4];
+    int iter_round = 1;
+
+    /* -- plaintext to state -- */
+    col_bytes2matrix(state, pt); 
+
+    /* -- Expand Key procedure -- */
+    bytes2matrix(key_m,k);
+    expandKey(keyColumns, key_m);
+
+    /* -- Initial AddRoundKey -- */
+    extract_4x4(rk, keyColumns, iter_round);
+    addRoundKey(state,rk);
+    
+    /* -- 10 ROUNDS -- */
+    while(iter_round < 11){
+        subBytes(state);
+        shiftRows(state);
+        extract_4x4(rk, keyColumns, ++iter_round);
+        if (iter_round != 11) mixColumns(state);
+        addRoundKey(state,rk);
+    }
+    matrix2bytes(ct, state);
+}
+
 void decryptAES128block(uint8_t pt[16], uint8_t ct[16], uint8_t k[16]){
     /* -- Performs a block AES decryption given the ciphertext and the key -- */
     uint8_t key_m[4][4], keyColumns[44][4], state[4][4], rk[4][4];
@@ -361,6 +392,22 @@ void decryptAES128block(uint8_t pt[16], uint8_t ct[16], uint8_t k[16]){
         if (iter_round != 1) invMixColumns(state);
     }
     matrix2bytes(pt, state);
+}
+
+void subBytes(uint8_t s[4][4]){
+    for (int i = 0 ; i < 4 ; i++) {
+        for (int j = 0 ; j < 4 ; j++) {
+            s[i][j] = s_box(s[i][j]);
+        }
+    }
+}
+
+void shiftRows(uint8_t s[4][4]){
+    for(int i = 1; i < 4; i++){
+        for(int j = 0; j<i; j++){
+            lCircularShift(s[i]);
+        }
+    }
 }
 
 void invMixColumns(uint8_t s[4][4]){
@@ -567,10 +614,19 @@ void matrix2bytes(uint8_t arr[16], uint8_t mat[4][4]) {
 ### Usage
 
 ```c
+    // Decryption
     uint8_t ct[16] = "\x25\xd0\x73\xe4\x67\x9a\x75\xc4\xa3\x2a\xde\x82\xca\x7d\x8b\x44";
     uint8_t key[16] = "\x59\x45\x4c\x4c\x4f\x57\x20\x53\x55\x42\x4d\x41\x52\x49\x4e\x45"; 
-    unsigned char flag[17];
+    uint8_t flag[17];
     decryptAES128block(flag, ct, key);
     flag[16] = '\0';
     printf("flag:\n%s \n",flag);
+    
+    // Encryption
+    uint8_t ct2[16];
+    uint8_t flag2[17] = "Everyday I'm Shu";
+    encryptAES128block(ct2, flag2, key);
+    decryptAES128block(flag2, ct2, key);
+    printf("decrypted flag:\n%s \n", flag2);
+
 ```
