@@ -9,15 +9,16 @@ math: true
 
 ## Intro
 
-Come esercizio per il laboratorio di Reti ci è stato assegnato di scrivere un simulatore dello stack TCP/IP in un linguaggio ad oggetti. Ovviamente l'ho fatto in C.
+Come esercizio per il laboratorio di Reti ci è stato assegnato di scrivere un simulatore dello stack TCP/IP in un linguaggio ad oggetti. Ovviamente l'ho fatto in **C**.
 
-Mi diletto nell'arte di scrivere codice in C da circa 3 mesi ormai, soprattutto per la crittografia e la GPGPU, ma non ho ancora messo il piede in progetti da più di due files, e in reali programmi effettivamente.
+Mi diletto nell'arte di scrivere codice in C da circa 3 mesi ormai, soprattutto per la **crittografia** e la GPGPU, ma non ho ancora messo il piede in progetti da più di due files, e in **reali programmi** effettivamente.
 
-Questo esercizio dimostra la mia acerbità nel linguaggio, che spero nel tempo migliori. Per pubblicare questo programma avrei probabilmente dovuto passarci altro tempo a scrivere i `free()` e migliorare in generale la gestione della memoria, cosa che avrei fatto volentieri, ma una volta presentato il progetto ho pensato di andare avanti. Ho molte cose che bollono in pentola, insieme alla crittografia mi vorrei dilettare alla scrittura di piccole app per Flipper e mi piacerebbe sviscerare la CPTS finchè posso permettermela a 7 euro al mese, ma di solito sono il tipo di persona da una cosa alla volta.
+Questo esercizio dimostra la mia acerbità nel linguaggio, che spero nel tempo migliori. Per pubblicare questo programma avrei probabilmente dovuto passare altro tempo a scrivere i `free()` e migliorare in generale la gestione della memoria, cosa che avrei fatto volentieri.
+Ma una volta presentato il progetto ho pensato di andare avanti. Ho molte cose che bollono in pentola, insieme alla crittografia mi vorrei dilettare alla scrittura di **piccole app per Flipper** e mi piacerebbe sviscerare la **CPTS** finchè posso permettermela a 7 euro al mese, ma di solito sono il tipo di persona da una cosa alla volta.
 
 Il codice: puoi giudicarlo, non ha sentimenti. Se vedi un `free()`, sicuramente stai avendo delle allucinazioni.
 
-Ma permettimi di dire. Dopo aver scritto 800 linee di codice in 5 giorni, risolvendo un problema alla volta, incastrando i pezzi del puzzle in C come si fa da più di due decenni, sento che questo codice merita la luce del Sole. Non c'è malizia nei suoi problemi di memoria, solo ingenuità.
+Ma permettimi di dire. Dopo aver scritto 800 linee di codice in 5 giorni, risolvendo un problema alla volta, **incastrando i pezzi del puzzle** in C come si fa da più di due decenni, sento che questo codice merita la luce del Sole. Non c'è malizia nei suoi problemi di memoria, solo ingenuità.
 
 Prima di 3 mesi fa, non potevo mai sperare di scrivere 800 linee di codice in C, anche se solo semi-funzionante. Che sia un inizio di una nuova skill. 
 
