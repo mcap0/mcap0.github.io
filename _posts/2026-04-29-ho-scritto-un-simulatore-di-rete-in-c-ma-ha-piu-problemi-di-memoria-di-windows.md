@@ -20,7 +20,7 @@ Il codice: puoi giudicarlo, non ha sentimenti. Se vedi un `free()`, sicuramente 
 
 Ma permettimi di dire. Dopo aver scritto 800 linee di codice in 5 giorni, risolvendo un problema alla volta, **incastrando i pezzi del puzzle** in C come si fa da più di due decenni, sento che questo codice merita la luce del Sole. Non c'è malizia nei suoi problemi di memoria, solo ingenuità.
 
-Prima di 3 mesi fa, non potevo mai sperare di scrivere 800 linee di codice in C, anche se solo semi-funzionante. Che sia un inizio di una nuova skill. 
+Prima di 3 mesi fa, non potevo mai sperare di scrivere 800 linee di codice in C in così poco tempo, anche se solo semi-funzionante. Che sia l'inizio di una nuova (utilissima) skill. 
 
 ```c
 /*
