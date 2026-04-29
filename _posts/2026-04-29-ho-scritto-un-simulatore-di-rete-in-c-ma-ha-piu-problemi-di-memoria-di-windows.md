@@ -1,6 +1,6 @@
 ---
 title: "Ho scritto un simulatore di rete in C, ma ha piu problemi di memoria di Windows"
-date: 2026-04-29 11:50:14 +0100
+date: 2026-04-29 11:50:14 +0200
 categories: [Computer Science,Reti]
 tags: ["c"]
 math: true
