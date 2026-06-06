@@ -5,10 +5,7 @@
 
 
 :root {
+  /* Si applica solo al testo, salvando i font delle icone */
   --font-family-base: 'Roboto Mono', monospace !important;
   --font-family-heading: 'Roboto Mono', monospace !important;
-}
-
-* {
-  font-family: 'Roboto Mono', monospace !important;
 }
