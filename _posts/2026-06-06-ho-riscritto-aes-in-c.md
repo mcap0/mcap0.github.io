@@ -6,7 +6,7 @@ tags: ["C", "AES"]
 math: true
 ---
 
-[Codice](#Codice)
+[Codice](##Codice)
 
 ## Struttura di RSA
 
