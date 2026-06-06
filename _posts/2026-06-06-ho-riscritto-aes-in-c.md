@@ -44,7 +44,7 @@ Quello che fa è effettivamente l'inverso modulare nel campo di Galois 2**8 + un
 
 per quello che ho capito, la tabella non prende la chiave quandi la sbox è sempre la stessa per ongi trasformazione aes
 
-https://www.samiam.org/galois.html
+[https://www.samiam.org/galois.html](https://www.samiam.org/galois.html)
 
 ### ShiftRows e MixColumns
 
