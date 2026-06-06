@@ -1,18 +1,16 @@
 ---
 ---
 
-/* 1. L'importazione deve tassativamente essere la prima riga di codice */
 @use 'main{%- if jekyll.environment == 'production' -%}.bundle{%- endif -%}';
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&display=swap');
 
-/* 2. Configura le variabili del font prima del caricamento del tema */
-$font-family-base: 'Roboto Mono', monospace;
-$font-family-heading: 'Roboto Mono', monospace;
 
-/* 3. Inietta il codice del tema Chirpy */
-
-/* 4. Sovrascrive le variabili CSS globali per sicurezza */
 :root {
   --font-family-base: 'Roboto Mono', monospace !important;
   --font-family-heading: 'Roboto Mono', monospace !important;
+}
+
+/* Applica Roboto Mono ovunque, ma esclude i tag <i> e le classi FontAwesome */
+*:not(i):not(.fas):not(.fab):not(.far):not(.fa):not([class^="icon-"]) {
+  font-family: 'Roboto Mono', monospace !important;
 }
