@@ -8,7 +8,7 @@ math: true
 
 [Codice](#codice)
 
-## Struttura di RSA
+## Struttura di AES
 
 AES 128 inizia da un key schedule algorithm (uno di quelli per ingrandire la key in entrata), partendo dal blocco diviso in 4x4 (ogni casella è un byte) in plaintext (stato 1) e applicando 10 round a questo stato iniziale. 
 1. **KeyExpansion** ( o key schedule)
