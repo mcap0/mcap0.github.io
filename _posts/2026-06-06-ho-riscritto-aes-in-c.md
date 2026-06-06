@@ -6,7 +6,7 @@ tags: ["C", "AES"]
 math: true
 ---
 
-[Codice](https://matteocapo.it/posts/ho-riscritto-aes-in-c/#%20Codice)
+[Codice](#codice)
 
 ## Struttura di RSA
 
