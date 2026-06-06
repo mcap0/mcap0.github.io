@@ -7,9 +7,9 @@ math: true
 pin: True
 ---
 
-SPECIALISTA DI OFFENSIVE SECURITY CON QUASI 2 ANNI DI ESPERIENZA LAVORATIVA NEL PENETRATION TESTING WEB
+**SPECIALISTA DI OFFENSIVE SECURITY CON QUASI 2 ANNI DI ESPERIENZA LAVORATIVA NEL PENETRATION TESTING WEB**
 
-OFFRE 1-to-1 MEETING A 10 EURO/ 30 MIN E LA PRIMA MEZZ’ORA GRATIS*
+**OFFRE 1-to-1 MEETING A 10 EURO/ 30 MIN E LA PRIMA MEZZ’ORA GRATIS\***
 
 Con oltre 1500 ore di attività e pentest manuali sui sistemi critici di aziende posizionate:
 - TOP 5 Banche europee
@@ -17,7 +17,7 @@ Con oltre 1500 ore di attività e pentest manuali sui sistemi critici di aziende
 - TOP 5 Settore Energetico italiano; ecc
 (per capitalizzazione)
 
-CONTATTAMI PER:
+**CONTATTAMI PER:**
 * CONSULENZA CARRIERA 
 * PIANO DI STUDIO PERSONALIZZATO
 * RISORSE E CONSIGLI
@@ -26,7 +26,7 @@ CONTATTAMI PER:
 Specialista certificato CompTIA Security+ dal 2022 e 3° posto locale (CT) alla CyberChallenge 2023 :) 
 
 
-*Solo per il primo meeting. Puoi schedulare anche solo mezz’ora! 
+**\*Solo per il primo meeting. Puoi schedulare anche solo mezz’ora!**
 (Preferisco WhatsApp. Rispondo entro 24 ore)
 
-328 863 4121
+**328 863 4121**
