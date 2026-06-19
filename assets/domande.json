@@ -1,30 +1,93 @@
 [
   {
-    "id": 1,
-    "capitolo": "Introduzione e Livello Fisico",
+    "id": 101,
+    "capitolo": "Introduzione alle Reti",
     "tipo": "teoria",
-    "fronte": "Quali sono i vantaggi di usare un circuito virtuale rispetto a una rete datagram e come viene effettuata la scelta del circuito?",
-    "retro": "Definizione di commutazione di pacchetto vs circuito.\nFase di setup nel circuito virtuale.\nVantaggi: ordine garantito, instradamento veloce, QoS predicibile.\nSvantaggi: vulnerabilità in caso di guasto del router, ritardo di setup."
+    "fronte": "Quali sono le componenti fisiche e logiche fondamentali che definiscono l'architettura di una rete?",
+    "retro": "- Definire l'edge della rete (host, end-system, client/server).\n- Definire il core della rete (router, switch e la maglia di collegamenti).\n- Descrivere i mezzi trasmissivi (rame, fibra, etere).\n- Definire il concetto di protocollo (regole che governano formato, ordine e significato dei messaggi)."
   },
   {
-    "id": 2,
-    "capitolo": "Introduzione e Livello Fisico",
+    "id": 102,
+    "capitolo": "Introduzione alle Reti",
     "tipo": "teoria",
-    "fronte": "A cosa serve la modulazione? Cos'è una costellazione e perché non si possono fare costellazioni con 96 punti?",
-    "retro": "Scopo: adattare il segnale digitale al mezzo trasmissivo analogico.\nCostellazione: rappresentazione degli stati possibili del segnale modulato.\nVincolo matematico: il numero di punti deve essere una potenza di 2. 96 non è una potenza di 2."
+    "fronte": "Qual è la differenza strutturale e funzionale tra il network edge e il network core?",
+    "retro": "- Il network edge si occupa dell'esecuzione delle applicazioni e della logica end-to-end.\n- Il network core ha l'unico compito di spostare i dati dall'origine alla destinazione (instradamento e inoltro), senza curarsi del contenuto del payload applicativo."
   },
   {
-    "id": 3,
-    "capitolo": "Application Layer",
+    "id": 103,
+    "capitolo": "Introduzione alle Reti",
     "tipo": "teoria",
-    "fronte": "Perché diciamo che HTTP è senza stato? Qual è il ruolo dei cookie?",
-    "retro": "Stateless: il server non mantiene memoria delle richieste passate per limitare l'occupazione di memoria.\nRisoluzione: i cookie mantengono il contesto.\nDifferenza Client/Utente: il cookie traccia il client (browser), non necessariamente l'utente fisico."
+    "fronte": "Perché le architetture di rete sono strutturate a livelli? Discutere vantaggi e svantaggi di questo approccio.",
+    "retro": "Vantaggi:\n- Modularità (aggiornare un livello non intacca gli altri se le interfacce rimangono invariate).\n- Scomposizione di sistemi complessi in parti più semplici.\n- Standardizzazione.\n\nSvantaggi:\n- Overhead (ogni livello aggiunge la propria intestazione).\n- Potenziale duplicazione di funzionalità tra i livelli (es. controllo errori)."
   },
   {
-    "id": 4,
-    "capitolo": "Livello Dati e Rete",
-    "tipo": "esercizio",
-    "fronte": "ESERCIZIO DUMMY: Calcolare il CRC del seguente pacchetto dati...",
-    "retro": "1. Allineare il polinomio generatore.\n2. Eseguire l'XOR bit a bit.\n3. Il resto è il CRC da accodare."
+    "id": 104,
+    "capitolo": "Introduzione alle Reti",
+    "tipo": "teoria",
+    "fronte": "Spiegare in dettaglio i concetti di incapsulamento e decapsulamento dei dati tra i vari livelli.",
+    "retro": "Flusso top-down (trasmissione):\n- Il dato applicativo (messaggio) passa al livello trasporto.\n- Trasporto aggiunge l'header (crea il segmento) e passa alla rete.\n- Rete aggiunge l'header IP (crea il datagramma) e passa al link.\n- Link aggiunge l'header MAC (crea il frame).\n\nFlusso bottom-up (ricezione):\n- Progressiva lettura e rimozione delle intestazioni salendo i livelli fino al riassemblaggio del messaggio originale."
+  },
+  {
+    "id": 105,
+    "capitolo": "Introduzione alle Reti",
+    "tipo": "teoria",
+    "fronte": "Illustrare l'architettura del modello OSI specificando la funzione principale di ciascuno dei 7 livelli.",
+    "retro": "1. Fisico (bit sul mezzo e segnali elettrici/ottici)\n2. Data Link (framing e controllo accesso al mezzo MAC)\n3. Rete (routing e indirizzamento logico IP)\n4. Trasporto (comunicazione end-to-end e porte)\n5. Sessione (gestione del dialogo tra processi)\n6. Presentazione (sintassi dei dati e crittografia)\n7. Applicazione (interfaccia per l'utente/servizi di rete)"
+  },
+  {
+    "id": 106,
+    "capitolo": "Introduzione alle Reti",
+    "tipo": "teoria",
+    "fronte": "Confronto architetturale tra OSI e TCP/IP: quali sono le differenze principali e perché il TCP/IP ha prevalso?",
+    "retro": "Differenza strutturale:\n- OSI ha 7 livelli, TCP/IP ne ha 5 (o 4 nel modello originale).\n- Nel TCP/IP i livelli di sessione e presentazione OSI sono accorpati all'Applicazione.\n\nDifferenza filosofica/storica:\n- OSI è nato prima dei protocolli (modello teorico perfetto ma complesso).\n- TCP/IP è nato dai protocolli (approccio pragmatico, testato sul campo e spinto dal progetto ARPANET/DARPA)."
+  },
+  {
+    "id": 107,
+    "capitolo": "Introduzione alle Reti",
+    "tipo": "teoria",
+    "fronte": "Qual è la differenza tra un servizio connection-oriented e uno connectionless?",
+    "retro": "Connection-oriented:\n- Richiede tre fasi: setup (handshake/apertura), trasferimento dati, chiusura (teardown).\n- Mantiene lo stato della connessione nei nodi o negli end-system (es. TCP, circuito virtuale).\n\nConnectionless:\n- Invia i dati immediatamente senza preparazione preliminare.\n- Ogni pacchetto è indipendente e instrato a sé (es. UDP, IP datagram)."
+  },
+  {
+    "id": 108,
+    "capitolo": "Introduzione alle Reti",
+    "tipo": "teoria",
+    "fronte": "Un servizio affidabile è sempre connection-oriented? Quali meccanismi definiscono l'affidabilità?",
+    "retro": "L'affidabilità garantisce la consegna senza errori, senza perdite e in ordine. Richiede:\n- Acknowledge (ACK)\n- Timer per i pacchetti persi\n- Numeri di sequenza\n- Ritrasmissioni\n\nGeneralmente i servizi affidabili (es. TCP) sono connection-oriented per gestire bene questi parametri di stato. Non è però una regola assoluta in contesti software custom. Per flussi in tempo reale (streaming video) l'inaffidabilità è preferibile per evitare la latenza derivante dalle ritrasmissioni."
+  },
+  {
+    "id": 109,
+    "capitolo": "Introduzione alle Reti",
+    "tipo": "teoria",
+    "fronte": "Cosa sono le primitive di servizio in un'architettura a livelli?",
+    "retro": "Sono le operazioni o funzioni che un livello N offre al livello N+1 tramite il SAP (Service Access Point).\n\nQuattro categorie standard:\n1. Request (richiesta di compiere un'azione)\n2. Indication (notifica del verificarsi di un evento)\n3. Response (risposta della controparte a un evento)\n4. Confirm (conferma che la richiesta iniziale è andata a buon fine)"
+  },
+  {
+    "id": 110,
+    "capitolo": "Introduzione alle Reti",
+    "tipo": "teoria",
+    "fronte": "Definire e distinguere le trasmissioni punto-punto, multicast e broadcast, spiegando le implicazioni sull'uso del canale.",
+    "retro": "- Punto-punto: da un singolo mittente a un singolo destinatario specifico.\n- Multicast: da un mittente a un gruppo selezionato di destinatari iscritti a quel flusso.\n- Broadcast: da un mittente a tutti i nodi collegati alla rete locale.\n\nImplicazioni: il broadcast in un canale condiviso satura le risorse e rende necessari protocolli strutturati di accesso al mezzo (sottolivello MAC) per evitare e gestire le collisioni."
+  },
+  {
+    "id": 111,
+    "capitolo": "Introduzione alle Reti",
+    "tipo": "teoria",
+    "fronte": "Classificare le reti in base all'estensione geografica definendo PAN, LAN, MAN e WAN.",
+    "retro": "- PAN (Personal Area Network): raggio di pochi metri (es. Bluetooth).\n- LAN (Local Area Network): raggio di chilometri, uffici o campus, spesso ad alto bitrate e tecnologia broadcast (es. Ethernet, WiFi).\n- MAN (Metropolitan Area Network): estensione cittadina, interconnette sedi o funge da dorsale locale.\n- WAN (Wide Area Network): portata globale, interconnessione di reti inferiori tramite router e dorsali a commutazione di pacchetto (es. Internet)."
+  },
+  {
+    "id": 112,
+    "capitolo": "Introduzione alle Reti",
+    "tipo": "teoria",
+    "fronte": "Illustra dettagliatamente il meccanismo della commutazione di pacchetto rispetto alla commutazione di circuito, motivando storicamente il passaggio alla prima.",
+    "retro": "Commutazione di circuito (rete telefonica classica):\n- Riserva banda e risorse fisse end-to-end per l'intera durata della sessione. Genera enorme spreco di risorse nei momenti di silenzio.\n\nCommutazione di pacchetto (nata col progetto DARPA):\n- I dati vengono suddivisi in pacchetti indipendenti.\n- Vengono inviati su percorsi dinamici (meccanismo store-and-forward sui router).\n- Permette il multiplexing statistico, massimizzando l'uso del canale condiviso. È ideale per il traffico informatico che avviene per \"raffiche\" (bursty)."
+  },
+  {
+    "id": 113,
+    "capitolo": "Introduzione alle Reti",
+    "tipo": "teoria",
+    "fronte": "Quali sono le caratteristiche e i vantaggi di una rete a circuito virtuale rispetto a una pura rete datagram?",
+    "retro": "Caratteristiche:\n- Prevede una fase di setup iniziale per determinare il percorso ottimale e prenotare risorse.\n- Assegna un VCI (Virtual Circuit Identifier) ai pacchetti.\n\nVantaggi rispetto al datagram puro:\n- L'ordine dei pacchetti è matematicamente garantito.\n- L'inoltro nei router è più veloce (leggono solo l'etichetta VCI, niente lookup lunghi).\n- Permette di garantire metriche precise di QoS.\n\nSvantaggi:\n- Overhead iniziale per il setup.\n- Bassissima resilienza ai guasti: la caduta di un singolo router intermedio fa crollare l'intero circuito."
   }
 ]
