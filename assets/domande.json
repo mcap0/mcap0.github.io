@@ -132,7 +132,4 @@
         "fronte": "Spiega il funzionamento del protocollo HTTP",
         "retro": "HyperText Transfer Protocol (HTTP) è al cuore del Web ed è implementato in due programmi: un programma client e un programma server, che vengono eseguiti su end-systems differenti. Questi comunicano scambiando messaggi HTTP, definiti nella struttura e contenenti tutte le informazioni necessarie per essere interpretate. I web server, contenenti i server HTTP, sono accessibili solitamente tramite un identificatore univoco URL. Il server, quando riceve una messaggio di richiesta HTTP dal client riguardo un oggetto, risponde con una risposta HTTP contenente l'oggetto richiesto. HTTP usa storicamente TCP nel livello di trasporto, anche se nella versione 3.0 viene usato UDP. Infine è importante denotare che, parlando di HTTP nella sua versione standard, il server nella generazione della risposta al client non salva nessuna informazione riguardante lo stato del client, infatti, se un clientdovesse richiedere due volte lo stesso oggetto nel giro di pochi secondi, il server dovrebbe rispondere mandando semplicemente l'oggetto entrambe le volte, invece di rispondere con \"l'oggetto è appena stato inviato\". data questa ultima proprietà, si definisce HTTP come un protocollo stateless. Per la gestione dello stato, HTTP fa uso dei cosiddetti Cookie in combinazione con applicazioni server che fanno uso di Dynamic HTML, come ASP, PHP e Java"
     }
-    
-
-
 ]
