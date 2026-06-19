@@ -1,12 +1,12 @@
 ---
-layout: page
-title: Simulazione Esami di Reti di Calcolatori
-permalink: /simulazione/
+title: Simulazione Esame
+icon: fas fa-laptop-code
+order: 4
 ---
 
 <style>
-  /* Stili di base integrati per la Web App */
-  #app-container { font-family: sans-serif; max-width: 800px; margin: 0 auto; }
+  /* Stili di base */
+  #app-container { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding-top: 20px; }
   .hidden { display: none !important; }
   .btn { padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; margin: 5px; }
   .btn-primary { background-color: #007bff; color: white; }
@@ -27,14 +27,18 @@ permalink: /simulazione/
 
   .stats-bar { display: flex; justify-content: space-between; background: #e9ecef; padding: 10px; border-radius: 5px; font-weight: bold; color: #333; margin-bottom: 15px;}
   .timer-alert { color: #dc3545; }
+
+  #status-message { font-style: italic; color: #666; margin-bottom: 15px; }
 </style>
 
 <div id="app-container">
 
-  <div id="main-menu" class="menu-panel">
+  <div id="status-message">Caricamento database domande in corso...</div>
+
+  <div id="main-menu" class="menu-panel hidden">
     <h3>Seleziona Modalità</h3>
-    <button class="btn btn-primary" onclick="showConfig('simulazione')">Modalità Simulazione (Esame 3 domande - 90 min)</button>
-    <button class="btn btn-secondary" onclick="showConfig('esercitazione')">Modalità Esercitazione (Libera)</button>
+    <button id="btn-simulazione" class="btn btn-primary">Modalità Simulazione (Esame 3 dom. - 90 min)</button>
+    <button id="btn-esercitazione" class="btn btn-secondary">Modalità Esercitazione (Libera)</button>
   </div>
 
   <div id="config-esercitazione" class="config-panel hidden">
@@ -57,10 +61,10 @@ permalink: /simulazione/
     </div>
     <div class="config-group">
       <label><b>Numero Domande:</b> <input type="number" id="num-domande" value="10" min="1" style="width: 60px;"></label>
-      <span style="font-size: 0.8em; color: #666;">(Metti un numero altissimo per farle tutte)</span>
+      <span style="font-size: 0.8em; color: #666;">(Metti un numero alto per farle tutte)</span>
     </div>
-    <button class="btn btn-success" onclick="startEsercitazione()">Invia Esercitazione</button>
-    <button class="btn btn-secondary" onclick="backToMenu()">Indietro</button>
+    <button id="btn-start-esercitazione" class="btn btn-success">Avvia Esercitazione</button>
+    <button id="btn-back-menu-1" class="btn btn-secondary">Indietro</button>
   </div>
 
   <div id="quiz-area" class="hidden">
@@ -70,14 +74,14 @@ permalink: /simulazione/
       <span id="score-text">Sapevo: 0 | Non sapevo: 0</span>
     </div>
 
-    <div class="card-container" onclick="flipCard()">
+    <div class="card-container" id="flashcard-container">
       <div id="flashcard" class="card">
-        <div class="card-front">
+        <div class="card-front card-face">
           <p id="card-front-capitolo" style="font-size: 0.8em; color: #666; margin-bottom: 15px;"></p>
           <p id="card-front-text"></p>
-          <p style="font-size: 0.8em; color: #999; margin-top: 20px;">(Clicca per girare e vedere la scaletta)</p>
+          <p style="font-size: 0.8em; color: #999; margin-top: 20px;">(Clicca sulla carta per girarla)</p>
         </div>
-        <div class="card-back">
+        <div class="card-back card-face">
           <h4 style="margin-top:0; border-bottom: 1px solid #ccc; padding-bottom: 5px;">Punti chiave per la stesura:</h4>
           <p id="card-back-text" style="white-space: pre-wrap; font-size: 1.1em; line-height: 1.5;"></p>
         </div>
@@ -86,8 +90,8 @@ permalink: /simulazione/
 
     <div id="evaluation-controls" class="hidden" style="text-align: center; margin-top: 20px;">
       <p style="margin-bottom: 10px; font-weight: bold;">Valuta la tua preparazione su questa domanda:</p>
-      <button class="btn btn-success" onclick="recordAnswer(true)">Sapevo (+1)</button>
-      <button class="btn btn-danger" onclick="recordAnswer(false)">Non Sapevo (0)</button>
+      <button id="btn-sapevo" class="btn btn-success">Sapevo (+1)</button>
+      <button id="btn-non-sapevo" class="btn btn-danger">Non Sapevo (0)</button>
     </div>
   </div>
 
@@ -95,7 +99,7 @@ permalink: /simulazione/
     <h3>Sessione Conclusa</h3>
     <p id="final-score" style="font-size: 1.2em; font-weight: bold;"></p>
     <div id="review-list" style="margin-top: 20px; text-align: left;"></div>
-    <button class="btn btn-primary" onclick="backToMenu()" style="margin-top: 20px;">Torna al Menu Principale</button>
+    <button id="btn-back-menu-2" class="btn btn-primary" style="margin-top: 20px;">Torna al Menu Principale</button>
   </div>
 
 </div>
@@ -109,20 +113,43 @@ permalink: /simulazione/
   let wrongQuestions = [];
   let timerInterval;
 
-  // Caricamento Dati all'avvio
   document.addEventListener("DOMContentLoaded", () => {
-    fetch('/assets/domande.json') // Assicurati che il percorso sia corretto nel tuo sito
-      .then(response => response.json())
+
+    // 1. ASSEGNAZIONE DEGLI EVENTI (Sicuro per CSP)
+    document.getElementById('btn-simulazione').addEventListener('click', () => showConfig('simulazione'));
+    document.getElementById('btn-esercitazione').addEventListener('click', () => showConfig('esercitazione'));
+    document.getElementById('btn-start-esercitazione').addEventListener('click', startEsercitazione);
+    document.getElementById('btn-back-menu-1').addEventListener('click', backToMenu);
+    document.getElementById('btn-back-menu-2').addEventListener('click', backToMenu);
+    document.getElementById('flashcard').addEventListener('click', flipCard);
+    document.getElementById('btn-sapevo').addEventListener('click', () => recordAnswer(true));
+    document.getElementById('btn-non-sapevo').addEventListener('click', () => recordAnswer(false));
+
+    // 2. CARICAMENTO DEL JSON
+    const statusMsg = document.getElementById('status-message');
+
+    // Controlla che il percorso punti correttamente alla cartella assets
+    fetch('/assets/domande.json')
+      .then(response => {
+        if (!response.ok) throw new Error('Errore di rete o file non trovato');
+        return response.json();
+      })
       .then(data => {
         allQuestions = data;
         populateChapters(data);
+        statusMsg.classList.add('hidden'); // Nascondi il messaggio di stato
+        document.getElementById('main-menu').classList.remove('hidden'); // Mostra il menu
       })
-      .catch(err => console.error("Errore caricamento JSON:", err));
+      .catch(err => {
+        statusMsg.innerHTML = `<span style="color:red;"><b>Errore:</b> Impossibile caricare il file 'domande.json'. Assicurati di averlo inserito in '/assets/domande.json'. Dettaglio: ${err.message}</span>`;
+        console.error("Errore caricamento JSON:", err);
+      });
   });
 
   function populateChapters(data) {
     const chapters = [...new Set(data.map(q => q.capitolo))];
     const container = document.getElementById('chapter-checkboxes');
+    container.innerHTML = '';
     chapters.forEach(cap => {
       container.innerHTML += `<label style="margin-right: 15px;"><input type="checkbox" value="${cap}" checked> ${cap}</label>`;
     });
@@ -169,7 +196,6 @@ permalink: /simulazione/
 
   // --- LOGICA ESERCITAZIONE ---
   function startEsercitazione() {
-    // Raccogli i capitoli selezionati
     const checkboxes = document.querySelectorAll('#chapter-checkboxes input:checked');
     const selectedChapters = Array.from(checkboxes).map(cb => cb.value);
 
@@ -177,13 +203,9 @@ permalink: /simulazione/
       alert("Seleziona almeno un capitolo."); return;
     }
 
-    // Tipo di domanda
     const tipo = document.querySelector('input[name="tipoQ"]:checked').value;
-
-    // Ordine
     const ordine = document.querySelector('input[name="ordineQ"]:checked').value;
 
-    // Filtra la coda
     currentQueue = allQuestions.filter(q => selectedChapters.includes(q.capitolo));
     if (tipo !== 'tutti') {
       currentQueue = currentQueue.filter(q => q.tipo === tipo);
@@ -218,7 +240,7 @@ permalink: /simulazione/
     document.getElementById('timer-text').classList.remove('timer-alert');
 
     if (isSimulazione) {
-      startTimer(90 * 60); // 90 minuti in secondi
+      startTimer(90 * 60); // 90 minuti
       document.getElementById('timer-text').classList.remove('hidden');
     }
 
@@ -242,7 +264,6 @@ permalink: /simulazione/
     const card = document.getElementById('flashcard');
     if (!card.classList.contains('is-flipped')) {
       card.classList.add('is-flipped');
-      // Mostra i bottoni Sapevo/Non Sapevo solo dopo aver girato la carta
       document.getElementById('evaluation-controls').classList.remove('hidden');
     }
   }
@@ -283,7 +304,7 @@ permalink: /simulazione/
 
         display.innerText = "Tempo rimanente: " + minutes + ":" + seconds;
 
-        if (timer < 300) display.classList.add('timer-alert'); // Rosso sotto i 5 min
+        if (timer < 300) display.classList.add('timer-alert');
 
         if (--timer < 0) {
             clearInterval(timerInterval);
@@ -317,7 +338,6 @@ permalink: /simulazione/
     document.getElementById('review-list').innerHTML = reviewHtml;
   }
 
-  // Utility Fisher-Yates per mescolare gli array
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
