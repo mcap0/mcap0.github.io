@@ -103,5 +103,12 @@
         "tipo": "Domanda aperta",
         "fronte": "Parla della affidabilità delle comunicazioni nel contesto applicativo e della coerenza dei dati end-to-end",
         "retro": "Nelle comunicazioni di rete, un pacchetto e i dati possono essere persi, ad esempio passando per un router con un buffer pieno. Per molte applicazioni, quali mail elettroniche o servizi applicativi finanziari, la perdita di dati può avere conseguenze devastant. Per supportare le applicazioni, bisogna usare un protocollo che provvede garanzie riguardo la trasmissione e ricezione dei dati (affidabilità). Quando il protocollo di trasporto provvede questo servizio, il processo può semplicemente passare i dati alla rete e sa con completa confidenza che i dati arriveranno a destinazione senza errori. Se non è questo il caso, alcuni dei dati potrebbero non arrivare o arrivare in ordine sparso. Potrebbe essere una situazione accettabile per le applicazioni con questa tolleranza, ad esempio servizi di live-streaming."
+    },
+    {
+        "id": 16,
+        "capitolo": "Application Layer",
+        "tipo": "Domanda aperta",
+        "fronte": "Cita requisiti temporali e di affidabilità delle applicazioni",
+        "retro": "Alcune applicazioni potrebbero avere dei requisiti specifici di banda. Alcuni esempi sono applicazioni di multimedia come YouTube, dove l'attesa di caricamento può rendere l'applicazione inutilizzabile. Una garanzia di throughput, ad esempio 100msec per la ricezione di ogni bit inviato, è di sensibile utilità alle applicazioni interattive real time, come la VoIP, i giochi multiplayer, le videoconferenze. Questa è utile apple applicazioni ma solitamente a garantirla deve essere il protocollo a livello di trasporto.\n Per questo motivo è molto importante la decisione del protocollo di trasporto per una applicazione. Il livello di trasporto provvede TCP, che è orientato alla connessione e recepisce tutti i messaggi senza errori e nel corretto ordine, e UDP, che non è orientato alla connessione (non ha handshake, non vi è allerta dell'inizio del flusso di dati) e non provvede garanzie sull'arrivo dei messaggi nè tantomento nel loro ordine di arrivo. Quest'ultimo è preferibile se il servizio che vogliamo creare è sensibile al timing, massimizzando il throughput in situazioni di non congestione, o se la conferma della ricezione è superflua alle funzionalità dell'applicazione, come nel caso del protocollo Domain Name Server (DNS)"
     }
 ]
