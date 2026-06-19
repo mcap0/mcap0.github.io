@@ -96,5 +96,12 @@
         "tipo": "Domanda aperta",
         "fronte": "Differenze tra schema P2P e Client-Server",
         "retro": "In una architettura Client-Server c'è un host always-on chiamato server, i quali servizi sono richiesti da più host chiamati clients. In questo schema, il Client è in grado di contattare il server. Nello schema P2P non c affidiamo a server dedicati, vi è comunicazione diretta tra hosts che sono connessi in modo intermittente (non always-on) chiamati peers. In questo caso, non è necessario usare data center per permettere la disponibilità dei servizi. Un altro vantaggio dello schema P2P è l'auto scalabilità dell'architettura, dato che ogni nuovo host connesso aumenta la capacità di calcolo del sistema distribuito. Un chiaro svantaggio è la potenziale non disponibilità del sistema, che dal punto di vista dell'architettura client server è raggiunta al costo della creazione di data center con numerosi host molto potenti e distribuiti in giro per il mondo, con data center che raggiungono numeri di centinaia di migliaia di host."
+    },
+    {
+        "id": 15,
+        "capitolo": "Application Layer",
+        "tipo": "Domanda aperta",
+        "fronte": "Parla della affidabilità delle comunicazioni nel contesto applicativo e della coerenza dei dati end-to-end",
+        "retro": "Nelle comunicazioni di rete, un pacchetto e i dati possono essere persi, ad esempio passando per un router con un buffer pieno. Per molte applicazioni, quali mail elettroniche o servizi applicativi finanziari, la perdita di dati può avere conseguenze devastant. Per supportare le applicazioni, bisogna usare un protocollo che provvede garanzie riguardo la trasmissione e ricezione dei dati (affidabilità). Quando il protocollo di trasporto provvede questo servizio, il processo può semplicemente passare i dati alla rete e sa con completa confidenza che i dati arriveranno a destinazione senza errori. Se non è questo il caso, alcuni dei dati potrebbero non arrivare o arrivare in ordine sparso. Potrebbe essere una situazione accettabile per le applicazioni con questa tolleranza, ad esempio servizi di live-streaming."
     }
 ]
