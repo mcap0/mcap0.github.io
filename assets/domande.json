@@ -124,6 +124,14 @@
         "tipo": "Domanda aperta",
         "fronte": " Well Known Ports, Registered Ports e User Ports",
         "retro": "(AI)* Well Known Ports (0-1023): Sono le porte dedicate ai servizi di sistema. L'accesso o la creazione di servizi su questo intervallo richiede privilegi di root (amministratore). Protocolli come FTP, TELNET e SSH utilizzano spesso questo range .\n* Registered Ports (1024-49151): Sono porte assegnate dall'ICANN per usi specifici .\n* User Ports / Dynamic / Private Ports (49152-65535): Sono porte non legate ad usi specifici e non riservate . (BONUS non AI) un vecchio metodo per difendere le porte da possibili intrusori è il metodo knocking-door, che mostra una porta aperta come chiusa al mittente e non sblocca la suddetta finchè un preciso ordine di porte non venga prima sollecitato attraverso pacchetti specifici. Esempio: un server FTP non mostra sè stesso se prima non vengono inviati 10 pacchetti in ordine dalla porta 1337 alla 1346"
+    },
+    {
+        "id": 19,
+        "capitolo": "Application Layer",
+        "tipo": "Domanda aperta",
+        "fronte": "Spiega il funzionamento del protocollo HTTP",
+        "retro": "HyperText Transfer Protocol (HTTP) è al cuore del Web ed è implementato in due programmi: un programma client e un programma server, che vengono eseguiti su end-systems differenti. Questi comunicano scambiando messaggi HTTP, definiti nella struttura e contenenti tutte le informazioni necessarie per essere interpretate. I web server, contenenti i server HTTP, sono accessibili solitamente tramite un identificatore univoco URL. Il server, quando riceve una messaggio di richiesta HTTP dal client riguardo un oggetto, risponde con una risposta HTTP contenente l'oggetto richiesto. HTTP usa storicamente TCP nel livello di trasporto, anche se nella versione 3.0 viene usato UDP. Infine è importante denotare che, parlando di HTTP nella sua versione standard, il server nella generazione della risposta al client non salva nessuna informazione riguardante lo stato del client, infatti, se un clientdovesse richiedere due volte lo stesso oggetto nel giro di pochi secondi, il server dovrebbe rispondere mandando semplicemente l'oggetto entrambe le volte, invece di rispondere con \"l'oggetto è appena stato inviato\". data questa ultima proprietà, si definisce HTTP come un protocollo stateless."
     }
+
 
 ]
