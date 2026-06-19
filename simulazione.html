@@ -3,343 +3,796 @@ layout: page
 title: Simulazione Esami di Reti di Calcolatori
 permalink: /simulazione/
 ---
-
+{% raw %}
 <style>
-  #app-container { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding-top: 20px; }
+  :root {
+    --card-radius: 10px;
+    --transition-speed: 0.3s;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  #app-container {
+    font-family: inherit;
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 1rem 0;
+  }
+
   .hidden { display: none !important; }
-  .btn { padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; margin: 5px; }
-  .btn-primary { background-color: #007bff; color: white; }
-  .btn-success { background-color: #28a745; color: white; }
-  .btn-danger { background-color: #dc3545; color: white; }
-  .btn-secondary { background-color: #6c757d; color: white; }
 
-  .menu-panel, .config-panel, .results-panel { background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px; color: #333; border: 1px solid #ddd; }
-  .config-group { margin-bottom: 15px; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border: 1px solid var(--btn-border-color, var(--main-border-color));
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all var(--transition-speed);
+    text-decoration: none;
+    line-height: 1.4;
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: var(--card-shadow); }
+  .btn:active { transform: translateY(0); }
+  .btn-primary { background-color: var(--link-color); color: #fff; border-color: var(--link-color); }
+  .btn-primary:hover { filter: brightness(1.1); }
+  .btn-secondary { background-color: var(--card-bg); color: var(--text-color); border-color: var(--main-border-color); }
+  .btn-secondary:hover { background-color: var(--sidebar-bg); }
+  .btn-success { background-color: #28a745; color: #fff; border-color: #28a745; }
+  .btn-success:hover { filter: brightness(1.1); }
+  .btn-danger { background-color: #dc3545; color: #fff; border-color: #dc3545; }
+  .btn-danger:hover { filter: brightness(1.1); }
 
-  .card-container { perspective: 1000px; width: 100%; min-height: 350px; margin: 20px 0; }
-  .card { width: 100%; height: 100%; min-height: 350px; transition: transform 0.6s; transform-style: preserve-3d; position: relative; cursor: pointer; }
+  .panel {
+    background: var(--card-bg);
+    padding: 1.75rem;
+    border-radius: var(--card-radius);
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--main-border-color);
+    box-shadow: var(--card-shadow);
+  }
+
+  .panel h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.35rem;
+    color: var(--heading-color);
+  }
+  .panel p { color: var(--text-muted-color); margin: 0 0 1rem; }
+  .panel p:last-child { margin-bottom: 0; }
+
+  /* Loading */
+  #status-message {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-muted-color);
+  }
+  .loader-ring {
+    display: inline-block;
+    width: 40px; height: 40px;
+    border: 4px solid var(--main-border-color);
+    border-top-color: var(--link-color);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 1rem;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Mode selection cards */
+  .mode-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .mode-card {
+    background: var(--card-bg);
+    border: 2px solid var(--main-border-color);
+    border-radius: var(--card-radius);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    text-align: center;
+  }
+  .mode-card:hover {
+    border-color: var(--link-color);
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+  }
+  .mode-card .icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    display: block;
+    color: var(--link-color);
+  }
+  .mode-card h4 { margin: 0 0 0.25rem; color: var(--heading-color); }
+  .mode-card p { margin: 0; font-size: 0.85rem; }
+
+  /* Config */
+  .config-group { margin-bottom: 1.25rem; }
+  .config-group:last-child { margin-bottom: 0; }
+  .config-group > label { display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--heading-color); font-size: 0.95rem; }
+  .config-group .radio-group, .config-group .check-group { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; }
+  .config-group .radio-group label, .config-group .check-group label {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.9rem; cursor: pointer; color: var(--text-color);
+    padding: 4px 0;
+  }
+  .config-group input[type="radio"], .config-group input[type="checkbox"] {
+    accent-color: var(--link-color);
+    width: 16px; height: 16px;
+  }
+  .config-group input[type="number"] {
+    width: 80px; padding: 6px 10px;
+    border: 1px solid var(--main-border-color);
+    border-radius: 4px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    font-size: 0.9rem;
+  }
+  .config-actions { display: flex; gap: 0.75rem; margin-top: 1.25rem; flex-wrap: wrap; }
+
+  /* Stats bar */
+  .stats-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.85rem 1.1rem;
+    background: var(--card-bg);
+    border: 1px solid var(--main-border-color);
+    border-radius: var(--card-radius) var(--card-radius) 0 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-color);
+  }
+  .stats-bar > span { display: inline-flex; align-items: center; gap: 4px; }
+
+  .progress-track {
+    height: 4px;
+    background: var(--main-border-color);
+    border-radius: 0 0 var(--card-radius) var(--card-radius);
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--link-color), #28a745);
+    transition: width 0.5s ease;
+    border-radius: 0 0 var(--card-radius) var(--card-radius);
+  }
+
+  .timer-ok { color: var(--text-muted-color); }
+  .timer-warn { color: #e67e22; }
+  .timer-alert { color: #dc3545; animation: pulse 1s infinite; }
+  @keyframes pulse { 50% { opacity: 0.6; } }
+
+  /* Flashcard */
+  .card-container {
+    perspective: 1200px;
+    width: 100%;
+    min-height: 320px;
+    margin-bottom: 1rem;
+  }
+  .card {
+    width: 100%;
+    min-height: 320px;
+    transition: transform 0.5s ease;
+    transform-style: preserve-3d;
+    position: relative;
+    cursor: pointer;
+  }
   .card.is-flipped { transform: rotateY(180deg); }
-  .card-face { width: 100%; height: 100%; position: absolute; backface-visibility: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 30px; box-sizing: border-box; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-  .card-front { background-color: #ffffff; border: 2px solid #007bff; color: #333; text-align: center; font-size: 1.2em; }
-  .card-back { background-color: #f1f8ff; border: 2px solid #28a745; color: #333; transform: rotateY(180deg); overflow-y: auto; align-items: flex-start; justify-content: flex-start; text-align: left; }
+  .card-face {
+    width: 100%;
+    min-height: 320px;
+    position: absolute;
+    top: 0; left: 0;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: border-box;
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--main-border-color);
+    background: var(--card-bg);
+  }
+  .card-front { text-align: center; }
+  .card-front .cap-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted-color);
+    margin-bottom: 1rem;
+  }
+  .card-front .question-text {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--heading-color);
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  .card-front .tap-hint {
+    font-size: 0.8rem;
+    color: var(--text-muted-color);
+    margin-top: 2rem;
+    opacity: 0.7;
+  }
+  .card-back {
+    transform: rotateY(180deg);
+    background: var(--card-bg);
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow-y: auto;
+  }
+  .card-back .back-header {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #28a745;
+    border-bottom: 2px solid var(--main-border-color);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  .card-back .back-content {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-color);
+    white-space: pre-wrap;
+    width: 100%;
+  }
 
-  .stats-bar { display: flex; justify-content: space-between; background: #e9ecef; padding: 15px; border-radius: 5px; font-weight: bold; color: #333; margin-bottom: 15px; border: 1px solid #ddd;}
-  .timer-alert { color: #dc3545; }
+  /* Evaluation */
+  #evaluation-controls {
+    text-align: center;
+    padding: 1.25rem;
+    background: var(--card-bg);
+    border: 1px solid var(--main-border-color);
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    margin-bottom: 1rem;
+    animation: fadeSlideUp 0.3s ease;
+  }
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  #evaluation-controls p {
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+    color: var(--heading-color);
+  }
+  .eval-btns { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+  .eval-btns .btn { min-width: 140px; }
+  .key-hint {
+    font-size: 0.75rem;
+    opacity: 0.6;
+    font-weight: 400;
+  }
 
-  #status-message { font-style: italic; color: #666; margin-bottom: 15px; padding: 10px; background: #fff3cd; border: 1px solid #ffeeba; border-radius: 5px;}
+  /* Results */
+  .score-display {
+    text-align: center;
+    padding: 1.5rem 0;
+  }
+  .score-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: conic-gradient(var(--link-color) var(--pct, 0%), var(--main-border-color) var(--pct, 0%));
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  .score-circle-inner {
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .score-circle-inner .num {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--heading-color);
+    line-height: 1;
+  }
+  .score-circle-inner .label {
+    font-size: 0.75rem;
+    color: var(--text-muted-color);
+    margin-top: 2px;
+  }
+  .score-text {
+    font-size: 1.1rem;
+    color: var(--text-muted-color);
+    margin-top: 0.5rem;
+  }
+
+  .review-section { margin-top: 1.5rem; }
+  .review-section h4 {
+    font-size: 1rem;
+    margin: 0 0 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--main-border-color);
+  }
+  .review-item {
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--main-border-color);
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    background: var(--body-bg);
+    transition: background var(--transition-speed);
+    cursor: pointer;
+  }
+  .review-item:hover { background: var(--sidebar-bg); }
+  .review-item .ri-cap { font-size: 0.75rem; font-weight: 700; color: var(--text-muted-color); text-transform: uppercase; letter-spacing: 0.05em; }
+  .review-item .ri-q { margin: 4px 0 0; color: var(--text-color); font-size: 0.9rem; }
+
+  .no-lacune {
+    text-align: center;
+    padding: 1.5rem;
+    color: #28a745;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  /* Utility */
+  .actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+  @media (max-width: 576px) {
+    .mode-grid { grid-template-columns: 1fr; }
+    .stats-bar { flex-direction: column; align-items: stretch; text-align: center; }
+    .card-face { padding: 1.25rem; }
+    .card-front .question-text { font-size: 1rem; max-width: 100%; }
+    .card-back .back-content { font-size: 0.95rem; }
+    .panel { padding: 1.25rem; }
+    .eval-btns .btn { min-width: 120px; }
+    .score-circle { width: 100px; height: 100px; }
+    .score-circle-inner { width: 84px; height: 84px; }
+    .score-circle-inner .num { font-size: 1.6rem; }
+  }
 </style>
 
 <div id="app-container">
-
-  <div id="status-message">Tentativo di connessione al database JSON in corso...</div>
-
-  <div id="main-menu" class="menu-panel hidden">
-    <h3>Seleziona Modalità</h3>
-    <p>Seleziona come vuoi testare le tue conoscenze.</p>
-    <button id="btn-simulazione" class="btn btn-primary">Simulazione Esame (3 Domande - 90 min)</button>
-    <button id="btn-esercitazione" class="btn btn-secondary">Esercitazione Libera</button>
+  <div id="status-message">
+    <div class="loader-ring"></div>
+    <p>Tentativo di connessione al database JSON in corso...</p>
   </div>
 
-  <div id="config-esercitazione" class="config-panel hidden">
+  <div id="main-menu" class="panel hidden">
+    <h3>Seleziona Modalit\E0</h3>
+    <p>Scegli come vuoi testare le tue conoscenze di Reti di Calcolatori.</p>
+    <div class="mode-grid">
+      <div class="mode-card" id="btn-simulazione" role="button" tabindex="0">
+        <span class="icon">&#9201;</span>
+        <h4>Simulazione Esame</h4>
+        <p>3 domande (2 teoria + 1 esercizio) &middot; 90 minuti</p>
+      </div>
+      <div class="mode-card" id="btn-esercitazione" role="button" tabindex="0">
+        <span class="icon">&#9997;</span>
+        <h4>Esercitazione Libera</h4>
+        <p>Scegli argomenti, tipo, numero e ordine delle domande</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="config-esercitazione" class="panel hidden">
     <h4>Impostazioni Esercitazione</h4>
     <div class="config-group">
-      <label><b>Filtra per Capitolo:</b></label><br>
-      <div id="chapter-checkboxes"></div>
+      <label>Filtra per Capitolo</label>
+      <div class="check-group" id="chapter-checkboxes"></div>
     </div>
     <div class="config-group">
-      <label><b>Tipo Domanda:</b></label><br>
-      <label><input type="radio" name="tipoQ" value="tutti" checked> Tutte</label>
-      <label><input type="radio" name="tipoQ" value="teoria"> Solo Teoria</label>
-      <label><input type="radio" name="tipoQ" value="esercizio"> Solo Esercizi</label>
+      <label>Tipo Domanda</label>
+      <div class="radio-group">
+        <label><input type="radio" name="tipoQ" value="tutti" checked> Tutte</label>
+        <label><input type="radio" name="tipoQ" value="teoria"> Solo Teoria</label>
+        <label><input type="radio" name="tipoQ" value="esercizio"> Solo Esercizi</label>
+      </div>
     </div>
     <div class="config-group">
-      <label><b>Ordine di uscita:</b></label><br>
-      <label><input type="radio" name="ordineQ" value="casuale" checked> Casuale</label>
-      <label><input type="radio" name="ordineQ" value="sequenziale"> Sequenziale</label>
+      <label>Ordine di Uscita</label>
+      <div class="radio-group">
+        <label><input type="radio" name="ordineQ" value="casuale" checked> Casuale</label>
+        <label><input type="radio" name="ordineQ" value="sequenziale"> Sequenziale</label>
+      </div>
     </div>
     <div class="config-group">
-      <label><b>Numero Domande da affrontare:</b> <input type="number" id="num-domande" value="10" min="1" style="width: 70px; padding: 5px;"></label>
+      <label>Numero Domande <input type="number" id="num-domande" value="10" min="1"></label>
     </div>
-    <button id="btn-start-esercitazione" class="btn btn-success">Avvia Test</button>
-    <button id="btn-back-menu-1" class="btn btn-secondary">Torna indietro</button>
+    <div class="config-actions">
+      <button id="btn-start-esercitazione" class="btn btn-success">Avvia Test</button>
+      <button id="btn-back-menu-1" class="btn btn-secondary">Torna Indietro</button>
+    </div>
   </div>
 
   <div id="quiz-area" class="hidden">
     <div class="stats-bar">
       <span id="progress-text">Domanda 1 / x</span>
-      <span id="timer-text" class="hidden">Tempo: 90:00</span>
-      <span id="score-text">Sapevo: 0 | Non sapevo: 0</span>
+      <span id="timer-text" class="hidden timer-ok">Tempo: 90:00</span>
+      <span id="score-text">Sapevo: 0 &middot; Non sapevo: 0</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
     </div>
 
     <div class="card-container" id="flashcard-container">
       <div id="flashcard" class="card">
         <div class="card-front card-face">
-          <p id="card-front-capitolo" style="font-size: 0.9em; color: #666; margin-bottom: 15px; font-weight: bold; text-transform: uppercase;"></p>
-          <p id="card-front-text"></p>
-          <p style="font-size: 0.8em; color: #999; margin-top: 30px;">(Clicca sulla carta per rivelare la soluzione)</p>
+          <div class="cap-label" id="card-front-capitolo"></div>
+          <div class="question-text" id="card-front-text"></div>
+          <div class="tap-hint">Clicca per rivelare la soluzione</div>
         </div>
         <div class="card-back card-face">
-          <h4 style="margin-top:0; border-bottom: 1px solid #ccc; padding-bottom: 10px; width: 100%;">Punti chiave:</h4>
-          <p id="card-back-text" style="white-space: pre-wrap; font-size: 1.05em; line-height: 1.6; width: 100%;"></p>
+          <div class="back-header">Punti Chiave</div>
+          <div class="back-content" id="card-back-text"></div>
         </div>
       </div>
     </div>
 
-    <div id="evaluation-controls" class="hidden" style="text-align: center; margin-top: 25px; padding: 15px; background: #f8f9fa; border-radius: 8px; border: 1px solid #ddd;">
-      <p style="margin-bottom: 15px; font-weight: bold; font-size: 1.1em;">Come valuti la tua risposta?</p>
-      <button id="btn-sapevo" class="btn btn-success" style="width: 150px;">Sapevo (+1)</button>
-      <button id="btn-non-sapevo" class="btn btn-danger" style="width: 150px;">Non Sapevo (0)</button>
+    <div id="evaluation-controls" class="hidden">
+      <p>Come valuti la tua risposta?</p>
+      <div class="eval-btns">
+        <button id="btn-sapevo" class="btn btn-success">Sapevo <span class="key-hint">(1)</span></button>
+        <button id="btn-non-sapevo" class="btn btn-danger">Non sapevo <span class="key-hint">(2)</span></button>
+      </div>
     </div>
   </div>
 
-  <div id="results-area" class="results-panel hidden">
+  <div id="results-area" class="panel hidden">
     <h3>Esito Sessione</h3>
-    <p id="final-score" style="font-size: 1.3em; font-weight: bold; margin: 20px 0;"></p>
-    <div id="review-list" style="margin-top: 20px; text-align: left; background: #fff; padding: 15px; border-radius: 5px; border: 1px solid #eee;"></div>
-    <button id="btn-back-menu-2" class="btn btn-primary" style="margin-top: 25px;">Torna al Menu</button>
+    <div class="score-display">
+      <div class="score-circle" id="score-circle">
+        <div class="score-circle-inner">
+          <div class="num" id="final-score-num">0%</div>
+          <div class="label">corrette</div>
+        </div>
+      </div>
+      <div class="score-text" id="final-score-text"></div>
+    </div>
+    <div class="review-section" id="review-section"></div>
+    <div class="actions">
+      <button id="btn-back-menu-2" class="btn btn-primary">Torna al Menu</button>
+    </div>
   </div>
-
 </div>
 
 <script>
-  let allQuestions = [];
-  let currentQueue = [];
-  let currentIndex = 0;
-  let correctCount = 0;
-  let wrongCount = 0;
-  let wrongQuestions = [];
-  let timerInterval;
+  (function() {
+    var allQuestions = [];
+    var currentQueue = [];
+    var currentIndex = 0;
+    var correctCount = 0;
+    var wrongCount = 0;
+    var wrongQuestions = [];
+    var timerInterval = null;
+    var isSimulazioneMode = false;
 
-  document.addEventListener("DOMContentLoaded", () => {
+    var els = {};
 
-    // Binding eventi sicuro
-    document.getElementById('btn-simulazione').addEventListener('click', () => showConfig('simulazione'));
-    document.getElementById('btn-esercitazione').addEventListener('click', () => showConfig('esercitazione'));
-    document.getElementById('btn-start-esercitazione').addEventListener('click', startEsercitazione);
-    document.getElementById('btn-back-menu-1').addEventListener('click', backToMenu);
-    document.getElementById('btn-back-menu-2').addEventListener('click', backToMenu);
-    document.getElementById('flashcard').addEventListener('click', flipCard);
-    document.getElementById('btn-sapevo').addEventListener('click', () => recordAnswer(true));
-    document.getElementById('btn-non-sapevo').addEventListener('click', () => recordAnswer(false));
+    function qs(id) { return document.getElementById(id); }
 
-    const statusMsg = document.getElementById('status-message');
+    document.addEventListener('DOMContentLoaded', function() {
+      els.statusMsg = qs('status-message');
+      els.mainMenu = qs('main-menu');
+      els.configPanel = qs('config-esercitazione');
+      els.quizArea = qs('quiz-area');
+      els.resultsArea = qs('results-area');
+      els.card = qs('flashcard');
+      els.evalControls = qs('evaluation-controls');
+      els.progressText = qs('progress-text');
+      els.timerText = qs('timer-text');
+      els.scoreText = qs('score-text');
+      els.progressFill = qs('progress-fill');
+      els.frontCapitolo = qs('card-front-capitolo');
+      els.frontText = qs('card-front-text');
+      els.backText = qs('card-back-text');
+      els.finalScoreNum = qs('final-score-num');
+      els.finalScoreText = qs('final-score-text');
+      els.scoreCircle = qs('score-circle');
+      els.reviewSection = qs('review-section');
+      els.chapterCheckboxes = qs('chapter-checkboxes');
+      els.numDomande = qs('num-domande');
 
-    // URL assoluto per bypassare problemi di root path di Jekyll
-    const jsonUrl = 'https://matteocapo.it/assets/domande.json';
+      qs('btn-simulazione').addEventListener('click', function() { showConfig('simulazione'); });
+      qs('btn-esercitazione').addEventListener('click', function() { showConfig('esercitazione'); });
+      qs('btn-start-esercitazione').addEventListener('click', startEsercitazione);
+      qs('btn-back-menu-1').addEventListener('click', backToMenu);
+      qs('btn-back-menu-2').addEventListener('click', backToMenu);
+      els.card.addEventListener('click', flipCard);
+      qs('btn-sapevo').addEventListener('click', function() { recordAnswer(true); });
+      qs('btn-non-sapevo').addEventListener('click', function() { recordAnswer(false); });
 
-    fetch(jsonUrl)
-      .then(response => {
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        return response.json();
-      })
-      .then(data => {
-        if(!Array.isArray(data) || data.length === 0) {
-            throw new Error("Il file JSON è vuoto o malformattato.");
+      document.addEventListener('keydown', function(e) {
+        if (e.key === ' ' || e.key === 'Enter') {
+          if (!els.quizArea.classList.contains('hidden')) {
+            e.preventDefault();
+            flipCard();
+          }
         }
-        allQuestions = data;
-        populateChapters(data);
-        statusMsg.classList.add('hidden');
-        document.getElementById('main-menu').classList.remove('hidden');
-      })
-      .catch(err => {
-        statusMsg.innerHTML = `<span style="color:#dc3545;"><b>Errore critico di caricamento:</b><br>Impossibile accedere al file '${jsonUrl}'.<br>Dettaglio tecnico: ${err.message}<br>Verifica che il file esista sul server e contenga JSON valido.</span>`;
-        statusMsg.style.background = "#f8d7da";
-        statusMsg.style.borderColor = "#f5c6cb";
+        if (e.key === '1' && !els.evalControls.classList.contains('hidden')) {
+          recordAnswer(true);
+        }
+        if (e.key === '2' && !els.evalControls.classList.contains('hidden')) {
+          recordAnswer(false);
+        }
       });
-  });
 
-  function populateChapters(data) {
-    const chapters = [...new Set(data.map(q => q.capitolo))];
-    const container = document.getElementById('chapter-checkboxes');
-    container.innerHTML = '';
-    chapters.forEach(cap => {
-      container.innerHTML += `<label style="display:inline-block; margin-right: 15px; margin-bottom: 5px;"><input type="checkbox" value="${cap}" checked> ${cap}</label>`;
+      var jsonUrl = 'https://matteocapo.it/assets/domande.json';
+
+      fetch(jsonUrl)
+        .then(function(response) {
+          if (!response.ok) throw new Error('HTTP error ' + response.status);
+          return response.json();
+        })
+        .then(function(data) {
+          if (!Array.isArray(data) || data.length === 0) {
+            throw new Error('Il file JSON \E8 vuoto o malformattato.');
+          }
+          allQuestions = data;
+          populateChapters(data);
+          els.statusMsg.classList.add('hidden');
+          els.mainMenu.classList.remove('hidden');
+        })
+        .catch(function(err) {
+          els.statusMsg.innerHTML = '' +
+            '<p style="color:#dc3545; font-weight:700;">Errore critico di caricamento</p>' +
+            '<p style="color:#dc3545; font-size:0.9rem;">Impossibile accedere al database delle domande.<br>' +
+            'Verifica che il file esista sul server e sia accessibile.</p>' +
+            '<p style="color:#999; font-size:0.8rem; margin-top:0.5rem;">' + err.message + '</p>';
+          els.statusMsg.style.background = '#f8d7da';
+          els.statusMsg.style.border = '1px solid #f5c6cb';
+          els.statusMsg.style.borderRadius = 'var(--card-radius)';
+        });
     });
-  }
 
-  function showConfig(mode) {
-    document.getElementById('main-menu').classList.add('hidden');
-    if (mode === 'esercitazione') {
-      document.getElementById('config-esercitazione').classList.remove('hidden');
-    } else if (mode === 'simulazione') {
-      startSimulazione();
-    }
-  }
-
-  function backToMenu() {
-    clearInterval(timerInterval);
-    document.getElementById('config-esercitazione').classList.add('hidden');
-    document.getElementById('quiz-area').classList.add('hidden');
-    document.getElementById('results-area').classList.add('hidden');
-    document.getElementById('main-menu').classList.remove('hidden');
-  }
-
-  function startSimulazione() {
-    const teorie = allQuestions.filter(q => q.tipo === 'teoria');
-    const esercizi = allQuestions.filter(q => q.tipo === 'esercizio');
-
-    if (teorie.length < 2 || esercizi.length < 1) {
-      alert("Il database non contiene abbastanza domande (minimo 2 teoria, 1 esercizio).");
-      backToMenu();
-      return;
-    }
-
-    shuffleArray(teorie);
-    shuffleArray(esercizi);
-    currentQueue = [teorie[0], teorie[1], esercizi[0]];
-    shuffleArray(currentQueue);
-
-    startSession(true);
-  }
-
-  function startEsercitazione() {
-    const checkboxes = document.querySelectorAll('#chapter-checkboxes input:checked');
-    const selectedChapters = Array.from(checkboxes).map(cb => cb.value);
-
-    if (selectedChapters.length === 0) {
-      alert("Seleziona almeno un capitolo per procedere.");
-      return;
-    }
-
-    const tipo = document.querySelector('input[name="tipoQ"]:checked').value;
-    const ordine = document.querySelector('input[name="ordineQ"]:checked').value;
-
-    currentQueue = allQuestions.filter(q => selectedChapters.includes(q.capitolo));
-    if (tipo !== 'tutti') {
-      currentQueue = currentQueue.filter(q => q.tipo === tipo);
-    }
-
-    if (currentQueue.length === 0) {
-      alert("Nessuna domanda corrisponde ai filtri selezionati.");
-      return;
-    }
-
-    if (ordine === 'casuale') {
-      shuffleArray(currentQueue);
-    }
-
-    const numDomande = parseInt(document.getElementById('num-domande').value, 10);
-    if (!isNaN(numDomande) && numDomande > 0 && numDomande < currentQueue.length) {
-      currentQueue = currentQueue.slice(0, numDomande);
-    }
-
-    document.getElementById('config-esercitazione').classList.add('hidden');
-    startSession(false);
-  }
-
-  function startSession(isSimulazione) {
-    currentIndex = 0;
-    correctCount = 0;
-    wrongCount = 0;
-    wrongQuestions = [];
-
-    document.getElementById('quiz-area').classList.remove('hidden');
-    document.getElementById('timer-text').classList.add('hidden');
-    document.getElementById('timer-text').classList.remove('timer-alert');
-
-    if (isSimulazione) {
-      startTimer(90 * 60);
-      document.getElementById('timer-text').classList.remove('hidden');
-    }
-
-    updateScore();
-    showCard();
-  }
-
-  function showCard() {
-    const card = document.getElementById('flashcard');
-    card.classList.remove('is-flipped');
-    document.getElementById('evaluation-controls').classList.add('hidden');
-
-    const q = currentQueue[currentIndex];
-    document.getElementById('progress-text').innerText = `Domanda ${currentIndex + 1} di ${currentQueue.length}`;
-    document.getElementById('card-front-capitolo').innerText = `${q.capitolo} | ${q.tipo}`;
-    document.getElementById('card-front-text').innerText = q.fronte;
-    document.getElementById('card-back-text').innerText = q.retro;
-  }
-
-  function flipCard() {
-    const card = document.getElementById('flashcard');
-    if (!card.classList.contains('is-flipped')) {
-      card.classList.add('is-flipped');
-      document.getElementById('evaluation-controls').classList.remove('hidden');
-    }
-  }
-
-  function recordAnswer(isCorrect) {
-    if (isCorrect) {
-      correctCount++;
-    } else {
-      wrongCount++;
-      wrongQuestions.push(currentQueue[currentIndex]);
-    }
-
-    updateScore();
-    currentIndex++;
-
-    if (currentIndex < currentQueue.length) {
-      showCard();
-    } else {
-      endSession();
-    }
-  }
-
-  function updateScore() {
-    document.getElementById('score-text').innerText = `Sapevi: ${correctCount} | Non sapevi: ${wrongCount}`;
-  }
-
-  function startTimer(duration) {
-    let timer = duration, minutes, seconds;
-    const display = document.getElementById('timer-text');
-
-    clearInterval(timerInterval);
-    timerInterval = setInterval(function () {
-        minutes = parseInt(timer / 60, 10);
-        seconds = parseInt(timer % 60, 10);
-
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        display.innerText = "Tempo rimanente: " + minutes + ":" + seconds;
-
-        if (timer < 300) display.classList.add('timer-alert');
-
-        if (--timer < 0) {
-            clearInterval(timerInterval);
-            display.innerText = "TEMPO SCADUTO!";
-            alert("Il tempo per la simulazione è scaduto. La prova verrà chiusa.");
-            endSession();
-        }
-    }, 1000);
-  }
-
-  function endSession() {
-    clearInterval(timerInterval);
-    document.getElementById('quiz-area').classList.add('hidden');
-    document.getElementById('results-area').classList.remove('hidden');
-
-    const total = correctCount + wrongCount;
-    const percentage = total === 0 ? 0 : Math.round((correctCount / total) * 100);
-
-    document.getElementById('final-score').innerText = `Esito: ${correctCount} su ${total} (${percentage}%)`;
-
-    let reviewHtml = "";
-    if (wrongQuestions.length > 0) {
-      reviewHtml += "<h4 style='color: #dc3545; border-bottom: 1px solid #dc3545; padding-bottom: 5px;'>Argomenti da approfondire:</h4><ul style='padding-left: 20px; margin-top: 10px;'>";
-      wrongQuestions.forEach(q => {
-        reviewHtml += `<li style="margin-bottom: 10px;"><b>${q.capitolo}:</b> ${q.fronte}</li>`;
+    function populateChapters(data) {
+      var chapters = [];
+      data.forEach(function(q) {
+        if (chapters.indexOf(q.capitolo) === -1) chapters.push(q.capitolo);
       });
-      reviewHtml += "</ul>";
-    } else {
-      reviewHtml += "<h4 style='color: #28a745;'>Ottimo lavoro! Non hai registrato lacune.</h4>";
+      els.chapterCheckboxes.innerHTML = '';
+      chapters.forEach(function(cap) {
+        var label = document.createElement('label');
+        label.innerHTML = '<input type="checkbox" value="' + cap.replace(/"/g, '&quot;') + '" checked> ' + cap;
+        els.chapterCheckboxes.appendChild(label);
+      });
     }
-    document.getElementById('review-list').innerHTML = reviewHtml;
-  }
 
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+    function showConfig(mode) {
+      els.mainMenu.classList.add('hidden');
+      if (mode === 'esercitazione') {
+        els.configPanel.classList.remove('hidden');
+      } else if (mode === 'simulazione') {
+        startSimulazione();
+      }
     }
-  }
+
+    function backToMenu() {
+      clearTimer();
+      els.configPanel.classList.add('hidden');
+      els.quizArea.classList.add('hidden');
+      els.resultsArea.classList.add('hidden');
+      els.mainMenu.classList.remove('hidden');
+    }
+
+    function startSimulazione() {
+      var teorie = [];
+      var esercizi = [];
+      allQuestions.forEach(function(q) {
+        if (q.tipo === 'teoria') teorie.push(q);
+        else if (q.tipo === 'esercizio') esercizi.push(q);
+      });
+
+      if (teorie.length < 2 || esercizi.length < 1) {
+        alert('Il database non contiene abbastanza domande (minimo 2 teoria, 1 esercizio).');
+        backToMenu();
+        return;
+      }
+
+      shuffleArray(teorie);
+      shuffleArray(esercizi);
+      currentQueue = [teorie[0], teorie[1], esercizi[0]];
+      shuffleArray(currentQueue);
+
+      isSimulazioneMode = true;
+      startSession();
+    }
+
+    function startEsercitazione() {
+      var checkboxes = els.chapterCheckboxes.querySelectorAll('input:checked');
+      var selectedChapters = Array.from(checkboxes).map(function(cb) { return cb.value; });
+
+      if (selectedChapters.length === 0) {
+        alert('Seleziona almeno un capitolo per procedere.');
+        return;
+      }
+
+      var tipo = document.querySelector('input[name="tipoQ"]:checked').value;
+      var ordine = document.querySelector('input[name="ordineQ"]:checked').value;
+
+      currentQueue = allQuestions.filter(function(q) {
+        return selectedChapters.indexOf(q.capitolo) !== -1;
+      });
+      if (tipo !== 'tutti') {
+        currentQueue = currentQueue.filter(function(q) { return q.tipo === tipo; });
+      }
+
+      if (currentQueue.length === 0) {
+        alert('Nessuna domanda corrisponde ai filtri selezionati.');
+        return;
+      }
+
+      if (ordine === 'casuale') {
+        shuffleArray(currentQueue);
+      }
+
+      var numDomande = parseInt(els.numDomande.value, 10);
+      if (!isNaN(numDomande) && numDomande > 0 && numDomande < currentQueue.length) {
+        currentQueue = currentQueue.slice(0, numDomande);
+      }
+
+      isSimulazioneMode = false;
+      els.configPanel.classList.add('hidden');
+      startSession();
+    }
+
+    function startSession() {
+      currentIndex = 0;
+      correctCount = 0;
+      wrongCount = 0;
+      wrongQuestions = [];
+      clearTimer();
+
+      els.quizArea.classList.remove('hidden');
+      els.timerText.classList.add('hidden');
+      els.timerText.className = 'hidden timer-ok';
+      els.evalControls.classList.add('hidden');
+
+      if (isSimulazioneMode) {
+        startTimer(90 * 60);
+      }
+
+      updateScore();
+      showCard();
+    }
+
+    function showCard() {
+      els.card.classList.remove('is-flipped');
+      els.evalControls.classList.add('hidden');
+
+      var q = currentQueue[currentIndex];
+      var total = currentQueue.length;
+      els.progressText.textContent = 'Domanda ' + (currentIndex + 1) + ' di ' + total;
+      els.progressFill.style.width = ((currentIndex / total) * 100) + '%';
+
+      var capLabel = q.capitolo;
+      if (q.tipo) capLabel += ' | ' + q.tipo;
+      els.frontCapitolo.textContent = capLabel;
+      els.frontText.textContent = q.fronte;
+      els.backText.textContent = q.retro || 'Nessuna soluzione disponibile.';
+    }
+
+    function flipCard() {
+      if (!els.card.classList.contains('is-flipped')) {
+        els.card.classList.add('is-flipped');
+        els.evalControls.classList.remove('hidden');
+      }
+    }
+
+    function recordAnswer(isCorrect) {
+      if (isCorrect) {
+        correctCount++;
+      } else {
+        wrongCount++;
+        wrongQuestions.push(currentQueue[currentIndex]);
+      }
+
+      updateScore();
+      currentIndex++;
+
+      if (currentIndex < currentQueue.length) {
+        showCard();
+      } else {
+        endSession();
+      }
+    }
+
+    function updateScore() {
+      els.scoreText.textContent = 'Sapevo: ' + correctCount + ' \u00B7 Non sapevo: ' + wrongCount;
+    }
+
+    function startTimer(duration) {
+      var timer = duration;
+      clearTimer();
+
+      els.timerText.classList.remove('hidden');
+      els.timerText.textContent = 'Tempo rimanente: ' + formatTime(timer);
+
+      timerInterval = setInterval(function() {
+        timer--;
+
+        els.timerText.textContent = 'Tempo rimanente: ' + formatTime(timer);
+
+        if (timer < 60) {
+          els.timerText.className = 'timer-alert';
+        } else if (timer < 300) {
+          els.timerText.className = 'timer-warn';
+        }
+
+        if (timer <= 0) {
+          clearTimer();
+          els.timerText.textContent = 'TEMPO SCADUTO!';
+          els.timerText.className = 'timer-alert';
+          alert('Il tempo per la simulazione \E8 scaduto. La prova verr\E0 chiusa.');
+          endSession();
+        }
+      }, 1000);
+    }
+
+    function clearTimer() {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      }
+    }
+
+    function formatTime(secs) {
+      var m = Math.floor(secs / 60);
+      var s = secs % 60;
+      return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+    }
+
+    function endSession() {
+      clearTimer();
+      els.quizArea.classList.add('hidden');
+      els.resultsArea.classList.remove('hidden');
+
+      var total = correctCount + wrongCount;
+      var percentage = total === 0 ? 0 : Math.round((correctCount / total) * 100);
+
+      els.finalScoreNum.textContent = percentage + '%';
+      els.finalScoreText.textContent = correctCount + ' su ' + total + ' corrette';
+
+      els.scoreCircle.style.setProperty('--pct', percentage + '%');
+
+      var reviewHtml = '';
+      if (wrongQuestions.length > 0) {
+        reviewHtml += '<h4 style="color:#dc3545;">Argomenti da approfondire (' + wrongQuestions.length + ')</h4>';
+        wrongQuestions.forEach(function(q) {
+          reviewHtml += '<div class="review-item">' +
+            '<div class="ri-cap">' + q.capitolo + (q.tipo ? ' | ' + q.tipo : '') + '</div>' +
+            '<div class="ri-q">' + q.fronte + '</div>' +
+            '</div>';
+        });
+      } else {
+        reviewHtml += '<div class="no-lacune">Ottimo lavoro! Non hai registrato lacune.</div>';
+      }
+      els.reviewSection.innerHTML = reviewHtml;
+    }
+
+    function shuffleArray(arr) {
+      for (var i = arr.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+      }
+    }
+  })();
 </script>
+{% endraw %}
+
