@@ -4,7 +4,6 @@ date: 2023-02-28 00:00:00 -500
 categories: [Computer Science, Database]
 tags: [cybersecurity, messaggistica]
 image_path: /assets/img/
-pin: True
 --- 
 
 Progetto Universitario, Basi di Dati A.A. 2022-2023
