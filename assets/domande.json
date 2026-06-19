@@ -1,93 +1,86 @@
 [
-  {
-    "id": 101,
-    "capitolo": "Introduzione alle Reti",
-    "tipo": "teoria",
-    "fronte": "Quali sono le componenti fisiche e logiche fondamentali che definiscono l'architettura di una rete?",
-    "retro": "- Definire l'edge della rete (host, end-system, client/server).\n- Definire il core della rete (router, switch e la maglia di collegamenti).\n- Descrivere i mezzi trasmissivi (rame, fibra, etere).\n- Definire il concetto di protocollo (regole che governano formato, ordine e significato dei messaggi)."
-  },
-  {
-    "id": 102,
-    "capitolo": "Introduzione alle Reti",
-    "tipo": "teoria",
-    "fronte": "Qual è la differenza strutturale e funzionale tra il network edge e il network core?",
-    "retro": "- Il network edge si occupa dell'esecuzione delle applicazioni e della logica end-to-end.\n- Il network core ha l'unico compito di spostare i dati dall'origine alla destinazione (instradamento e inoltro), senza curarsi del contenuto del payload applicativo."
-  },
-  {
-    "id": 103,
-    "capitolo": "Introduzione alle Reti",
-    "tipo": "teoria",
-    "fronte": "Perché le architetture di rete sono strutturate a livelli? Discutere vantaggi e svantaggi di questo approccio.",
-    "retro": "Vantaggi:\n- Modularità (aggiornare un livello non intacca gli altri se le interfacce rimangono invariate).\n- Scomposizione di sistemi complessi in parti più semplici.\n- Standardizzazione.\n\nSvantaggi:\n- Overhead (ogni livello aggiunge la propria intestazione).\n- Potenziale duplicazione di funzionalità tra i livelli (es. controllo errori)."
-  },
-  {
-    "id": 104,
-    "capitolo": "Introduzione alle Reti",
-    "tipo": "teoria",
-    "fronte": "Spiegare in dettaglio i concetti di incapsulamento e decapsulamento dei dati tra i vari livelli.",
-    "retro": "Flusso top-down (trasmissione):\n- Il dato applicativo (messaggio) passa al livello trasporto.\n- Trasporto aggiunge l'header (crea il segmento) e passa alla rete.\n- Rete aggiunge l'header IP (crea il datagramma) e passa al link.\n- Link aggiunge l'header MAC (crea il frame).\n\nFlusso bottom-up (ricezione):\n- Progressiva lettura e rimozione delle intestazioni salendo i livelli fino al riassemblaggio del messaggio originale."
-  },
-  {
-    "id": 105,
-    "capitolo": "Introduzione alle Reti",
-    "tipo": "teoria",
-    "fronte": "Illustrare l'architettura del modello OSI specificando la funzione principale di ciascuno dei 7 livelli.",
-    "retro": "1. Fisico (bit sul mezzo e segnali elettrici/ottici)\n2. Data Link (framing e controllo accesso al mezzo MAC)\n3. Rete (routing e indirizzamento logico IP)\n4. Trasporto (comunicazione end-to-end e porte)\n5. Sessione (gestione del dialogo tra processi)\n6. Presentazione (sintassi dei dati e crittografia)\n7. Applicazione (interfaccia per l'utente/servizi di rete)"
-  },
-  {
-    "id": 106,
-    "capitolo": "Introduzione alle Reti",
-    "tipo": "teoria",
-    "fronte": "Confronto architetturale tra OSI e TCP/IP: quali sono le differenze principali e perché il TCP/IP ha prevalso?",
-    "retro": "Differenza strutturale:\n- OSI ha 7 livelli, TCP/IP ne ha 5 (o 4 nel modello originale).\n- Nel TCP/IP i livelli di sessione e presentazione OSI sono accorpati all'Applicazione.\n\nDifferenza filosofica/storica:\n- OSI è nato prima dei protocolli (modello teorico perfetto ma complesso).\n- TCP/IP è nato dai protocolli (approccio pragmatico, testato sul campo e spinto dal progetto ARPANET/DARPA)."
-  },
-  {
-    "id": 107,
-    "capitolo": "Introduzione alle Reti",
-    "tipo": "teoria",
-    "fronte": "Qual è la differenza tra un servizio connection-oriented e uno connectionless?",
-    "retro": "Connection-oriented:\n- Richiede tre fasi: setup (handshake/apertura), trasferimento dati, chiusura (teardown).\n- Mantiene lo stato della connessione nei nodi o negli end-system (es. TCP, circuito virtuale).\n\nConnectionless:\n- Invia i dati immediatamente senza preparazione preliminare.\n- Ogni pacchetto è indipendente e instrato a sé (es. UDP, IP datagram)."
-  },
-  {
-    "id": 108,
-    "capitolo": "Introduzione alle Reti",
-    "tipo": "teoria",
-    "fronte": "Un servizio affidabile è sempre connection-oriented? Quali meccanismi definiscono l'affidabilità?",
-    "retro": "L'affidabilità garantisce la consegna senza errori, senza perdite e in ordine. Richiede:\n- Acknowledge (ACK)\n- Timer per i pacchetti persi\n- Numeri di sequenza\n- Ritrasmissioni\n\nGeneralmente i servizi affidabili (es. TCP) sono connection-oriented per gestire bene questi parametri di stato. Non è però una regola assoluta in contesti software custom. Per flussi in tempo reale (streaming video) l'inaffidabilità è preferibile per evitare la latenza derivante dalle ritrasmissioni."
-  },
-  {
-    "id": 109,
-    "capitolo": "Introduzione alle Reti",
-    "tipo": "teoria",
-    "fronte": "Cosa sono le primitive di servizio in un'architettura a livelli?",
-    "retro": "Sono le operazioni o funzioni che un livello N offre al livello N+1 tramite il SAP (Service Access Point).\n\nQuattro categorie standard:\n1. Request (richiesta di compiere un'azione)\n2. Indication (notifica del verificarsi di un evento)\n3. Response (risposta della controparte a un evento)\n4. Confirm (conferma che la richiesta iniziale è andata a buon fine)"
-  },
-  {
-    "id": 110,
-    "capitolo": "Introduzione alle Reti",
-    "tipo": "teoria",
-    "fronte": "Definire e distinguere le trasmissioni punto-punto, multicast e broadcast, spiegando le implicazioni sull'uso del canale.",
-    "retro": "- Punto-punto: da un singolo mittente a un singolo destinatario specifico.\n- Multicast: da un mittente a un gruppo selezionato di destinatari iscritti a quel flusso.\n- Broadcast: da un mittente a tutti i nodi collegati alla rete locale.\n\nImplicazioni: il broadcast in un canale condiviso satura le risorse e rende necessari protocolli strutturati di accesso al mezzo (sottolivello MAC) per evitare e gestire le collisioni."
-  },
-  {
-    "id": 111,
-    "capitolo": "Introduzione alle Reti",
-    "tipo": "teoria",
-    "fronte": "Classificare le reti in base all'estensione geografica definendo PAN, LAN, MAN e WAN.",
-    "retro": "- PAN (Personal Area Network): raggio di pochi metri (es. Bluetooth).\n- LAN (Local Area Network): raggio di chilometri, uffici o campus, spesso ad alto bitrate e tecnologia broadcast (es. Ethernet, WiFi).\n- MAN (Metropolitan Area Network): estensione cittadina, interconnette sedi o funge da dorsale locale.\n- WAN (Wide Area Network): portata globale, interconnessione di reti inferiori tramite router e dorsali a commutazione di pacchetto (es. Internet)."
-  },
-  {
-    "id": 112,
-    "capitolo": "Introduzione alle Reti",
-    "tipo": "teoria",
-    "fronte": "Illustra dettagliatamente il meccanismo della commutazione di pacchetto rispetto alla commutazione di circuito, motivando storicamente il passaggio alla prima.",
-    "retro": "Commutazione di circuito (rete telefonica classica):\n- Riserva banda e risorse fisse end-to-end per l'intera durata della sessione. Genera enorme spreco di risorse nei momenti di silenzio.\n\nCommutazione di pacchetto (nata col progetto DARPA):\n- I dati vengono suddivisi in pacchetti indipendenti.\n- Vengono inviati su percorsi dinamici (meccanismo store-and-forward sui router).\n- Permette il multiplexing statistico, massimizzando l'uso del canale condiviso. È ideale per il traffico informatico che avviene per \"raffiche\" (bursty)."
-  },
-  {
-    "id": 113,
-    "capitolo": "Introduzione alle Reti",
-    "tipo": "teoria",
-    "fronte": "Quali sono le caratteristiche e i vantaggi di una rete a circuito virtuale rispetto a una pura rete datagram?",
-    "retro": "Caratteristiche:\n- Prevede una fase di setup iniziale per determinare il percorso ottimale e prenotare risorse.\n- Assegna un VCI (Virtual Circuit Identifier) ai pacchetti.\n\nVantaggi rispetto al datagram puro:\n- L'ordine dei pacchetti è matematicamente garantito.\n- L'inoltro nei router è più veloce (leggono solo l'etichetta VCI, niente lookup lunghi).\n- Permette di garantire metriche precise di QoS.\n\nSvantaggi:\n- Overhead iniziale per il setup.\n- Bassissima resilienza ai guasti: la caduta di un singolo router intermedio fa crollare l'intero circuito."
-  }
+    {
+        "id": 1,
+        "capitolo": "Introduzione alle Reti di Calcolatori",
+        "tipo": "Domanda aperta",
+        "fronte": "Illustrare il principio del sistema a livelli (gerarchia dei protocolli).",
+        "retro": "(AI)* Per diminuire la complessità, lo stack di rete per la comunicazione è organizzato in strati o livelli.\n* Lo scopo di ogni strato è di offrire determinati servizi agli strati superiori implementando l'information hiding, nascondendo i dettagli dello strato interno e gli algoritmi.\n* Lo strato N di un host comunica con il rispettivo strato N di un altro host a distanza attraverso un protocollo, ovvero un accordo tra le parti sulle modalità di comunicazione.\n* I dati non vengono inviati direttamente da strato a strato a livello logico, ma passati agli strati inferiori della propria macchina fino a raggiungere lo strato fisico, che è l'unico a fornire una vera connessione fisica.\n* Ogni coppia di strati contigua possiede un'interfaccia che definisce le operazioni elementari e i servizi disponibili per lo strato superiore.\n* Interfacce pulite rendono più semplice l'implementazione o la sostituzione di uno strato."
+    }, 
+    {
+        "id": 2,
+        "capitolo": "Introduzione alle Reti di Calcolatori",
+        "tipo": "Domanda aperta",
+        "fronte": "Definire il concetto di \"servizio\" in un'architettura a livelli e illustrare la differenza fondamentale tra servizio e protocollo.",
+        "retro": "(AI)* Un servizio è un insieme di operazioni (o primitive) che un livello N offre al livello superiore N+1.\n* Il servizio definisce *quali* operazioni il livello inferiore è pronto a eseguire per conto dei suoi utenti, ma non specifica *come* queste vengano implementate (principio dell'information hiding).\n* Il livello N svolge il ruolo di fornitore del servizio, mentre il livello N+1 è l'utilizzatore del servizio.\n* La differenza fondamentale è che il **servizio** riguarda l'interfaccia verticale tra due livelli adiacenti sulla stessa macchina, mentre il **protocollo** è l'insieme di regole e formati (un \"accordo\") che governa la comunicazione orizzontale tra due entità di pari livello su macchine diverse.\n* Un livello può cambiare liberamente il proprio protocollo interno a patto di non modificare il servizio offerto (e quindi l'interfaccia) al livello superiore."
+    },
+    {
+        "id": 3,
+        "capitolo": "Introduzione alle Reti di Calcolatori",
+        "tipo": "Domanda aperta",
+        "fronte": "Servizi e funzionalità dei livelli di rete",
+        "retro": "I livelli di rete forniscono servizi e funzionalità a:\n1. Gli altri livelli di rete\n2. Le applicazioni distribuite.\nTra loro i livelli permettono l'uso di operazioni (o primitive) che un livello offre al livello superiore, al fine ultimo di coordinare le comunicazioni tra processi, anche in macchine differenti. Esempi di servizi e funzionalità dei diversi livelli di rete sono: a quale processo inviare un messaggio ricevuto (livello di trasporto), la traduzione da pacchetto software a segnali fisici (livello hardware), la divisione del messaggio in pacchetti più piccoli per semplificare la trasmissione (livello di rete). \nRiguardo le applicazioni distribuite, i servizi e le funzionalità che i livelli di rete forniscono complessivamente servono a risolvere i problemi di comunicazione specifici di una applicazione, ad esempio: \n1. Avere messaggi di lunghezza arbitraria,\n2. Determinare il miglior percorso possibile per arrivare a destinazione e diminuire l'attesa di un messaggio dall'invio,\n3. Ordinare l'arrivo dei messaggi in base all'ordine di spedizione.\n Il modo in cui vengono risolti questi problemi è tramite protocolli e tramite infrastrutture dedicate a provvedere i suddetti servizi alle applicazioni."
+    },
+    {
+        "id": 4,
+        "capitolo": "Introduzione alle Reti di Calcolatori",
+        "tipo": "Domanda aperta",
+        "fronte": "Architettura del modello OSI e livelli del modello TCP/IP.",
+        "retro": "Questo modello è strutturato in 7 livelli perché:\n1.Ogni strato rappresenta un’astrazione.\n2.Ogni strato svolge una funzione ben definita.\n3.Le funzioni di ogni strato si basano su protocolli specifici, creati in modo standard.\n4.Il numero di strati deve bastare per evitare la necessità di eseguire troppe funzioni diverse nello stesso strato.\n• Fisico: si occupa della trasmissione dei dati grezzi. Deve assicurare che i bit con valore 1 vengano ricevuti con 1 e non con 0.\n• Data Link: si occupa di rilevare gli errori di trasmissione inevitabili dovuti all'affidabilità del canale del livello sottostante, e di dividere i pacchetti in frame di dimensione gestibile\n• Network: Si occupa pure di instradare i pacchetti verso la destinazione con rispettivi algoritmi.\n• Trasporto: accetta i dati dallo strato superiore e li invia alla network assicurandosi che arrivino al processo destinatario.\n• Sessione: permette a utenti diversi di stabilire tra loro una connessione. Offrono dei servizi di sincronizzazione e persistenza delle informazioni, aggiungono la funziona di stato alle applicazioni\n• Presentazione: si occupa della sintassi e della semantica dell’informazione trasmessa.\n• Applicazione: comprende tutti i protocolli usati dall’utente.\nNel Modello TCP/IP troviamo le stesse prerogative del modello ISO/OSI, trovando maggiore adozione. I livelli individuati, seppur meno definiti e scollegati dello stack ISO/OSI sono:\n• Internet: lo scopo è quello di consentire agli host di mandare pacchetti in qualsiasi rete, e farli viaggiare in modi indipendenti fino a destinazione. IP è quel protocollo che definisce un formato ufficiale per i pacchetti e ha lo scopo di consegnarli a destinazione gestendo l'instradamento al meglio possibile, trovando il percorso dei nodi da attraversare.\n• Trasporto: progettato per consentire la comunicazione degli host sorgente e destinazione e la distinzione del processo destinatario nel dato host. I protocolli principali sono: TCP, è orientato alla connessione permettendo ad un flusso di byte di arrivare a destinazione gestendo il controllo del flusso e congestione, l'ordine dei pacchetti, il multiplexing, la affidabilità e la fairness in caso di canale sovrautilizzato. UDP, è un tipo di connessione non connection oriented a differenza di TCP. Non garantisce l'arrvio ed usato per quelle applicazioni che danno priorità alla velocità rispetto che all'affidabilità.\n• Applicazione: Comprende i dati necessari alla comunicazione e effettiva esecuzione dei processi applicativi, che comunicano architettura peer to peer. L’host può mandare o richiedere la ricezione di dati tramite dei protocolli, quali TELNET, FTP, SMTP, DNS e HTTP.\n• Host-to-Network: l’host si collega alla rete usando questo strato, che si avvale di standard e protoclli di accesso al mezzo fisico come Ethernet."
+    },
+    {
+        "id": 5,
+        "capitolo": "Introduzione alle Reti di Calcolatori",
+        "tipo": "Domanda aperta",
+        "fronte": "Confronto architetturale tra il modello OSI e il modello TCP/IP.",
+        "retro": "(AI)I due modelli hanno molto in comune, essendo entrambi basati su una pila di protocolli indipendenti con funzionalità degli strati simili tra loro, ma presentano alcune sostanziali differenze.\n\nLa differenza principale riguarda l'evoluzione storica e la conseguente concettualizzazione della struttura. Nel modello OSI, infatti, è stata prima creata e standardizzata l'architettura a strati—definendo rigorosamente i concetti di servizi, interfacce e protocolli—e solo successivamente sono stati ideati i protocolli da applicare. Nel modello TCP/IP è avvenuto l'esatto opposto: i protocolli esistevano prima ancora che venisse definita l'architettura a strati. Per questo motivo, la definizione dei livelli in TCP/IP risulta molto più lasca rispetto al rigore formale dell'architettura OSI.\n\nUn esempio concreto di questa definizione più lasca è l'accorpamento delle funzionalità in specifici livelli: mentre il modello OSI divide rigorosamente le competenze tra i livelli di Sessione, Presentazione e Applicazione, il modello TCP/IP riunisce queste funzionalità all'interno di un unico strato, ovvero il livello di Applicazione. Analogamente, i livelli Fisico e Data Link dell'architettura OSI sono accorpati nel modello TCP/IP all'interno di un unico livello inferiore, definito Host-to-Network."
+    },
+    {
+        "id": 6,
+        "capitolo": "Introduzione alle Reti di Calcolatori",
+        "tipo": "Domanda aperta",
+        "fronte": "Comunicazioni affidabili e non affidabili.",
+        "retro": "Una comunicazione affidabile garantisce la ricezione dei messaggi, a differenza di una comunicazione non affidabile (non-reliable). La gestione dell'affidabilità consta nella risoluzione dei vari problemi reali incontrati nella creazione di un protocollo di comunicazione affidabile, spesso giungendo a compromessi quali throughput.  Nella progettazione di esso, il principale problema è la natura inaffidabile di un canale. Infatti il mittente, una volta inviato un messaggio, affida alla rete tutto ciò che riguarda il recapito effettivo, e si può fare un analogia del mittente avente una 'tenda' davanti. Definitivamente, il Reliable Data Transfer, per garantire una comunicazione affidabile e funzionale, deve risolvere i problemi di:\n1. errori e perdita di dati.\n2. reinvio delle informazioni ricevute in modo incorretto,\n3. Conferma di avvenuta ricezione al mittente,\n4. Uso corretto di un timer per il coordinamento di invio e ricezione, e di mancata ricezione, per reinviare efficentemente il pacchetto o i pacchetti non ricevuti correttamente.\n Si considera il protocollo TCP come reliable, a scapito di parte dell'efficenza, e il protocollo UDP come non affidabile, ma in grado di gestire in modo più efficente contenuti in tempo reale grazie alla non necessità di controllo della avvenuta ricezione dei pacchetti"
+    },
+    {
+        "id": 7,
+        "capitolo": "Introduzione alle Reti di Calcolatori",
+        "tipo": "Domanda aperta",
+        "fronte": "Servizi con connessione e senza connessione.",
+        "retro": "(AI)Nell'architettura di rete, i livelli possono fornire ai propri strati sovrastanti due diverse tipologie di servizio.\n\nIl servizio orientato alla connessione (connection-oriented) funziona in modo simile al sistema telefonico: necessita di stabilire preventivamente una connessione, utilizzarla e infine rilasciarla. Durante la fase iniziale, le parti negoziano i parametri di comunicazione. Poiché tiene traccia della sessione in corso, questo tipo di protocollo è definito stateful. Un'ottima analogia è l'acquisto di un biglietto del treno alle macchinette: il sistema deve ricordare in che fase ti trovi e attraversa stati sequenziali (\"selezione\", \"in attesa di pagamento\", \"erogazione biglietto\"). Nel modello TCP/IP, il protocollo TCP è il principale esempio di questo servizio.\n\nIl servizio senza connessione (connectionless) si comporta invece come la posta convenzionale. Non c'è negoziazione iniziale: ogni pacchetto contiene in sé l'indirizzo del destinatario ed è instradato in maniera indipendente dagli altri. Non mantenendo alcuna memoria delle interazioni passate o future, è definito stateless. Funziona esattamente come il distributore di ticket elimina-code alle poste: premo il pulsante, la macchina mi dà il prossimo numero e resetta l'azione senza mantenere alcuno stato legato a me. Il protocollo UDP rappresenta questo tipo di servizio per consegne rapide."
+    },
+    {
+        "id": 8,
+        "capitolo": "Introduzione alle Reti di Calcolatori",
+        "tipo": "Domanda aperta",
+        "fronte": "Primitive di servizio: definizione e tipologie principali.",
+        "retro": "(AI)Le primitive di servizio sono operazioni che i processi utente hanno a disposizione per accedere ai servizi di rete. Nel caso in cui la pila dei protocolli si trovi all'interno del sistema operativo, tali primitive assumono la forma di chiamate di sistema, permettendo al sistema stesso di assumere il controllo della macchina per spedire i messaggi.\n\nLe cinque primitive fondamentali invocate dai processi utente sono:\n1. LISTEN: pone l'host in attesa di una connessione in arrivo.\n2. CONNECT: stabilisce attivamente una connessione con un host in attesa.\n3. RECEIVE: pone il sistema in attesa di un messaggio in arrivo.\n4. SEND: esegue l'invio materiale del messaggio all'host in ascolto.\n5. DISCONNECT: gestisce la terminazione della connessione."
+    },
+    {
+        "id": 9,
+        "capitolo": "Introduzione alle Reti di Calcolatori",
+        "tipo": "Domanda aperta",
+        "fronte": "Reti broadcast, multicast e punto-punto.",
+        "retro": "(AI)Le tecnologie trasmissive si dividono principalmente in due categorie:\n\nNelle reti broadcast, esiste un unico canale di comunicazione condiviso tra tutte le macchine della rete. Un pacchetto inviato viene letto sequenzialmente da ogni macchina: ciascuna lo apre temporaneamente per verificarne l'indirizzo e, se non corrisponde al proprio, lo inoltra alla macchina successiva. All'interno di questa tipologia, quando un pacchetto è destinato a tutti i nodi contemporaneamente, il processo si definisce propriamente broadcasting; quando invece la trasmissione è limitata esclusivamente a un sottoinsieme di macchine, prende il nome di multicasting.\n\nNelle reti punto-punto (meccanismo chiamato anche unicasting), le connessioni avvengono invece tra singole coppie di macchine. In questo caso, il pacchetto può attraversare macchine intermedie ma non viene letto da esse. Inoltre, i pacchetti possono seguire strade differenti e di lunghezze diverse, ma arriveranno sempre alla medesima macchina di destinazione."
+    },
+    {
+        "id": 10,
+        "capitolo": "Introduzione alle Reti di Calcolatori",
+        "tipo": "Domanda aperta",
+        "fronte": "Classificazione delle reti per estensione geografica: PAN, LAN, MAN e WAN.",
+        "retro": "(AI)Le reti si classificano principalmente in base all'estensione dell'area geografica coperta.\n\nLe PAN (Personal Area Network) sono reti a raggio d'azione estremamente ridotto, solitamente nell'ordine di uno o pochi metri. Vengono utilizzate tipicamente per interconnettere dispositivi personali e periferiche (come mouse, tastiere, cuffie o smartphone) a un dispositivo host, avvalendosi prevalentemente di tecnologie wireless a corto raggio, come il Bluetooth.\n\nLe LAN (Local Area Network) sono reti private confinate all'interno di un singolo edificio o al massimo estese per qualche chilometro. Si caratterizzano per dimensioni fisiche contenute, tecnologie di trasmissione ad altissima velocità (fino a 10 Gbps) e precise topologie strutturali, tipicamente a bus, ad anello o a stella.\n\nLe MAN (Metropolitan Area Network) coprono l'estensione di un'intera città. Un esempio tecnologico storico è l'infrastruttura della TV via cavo: centralizzando l'immissione dei dati in una stazione di testa, gli operatori sfruttano le porzioni inutilizzate dello spettro per distribuire sia il segnale televisivo sia servizi internet bidirezionali alle abitazioni.\n\nLe WAN (Wide Area Network) si estendono su aree geografiche molto vaste, arrivando a coprire nazioni o continenti. Esse sono costituite da una subnet di comunicazione gestita da un provider, formata fisicamente da linee di trasmissione per il trasporto dei bit e da router per l'instradamento. Il loro scopo primario è far viaggiare i messaggi per interconnettere in modo affidabile host appartenenti a LAN remote e separate."
+    },
+    {
+        "id": 11,
+        "capitolo": "Introduzione alle Reti di Calcolatori",
+        "tipo": "Domanda aperta",
+        "fronte": "Commutazione di circuito e commutazione di pacchetto.",
+        "retro": "(AI)Esistono due tassonomie principali per la commutazione nelle reti:\n\n1. Commutazione di circuito\nSi basa sull'instaurazione preventiva di un percorso fisico dedicato tra mittente e destinatario. Storicamente (modello del \"vecchio telefono\"), la comunicazione avveniva tramite la commutazione fisica del circuito, con un operatore che cambiava manualmente l'instradamento per collegare le due linee. Ha una struttura tipicamente ad albero.\nPer gestire più comunicazioni sullo stesso mezzo, si usano due tecniche:\n• FDM (Divisione di Frequenza): la comunicazione viene suddivisa in bande di frequenza (un tempo, per risparmiare risorse, \"levavano frequenze\", abbassando la qualità della voce e rendendo difficile riconoscere chi parlasse).\n• TDM (Divisione di Tempo): divide l'utilizzo del canale assegnando specifici slot temporali.\n\n2. Commutazione di pacchetto\nInstrada i dati \"automaticamente\" in base all'indirizzo di destinazione scritto all'interno di ogni pacchetto. Utilizza una struttura a grafo.\nNasce dal progetto DARPA/ARPANET: serviva un modo per \"inscatolare\" i segnali tramite IMP (Interface Message Processor) e farli viaggiare in modo resiliente tra le Università (idea scartata da AT&T che preferiva il circuito ad albero). \nPer collegare linee con velocità diverse, questa tecnica introduce temporizzazione, bufferizzazione (i dati passano uno alla volta) e pacchettizzazione. \nSi suddivide in due logiche:\n• Circuito Virtuale: instaura un percorso logico mandando una \"previsione di connessione\" al router. Il router verifica le risorse: se le ha, le blocca temporaneamente per il circuito; se non le ha, la richiesta torna indietro e cerca un'altra strada.\n• Datagram: i pacchetti viaggiano in modo indipendente. Arrivano al router e, se c'è memoria a sufficienza, vengono inseriti nella coda di uscita per l'inoltro, potendo seguire percorsi diversi."
+    },
+    {
+        "id": 12,
+        "capitolo": "Introduzione alle Reti di Calcolatori",
+        "tipo": "Domanda aperta",
+        "fronte": "Reti a circuito virtuale (Virtual Circuit Networks).",
+        "retro": "(AI)In una rete a circuito virtuale, l'instradamento dei pacchetti non avviene tramite una decisione indipendente per ogni singolo elemento, ma si basa sull'instaurazione preliminare di un percorso logico.\n\nIl funzionamento segue queste fasi:\n• Richiesta di connessione: Il mittente invia una \"previsione di connessione\" che attraversa i nodi della rete.\n• Verifica delle risorse: Ogni router lungo il cammino verifica se dispone di risorse (banda, memoria, buffer) sufficienti.\n• Stato del percorso: Se le risorse sono disponibili, il router le blocca e le riserva, creando un \"circuito virtuale\" che persiste per tutta la durata della sessione.\n• Instradamento: Se il router non ha risorse sufficienti, la richiesta viene respinta e il mittente deve tentare un'altra strada.\n\nQuesto modello presenta però uno svantaggio significativo rispetto al modello a datagram: la rigidità. Se un nodo lungo il percorso fallisce o il circuito si interrompe, l'intera comunicazione cade istantaneamente; il ripristino è molto più lento poiché richiede una nuova fase di negoziazione e instaurazione dell'intero percorso, al contrario dei datagram che possono semplicemente re-instradare i singoli pacchetti su strade alternative senza interrompere la sessione."
+    }
 ]
