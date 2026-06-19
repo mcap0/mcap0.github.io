@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "capitolo": "Introduzione e Livello Fisico",
+    "tipo": "teoria",
+    "fronte": "Quali sono i vantaggi di usare un circuito virtuale rispetto a una rete datagram e come viene effettuata la scelta del circuito?",
+    "retro": "Definizione di commutazione di pacchetto vs circuito.\nFase di setup nel circuito virtuale.\nVantaggi: ordine garantito, instradamento veloce, QoS predicibile.\nSvantaggi: vulnerabilità in caso di guasto del router, ritardo di setup."
+  },
+  {
+    "id": 2,
+    "capitolo": "Introduzione e Livello Fisico",
+    "tipo": "teoria",
+    "fronte": "A cosa serve la modulazione? Cos'è una costellazione e perché non si possono fare costellazioni con 96 punti?",
+    "retro": "Scopo: adattare il segnale digitale al mezzo trasmissivo analogico.\nCostellazione: rappresentazione degli stati possibili del segnale modulato.\nVincolo matematico: il numero di punti deve essere una potenza di 2. 96 non è una potenza di 2."
+  },
+  {
+    "id": 3,
+    "capitolo": "Application Layer",
+    "tipo": "teoria",
+    "fronte": "Perché diciamo che HTTP è senza stato? Qual è il ruolo dei cookie?",
+    "retro": "Stateless: il server non mantiene memoria delle richieste passate per limitare l'occupazione di memoria.\nRisoluzione: i cookie mantengono il contesto.\nDifferenza Client/Utente: il cookie traccia il client (browser), non necessariamente l'utente fisico."
+  },
+  {
+    "id": 4,
+    "capitolo": "Livello Dati e Rete",
+    "tipo": "esercizio",
+    "fronte": "ESERCIZIO DUMMY: Calcolare il CRC del seguente pacchetto dati...",
+    "retro": "1. Allineare il polinomio generatore.\n2. Eseguire l'XOR bit a bit.\n3. Il resto è il CRC da accodare."
+  }
+]
