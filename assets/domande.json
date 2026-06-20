@@ -173,7 +173,15 @@
         "tipo": "Domanda aperta",
         "fronte": "Il protocollo SMTP",
         "retro": "E' il protocollo client-server per l'invio e la ricezione della posta elettronica. E' basato su semplice testo ASCII e funziona nel seguente modo:\n Il server distingue tra nome utente e effettiva macchina tramite la chiocciola 'nomeutente@macchina', un daemon in ascolto agisce da server e il client remoto annuncia l'inizio della connessione, da chi arriva il messaggio e chi è il destinatario. Se il destinatario esiste il server proseguirà a inserire il messaggio alla fine di un file che contiene i messaggi in arrivo.\n Per il corretto funzionamento di SMTP è necessario quindi un processo che scriva sul file e un processo che riceve la connessione, quest'ultimo dovrà girare con permessi elevati. Viene usato come delimitatore tra messaggi il carattere '.' nel file di testo, nel quale sono presenti mail separate in un file unico. una conversazione SMTP assomiglia alla seguente:\n S: 220 server.com\n C: HELO myname.it\n 250 Hello myname.it, pleased to meet you\n C: MAIL FROM: <alice@myname.it>\n S: 250 alice@myname.it ... Sender ok\n S: RCPT TO: <bob@server.com>\n S: 250 bob@server.com ... Recipient ok\n C: DATA\n S: 354 Enter mail, end with \".\" on a line by itself\n C: Ti piace il ketchup?\n C: E i cetriolini? \n C: .\n S: 250 Message accepted for delivery\n C: QUIT\n S: 221 server.com closing connection\n \n Alcuni problemi erano: la possibilità di inviare mail anonime o con Mittente arbitrario 'e.g. MAIL FROM: whitehouse'."
+    },
+    {
+        "id": 26,
+        "capitolo": "Application Layer",
+        "tipo": "Domanda aperta",
+        "fronte": "Spiega POP e IMAP e in cosa differiscono con SMTP",
+        "retro": "POP e IMAP sono due protocolli creati per scaricare il file di mail messo a disposizione da SMTP, in quello che viene chiamato casella mail. Sarebbe naturale mettere la casella mail direttamente nel PC dell'utente che possiede la casella di posta, ma con questo approccio il PC dell'utente dovrebbe restare sempre acceso e connesso ad internet. Un tipico setup di SMTP, con POP o IMAP è avere un mail server condiviso con altri utenti su un server appostito e usare a livello del PC dell'utente un protocollo di accesso a questo server per leggere le mail. Qui entrano in gioco POP e IMAP, che serve a comunicare col server di posta, provvedendo accesso, ricezione delle mail ma anche risposta e organizzazione. Questi due protocolli infatti inviano login e password al server di posta, in particolare POP scaricando tutta la casella e rimuovendola dal server mail, creando anche problemi di sincronizzazione se si usa POP da diversi device. IMAP invece non ha questo problema. Detto questo, sommariamente la differenza tra POP e IMAP a confronto con SMTP è che SMTP è l'effettivo server always-on che riceve la posta e contiene diverse caselle di diversi utenti, mentre POP e IMAP sono protocolli o programmi che forniscono comandi atti all'interazione con i server di posta SMTP"
     }
+
 
 
 ]
