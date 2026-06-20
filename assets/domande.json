@@ -145,6 +145,13 @@
         "tipo": "Domanda aperta",
         "fronte": "Le diverse versioni di HTTP",
         "retro": "HTTP nel tempo ha subito modifiche al suo protocollo per svariate ragioni, tra le quali aumentare l'efficenza, cercando di soddisfare la necessità di migliore performance dovute a siti web sempre più energivori e carichi di oggetti sempre più grandi. \n HTTP/1.0 chiudeva la sessione TCP dopo ogni trasferimento di singoli oggetti, aveva il seguente workflow: Richiesta -> Risposta -> Chiusura sessione TCP. Questo andava bene finchè i server avevano pochi oggetti\n HTTP/1.1 usa connessioni TCP permanenti e serializzate, apre anche più connessioni.\n HTTP/2 permette di mantenere una sessione TCP per singola pagina web, applicando round robin al caricamento delle risorse, questo però fa in modo che la singola pagina web, inpresenza d un singolo oggetto più grande si possa bloccate completamente in attesa del singolo oggetto, cosa che HTTP/1.1 risolveva aprendo più connessioni (anche se usava più sockets). Sono state successivamente risolte queste problematiche usando la prioritizzazione dei messaggi e il framing dei messaggi in chunk più piccoli.\n HTTP/3 è uno standard nuovo creato da google, che ha come peculiarità l'uso di UDP e un focus sulla sicurezza."
+    },
+    {
+        "id": 22,
+        "capitolo": "Application Layer",
+        "tipo": "Domanda aperta",
+        "fronte": "il protocollo FTP",
+        "retro": "E' un protocollo per il trasferimento di file da server remoti. Usa due porte, una per l'invio di comandi e una per il trasferimento dati, ed è un protocollo stateful, ossia il protocollo ha un comportamento diverso in base allo stato della connessione, che in questo caso, semplificando, differisce nei casi in cui l'utente è autenticato (ha inserito username e password/ ha eseguito correttamente il login) oppure no. Proprio lo stato della connessione bloccherebbe il trasferimento di dati nel secondo caso.\n "
     }
 
 ]
