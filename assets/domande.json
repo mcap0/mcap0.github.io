@@ -2,686 +2,686 @@
     {
         "id": 1,
         "capitolo": "Introduzione alle Reti di Calcolatori",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Illustrare il principio del sistema a livelli (gerarchia dei protocolli).",
         "retro": "(AI)* Per diminuire la complessità, lo stack di rete per la comunicazione è organizzato in strati o livelli.\n * Lo scopo di ogni strato è di offrire determinati servizi agli strati superiori implementando l'information hiding, nascondendo i dettagli dello strato interno e gli algoritmi.\n * Lo strato N di un host comunica con il rispettivo strato N di un altro host a distanza attraverso un protocollo, ovvero un accordo tra le parti sulle modalità di comunicazione.\n * I dati non vengono inviati direttamente da strato a strato a livello logico, ma passati agli strati inferiori della propria macchina fino a raggiungere lo strato fisico, che è l'unico a fornire una vera connessione fisica.\n * Ogni coppia di strati contigua possiede un'interfaccia che definisce le operazioni elementari e i servizi disponibili per lo strato superiore.\n * Interfacce pulite rendono più semplice l'implementazione o la sostituzione di uno strato."
     }, 
     {
         "id": 2,
         "capitolo": "Introduzione alle Reti di Calcolatori",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Definire il concetto di \"servizio\" in un'architettura a livelli e illustrare la differenza fondamentale tra servizio e protocollo.",
         "retro": "(AI)* Un servizio è un insieme di operazioni (o primitive) che un livello N offre al livello superiore N+1.\n * Il servizio definisce *quali* operazioni il livello inferiore è pronto a eseguire per conto dei suoi utenti, ma non specifica *come* queste vengano implementate (principio dell'information hiding).\n * Il livello N svolge il ruolo di fornitore del servizio, mentre il livello N+1 è l'utilizzatore del servizio.\n * La differenza fondamentale è che il **servizio** riguarda l'interfaccia verticale tra due livelli adiacenti sulla stessa macchina, mentre il **protocollo** è l'insieme di regole e formati (un \"accordo\") che governa la comunicazione orizzontale tra due entità di pari livello su macchine diverse.\n * Un livello può cambiare liberamente il proprio protocollo interno a patto di non modificare il servizio offerto (e quindi l'interfaccia) al livello superiore."
     },
     {
         "id": 3,
         "capitolo": "Introduzione alle Reti di Calcolatori",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Servizi e funzionalità dei livelli di rete",
         "retro": "I livelli di rete forniscono servizi e funzionalità a:\n 1. Gli altri livelli di rete\n 2. Le applicazioni distribuite.\n Tra loro i livelli permettono l'uso di operazioni (o primitive) che un livello offre al livello superiore, al fine ultimo di coordinare le comunicazioni tra processi, anche in macchine differenti. Esempi di servizi e funzionalità dei diversi livelli di rete sono: a quale processo inviare un messaggio ricevuto (livello di trasporto), la traduzione da pacchetto software a segnali fisici (livello hardware), la divisione del messaggio in pacchetti più piccoli per semplificare la trasmissione (livello di rete). \n Riguardo le applicazioni distribuite, i servizi e le funzionalità che i livelli di rete forniscono complessivamente servono a risolvere i problemi di comunicazione specifici di una applicazione, ad esempio: \n 1. Avere messaggi di lunghezza arbitraria,\n 2. Determinare il miglior percorso possibile per arrivare a destinazione e diminuire l'attesa di un messaggio dall'invio,\n 3. Ordinare l'arrivo dei messaggi in base all'ordine di spedizione.\n  Il modo in cui vengono risolti questi problemi è tramite protocolli e tramite infrastrutture dedicate a provvedere i suddetti servizi alle applicazioni."
     },
     {
         "id": 4,
         "capitolo": "Introduzione alle Reti di Calcolatori",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Architettura del modello OSI e livelli del modello TCP/IP.",
         "retro": "Questo modello è strutturato in 7 livelli perché:\n 1.Ogni strato rappresenta un’astrazione.\n 2.Ogni strato svolge una funzione ben definita.\n 3.Le funzioni di ogni strato si basano su protocolli specifici, creati in modo standard.\n 4.Il numero di strati deve bastare per evitare la necessità di eseguire troppe funzioni diverse nello stesso strato.\n • Fisico: si occupa della trasmissione dei dati grezzi. Deve assicurare che i bit con valore 1 vengano ricevuti con 1 e non con 0.\n • Data Link: si occupa di rilevare gli errori di trasmissione inevitabili dovuti all'affidabilità del canale del livello sottostante, e di dividere i pacchetti in frame di dimensione gestibile\n • Network: Si occupa pure di instradare i pacchetti verso la destinazione con rispettivi algoritmi.\n • Trasporto: accetta i dati dallo strato superiore e li invia alla network assicurandosi che arrivino al processo destinatario.\n • Sessione: permette a utenti diversi di stabilire tra loro una connessione. Offrono dei servizi di sincronizzazione e persistenza delle informazioni, aggiungono la funziona di stato alle applicazioni\n • Presentazione: si occupa della sintassi e della semantica dell’informazione trasmessa.\n • Applicazione: comprende tutti i protocolli usati dall’utente.\n Nel Modello TCP/IP troviamo le stesse prerogative del modello ISO/OSI, trovando maggiore adozione. I livelli individuati, seppur meno definiti e scollegati dello stack ISO/OSI sono:\n • Internet: lo scopo è quello di consentire agli host di mandare pacchetti in qualsiasi rete, e farli viaggiare in modi indipendenti fino a destinazione. IP è quel protocollo che definisce un formato ufficiale per i pacchetti e ha lo scopo di consegnarli a destinazione gestendo l'instradamento al meglio possibile, trovando il percorso dei nodi da attraversare.\n • Trasporto: progettato per consentire la comunicazione degli host sorgente e destinazione e la distinzione del processo destinatario nel dato host. I protocolli principali sono: TCP, è orientato alla connessione permettendo ad un flusso di byte di arrivare a destinazione gestendo il controllo del flusso e congestione, l'ordine dei pacchetti, il multiplexing, la affidabilità e la fairness in caso di canale sovrautilizzato. UDP, è un tipo di connessione non connection oriented a differenza di TCP. Non garantisce l'arrvio ed usato per quelle applicazioni che danno priorità alla velocità rispetto che all'affidabilità.\n • Applicazione: Comprende i dati necessari alla comunicazione e effettiva esecuzione dei processi applicativi, che comunicano architettura peer to peer. L’host può mandare o richiedere la ricezione di dati tramite dei protocolli, quali TELNET, FTP, SMTP, DNS e HTTP.\n • Host-to-Network: l’host si collega alla rete usando questo strato, che si avvale di standard e protoclli di accesso al mezzo fisico come Ethernet."
     },
     {
         "id": 5,
         "capitolo": "Introduzione alle Reti di Calcolatori",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Confronto architetturale tra il modello OSI e il modello TCP/IP.",
         "retro": "(AI)I due modelli hanno molto in comune, essendo entrambi basati su una pila di protocolli indipendenti con funzionalità degli strati simili tra loro, ma presentano alcune sostanziali differenze.\n La differenza principale riguarda l'evoluzione storica e la conseguente concettualizzazione della struttura. Nel modello OSI, infatti, è stata prima creata e standardizzata l'architettura a strati—definendo rigorosamente i concetti di servizi, interfacce e protocolli—e solo successivamente sono stati ideati i protocolli da applicare. Nel modello TCP/IP è avvenuto l'esatto opposto: i protocolli esistevano prima ancora che venisse definita l'architettura a strati. Per questo motivo, la definizione dei livelli in TCP/IP risulta molto più lasca rispetto al rigore formale dell'architettura OSI.\n Un esempio concreto di questa definizione più lasca è l'accorpamento delle funzionalità in specifici livelli: mentre il modello OSI divide rigorosamente le competenze tra i livelli di Sessione, Presentazione e Applicazione, il modello TCP/IP riunisce queste funzionalità all'interno di un unico strato, ovvero il livello di Applicazione. Analogamente, i livelli Fisico e Data Link dell'architettura OSI sono accorpati nel modello TCP/IP all'interno di un unico livello inferiore, definito Host-to-Network."
     },
     {
         "id": 6,
         "capitolo": "Introduzione alle Reti di Calcolatori",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Comunicazioni affidabili e non affidabili.",
         "retro": "Una comunicazione affidabile garantisce la ricezione dei messaggi, a differenza di una comunicazione non affidabile (non-reliable). La gestione dell'affidabilità consta nella risoluzione dei vari problemi reali incontrati nella creazione di un protocollo di comunicazione affidabile, spesso giungendo a compromessi quali throughput.  Nella progettazione di esso, il principale problema è la natura inaffidabile di un canale. Infatti il mittente, una volta inviato un messaggio, affida alla rete tutto ciò che riguarda il recapito effettivo, e si può fare un analogia del mittente avente una 'tenda' davanti. Definitivamente, il Reliable Data Transfer, per garantire una comunicazione affidabile e funzionale, deve risolvere i problemi di:\n 1. errori e perdita di dati.\n 2. reinvio delle informazioni ricevute in modo incorretto,\n 3. Conferma di avvenuta ricezione al mittente,\n 4. Uso corretto di un timer per il coordinamento di invio e ricezione, e di mancata ricezione, per reinviare efficentemente il pacchetto o i pacchetti non ricevuti correttamente.\n Si considera il protocollo TCP come reliable, a scapito di parte dell'efficenza, e il protocollo UDP come non affidabile, ma in grado di gestire in modo più efficente contenuti in tempo reale grazie alla non necessità di controllo della avvenuta ricezione dei pacchetti"
     },
     {
         "id": 7,
         "capitolo": "Introduzione alle Reti di Calcolatori",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Servizi con connessione e senza connessione.",
         "retro": "(AI)Nell'architettura di rete, i livelli possono fornire ai propri strati sovrastanti due diverse tipologie di servizio.\n Il servizio orientato alla connessione (connection-oriented) funziona in modo simile al sistema telefonico: necessita di stabilire preventivamente una connessione, utilizzarla e infine rilasciarla. Durante la fase iniziale, le parti negoziano i parametri di comunicazione. Poiché tiene traccia della sessione in corso, questo tipo di protocollo è definito stateful. Un'ottima analogia è l'acquisto di un biglietto del treno alle macchinette: il sistema deve ricordare in che fase ti trovi e attraversa stati sequenziali (\"selezione\", \"in attesa di pagamento\", \"erogazione biglietto\"). Nel modello TCP/IP, il protocollo TCP è il principale esempio di questo servizio.\n Il servizio senza connessione (connectionless) si comporta invece come la posta convenzionale. Non c'è negoziazione iniziale: ogni pacchetto contiene in sé l'indirizzo del destinatario ed è instradato in maniera indipendente dagli altri. Una caratteristica dei sistemi stateless (non sufficente alla definizione del concetto) è che il sistema stateless potrebbe non tenere memoria delle interazioni passate o future. Potremmo ad esempio definire stateless il distributore di ticket elimina-code alle poste, seppur abbia una memoria (l'ultimo biglietto erogato) questo non possiede un inerente stato: premo il pulsante, la macchina mi dà il prossimo numero e resetta l'azione senza mantenere alcuno stato legato a me utente. Il protocollo UDP rappresenta questo tipo di servizio per consegne rapide."
     },
     {
         "id": 8,
         "capitolo": "Introduzione alle Reti di Calcolatori",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Primitive di servizio: definizione e tipologie principali.",
         "retro": "(AI)Le primitive di servizio sono operazioni che i processi utente hanno a disposizione per accedere ai servizi di rete. Nel caso in cui la pila dei protocolli si trovi all'interno del sistema operativo, tali primitive assumono la forma di chiamate di sistema, permettendo al sistema stesso di assumere il controllo della macchina per spedire i messaggi.\n Le cinque primitive fondamentali invocate dai processi utente sono:\n 1. LISTEN: pone l'host in attesa di una connessione in arrivo.\n 2. CONNECT: stabilisce attivamente una connessione con un host in attesa.\n 3. RECEIVE: pone il sistema in attesa di un messaggio in arrivo.\n 4. SEND: esegue l'invio materiale del messaggio all'host in ascolto.\n 5. DISCONNECT: gestisce la terminazione della connessione."
     },
     {
         "id": 9,
         "capitolo": "Introduzione alle Reti di Calcolatori",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Reti broadcast, multicast e punto-punto.",
         "retro": "(AI)Le tecnologie trasmissive si dividono principalmente in due categorie:\n Nelle reti broadcast, esiste un unico canale di comunicazione condiviso tra tutte le macchine della rete. Un pacchetto inviato viene letto sequenzialmente da ogni macchina: ciascuna lo apre temporaneamente per verificarne l'indirizzo e, se non corrisponde al proprio, lo inoltra alla macchina successiva. All'interno di questa tipologia, quando un pacchetto è destinato a tutti i nodi contemporaneamente, il processo si definisce propriamente broadcasting; quando invece la trasmissione è limitata esclusivamente a un sottoinsieme di macchine, prende il nome di multicasting.\n Nelle reti punto-punto (meccanismo chiamato anche unicasting), le connessioni avvengono invece tra singole coppie di macchine. In questo caso, il pacchetto può attraversare macchine intermedie ma non viene letto da esse. Inoltre, i pacchetti possono seguire strade differenti e di lunghezze diverse, ma arriveranno sempre alla medesima macchina di destinazione."
     },
     {
         "id": 10,
         "capitolo": "Introduzione alle Reti di Calcolatori",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Classificazione delle reti per estensione geografica: PAN, LAN, MAN e WAN.",
         "retro": "(AI)Le reti si classificano principalmente in base all'estensione dell'area geografica coperta.\n Le PAN (Personal Area Network) sono reti a raggio d'azione estremamente ridotto, solitamente nell'ordine di uno o pochi metri. Vengono utilizzate tipicamente per interconnettere dispositivi personali e periferiche (come mouse, tastiere, cuffie o smartphone) a un dispositivo host, avvalendosi prevalentemente di tecnologie wireless a corto raggio, come il Bluetooth.\n Le LAN (Local Area Network) sono reti private confinate all'interno di un singolo edificio o al massimo estese per qualche chilometro. Si caratterizzano per dimensioni fisiche contenute, tecnologie di trasmissione ad altissima velocità (fino a 10 Gbps) e precise topologie strutturali, tipicamente a bus, ad anello o a stella.\n Le MAN (Metropolitan Area Network) coprono l'estensione di un'intera città. Un esempio tecnologico storico è l'infrastruttura della TV via cavo: centralizzando l'immissione dei dati in una stazione di testa, gli operatori sfruttano le porzioni inutilizzate dello spettro per distribuire sia il segnale televisivo sia servizi internet bidirezionali alle abitazioni.\n Le WAN (Wide Area Network) si estendono su aree geografiche molto vaste, arrivando a coprire nazioni o continenti. Esse sono costituite da una subnet di comunicazione gestita da un provider, formata fisicamente da linee di trasmissione per il trasporto dei bit e da router per l'instradamento. Il loro scopo primario è far viaggiare i messaggi per interconnettere in modo affidabile host appartenenti a LAN remote e separate."
     },
     {
         "id": 11,
         "capitolo": "Introduzione alle Reti di Calcolatori",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Commutazione di circuito e commutazione di pacchetto.",
         "retro": "(AI)Esistono due tassonomie principali per la commutazione nelle reti:\n 1. Commutazione di circuito\n Si basa sull'instaurazione preventiva di un percorso fisico dedicato tra mittente e destinatario. Storicamente (modello del \"vecchio telefono\"), la comunicazione avveniva tramite la commutazione fisica del circuito, con un operatore che cambiava manualmente l'instradamento per collegare le due linee. Ha una struttura tipicamente ad albero.\n Per gestire più comunicazioni sullo stesso mezzo, si usano due tecniche:\n • FDM (Divisione di Frequenza): la comunicazione viene suddivisa in bande di frequenza (un tempo, per risparmiare risorse, \"levavano frequenze\", abbassando la qualità della voce e rendendo difficile riconoscere chi parlasse).\n • TDM (Divisione di Tempo): divide l'utilizzo del canale assegnando specifici slot temporali.\n 2. Commutazione di pacchetto\n Instrada i dati \"automaticamente\" in base all'indirizzo di destinazione scritto all'interno di ogni pacchetto. Utilizza una struttura a grafo.\n Nasce dal progetto DARPA/ARPANET: serviva un modo per \"inscatolare\" i segnali tramite IMP (Interface Message Processor) e farli viaggiare in modo resiliente tra le Università (idea scartata da AT&T che preferiva il circuito ad albero). \n Per collegare linee con velocità diverse, questa tecnica introduce temporizzazione, bufferizzazione (i dati passano uno alla volta) e pacchettizzazione. \n Si suddivide in due logiche:\n • Circuito Virtuale: instaura un percorso logico mandando una \"previsione di connessione\" al router. Il router verifica le risorse: se le ha, le blocca temporaneamente per il circuito; se non le ha, la richiesta torna indietro e cerca un'altra strada.\n • Datagram: i pacchetti viaggiano in modo indipendente. Arrivano al router e, se c'è memoria a sufficienza, vengono inseriti nella coda di uscita per l'inoltro, potendo seguire percorsi diversi."
     },
     {
         "id": 12,
         "capitolo": "Introduzione alle Reti di Calcolatori",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Reti a circuito virtuale (Virtual Circuit Networks).",
         "retro": "(AI)In una rete a circuito virtuale, l'instradamento dei pacchetti non avviene tramite una decisione indipendente per ogni singolo elemento, ma si basa sull'instaurazione preliminare di un percorso logico.\n Il funzionamento segue queste fasi:\n • Richiesta di connessione: Il mittente invia una \"previsione di connessione\" che attraversa i nodi della rete.\n • Verifica delle risorse: Ogni router lungo il cammino verifica se dispone di risorse (banda, memoria, buffer) sufficienti.\n • Stato del percorso: Se le risorse sono disponibili, il router le blocca e le riserva, creando un \"circuito virtuale\" che persiste per tutta la durata della sessione.\n • Instradamento: Se il router non ha risorse sufficienti, la richiesta viene respinta e il mittente deve tentare un'altra strada.\n Questo modello presenta però uno svantaggio significativo rispetto al modello a datagram: la rigidità. Se un nodo lungo il percorso fallisce o il circuito si interrompe, l'intera comunicazione cade istantaneamente; il ripristino è molto più lento poiché richiede una nuova fase di negoziazione e instaurazione dell'intero percorso, al contrario dei datagram che possono semplicemente re-instradare i singoli pacchetti su strade alternative senza interrompere la sessione."
     },
     {
         "id": 13,
         "capitolo": "Application Layer",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Principi dell'inter-process communication dal punto di vista dell'Application Layer",
         "retro": "La inter-process comunication al suo nocciolo ha la necessità di far comunicare applicazioni in sistemi di natura diversa, attraverso le reti. Dal punto di vista dell'applicazione, l'architettura network è fissa e provvede una serie di specifici servizi all'applicazione.\n Per esempio, in una Web application ci sono due distinti programmi che comunicano tra loro: il browser nel host dell'utente (PC, tablet, smartphone...) e il programma del Web server nell'host del provider dell'applicazione.\n Il viaggio che intraprendono i dati applicativi parte da uno dei due host, e attraverso Internet Service Provider Globali, Nazionali e Locali/Regionali, attraversando le LAN dell'Application provider e dell'Home network e subendo processi di encapsulation e decapsulation per l'instradamento ed il trasporto dei dati, giungono a destinazione dove saranno interpretati a seconda delle specifiche dell'applicazione."
     },
     {
         "id": 14,
         "capitolo": "Application Layer",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Differenze tra schema P2P e Client-Server",
         "retro": "In una architettura Client-Server c'è un host always-on chiamato server, i quali servizi sono richiesti da più host chiamati clients. In questo schema, il Client è in grado di contattare il server. Nello schema P2P non c affidiamo a server dedicati, vi è comunicazione diretta tra hosts che sono connessi in modo intermittente (non always-on) chiamati peers. In questo caso, non è necessario usare data center per permettere la disponibilità dei servizi. Un altro vantaggio dello schema P2P è l'auto scalabilità dell'architettura, dato che ogni nuovo host connesso aumenta la capacità di calcolo del sistema distribuito. Un chiaro svantaggio è la potenziale non disponibilità del sistema, che dal punto di vista dell'architettura client server è raggiunta al costo della creazione di data center con numerosi host molto potenti e distribuiti in giro per il mondo, con data center che raggiungono numeri di centinaia di migliaia di host."
     },
     {
         "id": 15,
         "capitolo": "Application Layer",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Parla della affidabilità delle comunicazioni nel contesto applicativo e della coerenza dei dati end-to-end",
         "retro": "Nelle comunicazioni di rete, un pacchetto e i dati possono essere persi, ad esempio passando per un router con un buffer pieno. Per molte applicazioni, quali mail elettroniche o servizi applicativi finanziari, la perdita di dati può avere conseguenze devastant. Per supportare le applicazioni, bisogna usare un protocollo che provvede garanzie riguardo la trasmissione e ricezione dei dati (affidabilità). Quando il protocollo di trasporto provvede questo servizio, il processo può semplicemente passare i dati alla rete e sa con completa confidenza che i dati arriveranno a destinazione senza errori. Se non è questo il caso, alcuni dei dati potrebbero non arrivare o arrivare in ordine sparso. Potrebbe essere una situazione accettabile per le applicazioni con questa tolleranza, ad esempio servizi di live-streaming."
     },
     {
         "id": 16,
         "capitolo": "Application Layer",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Cita requisiti temporali e di affidabilità delle applicazioni",
         "retro": "Alcune applicazioni potrebbero avere dei requisiti specifici di banda. Alcuni esempi sono applicazioni di multimedia come YouTube, dove l'attesa di caricamento può rendere l'applicazione inutilizzabile. Una garanzia di throughput, ad esempio 100msec per la ricezione di ogni bit inviato, è di sensibile utilità alle applicazioni interattive real time, come la VoIP, i giochi multiplayer, le videoconferenze. Questa è utile apple applicazioni ma solitamente a garantirla deve essere il protocollo a livello di trasporto.\n Per questo motivo è molto importante la decisione del protocollo di trasporto per una applicazione. Il livello di trasporto provvede TCP, che è orientato alla connessione e recepisce tutti i messaggi senza errori e nel corretto ordine, e UDP, che non è orientato alla connessione (non ha handshake, non vi è allerta dell'inizio del flusso di dati) e non provvede garanzie sull'arrivo dei messaggi nè tantomento nel loro ordine di arrivo. Quest'ultimo è preferibile se il servizio che vogliamo creare è sensibile al timing, massimizzando il throughput in situazioni di non congestione, o se la conferma della ricezione è superflua alle funzionalità dell'applicazione, come nel caso del protocollo Domain Name Server (DNS)"
     },
     {
         "id": 17,
         "capitolo": "Application Layer",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Come viene effettuato l'indirizzamento dei processi (demultiplexing)?",
         "retro": "Attraverso le socket. Nella comunicazione tra processi, l'indirizzo IP identifica univocamente l'host di destinazione, ma un host esegue simultaneamente molteplici applicazioni.\n Per indirizzare i dati al processo applicativo corretto, viene legato l'indirizzo IP ad una porta associata in modo specifico ad un processo, permettendo al livello di trasporto di eseguire il demultiplexing.\n In particolare le porte sono numeri a 16 bit (range da 0 a 65535) che vengono legati al processo applicativo. Questi sono divisi in porte well-known o porte privilegiate (in quanto solo l'utente con privilegi di amministratore può usarle) da 0 a 1023, mentre le altre sono porte utente e vengono usate senza privilegi speciali. l'istituto Internet Assigned Number Authority (IANA) ha inoltre definito standard alcune porte in relazione ad alcuni servizi, anche se non è un requisito strettamente necessario. Inoltre, vi è la suddivisione tra porte registrate, fino alla porta 49152, che vengono principalmente usare da servizi per dati in accesso, e le restanti porte fino alla 65535 che sono dette Dinamiche o private o effimere, in quanto vengono usate come porte temporanee dal sistema operativo per le connessioni in uscita"
     },
     {
         "id": 18,
         "capitolo": "Application Layer",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": " Well Known Ports, Registered Ports e User Ports",
         "retro": "(AI)* Well Known Ports (0-1023): Sono le porte dedicate ai servizi di sistema. L'accesso o la creazione di servizi su questo intervallo richiede privilegi di root (amministratore). Protocolli come FTP, TELNET e SSH utilizzano spesso questo range .\n * Registered Ports (1024-49151): Sono porte assegnate dall'ICANN per usi specifici .\n * User Ports / Dynamic / Private Ports (49152-65535): Sono porte non legate ad usi specifici e non riservate . (BONUS non AI) un vecchio metodo per difendere le porte da possibili intrusori è il metodo knocking-door, che mostra una porta aperta come chiusa al mittente e non sblocca la suddetta finchè un preciso ordine di porte non venga prima sollecitato attraverso pacchetti specifici. Esempio: un server FTP non mostra sè stesso se prima non vengono inviati 10 pacchetti in ordine dalla porta 1337 alla 1346"
     },
     {
         "id": 19,
         "capitolo": "Application Layer",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Spiega il funzionamento del protocollo HTTP",
         "retro": "HyperText Transfer Protocol (HTTP) è al cuore del Web ed è implementato in due programmi: un programma client e un programma server, che vengono eseguiti su end-systems differenti. Questi comunicano scambiando messaggi HTTP, definiti nella struttura e contenenti tutte le informazioni necessarie per essere interpretate. I web server, contenenti i server HTTP, sono accessibili solitamente tramite un identificatore univoco URL. Il server, quando riceve una messaggio di richiesta HTTP dal client riguardo un oggetto, risponde con una risposta HTTP contenente l'oggetto richiesto.\n HTTP usa storicamente TCP nel livello di trasporto, anche se nella versione 3.0 viene usato UDP.\n Infine è importante denotare che, parlando di HTTP nella sua versione standard, il server nella generazione della risposta al client non salva nessuna informazione riguardante lo stato del client, infatti, se un clientdovesse richiedere due volte lo stesso oggetto nel giro di pochi secondi, il server dovrebbe rispondere mandando semplicemente l'oggetto entrambe le volte, invece di rispondere con \"l'oggetto è appena stato inviato\". data questa ultima proprietà, si definisce HTTP come un protocollo stateless.\n Per la gestione dello stato, HTTP fa uso dei cosiddetti Cookie in combinazione con applicazioni server che fanno uso di Dynamic HTML, come ASP, PHP e Java"
     },
     {
         "id": 20,
         "capitolo": "Application Layer",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Formato dei pacchetti HTTP",
         "retro": "I messaggi HTTP sono scritti in testo ASCII ordinario, per essere leggibili anche da un umano. I messaggi consistono di linee terminate da un carattere 'carriage return' e un carattere 'newline', e ogni linea ha uno specifico valore nel contesto dei messaggi HTTP.\n Possiamo distinguere tra Richiesta e Risposta HTTP.\n In una richiesta, la prima linea contiene la richiesta al percorso della risorsa, le altre linee sono chiamate 'Headers'. La prima linea è strutturata come segue: 'metodo' 'path' 'http version'.\n In particolare il metodo è spesso descrittivo della operazione da eseguire (ma non necessariamente). Alcuni metodi sono: GET, POST, HEAD, DELETE, PUT.\n I successivi Headers contengono altri parametri utili alla connessione. gli header hanno formato 'header field name':<spazio>'header value'. Alcuni Header propri sia delle richieste sono: Host: , contenente l'host dell'oggetto; Connection: <open|close> che indica se la connessione TCP deve essere chiusa o no. Le richiesta dopo gli header (due consecuctivi CR e LF) può contenere dei dati che vengono chiamati anche corpo o 'body' della richiesta.\n Nella risposta troviamo una struttura simile:\n 1. la prima linea contiene la versione http usata, lo status code della risposta (indica solitamente l'esito della operazione richiesta) e una stringa descrittiva dello stato. un esempio è HTTP/1.1 200 OK se la richiesta è andata a buon fine\n 2. Header della risposta, alcuni esempi sono: Content-Type, Content-Length, Date ecc.\n 3. gli effettivi dati della risposta, chiamato anche in questo caso body."
     },
     {
         "id": 21,
         "capitolo": "Application Layer",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Le diverse versioni di HTTP",
         "retro": "HTTP nel tempo ha subito modifiche al suo protocollo per svariate ragioni, tra le quali aumentare l'efficenza, cercando di soddisfare la necessità di migliore performance dovute a siti web sempre più energivori e carichi di oggetti sempre più grandi. \n HTTP/1.0 chiudeva la sessione TCP dopo ogni trasferimento di singoli oggetti, aveva il seguente workflow: Richiesta -> Risposta -> Chiusura sessione TCP. Questo andava bene finchè i server avevano pochi oggetti\n HTTP/1.1 usa connessioni TCP permanenti e serializzate, apre anche più connessioni.\n HTTP/2 permette di mantenere una sessione TCP per singola pagina web, applicando round robin al caricamento delle risorse, questo però fa in modo che la singola pagina web, inpresenza d un singolo oggetto più grande si possa bloccate completamente in attesa del singolo oggetto, cosa che HTTP/1.1 risolveva aprendo più connessioni (anche se usava più sockets). Sono state successivamente risolte queste problematiche usando la prioritizzazione dei messaggi e il framing dei messaggi in chunk più piccoli.\n HTTP/3 è uno standard nuovo creato da google, che ha come peculiarità l'uso di UDP e un focus sulla sicurezza."
     },
     {
         "id": 22,
         "capitolo": "Application Layer",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "il protocollo FTP",
         "retro": "E' un protocollo per il trasferimento di file da server remoti. Usa due porte, una per l'invio di comandi e una per il trasferimento dati, ed è un protocollo stateful, ossia il protocollo ha un comportamento diverso in base allo stato della connessione, che in questo caso, semplificando, differisce nei casi in cui l'utente è autenticato (ha inserito username e password/ ha eseguito correttamente il login) oppure no. Proprio lo stato della connessione bloccherebbe il trasferimento di dati nel secondo caso.\n "
     },
     {
         "id": 23,
         "capitolo": "Application Layer",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Quali sono le principali differenze architetturali e funzionali tra il protocollo HTTP e il protocollo FTP?",
         "retro": "(AI)• Gestione delle connessioni: HTTP usa una singola connessione TCP per tutto (richieste e dati), mentre FTP usa due connessioni separate: porta 21 per il controllo (comandi) e porta 20 per i dati.\n• Stato: HTTP è stateless (non mantiene memoria delle interazioni, a meno dell'uso di cookie). FTP è stateful (mantiene lo stato della sessione, come l'autenticazione o la directory corrente).\n• Obiettivo: HTTP è ottimizzato per il recupero di risorse Web. FTP è progettato specificamente per il trasferimento di file.\n• Persistenza: In FTP la connessione è permanente finché non viene chiusa esplicitamente dal client o per timeout."
     },
     {
         "id": 24,
         "capitolo": "Application Layer",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Qual è la differenza tra un protocollo stateless e statefull? Cosa sono i cookies?",
         "retro": "Un protocollo stateless è un protocollo che mantiene uno stato interno delle transazioni, e cambia comportamento in base allo stato corrente, a differenza di un protocollo stateless che anche se mantenesse una memoria o uno stato interno, il suo comportamento non cambierebbe. Un esempio classico mette in evidenza questa differenza comparando la macchina dei biglietti di coda alle poste, e una macchinetta dei biglietti del treno. La prima, anche mantenendo memoria dell'ultimo biglietto erogato, se viene richiesto un biglietto lo eroga sempre allo stesso modo. Per il biglietto del treno invece, come minimo la macchina terrà uno stato di 'pagato' e 'non pagato', per i quali erogherà o meno il biglietto.\n HTTP è generalmente riconosciuto come stateless, infatti il protocollo stesso non prevede diversi stati per le transazioni nei messaggi HTTP, i siti web dinamici permettono il mantenimento dello stato grazie a applicazioni specifiche che lo valutano usando oggetti persistenti come database interni dal lato del server, e stringhe di testo chiamate Cookie nel browser del client. Queste ultime permettono di mantenere uno stato solo grazie alla validazione di essi da parte dell'applicazione servente, e ciò permette di salvare il proprio carrello su Amazon senza che le nostre ricerche vadano perse, o anche di tenere al sicuro l'account della nostra banca, evitando che chiunque richieda un trasferimento di qualsiasi somma da parte nostra venga bloccato."
     },
     {
         "id": 25,
         "capitolo": "Application Layer",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Il protocollo SMTP",
         "retro": "E' il protocollo client-server per l'invio e la ricezione della posta elettronica. E' basato su semplice testo ASCII e funziona nel seguente modo:\n Il server distingue tra nome utente e effettiva macchina tramite la chiocciola 'nomeutente@macchina', un daemon in ascolto agisce da server e il client remoto annuncia l'inizio della connessione, da chi arriva il messaggio e chi è il destinatario. Se il destinatario esiste il server proseguirà a inserire il messaggio alla fine di un file che contiene i messaggi in arrivo.\n Per il corretto funzionamento di SMTP è necessario quindi un processo che scriva sul file e un processo che riceve la connessione, quest'ultimo dovrà girare con permessi elevati. Viene usato come delimitatore tra messaggi il carattere '.' nel file di testo, nel quale sono presenti mail separate in un file unico. una conversazione SMTP assomiglia alla seguente:\n S: 220 server.com\n C: HELO myname.it\n 250 Hello myname.it, pleased to meet you\n C: MAIL FROM: <alice@myname.it>\n S: 250 alice@myname.it ... Sender ok\n S: RCPT TO: <bob@server.com>\n S: 250 bob@server.com ... Recipient ok\n C: DATA\n S: 354 Enter mail, end with \".\" on a line by itself\n C: Ti piace il ketchup?\n C: E i cetriolini? \n C: .\n S: 250 Message accepted for delivery\n C: QUIT\n S: 221 server.com closing connection\n \n Alcuni problemi erano: la possibilità di inviare mail anonime o con Mittente arbitrario 'e.g. MAIL FROM: whitehouse'."
     },
     {
         "id": 26,
         "capitolo": "Application Layer",
-        "tipo": "Domanda aperta",
+        "tipo": "teoria",
         "fronte": "Spiega POP e IMAP e in cosa differiscono con SMTP",
         "retro": "POP e IMAP sono due protocolli creati per scaricare il file di mail messo a disposizione da SMTP, in quello che viene chiamato casella mail. Sarebbe naturale mettere la casella mail direttamente nel PC dell'utente che possiede la casella di posta, ma con questo approccio il PC dell'utente dovrebbe restare sempre acceso e connesso ad internet. Un tipico setup di SMTP, con POP o IMAP è avere un mail server condiviso con altri utenti su un server appostito e usare a livello del PC dell'utente un protocollo di accesso a questo server per leggere le mail. Qui entrano in gioco POP e IMAP, che serve a comunicare col server di posta, provvedendo accesso, ricezione delle mail ma anche risposta e organizzazione. Questi due protocolli infatti inviano login e password al server di posta, in particolare POP scaricando tutta la casella e rimuovendola dal server mail, creando anche problemi di sincronizzazione se si usa POP da diversi device. IMAP invece non ha questo problema. Detto questo, sommariamente la differenza tra POP e IMAP a confronto con SMTP è che SMTP è l'effettivo server always-on che riceve la posta e contiene diverse caselle di diversi utenti, mentre POP e IMAP sono protocolli o programmi che forniscono comandi atti all'interazione con i server di posta SMTP"
     },
     {
     "id": 27,
     "capitolo": "Application Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "A cosa serve e come funziona il DNS?",
     "retro": ""
   },
   {
     "id": 28,
     "capitolo": "Application Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Perchè le mail si ottengono mediante DNS?",
     "retro": ""
   },
   {
     "id": 29,
     "capitolo": "Transport Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "UDP",
     "retro": ""
   },
   {
     "id": 30,
     "capitolo": "Transport Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Gestione del timer in TCP",
     "retro": ""
   },
   {
     "id": 31,
     "capitolo": "Transport Layer",
-    "tipo": "Esercizio",
+    "tipo": "esercizio",
     "fronte": "Simula go_back_n",
     "retro": ""
   },
   {
     "id": 32,
     "capitolo": "Transport Layer",
-    "tipo": "Esercizio",
+    "tipo": "esercizio",
     "fronte": "Simula stop_n_wait",
     "retro": ""
   },
   {
     "id": 33,
     "capitolo": "Transport Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Avendo un canale, da 100 mbit, la somma dei due throughput. Posso andare oltre. Come è possibile? Risp: è possibile a motivo dei buffer dei router che possono immagazzinare i pacchetti e in un dato momento il throughput istantaneo è maggiore della somma dei due.",
     "retro": ""
   },
   {
     "id": 34,
     "capitolo": "Transport Layer",
-    "tipo": "Esercizio",
+    "tipo": "esercizio",
     "fronte": "Esercizi sulla banda (formule)",
     "retro": ""
   },
   {
     "id": 35,
     "capitolo": "Transport Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Apertura e chiusura connessioni in TCP",
     "retro": ""
   },
   {
     "id": 36,
     "capitolo": "Transport Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Attacco syn flood DDOS",
     "retro": ""
   },
   {
     "id": 37,
     "capitolo": "Transport Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Non è esatto parlare di congestione in caso di UDP, perchè?",
     "retro": ""
   },
   {
     "id": 38,
     "capitolo": "Transport Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Definizione di congestione",
     "retro": ""
   },
   {
     "id": 39,
     "capitolo": "Transport Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Diagramma congestione. Traffico generato, traffico utile.",
     "retro": ""
   },
   {
     "id": 40,
     "capitolo": "Transport Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Controllo del flusso e controllo della congestione.",
     "retro": ""
   },
   {
     "id": 41,
     "capitolo": "Transport Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Controllo del flusso, finestra del flusso",
     "retro": ""
   },
   {
     "id": 42,
     "capitolo": "Transport Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Controllo della congestione TCP tahoe",
     "retro": ""
   },
   {
     "id": 43,
     "capitolo": "Transport Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Spiegare la differenza tra Tahoe e Reno",
     "retro": ""
   },
   {
     "id": 44,
     "capitolo": "Transport Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Controllo di flusso e controllo della congestione in TCP Tahoe",
     "retro": ""
   },
   {
     "id": 45,
     "capitolo": "Transport Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Fairness TCP Reno",
     "retro": ""
   },
   {
     "id": 46,
     "capitolo": "Transport Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Fairness TCP dimostrazione",
     "retro": ""
   },
   {
     "id": 47,
     "capitolo": "Transport Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Dimostrare dettagliatamente la proprietà fairness di TCP Reno",
     "retro": ""
   },
   {
     "id": 48,
     "capitolo": "Transport Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Come si ricava la larghezza di banda di un cavo?",
     "retro": ""
   },
   {
     "id": 49,
     "capitolo": "Transport Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Perchè la fibra ottica è migliore rispetto ai cavi tradizionali?",
     "retro": ""
   },
   {
     "id": 50,
     "capitolo": "Transport Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Svantaggi della fibra ottica",
     "retro": ""
   },
   {
     "id": 51,
     "capitolo": "Transport Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Cos'è una costellazione",
     "retro": ""
   },
   {
     "id": 52,
     "capitolo": "Transport Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Perchè non si possono fare costellazioni con 96 punti",
     "retro": ""
   },
   {
     "id": 53,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Circuito Virtuale vs Datagram",
     "retro": ""
   },
   {
     "id": 54,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Congestione Datagram e congestione virtual circuit",
     "retro": ""
   },
   {
     "id": 55,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Differenza tra data plane e control plane",
     "retro": ""
   },
   {
     "id": 56,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Flooding e metodi di controllo",
     "retro": ""
   },
   {
     "id": 57,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Distance vector",
     "retro": ""
   },
   {
     "id": 58,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Problemi distance vector e convergenza",
     "retro": ""
   },
   {
     "id": 59,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Avvelenamento al contrario",
     "retro": ""
   },
   {
     "id": 60,
     "capitolo": "Network Layer",
-    "tipo": "Esercizio",
+    "tipo": "esercizio",
     "fronte": "Simula distance vector",
     "retro": ""
   },
   {
     "id": 61,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Link State Routing, come fa link state a scoprire la rete?",
     "retro": ""
   },
   {
     "id": 62,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Parlami di Link State Routing",
     "retro": ""
   },
   {
     "id": 63,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Come fa Link state a conoscere i vicini?",
     "retro": ""
   },
   {
     "id": 64,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Problemi di RIP",
     "retro": ""
   },
   {
     "id": 65,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Perchè si è passati da RIP a OSPF",
     "retro": ""
   },
   {
     "id": 66,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Vantaggi del RIP",
     "retro": ""
   },
   {
     "id": 67,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Uso della subnet mask",
     "retro": ""
   },
   {
     "id": 68,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "In una LAN in un host, se diamo una maschera sbagliata descrivere dettagliatamente cosa succede",
     "retro": ""
   },
   {
     "id": 69,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Come faccio a conoscere, dal mio pc, l'indirizzo IP di un altro terminale collegato? Se usassi tutte le possibili configurazioni della maschera di rete?",
     "retro": ""
   },
   {
     "id": 70,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Frammentazione in IPv4 e IPv6",
     "retro": ""
   },
   {
     "id": 71,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "A cosa serve il campo offset nei pacchetti IPv4",
     "retro": ""
   },
   {
     "id": 72,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "NAT",
     "retro": ""
   },
   {
     "id": 73,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "ARP e sicurezza",
     "retro": ""
   },
   {
     "id": 74,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "DHCPv4",
     "retro": ""
   },
   {
     "id": 75,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "DHCP cosa assegna oltre IP",
     "retro": ""
   },
   {
     "id": 76,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Header IPv6 vs header IPv4",
     "retro": ""
   },
   {
     "id": 77,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Frammentazione e maschera IPv6",
     "retro": ""
   },
   {
     "id": 78,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Campi next Header IPv6",
     "retro": ""
   },
   {
     "id": 79,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Il flow label, vantaggi",
     "retro": ""
   },
   {
     "id": 80,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Indirizzi di un canale IPv6 ottenuto dal MAC address",
     "retro": ""
   },
   {
     "id": 81,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Header opzionali di IPv6",
     "retro": ""
   },
   {
     "id": 82,
     "capitolo": "Network Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Parlare di IPv6, indirizzi globali, locali e di sito",
     "retro": ""
   },
   {
     "id": 83,
     "capitolo": "Data Link Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Problema del framing, descrivere le soluzioni relatve più usate",
     "retro": ""
   },
   {
     "id": 84,
     "capitolo": "Data Link Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Codifica 4b 5b, perchè risolve il problema del framing",
     "retro": ""
   },
   {
     "id": 85,
     "capitolo": "Data Link Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Parlare della teoria della correzione e rilevazione degli errori e dimostrare che (m+1) < 2r – r",
     "retro": ""
   },
   {
     "id": 86,
     "capitolo": "Data Link Layer",
-    "tipo": "Esercizio",
+    "tipo": "esercizio",
     "fronte": "CRC",
     "retro": ""
   },
   {
     "id": 87,
     "capitolo": "Data Link Layer",
-    "tipo": "Esercizio",
+    "tipo": "esercizio",
     "fronte": "Stringa in Z2",
     "retro": ""
   },
   {
     "id": 88,
     "capitolo": "Data Link Layer",
-    "tipo": "Esercizio",
+    "tipo": "esercizio",
     "fronte": "Stringa codificata con CRC e successivamente Hamming",
     "retro": ""
   },
   {
     "id": 89,
     "capitolo": "Data Link Layer",
-    "tipo": "Esercizio",
+    "tipo": "esercizio",
     "fronte": "Stringa codificata con CRC e successivamente Trellis",
     "retro": ""
   },
   {
     "id": 90,
     "capitolo": "Data Link Layer",
-    "tipo": "Esercizio",
+    "tipo": "esercizio",
     "fronte": "Stringa CRC con Trellis",
     "retro": ""
   },
   {
     "id": 91,
     "capitolo": "Data Link Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Parla di Trellis Viterbi in Gigabit Ethernet",
     "retro": ""
   },
   {
     "id": 92,
     "capitolo": "Data Link Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "CSMA/CD",
     "retro": ""
   },
   {
     "id": 93,
     "capitolo": "Data Link Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Dimensione minima frame Ethernet",
     "retro": ""
   },
   {
     "id": 94,
     "capitolo": "Data Link Layer",
-    "tipo": "Esercizio",
+    "tipo": "esercizio",
     "fronte": "Disegnata una struttura di rete, spiega il funzionamento del broadcasting usando lo spanning Tree",
     "retro": ""
   },
   {
     "id": 95,
     "capitolo": "Data Link Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Differenze tra Hub, Switch e Router",
     "retro": ""
   },
   {
     "id": 96,
     "capitolo": "Data Link Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Differenza tra Token Ring e Token Bus",
     "retro": ""
   },
   {
     "id": 97,
     "capitolo": "Data Link Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Cosa è preferibile tra CSMA/CD e Token Ring",
     "retro": ""
   },
   {
     "id": 98,
     "capitolo": "Data Link Layer",
-    "tipo": "Domanda aperta",
+    "tipo": "teoria",
     "fronte": "Differenza tra Multimode e Single mode fiber",
     "retro": ""
   }
