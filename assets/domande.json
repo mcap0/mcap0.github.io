@@ -180,8 +180,510 @@
         "tipo": "Domanda aperta",
         "fronte": "Spiega POP e IMAP e in cosa differiscono con SMTP",
         "retro": "POP e IMAP sono due protocolli creati per scaricare il file di mail messo a disposizione da SMTP, in quello che viene chiamato casella mail. Sarebbe naturale mettere la casella mail direttamente nel PC dell'utente che possiede la casella di posta, ma con questo approccio il PC dell'utente dovrebbe restare sempre acceso e connesso ad internet. Un tipico setup di SMTP, con POP o IMAP è avere un mail server condiviso con altri utenti su un server appostito e usare a livello del PC dell'utente un protocollo di accesso a questo server per leggere le mail. Qui entrano in gioco POP e IMAP, che serve a comunicare col server di posta, provvedendo accesso, ricezione delle mail ma anche risposta e organizzazione. Questi due protocolli infatti inviano login e password al server di posta, in particolare POP scaricando tutta la casella e rimuovendola dal server mail, creando anche problemi di sincronizzazione se si usa POP da diversi device. IMAP invece non ha questo problema. Detto questo, sommariamente la differenza tra POP e IMAP a confronto con SMTP è che SMTP è l'effettivo server always-on che riceve la posta e contiene diverse caselle di diversi utenti, mentre POP e IMAP sono protocolli o programmi che forniscono comandi atti all'interazione con i server di posta SMTP"
-    }
-
-
+    },
+    {
+    "id": 27,
+    "capitolo": "Application Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "A cosa serve e come funziona il DNS?",
+    "retro": ""
+  },
+  {
+    "id": 28,
+    "capitolo": "Application Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Perchè le mail si ottengono mediante DNS?",
+    "retro": ""
+  },
+  {
+    "id": 29,
+    "capitolo": "Transport Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "UDP",
+    "retro": ""
+  },
+  {
+    "id": 30,
+    "capitolo": "Transport Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Gestione del timer in TCP",
+    "retro": ""
+  },
+  {
+    "id": 31,
+    "capitolo": "Transport Layer",
+    "tipo": "Esercizio",
+    "fronte": "Simula go_back_n",
+    "retro": ""
+  },
+  {
+    "id": 32,
+    "capitolo": "Transport Layer",
+    "tipo": "Esercizio",
+    "fronte": "Simula stop_n_wait",
+    "retro": ""
+  },
+  {
+    "id": 33,
+    "capitolo": "Transport Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Avendo un canale, da 100 mbit, la somma dei due throughput. Posso andare oltre. Come è possibile? Risp: è possibile a motivo dei buffer dei router che possono immagazzinare i pacchetti e in un dato momento il throughput istantaneo è maggiore della somma dei due.",
+    "retro": ""
+  },
+  {
+    "id": 34,
+    "capitolo": "Transport Layer",
+    "tipo": "Esercizio",
+    "fronte": "Esercizi sulla banda (formule)",
+    "retro": ""
+  },
+  {
+    "id": 35,
+    "capitolo": "Transport Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Apertura e chiusura connessioni in TCP",
+    "retro": ""
+  },
+  {
+    "id": 36,
+    "capitolo": "Transport Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Attacco syn flood DDOS",
+    "retro": ""
+  },
+  {
+    "id": 37,
+    "capitolo": "Transport Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Non è esatto parlare di congestione in caso di UDP, perchè?",
+    "retro": ""
+  },
+  {
+    "id": 38,
+    "capitolo": "Transport Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Definizione di congestione",
+    "retro": ""
+  },
+  {
+    "id": 39,
+    "capitolo": "Transport Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Diagramma congestione. Traffico generato, traffico utile.",
+    "retro": ""
+  },
+  {
+    "id": 40,
+    "capitolo": "Transport Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Controllo del flusso e controllo della congestione.",
+    "retro": ""
+  },
+  {
+    "id": 41,
+    "capitolo": "Transport Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Controllo del flusso, finestra del flusso",
+    "retro": ""
+  },
+  {
+    "id": 42,
+    "capitolo": "Transport Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Controllo della congestione TCP tahoe",
+    "retro": ""
+  },
+  {
+    "id": 43,
+    "capitolo": "Transport Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Spiegare la differenza tra Tahoe e Reno",
+    "retro": ""
+  },
+  {
+    "id": 44,
+    "capitolo": "Transport Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Controllo di flusso e controllo della congestione in TCP Tahoe",
+    "retro": ""
+  },
+  {
+    "id": 45,
+    "capitolo": "Transport Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Fairness TCP Reno",
+    "retro": ""
+  },
+  {
+    "id": 46,
+    "capitolo": "Transport Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Fairness TCP dimostrazione",
+    "retro": ""
+  },
+  {
+    "id": 47,
+    "capitolo": "Transport Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Dimostrare dettagliatamente la proprietà fairness di TCP Reno",
+    "retro": ""
+  },
+  {
+    "id": 48,
+    "capitolo": "Transport Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Come si ricava la larghezza di banda di un cavo?",
+    "retro": ""
+  },
+  {
+    "id": 49,
+    "capitolo": "Transport Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Perchè la fibra ottica è migliore rispetto ai cavi tradizionali?",
+    "retro": ""
+  },
+  {
+    "id": 50,
+    "capitolo": "Transport Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Svantaggi della fibra ottica",
+    "retro": ""
+  },
+  {
+    "id": 51,
+    "capitolo": "Transport Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Cos'è una costellazione",
+    "retro": ""
+  },
+  {
+    "id": 52,
+    "capitolo": "Transport Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Perchè non si possono fare costellazioni con 96 punti",
+    "retro": ""
+  },
+  {
+    "id": 53,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Circuito Virtuale vs Datagram",
+    "retro": ""
+  },
+  {
+    "id": 54,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Congestione Datagram e congestione virtual circuit",
+    "retro": ""
+  },
+  {
+    "id": 55,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Differenza tra data plane e control plane",
+    "retro": ""
+  },
+  {
+    "id": 56,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Flooding e metodi di controllo",
+    "retro": ""
+  },
+  {
+    "id": 57,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Distance vector",
+    "retro": ""
+  },
+  {
+    "id": 58,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Problemi distance vector e convergenza",
+    "retro": ""
+  },
+  {
+    "id": 59,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Avvelenamento al contrario",
+    "retro": ""
+  },
+  {
+    "id": 60,
+    "capitolo": "Network Layer",
+    "tipo": "Esercizio",
+    "fronte": "Simula distance vector",
+    "retro": ""
+  },
+  {
+    "id": 61,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Link State Routing, come fa link state a scoprire la rete?",
+    "retro": ""
+  },
+  {
+    "id": 62,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Parlami di Link State Routing",
+    "retro": ""
+  },
+  {
+    "id": 63,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Come fa Link state a conoscere i vicini?",
+    "retro": ""
+  },
+  {
+    "id": 64,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Problemi di RIP",
+    "retro": ""
+  },
+  {
+    "id": 65,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Perchè si è passati da RIP a OSPF",
+    "retro": ""
+  },
+  {
+    "id": 66,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Vantaggi del RIP",
+    "retro": ""
+  },
+  {
+    "id": 67,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Uso della subnet mask",
+    "retro": ""
+  },
+  {
+    "id": 68,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "In una LAN in un host, se diamo una maschera sbagliata descrivere dettagliatamente cosa succede",
+    "retro": ""
+  },
+  {
+    "id": 69,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Come faccio a conoscere, dal mio pc, l'indirizzo IP di un altro terminale collegato? Se usassi tutte le possibili configurazioni della maschera di rete?",
+    "retro": ""
+  },
+  {
+    "id": 70,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Frammentazione in IPv4 e IPv6",
+    "retro": ""
+  },
+  {
+    "id": 71,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "A cosa serve il campo offset nei pacchetti IPv4",
+    "retro": ""
+  },
+  {
+    "id": 72,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "NAT",
+    "retro": ""
+  },
+  {
+    "id": 73,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "ARP e sicurezza",
+    "retro": ""
+  },
+  {
+    "id": 74,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "DHCPv4",
+    "retro": ""
+  },
+  {
+    "id": 75,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "DHCP cosa assegna oltre IP",
+    "retro": ""
+  },
+  {
+    "id": 76,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Header IPv6 vs header IPv4",
+    "retro": ""
+  },
+  {
+    "id": 77,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Frammentazione e maschera IPv6",
+    "retro": ""
+  },
+  {
+    "id": 78,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Campi next Header IPv6",
+    "retro": ""
+  },
+  {
+    "id": 79,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Il flow label, vantaggi",
+    "retro": ""
+  },
+  {
+    "id": 80,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Indirizzi di un canale IPv6 ottenuto dal MAC address",
+    "retro": ""
+  },
+  {
+    "id": 81,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Header opzionali di IPv6",
+    "retro": ""
+  },
+  {
+    "id": 82,
+    "capitolo": "Network Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Parlare di IPv6, indirizzi globali, locali e di sito",
+    "retro": ""
+  },
+  {
+    "id": 83,
+    "capitolo": "Data Link Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Problema del framing, descrivere le soluzioni relatve più usate",
+    "retro": ""
+  },
+  {
+    "id": 84,
+    "capitolo": "Data Link Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Codifica 4b 5b, perchè risolve il problema del framing",
+    "retro": ""
+  },
+  {
+    "id": 85,
+    "capitolo": "Data Link Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Parlare della teoria della correzione e rilevazione degli errori e dimostrare che (m+1) < 2r – r",
+    "retro": ""
+  },
+  {
+    "id": 86,
+    "capitolo": "Data Link Layer",
+    "tipo": "Esercizio",
+    "fronte": "CRC",
+    "retro": ""
+  },
+  {
+    "id": 87,
+    "capitolo": "Data Link Layer",
+    "tipo": "Esercizio",
+    "fronte": "Stringa in Z2",
+    "retro": ""
+  },
+  {
+    "id": 88,
+    "capitolo": "Data Link Layer",
+    "tipo": "Esercizio",
+    "fronte": "Stringa codificata con CRC e successivamente Hamming",
+    "retro": ""
+  },
+  {
+    "id": 89,
+    "capitolo": "Data Link Layer",
+    "tipo": "Esercizio",
+    "fronte": "Stringa codificata con CRC e successivamente Trellis",
+    "retro": ""
+  },
+  {
+    "id": 90,
+    "capitolo": "Data Link Layer",
+    "tipo": "Esercizio",
+    "fronte": "Stringa CRC con Trellis",
+    "retro": ""
+  },
+  {
+    "id": 91,
+    "capitolo": "Data Link Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Parla di Trellis Viterbi in Gigabit Ethernet",
+    "retro": ""
+  },
+  {
+    "id": 92,
+    "capitolo": "Data Link Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "CSMA/CD",
+    "retro": ""
+  },
+  {
+    "id": 93,
+    "capitolo": "Data Link Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Dimensione minima frame Ethernet",
+    "retro": ""
+  },
+  {
+    "id": 94,
+    "capitolo": "Data Link Layer",
+    "tipo": "Esercizio",
+    "fronte": "Disegnata una struttura di rete, spiega il funzionamento del broadcasting usando lo spanning Tree",
+    "retro": ""
+  },
+  {
+    "id": 95,
+    "capitolo": "Data Link Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Differenze tra Hub, Switch e Router",
+    "retro": ""
+  },
+  {
+    "id": 96,
+    "capitolo": "Data Link Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Differenza tra Token Ring e Token Bus",
+    "retro": ""
+  },
+  {
+    "id": 97,
+    "capitolo": "Data Link Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Cosa è preferibile tra CSMA/CD e Token Ring",
+    "retro": ""
+  },
+  {
+    "id": 98,
+    "capitolo": "Data Link Layer",
+    "tipo": "Domanda aperta",
+    "fronte": "Differenza tra Multimode e Single mode fiber",
+    "retro": ""
+  }
 
 ]
