@@ -619,8 +619,8 @@
     "id": 89,
     "capitolo": "Data Link Layer",
     "tipo": "esercizio",
-    "fronte": "Stringa codificata con CRC e successivamente Trellis",
-    "retro": ""
+    "fronte": "In un messaggio di 15 bit, verifica tramite i codici di Hamming se sono presenti errori e eventualmente correggili. Infine, indica qual è il payload inviato senza ridondanza\n Stringa: 101100100101100.",
+    "retro": "Nel codice di Hamming, i bit di parità si trovano alle posizioni potenze di 2, ovvero 1,2,4,8, i restanti bit sono di dati.\n Il controllo di parità avviene come segue\n1 (control)\n2 (control)\n3 (1+2)\n4 (control)\n5 (1+4)\n6 (2+4)\n7 (1+2+4)\n8(control)\n9 (8+1)\n10 (8+2)\n11 (8+1+2)\n12 (8+4)\n13 (8+1+4)\n14 (8+2+4)\n15 (8+1+2+4)\n Ogni bit di dati è quindi controllato dalla rappresentazione della sua posizione tramite somma di potenze di due, che saranno i bit di controllo.\n Facendo poi xor di potenza e delle posizioni che quella potenza di due individua, se lo XOR totale fa 0, non abbiamo errori, altrimenti la posizione dell'errore è nella posizione decimale di ciò che esce in binario combinando i risultati dei bit di controllo.\n- b1 (pos 1, 3, 5, 7, 9, 11, 13, 15). Somma XOR: 1⊕1⊕0⊕1⊕0⊕0⊕1⊕0 = 0.\n - b2 (pos 2, 3, 6, 7, 10, 11, 14, 15). Somma XOR: 0⊕1⊕0⊕1⊕1⊕0⊕0⊕0 = 1.\n - b4 (pos 4, 5, 6, 7, 12, 13, 14, 15). Somma XOR: 1⊕0⊕0⊕1⊕1⊕1⊕0⊕0 = 0.\n - b8 (pos 8, 9, 10, 11, 12, 13, 14, 15). Somma XOR: 0⊕0⊕1⊕0⊕1⊕1⊕0⊕0 = 1.\n3. Individuazione del bit errato: la combinazione dei bit di parità (b8, b4, b2, b1) genera il valore binario 1010, che in decimale equivale a 8+2 = 10.\n4. Correzione: Il bit in posizione 10 è errato. Essendo un '1', viene corretto in '0', ottenendo la codeword originale corretta: 101100100001100"
   },
   {
     "id": 90,
