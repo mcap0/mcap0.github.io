@@ -186,7 +186,7 @@
     "capitolo": "Application Layer",
     "tipo": "teoria",
     "fronte": "A cosa serve e come funziona il DNS?",
-    "retro": ""
+    "retro": "Il DNS è un protocollo responsabile della traduzione dal cosiddetto dominio all'indirizzo IP di un server.\n Ha come scopo quindi la traduzione di testo, in particolare un numero di caratteri massimo di 255, suddividendo la stringa originale in Top Level domain (.it, .com, .edu), e dominio si secondo livello. E' un servizio distribuito critico per l'utilizzo di internet di tutti i giorni. Il suo funzionamento è basato su record testuali, un database che contiene le traduzioni da testo a IP e altre funzioni secondarie. Un tempo era un semplice file di testo che veniva copiato in tutte le macchine DNS, ora la struttura del DNS è considerabile gerarchica o ad albero, infatti la ricerca di un IP è basata spesso sulla scomposizione di un dominio, dal TLD, che ne indica gerarchicamente il server DNS con maggiore autorità, ed è considerabile come radice dell'albero, al dominio di secondo livello, che ne identifica la zona, all'effettiva zona server del dominio di secondo livello, che contiene invece la traduzione interna degli host e dei sottodomini. \n Un pacchetto DNS, che è UDP e viene inviato contemporaneamente a più percorsi per la risoluzione del dominio, segue esattamente il percorso ad albero citato, ad eccezione di usi di cache per server spesso visitati (banalmente, google.com non ha bisogno di attesa DNS dall'america)."
   },
   {
     "id": 28,
