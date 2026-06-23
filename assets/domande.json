@@ -494,7 +494,7 @@
     "capitolo": "Network Layer",
     "tipo": "teoria",
     "fronte": "A cosa serve il campo offset nei pacchetti IPv4",
-    "retro": ""
+    "retro": "Il Fragmentation offset da 13 bit, nei pacchetti IPv4, è utilizzato insieme ai campi Identifier e flags per la ricostruzione dei pacchetti originali quando vengono frammentati e inviati indipendentemente a destinazione, dove  vengono riassembati prima dei data payload, e passato successivamente al livello di trasporto dell'host di destinazione. La combinazione dei tre campi avviene in questo modo, se un router intermedio ha necessità di frammentare un pacchetto, a causa degli MTU, viene segnato un ID identico a tutti i frammenti generati dal pacchetto originale, l'offset poi ne specifica la posizione esatta in cui i dati devono essere inseriti rispetto all'inizio del datagramma originale. I flags vengono infine utilizzati per indicare al destinatario l'ultimo pacchetto di una determinata frammentazione"
   },
   {
     "id": 72,
