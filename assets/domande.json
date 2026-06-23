@@ -330,35 +330,35 @@
   },
   {
     "id": 48,
-    "capitolo": "Transport Layer",
+    "capitolo": "Data Link Layer",
     "tipo": "teoria",
     "fronte": "Come si ricava la larghezza di banda di un cavo?",
     "retro": ""
   },
   {
     "id": 49,
-    "capitolo": "Transport Layer",
+    "capitolo": "Data Link Layer",
     "tipo": "teoria",
     "fronte": "Perchè la fibra ottica è migliore rispetto ai cavi tradizionali?",
-    "retro": ""
+    "retro": "I cavi in fibra ottica hanno diversi vantaggi\n L'interferenza non è possibile in quanto ciò che viene trasmesso è un segnale luminoso, non un impulso elettromagnetico\n La materia prima, la fibra ottica, è meno costosa del rame, seppur la manutenzione e l'elettronica in grado di ricevere e generare i segnali sia storicamente più costosa.\n Le capacità trasmissive, sia in termini di velocità che in termini di distanza, sono di diversi ordini di grandezza maggiori rispetto ai cavi in rame, si parla di un massimo di pochi Gbps per il rame, e di Tbps per la fibra ottica, e di 100 metri per i cavi in rame, mentre si parla di kilometri nel caso di fibra\n l'errore nella fibra ottica è molto basso.\n infine il cavo in fibra ottica è impossibile da intercettare senza tagliarlo, a differenza del rame "
   },
   {
     "id": 50,
-    "capitolo": "Transport Layer",
+    "capitolo": "Data Link Layer",
     "tipo": "teoria",
     "fronte": "Svantaggi della fibra ottica",
     "retro": ""
   },
   {
     "id": 51,
-    "capitolo": "Transport Layer",
+    "capitolo": "Data Link Layer",
     "tipo": "teoria",
     "fronte": "Cos'è una costellazione",
     "retro": ""
   },
   {
     "id": 52,
-    "capitolo": "Transport Layer",
+    "capitolo": "Data Link Layer",
     "tipo": "teoria",
     "fronte": "Perchè non si possono fare costellazioni con 96 punti",
     "retro": ""
