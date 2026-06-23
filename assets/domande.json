@@ -382,7 +382,7 @@
     "capitolo": "Network Layer",
     "tipo": "teoria",
     "fronte": "Differenza tra data plane e control plane",
-    "retro": ""
+    "retro": "Il data plane e il control plane sono i due livelli diversi del concetto di routing. Il data plane è il livello locale, per-router che si occupa del forwarding: decidere dove inoltrare un pacchetto. Analogamente ad una strada (rete), questo piano è la decisione da prendere non appena si incontra un incrocio (il router). Il control plane invece è il livello della rete, deve avere informazioni su tutta la rete e dare al data plane le informazioni più aggiornate per il miglior instradamento (routing). In questo secondo caso, si tratta di trovare il percorso intero, sapere quali nodi attraversare, nella stessa analogia di prima, è avere info sul traffico stradale e usare le info per fare le migliori scelte ad ogni incrocio."
   },
   {
     "id": 56,
