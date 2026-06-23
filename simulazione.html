@@ -820,9 +820,12 @@ math: true
     }
 
     function flipCard() {
-      if (!els.card.classList.contains('is-flipped')) {
-        els.card.classList.add('is-flipped');
+      els.card.classList.toggle('is-flipped');
+
+      if (els.card.classList.contains('is-flipped')) {
         els.evalControls.classList.remove('hidden');
+      } else {
+        els.evalControls.classList.add('hidden');
       }
     }
 
