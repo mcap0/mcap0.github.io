@@ -624,10 +624,10 @@
   },
   {
     "id": 90,
-    "capitolo": "Data Link Layer",
+    "capitolo": "Network Layer",
     "tipo": "esercizio",
-    "fronte": "Stringa CRC con Trellis",
-    "retro": ""
+    "fronte": "Calcola il valore della finestra W per avere una Larghezza di banda (throughput) minima di 512Kb/s, in una rete con le seguenti caratteristiche:\n Ritardo di propagazione 100ms\nLarghezza di banda all'andata 1Mb/s\n Ritorno 10Kb/s\n intestazione 1000 bytes\n payload 9000 bytes\n ACK 100bytes\n",
+    "retro": "Dimensione del pacchetto 1000+9000 = 10000 bytes. \n Convertiamo in bit e dividiamo per Bw all'andata per il tempo di trasmissione del frame all'andata. T_ndata(frame) = 10000*8 / 10^6 = 8*10^-2 s\n Calcoliamo il tempo dell'ACK al ritorno. T_ritorno(ACK) = 100*8 / 10^4 = 8*10^-2 s\n Calcoliamo il RTT\nRTT = T_andata(frame)+T_propagazione+T_ritorno(ACK)+T_propagazione = 80+100+80+100 ms = 360 ms\n Ora si calcola il troughput per singolo pacchetto (W=1) in termini di dati utili (payload)\n W(1) = payload in bit / RTT = 9000*8 / 360*10^-3 = 72000/0.36 = 200000 bit/s (bps) = 200Kbps\n Per avere una throughput come richiesto, si adegua la finestra al numero di pacchetti necessario ->\n 512/200 = circa 2.5, arrotondato per eccesso-> \n W = 3 (600kbps)"
   },
   {
     "id": 91,
