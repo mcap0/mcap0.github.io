@@ -367,8 +367,8 @@
     "id": 53,
     "capitolo": "Network Layer",
     "tipo": "teoria",
-    "fronte": "Circuito Virtuale vs Datagram",
-    "retro": ""
+    "fronte": "Approcci Networking: Datagrammi vs Circuiti Virtuali",
+    "retro": "nel networking l'approccio a Datagrammi fa si che ogni pacchetto venga instradato in modo indipendente e possa seguire vie diverse verso la destinazione, in una rete a circuito virtuale viene usato un circuito logico creato ad-hoc per la connessione.\n Nel primo caso ogni pacchetto ha l'intero indirizzo IP del destinatario. Se un percorso diventa indisponibile il datagramma vi girerà attorno. Ha come svantaggi l'ordinamento dei pacchetti a destinazione (disordinato) e il problema della congestione. \n Nel caso di circuiti virtuali, dopo una fase di creazione del canale, i router intermedi dovranno usare solo visualizzare l'ID del flusso per la corretta instradazione, saranno le tabelle a memorizzare la provenienza e la destinazione in base all'ID del flusso. La creazione preventiva permette di 'preallocare le risorse' o verificare che esse siano disponibili prima della prenotazione di esse per un determinato periodo di tempo (l'esistenza del circuito). In questo caso, riduco il pericolo di congestione, semplifico l'inoltro e garantisco l'ordine di ricezione, ma in caso di rottura di un nodo del circuito tutto il circuito va in fault"
   },
   {
     "id": 54,
