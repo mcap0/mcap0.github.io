@@ -641,7 +641,7 @@
     "capitolo": "Data Link Layer",
     "tipo": "teoria",
     "fronte": "CSMA/CD",
-    "retro": ""
+    "retro": "La famiglia di regole CSMA/CD che serve ad un nodo per decidere se trasmettere o no in un canale broadcast o ad accesso condiviso (MA multiple access), è la seguente:\n 1. Se il canale è occupato, attendi finchè non si libera,\n 2. se il canale è libero inizia a trasmettere immediatamente (1 e 2 sono chiamate Carrier Sensing (CS), cioè ascolta il canale prima di trasmettere)\n 3. Se qualcuno sta parlando allo stesso momento, smetti di parlare e rinizia dopo un'attesa randomica appropriata, questo aspetto è chiamato Collision Detection (CD). Oggi si è passato a canali switch e full duplex, per questo CSMA/CD è obsoleto."
   },
   {
     "id": 93,
