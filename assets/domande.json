@@ -375,7 +375,7 @@
     "capitolo": "Network Layer",
     "tipo": "teoria",
     "fronte": "Congestione Datagram e congestione virtual circuit",
-    "retro": ""
+    "retro": "La congestione è il problema di sovraccaricamento dei router intermedi in un percorso di rete, che può causare la perdita di pacchetti se questi, ad esempio, incontrano un router con un buffer pieno. \n Nel caso di networking a datagrammi, questo è un problema classico, che viene gestito a livello di rete e a livello E2E, sostanzialmente diminuendo la velocità di trasmissione del mittente secondo varie tecniche. Nel caso di virtual circuit, lo stesso problema potrebbe presentarsi, ma è meno probabile, perchè al momento di creazione di un circuito virtuale, le specifiche sulla connessione sono preventivamente negoziate e il circuito viene creato su misura alle specifiche. Potrebbe comunque verificarsi congestione nei casi in cui le specifiche sono diverse rispetto all'attuale connessione. \n Dal punto di vista del networking a datagrammi viene gestito su due piani: a livello end-to-end e con l'assistenza dell'intera rete. L'approccio di TCP ad esempio, a livello E2E implementa un approccio di aumento della velocità di trasmissione lento, con rapida diminuzione in caso di errori (AIMD), e viene usata un'ulteriore finestra chiamata finestra di congestione che viene aggiunta ai cacoli del mittente. A livello di rete invece saranno i router a notificare esplicitamente con un apposito flag chiamato ECN lo stato della rete in quel percorso. Un'altro meccanosimo di controllo della connessione è la fairness, che è la proprietà di condividere equamente un canale di rete in caso di congestione, che è effettivamente a livello di rete, ma viene raggiunto grazie alla funzione di AIMD di TCP diuscussa prima, ed è dimostrabile matematicamente."
   },
   {
     "id": 55,
@@ -633,7 +633,7 @@
     "id": 91,
     "capitolo": "Data Link Layer",
     "tipo": "teoria",
-    "fronte": "Parla di Trellis Viterbi in Gigabit Ethernet",
+    "fronte": "Parla della correzione degli errori in Gigabit Ethernet",
     "retro": ""
   },
   {
