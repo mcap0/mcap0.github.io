@@ -692,10 +692,8 @@ math: true
     }
 
     function flipCard() {
-      // Alterna la classe 'is-flipped' ad ogni chiamata
       els.card.classList.toggle('is-flipped');
 
-      // Mostra o nasconde i controlli di valutazione in base allo stato della carta
       if (els.card.classList.contains('is-flipped')) {
         els.evalControls.classList.remove('hidden');
       } else {
