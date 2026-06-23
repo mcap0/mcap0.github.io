@@ -262,7 +262,7 @@
     "id": 38,
     "capitolo": "Transport Layer",
     "tipo": "teoria",
-    "fronte": "Definizione di congestione",
+    "fronte": "Fast Retransmit in TCP, cos'è e come funziona",
     "retro": ""
   },
   {
@@ -277,7 +277,7 @@
     "capitolo": "Transport Layer",
     "tipo": "teoria",
     "fronte": "Controllo del flusso e controllo della congestione.",
-    "retro": ""
+    "retro": "Il controllo di flusso cerca di risolvere la problematica di differenza di capacità di calcolo tra mittente e destinatario, e cerca di impedire ad un trasmettitore veloce di sommergere un ricevitore lento, il controllo della congestione cerca invece di non sovraccaricare i router e i nodi intermedi nel percorso di routing. Si ha congestione infatti quando la memoria dei buffer di un router intermedio termina e i pacchetti vengono buttati. \n Seppur problemi diversi, le azioni intraprese da entrambi i controlli sono simili (rallentare il mittente)\n Per il controllo di flusso si applica un servizio di 'sincronizzazione di velocità', in TCP ad esempio questo viene implementato mantenendo una finestra di ricezione dinamica, che dà al mittente un'idea di quanto spazio libero ha il ricevitore, in particolare si calcola la differenza tra l'ultimo byte per cui è stato fatto ACK, e l'ultimo byte mandato, e si mantiene la differenza sempre minore della grandezza della finestra, questo garantisce che il buffer del ricevitore non sia mai saturo.\n Il controllo di congestione, essendo una problematica di percorso e di rete in generale, riguarda un numero maggiore di device contemporaneamente, e viene gestito su due piani: a livello end-to-end e con l'assistenza dell'intera rete. L'approccio di TCP in questo caso, a livello E2E implementa un approccio di aumento della velocità di trasmissione lento, con rapida diminuzione in caso di errori (AIMD), e viene usata un'ulteriore finestra chiamata finestra di congestione che viene aggiunta ai cacoli del mittente. A livello di rete invece saranno i router a notificare esplicitamente con un apposito flag chiamato ECN lo stato della rete in quel percorso. Un'altro meccanosimo di controllo della connessione è la fairness, che è la proprietà di condividere equamente un canale di rete in caso di congestione, che è effettivamente a livello di rete, ma viene raggiunto grazie alla funzione di AIMD di TCP diuscussa prima, ed è dimostrabile matematicamente.
   },
   {
     "id": 41,
