@@ -213,8 +213,8 @@
     "id": 31,
     "capitolo": "Transport Layer",
     "tipo": "esercizio",
-    "fronte": "Simula go_back_n",
-    "retro": ""
+    "fronte": "Simula Go-Back-N",
+    "retro": "Nel protocollo GBN, dopo l'invio di un certo numero di pacchetti senza l'attesa di ACK, si ha come constraint un numero massimo, N, di pacchetti senza ACK inviabili dall'ultimo effettivo ACK ricevuto. In presenza di un pacchetto perso o dopo un timeout di attesa di un ACK, il mittente rimanda tutti i pacchetti che sono stati mandati ma di cui non sono stati ricevuti gli ACK. Avendo una finestra di grandezza N=5, si può simulare il comportamento di un mittente nel seguente modo:\n (SN = sequence number) SN15- acked, (finestra --->) SN16, SN17, SN18, SN19 (<--- inviati) (inviabili -->) SN20 (<---- fine finestra, pacchetti senza ACK)\n prima dell'invio di SN20 si verifica il timeout del timer di SN16. Il mittente rimanda tutti i pacchetti da SN16 a SN20."
   },
   {
     "id": 32,
