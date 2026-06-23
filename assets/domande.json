@@ -598,8 +598,8 @@
     "id": 86,
     "capitolo": "Data Link Layer",
     "tipo": "esercizio",
-    "fronte": "CRC",
-    "retro": ""
+    "fronte": "CRC: calcola il CRC della stringa 101110 avendo come polinomio generatore G(x) = 1001 e r = 3, illustrane il calcolo in Z2 e mostra gli effettivi dati trasmessi",
+    "retro": "Il calcolo del CRC funziona come segue.\n d = numero di bit da mandare, r = numero di bit di ridondanza (CRC).\n La stringa trasmessa è lunga d+r (la stringa originale + i bit del CRC). In Z2, il campo modulo 2, le operazioni di somma e sottrazione sono eseguite tramite lo XOR. Procederemo al calcolo del resto della divisione tra la stringa originale shiftata a sinistra di r bit, e il polinomio generatore, useremo il metodo delle divisioni successive\n\n```\n       1 0 1 0 1 1\n     -------------\n1001 ) 1 0 1 1 1 0 0 0 0\n       1 0 0 1\n       -------\n         1 0 1\n         0 0 0\n         -----\n         1 0 1 0\n         1 0 0 1\n         -------\n           1 1 0\n           0 0 0\n           -----\n           1 1 0 0\n           1 0 0 1\n           -------\n             1 0 1 0\n             1 0 0 1\n             -------\n               0 1 1\n```\n\nI bit trasmessi sono 101110011."
   },
   {
     "id": 87,
