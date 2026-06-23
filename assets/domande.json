@@ -529,7 +529,7 @@
     "capitolo": "Network Layer",
     "tipo": "teoria",
     "fronte": "Header IPv6 vs header IPv4",
-    "retro": ""
+    "retro": "IPv4 ha gli header di dimensione variabile, con un minimo di 20 bytes. Possiede le seguenti informazioni\n Versione, Lunghezza header, lunghezza dati, Identificatore, flag e offset di frammentazione, TTL, protocollo trasporto, checksup, IP sorgente e destinatario. Finalmente, delle opzioni variabili \n In IPv6 le differenze sono: la dimensione è fissa (40bytes), gli IP address sono da 128 bit invece di 32, La frammentazione non è prevista (rimossi Identification, Flags e Offset), viene rimosso il checksum e i campi Options vengono modificati in Header di estensione. In IPv6 viene inoltre aggiunto un Flow Label per etichettare specifici flussi, e il campo Next Header generalizza il campo transport protocol, aprendo la possibilità ad header aggiuntivi specifici, oppure indicando il prossimo header come tcp/udp in modo classico"
   },
   {
     "id": 77,
