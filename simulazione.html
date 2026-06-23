@@ -47,6 +47,8 @@ math: true
   .btn-success:hover { filter: brightness(1.1); }
   .btn-danger { background-color: #dc3545; color: #fff; border-color: #dc3545; }
   .btn-danger:hover { filter: brightness(1.1); }
+  .btn-info { background-color: #17a2b8; color: #fff; border-color: #17a2b8; }
+  .btn-info:hover { filter: brightness(1.1); }
 
   .panel {
     background: var(--card-bg);
@@ -135,6 +137,71 @@ math: true
     font-size: 0.9rem;
   }
   .config-actions { display: flex; gap: 0.75rem; margin-top: 1.25rem; flex-wrap: wrap; }
+
+  /* Lista Esercizi */
+  .esercizio-card {
+    border: 1px solid var(--main-border-color);
+    border-radius: var(--card-radius);
+    margin-bottom: 1rem;
+    background: var(--card-bg);
+    overflow: hidden;
+    transition: all var(--transition-speed);
+  }
+  .esercizio-header {
+    padding: 1.25rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--body-bg);
+    font-weight: 600;
+    color: var(--heading-color);
+    transition: background var(--transition-speed);
+  }
+  .esercizio-header:hover {
+    background: var(--sidebar-bg);
+  }
+  .esercizio-body {
+    padding: 1.25rem;
+    border-top: 1px solid var(--main-border-color);
+    display: none;
+    background: var(--card-bg);
+    color: var(--text-color);
+    white-space: pre-wrap;
+    line-height: 1.6;
+    font-size: 1.05rem;
+  }
+  .esercizio-card.open .esercizio-body {
+    display: block;
+    animation: fadeIn 0.3s ease;
+  }
+  .esercizio-card.open .esercizio-header {
+    background: var(--link-color);
+    color: #fff;
+  }
+  .esercizio-cap {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .esercizio-title {
+    font-size: 1rem;
+  }
+  .esercizio-toggle-icon {
+    font-size: 1.2rem;
+    transition: transform var(--transition-speed);
+    margin-left: 1rem;
+  }
+  .esercizio-card.open .esercizio-toggle-icon {
+    transform: rotate(180deg);
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
   /* Stats bar */
   .stats-bar {
@@ -420,7 +487,17 @@ math: true
     </div>
     <div class="config-actions">
       <button id="btn-start-esercitazione" class="btn btn-success">Avvia Test</button>
+      <button id="btn-lista-esercizi" class="btn btn-info">Portami agli esercizi</button>
       <button id="btn-back-menu-1" class="btn btn-secondary">Torna Indietro</button>
+    </div>
+  </div>
+
+  <div id="lista-esercizi-area" class="panel hidden">
+    <h3>Archivio Esercizi</h3>
+    <p>Consulta rapidamente l'elenco di tutti gli esercizi disponibili ed espandi per leggere la soluzione.</p>
+    <div id="esercizi-list"></div>
+    <div class="actions">
+      <button id="btn-back-config" class="btn btn-secondary">Torna a Impostazioni</button>
     </div>
   </div>
 
@@ -494,6 +571,8 @@ math: true
       els.statusMsg = qs('status-message');
       els.mainMenu = qs('main-menu');
       els.configPanel = qs('config-esercitazione');
+      els.listaEserciziArea = qs('lista-esercizi-area');
+      els.eserciziList = qs('esercizi-list');
       els.quizArea = qs('quiz-area');
       els.resultsArea = qs('results-area');
       els.card = qs('flashcard');
@@ -515,6 +594,8 @@ math: true
       qs('btn-simulazione').addEventListener('click', function() { showConfig('simulazione'); });
       qs('btn-esercitazione').addEventListener('click', function() { showConfig('esercitazione'); });
       qs('btn-start-esercitazione').addEventListener('click', startEsercitazione);
+      qs('btn-lista-esercizi').addEventListener('click', showListaEsercizi);
+      qs('btn-back-config').addEventListener('click', backToConfigFromEsercizi);
       qs('btn-back-menu-1').addEventListener('click', backToMenu);
       qs('btn-back-menu-2').addEventListener('click', backToMenu);
       els.card.addEventListener('click', flipCard);
@@ -545,7 +626,7 @@ math: true
         })
         .then(function(data) {
           if (!Array.isArray(data) || data.length === 0) {
-            throw new Error('Il file JSON \E8 vuoto o malformattato.');
+            throw new Error('Il file JSON è vuoto o malformattato.');
           }
           allQuestions = data;
           populateChapters(data);
@@ -592,6 +673,53 @@ math: true
       els.quizArea.classList.add('hidden');
       els.resultsArea.classList.add('hidden');
       els.mainMenu.classList.remove('hidden');
+    }
+
+    function showListaEsercizi() {
+      els.configPanel.classList.add('hidden');
+      els.listaEserciziArea.classList.remove('hidden');
+      renderEserciziList();
+    }
+
+    function backToConfigFromEsercizi() {
+      els.listaEserciziArea.classList.add('hidden');
+      els.configPanel.classList.remove('hidden');
+    }
+
+    function renderEserciziList() {
+      var esercizi = allQuestions.filter(function(q) { return q.tipo === 'esercizio'; });
+
+      if (esercizi.length === 0) {
+        els.eserciziList.innerHTML = '<p class="no-lacune">Nessun esercizio disponibile nel database.</p>';
+        return;
+      }
+
+      els.eserciziList.innerHTML = '';
+
+      esercizi.forEach(function(q) {
+        var card = document.createElement('div');
+        card.className = 'esercizio-card';
+
+        var header = document.createElement('div');
+        header.className = 'esercizio-header';
+        header.innerHTML = '<div>' +
+                             '<span class="esercizio-cap">' + q.capitolo + '</span>' +
+                             '<span class="esercizio-title">' + q.fronte + '</span>' +
+                           '</div>' +
+                           '<span class="esercizio-toggle-icon">&#9660;</span>';
+
+        var body = document.createElement('div');
+        body.className = 'esercizio-body';
+        body.textContent = q.retro || 'Nessuna soluzione fornita per questo esercizio.';
+
+        header.addEventListener('click', function() {
+          card.classList.toggle('open');
+        });
+
+        card.appendChild(header);
+        card.appendChild(body);
+        els.eserciziList.appendChild(card);
+      });
     }
 
     function startSimulazione() {
@@ -692,12 +820,9 @@ math: true
     }
 
     function flipCard() {
-      els.card.classList.toggle('is-flipped');
-
-      if (els.card.classList.contains('is-flipped')) {
+      if (!els.card.classList.contains('is-flipped')) {
+        els.card.classList.add('is-flipped');
         els.evalControls.classList.remove('hidden');
-      } else {
-        els.evalControls.classList.add('hidden');
       }
     }
 
@@ -745,7 +870,7 @@ math: true
           clearTimer();
           els.timerText.textContent = 'TEMPO SCADUTO!';
           els.timerText.className = 'timer-alert';
-          alert('Il tempo per la simulazione \E8 scaduto. La prova verr\E0 chiusa.');
+          alert('Il tempo per la simulazione è scaduto. La prova verrà chiusa.');
           endSession();
         }
       }, 1000);
@@ -803,4 +928,3 @@ math: true
   })();
 </script>
 {% endraw %}
-
