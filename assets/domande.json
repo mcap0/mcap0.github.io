@@ -263,7 +263,7 @@
         "capitolo": "Transport Layer",
         "tipo": "teoria",
         "fronte": "Fast Retransmit in TCP, cos'è e come funziona",
-        "retro": ""
+        "retro": "è un meccanismo che permette di ridurre l'attesa del timer in eventi di perdita di pacchetti TCP. Funziona al seguente modo: alla perdita di un pacchetto TCP, il destinatario potrebbe comunque ricevere i segmenti successivi. se si perdesse il segmento 100, ma i successivi arrivassero, il destinatario rimanderebbe sempre lo stesso ACK per il pacchetto 100, in questo caso il mittente che riceve 3 ACK duplicati decide di non aspettare lo scadere del timer ma di inviare proprio il pacchetti richiesto più volte, che si considera perso."
     },
     {
         "id": 39,
