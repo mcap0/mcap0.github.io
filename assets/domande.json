@@ -182,508 +182,508 @@
         "retro": "POP e IMAP sono due protocolli creati per scaricare il file di mail messo a disposizione da SMTP, in quello che viene chiamato casella mail. Sarebbe naturale mettere la casella mail direttamente nel PC dell'utente che possiede la casella di posta, ma con questo approccio il PC dell'utente dovrebbe restare sempre acceso e connesso ad internet. Un tipico setup di SMTP, con POP o IMAP è avere un mail server condiviso con altri utenti su un server appostito e usare a livello del PC dell'utente un protocollo di accesso a questo server per leggere le mail. Qui entrano in gioco POP e IMAP, che serve a comunicare col server di posta, provvedendo accesso, ricezione delle mail ma anche risposta e organizzazione. Questi due protocolli infatti inviano login e password al server di posta, in particolare POP scaricando tutta la casella e rimuovendola dal server mail, creando anche problemi di sincronizzazione se si usa POP da diversi device. IMAP invece non ha questo problema. Detto questo, sommariamente la differenza tra POP e IMAP a confronto con SMTP è che SMTP è l'effettivo server always-on che riceve la posta e contiene diverse caselle di diversi utenti, mentre POP e IMAP sono protocolli o programmi che forniscono comandi atti all'interazione con i server di posta SMTP"
     },
     {
-    "id": 27,
-    "capitolo": "Application Layer",
-    "tipo": "teoria",
-    "fronte": "A cosa serve e come funziona il DNS?",
-    "retro": "Il DNS è un protocollo responsabile della traduzione dal cosiddetto dominio all'indirizzo IP di un server.\n Ha come scopo quindi la traduzione di testo, in particolare un numero di caratteri massimo di 255, suddividendo la stringa originale in Top Level domain (.it, .com, .edu), e dominio si secondo livello. E' un servizio distribuito critico per l'utilizzo di internet di tutti i giorni. Il suo funzionamento è basato su record testuali, un database che contiene le traduzioni da testo a IP e altre funzioni secondarie. Un tempo era un semplice file di testo che veniva copiato in tutte le macchine DNS, ora la struttura del DNS è considerabile gerarchica o ad albero, infatti la ricerca di un IP è basata spesso sulla scomposizione di un dominio, dal TLD, che ne indica gerarchicamente il server DNS con maggiore autorità, ed è considerabile come radice dell'albero, al dominio di secondo livello, che ne identifica la zona, all'effettiva zona server del dominio di secondo livello, che contiene invece la traduzione interna degli host e dei sottodomini. \n Un pacchetto DNS, che è UDP e viene inviato contemporaneamente a più percorsi per la risoluzione del dominio, segue esattamente il percorso ad albero citato, ad eccezione di usi di cache per server spesso visitati (banalmente, google.com non ha bisogno di attesa DNS dall'america)."
-  },
-  {
-    "id": 28,
-    "capitolo": "Application Layer",
-    "tipo": "teoria",
-    "fronte": "Perchè le mail si ottengono mediante DNS?",
-    "retro": ""
-  },
-  {
-    "id": 29,
-    "capitolo": "Transport Layer",
-    "tipo": "teoria",
-    "fronte": "UDP",
-    "retro": ""
-  },
-  {
-    "id": 30,
-    "capitolo": "Transport Layer",
-    "tipo": "teoria",
-    "fronte": "Gestione del timer in TCP",
-    "retro": ""
-  },
-  {
-    "id": 31,
-    "capitolo": "Transport Layer",
-    "tipo": "esercizio",
-    "fronte": "Simula Go-Back-N",
-    "retro": "Nel protocollo GBN, dopo l'invio di un certo numero di pacchetti senza l'attesa di ACK, si ha come constraint un numero massimo, N, di pacchetti senza ACK inviabili dall'ultimo effettivo ACK ricevuto. In presenza di un pacchetto perso o dopo un timeout di attesa di un ACK, il mittente rimanda tutti i pacchetti che sono stati mandati ma di cui non sono stati ricevuti gli ACK. Avendo una finestra di grandezza N=5, si può simulare il comportamento di un mittente nel seguente modo:\n (SN = sequence number) SN15- acked, (finestra --->) SN16, SN17, SN18, SN19 (<--- inviati) (inviabili -->) SN20 (<---- fine finestra, pacchetti senza ACK)\n prima dell'invio di SN20 si verifica il timeout del timer di SN16. Il mittente rimanda tutti i pacchetti da SN16 a SN19."
-  },
-  {
-    "id": 32,
-    "capitolo": "Transport Layer",
-    "tipo": "esercizio",
-    "fronte": "Simula stop_n_wait",
-    "retro": ""
-  },
-  {
-    "id": 33,
-    "capitolo": "Transport Layer",
-    "tipo": "teoria",
-    "fronte": "Avendo un canale, da 100 mbit, la somma dei due throughput. Posso andare oltre. Come è possibile? Risp: è possibile a motivo dei buffer dei router che possono immagazzinare i pacchetti e in un dato momento il throughput istantaneo è maggiore della somma dei due.",
-    "retro": ""
-  },
-  {
-    "id": 34,
-    "capitolo": "Transport Layer",
-    "tipo": "esercizio",
-    "fronte": "Esercizi sulla banda (formule)",
-    "retro": ""
-  },
-  {
-    "id": 35,
-    "capitolo": "Transport Layer",
-    "tipo": "teoria",
-    "fronte": "Apertura e chiusura connessioni in TCP",
-    "retro": "La gestione delle connessioni TCP è la seguente:\n Il client invia un pacchetto chiamato SYN request, in quanto è un pacchetto senza dati, con il flag SYN messo a 1, il sequence number randomico (c_sn). Il server alla ricezione di questo pacchetto alloca le risorse e le variabili necessarie alla connessione e invia a sua volta un SN randomico (s_sn), mette il SYN a 1 e l'ack a c_sn+ 1, indicando al client che accetta la connessione. Questo segmento viene chiamato SYNACK. Infine il client alla ricezione del SYNACK alloca le risorse necessarie alla connessione e termina il three way handshake con l'ultimo pacchetto speciale senza dati, che contiene s_sn+1 nel campo ACK. e il SYN a 0. Terminati questi 3 step, client e server possono inviare segmenti contenenti dati.\n La terminazione avviene nel seguente modo: Uno tra il client e il server decide di voler terminare la connessione, e viene mandata un segmento con il FIN bit flag a 1. Il mittente di questo flag entra in uno stato chiamato FIN_WAIT_1. A questo punto, l'altro peer della connessione, alla ricezione del FIN, manda un ACK. l'iniziatore della terminazione, entra nello stato FIN_WAIT_2, in cui non invia niente ed  aspetta un'altro pacchetto con FIN settato ad 1. A questo punto, lo stato diventa TIME_WAIT, in cui si invia un ACK al FIN, si attende un timer, dopo di che la connessione è chiusa e le risorse rilasciate. Il timer finale servirebbe a poter rimandare l'ultimo ACK se venisse ricevuto un altro FIN in caso di perdita dell'ack.\n Ci sono varie motivazioni per cui molteplici passaggi sono dovuti sia all'inizio che al termine della connessione. principalmente all'inizio serve sincronizzare i numeri di sequenza sia lato server che lato client e questi ultimi sono necessari ad evitare l'allocazione inutile di risorse per connessioni che non sono nuove e attuali. La chiusura invece si deve occupare del concetto (formalmente irrisolvibile) di connessione semichiusa, in cui uno tra server e client ha terminato l'invio dati dalla sua parte, ma potrebbe essere ancora disposto a riceverli. Come in una comunicazione con walkie talkie, se qualcuno termina con 'passo e chiudo' e il ricevitore chiude anche con 'passo e chiudo', e si vuol essere sicuri della ricezione, è necessaria una conferma dall'altra parte, e il processo continuerebbe in perpetuo, lasciando definitivamente uno dei due ignari dell'ultima conferma. nel caso di connessioni TCP la situazione è analoga, si tenta di chiudere per non lasciare l'altro capo in attesa, ma si impiega una soluzione best-effort"
-  },
-  {
-    "id": 36,
-    "capitolo": "Transport Layer",
-    "tipo": "teoria",
-    "fronte": "Attacco syn flood DDOS",
-    "retro": ""
-  },
-  {
-    "id": 37,
-    "capitolo": "Transport Layer",
-    "tipo": "teoria",
-    "fronte": "Non è esatto parlare di congestione in caso di UDP, perchè?",
-    "retro": ""
-  },
-  {
-    "id": 38,
-    "capitolo": "Transport Layer",
-    "tipo": "teoria",
-    "fronte": "Fast Retransmit in TCP, cos'è e come funziona",
-    "retro": ""
-  },
-  {
-    "id": 39,
-    "capitolo": "Transport Layer",
-    "tipo": "teoria",
-    "fronte": "Diagramma congestione. Traffico generato, traffico utile.",
-    "retro": ""
-  },
-  {
-    "id": 40,
-    "capitolo": "Transport Layer",
-    "tipo": "teoria",
-    "fronte": "Controllo del flusso e controllo della congestione.",
-    "retro": "Il controllo di flusso cerca di risolvere la problematica di differenza di capacità di calcolo tra mittente e destinatario, e cerca di impedire ad un trasmettitore veloce di sommergere un ricevitore lento, il controllo della congestione cerca invece di non sovraccaricare i router e i nodi intermedi nel percorso di routing. Si ha congestione infatti quando la memoria dei buffer di un router intermedio termina e i pacchetti vengono buttati. \n Seppur problemi diversi, le azioni intraprese da entrambi i controlli sono simili (rallentare il mittente)\n Per il controllo di flusso si applica un servizio di 'sincronizzazione di velocità', in TCP ad esempio questo viene implementato mantenendo una finestra di ricezione dinamica, che dà al mittente un'idea di quanto spazio libero ha il ricevitore, in particolare si calcola la differenza tra l'ultimo byte per cui è stato fatto ACK, e l'ultimo byte mandato, e si mantiene la differenza sempre minore della grandezza della finestra, questo garantisce che il buffer del ricevitore non sia mai saturo.\n Il controllo di congestione, essendo una problematica di percorso e di rete in generale, riguarda un numero maggiore di device contemporaneamente, e viene gestito su due piani: a livello end-to-end e con l'assistenza dell'intera rete. L'approccio di TCP in questo caso, a livello E2E implementa un approccio di aumento della velocità di trasmissione lento, con rapida diminuzione in caso di errori (AIMD), e viene usata un'ulteriore finestra chiamata finestra di congestione che viene aggiunta ai cacoli del mittente. A livello di rete invece saranno i router a notificare esplicitamente con un apposito flag chiamato ECN lo stato della rete in quel percorso. Un'altro meccanosimo di controllo della connessione è la fairness, che è la proprietà di condividere equamente un canale di rete in caso di congestione, che è effettivamente a livello di rete, ma viene raggiunto grazie alla funzione di AIMD di TCP diuscussa prima, ed è dimostrabile matematicamente."
-  },
-  {
-    "id": 41,
-    "capitolo": "Transport Layer",
-    "tipo": "teoria",
-    "fronte": "Controllo del flusso, finestra del flusso",
-    "retro": ""
-  },
-  {
-    "id": 42,
-    "capitolo": "Transport Layer",
-    "tipo": "teoria",
-    "fronte": "Controllo della congestione TCP tahoe",
-    "retro": ""
-  },
-  {
-    "id": 43,
-    "capitolo": "Transport Layer",
-    "tipo": "teoria",
-    "fronte": "Spiegare la differenza tra Tahoe e Reno",
-    "retro": ""
-  },
-  {
-    "id": 44,
-    "capitolo": "Transport Layer",
-    "tipo": "teoria",
-    "fronte": "Controllo di flusso e controllo della congestione in TCP Tahoe",
-    "retro": ""
-  },
-  {
-    "id": 45,
-    "capitolo": "Transport Layer",
-    "tipo": "teoria",
-    "fronte": "Fairness TCP Reno",
-    "retro": ""
-  },
-  {
-    "id": 46,
-    "capitolo": "Transport Layer",
-    "tipo": "teoria",
-    "fronte": "Fairness TCP dimostrazione",
-    "retro": "TCP grazie a due sue proprietà di gestione della congestione acquista anche la proprietà di fairness, ossia di suddividere il canale equamente tra i diversi utilizzatori. Questa proprietà è dimostrabile matematicamente nel seguente modo:\n considerando un grafico a due dimensioni avente sugli assi i throughput di due connessioni A e B che condividono un canale di capacità massima R tale che A+B <= R, individuiamo una retta fondamentale, la prima bisettrice, dove il throughput di A = al throughput di B. La connessione è fair se tende a questa retta. \n AIMD fa si che si abbia crescita lineare (x+1,y+1) dove x e y sono le due connessioni, il coefficente di questa crescita è 1, parallelo alla prima bisettrice. Negli avvenimenti di congesione, si ha una descrescita esponenziale, (x/2, y/2), sostituendo nell'equazione di retta y=ax+b, y/2=ax/2+b, y=ax+2b, ax+b = ax+2b, 2b = b, b=0 -> y = ax retta passante per l'origine. Tendendo verso l'origine nei casi di MD, e orientandosi verso la prima bisettrice nei casi di AI, le due connessioni A e B senza comunicare tra loro hanno equilibrato i loro troughput in modo tale che la tendenza alla fairness è dmostrata. La dimostrazione è analoaga per >2 connessioni."
-  },
-  {
-    "id": 47,
-    "capitolo": "Transport Layer",
-    "tipo": "teoria",
-    "fronte": "Dimostrare dettagliatamente la proprietà fairness di TCP Reno",
-    "retro": ""
-  },
-  {
-    "id": 48,
-    "capitolo": "Data Link Layer",
-    "tipo": "teoria",
-    "fronte": "Come si ricava la larghezza di banda di un cavo?",
-    "retro": ""
-  },
-  {
-    "id": 49,
-    "capitolo": "Data Link Layer",
-    "tipo": "teoria",
-    "fronte": "Perchè la fibra ottica è migliore rispetto ai cavi tradizionali?",
-    "retro": "I cavi in fibra ottica hanno diversi vantaggi\n L'interferenza non è possibile in quanto ciò che viene trasmesso è un segnale luminoso, non un impulso elettromagnetico\n La materia prima, la fibra ottica, è meno costosa del rame, seppur la manutenzione e l'elettronica in grado di ricevere e generare i segnali sia storicamente più costosa.\n Le capacità trasmissive, sia in termini di velocità che in termini di distanza, sono di diversi ordini di grandezza maggiori rispetto ai cavi in rame, si parla di un massimo di pochi Gbps per il rame, e di Tbps per la fibra ottica, e di 100 metri per i cavi in rame, mentre si parla di kilometri nel caso di fibra\n l'errore nella fibra ottica è molto basso.\n infine il cavo in fibra ottica è impossibile da intercettare senza tagliarlo, a differenza del rame "
-  },
-  {
-    "id": 50,
-    "capitolo": "Data Link Layer",
-    "tipo": "teoria",
-    "fronte": "Svantaggi della fibra ottica",
-    "retro": "Seppur lo stato dell'arte dei cavi internet oggi sia la fibra ottica, anch'essa ha svantaggi. Il costo dell'hardware trasmettitore e ricevente, è un esempio, nonchè il costo dell taglio di un cavo , cosiddetto CRIMPing , dovuto all'equipaggiamento specializzato necessario a queste operazioni. \n Inoltre i cavi in fibra ottica sono vulnerabili a piegamenti oltre un certo raggio di curvatura.\n Oltre agli alti costi e alla fragilità strutturale, troviamo come difetti degni di nota il potenziale rimbalzo del segnale arrivato a destinzaione, che necessita appropriati apparati per evitare l'avvenimento, nonchè l'intrinseca natura unidirezionale del segnale che necessita di tecniche specifiche di due cavi separati per l'uso full-duplex"
-  },
-  {
-    "id": 51,
-    "capitolo": "Data Link Layer",
-    "tipo": "teoria",
-    "fronte": "Cos'è una costellazione",
-    "retro": ""
-  },
-  {
-    "id": 52,
-    "capitolo": "Data Link Layer",
-    "tipo": "teoria",
-    "fronte": "Perchè non si possono fare costellazioni con 96 punti",
-    "retro": ""
-  },
-  {
-    "id": 53,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Approcci Networking: Datagrammi vs Circuiti Virtuali",
-    "retro": "nel networking l'approccio a Datagrammi fa si che ogni pacchetto venga instradato in modo indipendente e possa seguire vie diverse verso la destinazione, in una rete a circuito virtuale viene usato un circuito logico creato ad-hoc per la connessione.\n Nel primo caso ogni pacchetto ha l'intero indirizzo IP del destinatario. Se un percorso diventa indisponibile il datagramma vi girerà attorno. Ha come svantaggi l'ordinamento dei pacchetti a destinazione (disordinato) e il problema della congestione. \n Nel caso di circuiti virtuali, dopo una fase di creazione del canale, i router intermedi dovranno usare solo visualizzare l'ID del flusso per la corretta instradazione, saranno le tabelle a memorizzare la provenienza e la destinazione in base all'ID del flusso. La creazione preventiva permette di 'preallocare le risorse' o verificare che esse siano disponibili prima della prenotazione di esse per un determinato periodo di tempo (l'esistenza del circuito). In questo caso, riduco il pericolo di congestione, semplifico l'inoltro e garantisco l'ordine di ricezione, ma in caso di rottura di un nodo del circuito tutto il circuito va in fault"
-  },
-  {
-    "id": 54,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Congestione Datagram e congestione virtual circuit",
-    "retro": "La congestione è il problema di sovraccaricamento dei router intermedi in un percorso di rete, che può causare la perdita di pacchetti se questi, ad esempio, incontrano un router con un buffer pieno. \n Nel caso di networking a datagrammi, questo è un problema classico, che viene gestito a livello di rete e a livello E2E, sostanzialmente diminuendo la velocità di trasmissione del mittente secondo varie tecniche. Nel caso di virtual circuit, lo stesso problema potrebbe presentarsi, ma è meno probabile, perchè al momento di creazione di un circuito virtuale, le specifiche sulla connessione sono preventivamente negoziate e il circuito viene creato su misura alle specifiche. Potrebbe comunque verificarsi congestione nei casi in cui le specifiche sono diverse rispetto all'attuale connessione. \n Dal punto di vista del networking a datagrammi viene gestito su due piani: a livello end-to-end e con l'assistenza dell'intera rete. L'approccio di TCP ad esempio, a livello E2E implementa un approccio di aumento della velocità di trasmissione lento, con rapida diminuzione in caso di errori (AIMD), e viene usata un'ulteriore finestra chiamata finestra di congestione che viene aggiunta ai cacoli del mittente. A livello di rete invece saranno i router a notificare esplicitamente con un apposito flag chiamato ECN lo stato della rete in quel percorso. Un'altro meccanosimo di controllo della connessione è la fairness, che è la proprietà di condividere equamente un canale di rete in caso di congestione, che è effettivamente a livello di rete, ma viene raggiunto grazie alla funzione di AIMD di TCP diuscussa prima, ed è dimostrabile matematicamente."
-  },
-  {
-    "id": 55,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Differenza tra data plane e control plane",
-    "retro": "Il data plane e il control plane sono i due livelli diversi del concetto di routing. Il data plane è il livello locale, per-router che si occupa del forwarding: decidere dove inoltrare un pacchetto. Analogamente ad una strada (rete), questo piano è la decisione da prendere non appena si incontra un incrocio (il router). Il control plane invece è il livello della rete, deve avere informazioni su tutta la rete e dare al data plane le informazioni più aggiornate per il miglior instradamento (routing). In questo secondo caso, si tratta di trovare il percorso intero, sapere quali nodi attraversare, nella stessa analogia di prima, è avere info sul traffico stradale e usare le info per fare le migliori scelte ad ogni incrocio."
-  },
-  {
-    "id": 56,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Flooding e metodi di controllo",
-    "retro": ""
-  },
-  {
-    "id": 57,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Distance vector",
-    "retro": ""
-  },
-  {
-    "id": 58,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Problemi distance vector e convergenza",
-    "retro": ""
-  },
-  {
-    "id": 59,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Avvelenamento al contrario",
-    "retro": ""
-  },
-  {
-    "id": 60,
-    "capitolo": "Network Layer",
-    "tipo": "esercizio",
-    "fronte": "Simula distance vector nella seguente rete:\n x<->z(7), x<->y(2), z<->y(1)",
-    "retro": "**per un esempio guardare pagina 391 del libro Computer Networking a Top Down Approach, provo ad incollarlo alla fine ma non sono sicuro della formattazione**\n spiegazione dettagliata, non la scriverei nel compito se non dopo l'esercizio finito (tempo permettendo) [Distance Vector è un algoritmo di routing iterativo, asincrono e distribuito. E' speculare all'algoritmo di Bellman-Ford per la Multiple source shortest path nei grafi, ha i seguenti passaggi fondamentali:\n Ogni nodo x inizia con un valore $D_{x}(y)$, stima del costo per il percorso da se stesso a y, e si mantiene un entry per tutti i nodi nel network. Ogni nodo conserva le seguenti info:\n Per ogni vicino v, il costo c(x,v);\n Ogni entry nel vettore delle distanze D, nonchè la stima attuale per costo per arrivare ad una generica destinazione y nel network;\n il distance vector D_v di ognuno dei vicini v.\n Nell'algoritmo, ogni tot di tempo, quando un nodo x riceve un vettore da un vicino, aggiorna il proprio D secondo la formula D_x(y) = min{ c(x,v) + D_v(y)} per ogni v, e lo manda ai vicini se cambia. ]\n\n---\n\n**Esempio Svolto (dal testo):**\n\n**1. Topologia di rete:**\nTre nodi (x, y, z) collegati con i seguenti costi:\n* $c(x,y) = 2$\n* $c(y,z) = 1$\n* $c(x,z) = 7$\n\n**2. Inizializzazione :**\nOgni nodo conosce il costo verso i vicini diretti. Verso le altre destinazioni il costo è $\\infty$.\n* Tabella nodo x: vettore da x $[0, 2, 7]$\n* Tabella nodo y: vettore da y $[2, 0, 1]$\n* Tabella nodo z: vettore da z $[7, 1, 0]$\n\n**3. Primo Aggiornamento :**\nI nodi si scambiano i vettori di distanza. Ogni nodo calcola i nuovi percorsi minimi usando l'equazione di Bellman-Ford.\nEsempio di ricalcolo per il nodo x:\n$$D_x(x) = 0$$\n$$D_x(y) = \\min\\{c(x,y) + D_y(y), c(x,z) + D_z(y)\\} = \\min\\{2 + 0, 7 + 1\\} = 2$$\n$$D_x(z) = \\min\\{c(x,y) + D_y(z), c(x,z) + D_z(z)\\} = \\min\\{2 + 1, 7 + 0\\} = 3$$\n\nSi nota come il nodo x abbia scoperto che passare per y costa meno (costo 3) per arrivare a z, rispetto al collegamento diretto (costo 7). Lo stesso accade per z.\n* Nuova tabella x: vettore aggiornato a $[0, 2, 3]$\n* Nuova tabella y: vettore rimane $[2, 0, 1]$\n* Nuova tabella z: vettore aggiornato a $[3, 1, 0]$\n\n**4. Convergenza :**\nI nodi inviano i nuovi vettori aggiornati ai loro vicini (x invia a y e z, z invia a x e y). I nodi ricalcolano le distanze, ma poiché le stime non possono più essere migliorate (i minimi restano invariati), l'algoritmo non produce ulteriori modifiche. Si è raggiunto lo stato stazionario."
-  },
-  {
-    "id": 61,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Parlami dei problemi di Distance Vector",
-    "retro": "Infinity Counting e Poisoned Reverse + not robust against malicious nodes"
-  },
-  {
-    "id": 62,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Parlami di Link State Routing e del problema della sincronizzazione in caso di oscillazioni",
-    "retro": "Link state routing è l'algoritmo di Routing che dopoo il 1979 sostituì Distance Vector. \n In questo algoritmo, ogni router investiga i costi della comunicazione con i suoi vicini e dopo il calcolo li manda in broadcast per far in modo che ogni router faccia i suoi calcoli. \n L'algoritmo usato è basato su Dijkstra e a differenza del suo predecessore prende in conto altre al delay della trasmissione anche la capacità del canale.\n L'algoritmo è il seguente: Si ha uno stato iniziale di costo verso i nodi, per ogni coppia di nodi v e u se essi sono vicini si considera il costo da v ad u come la loro distanza,altrimenti il costo iniziale è impostato a infinito; successivamente, in modo iterativo, si seleziona il nodo con il percorso dal costo complessivamente minimo, lo si aggiunge all'insieme dei nodi elaborati e si aggiornano i costi dei percorsi verso i suoi vicini, ripetendo il processo finché non si calcola l'albero dei cammini minimi per l'intera topologia della rete\n Il link state routing è ancora utilizzato oggi all'interno di sistemi autononi, col protocollo OSPF. Una problematica del Link State Routing, in casi di pesi simili tra due percorsi emerge quando viene deciso ad ogni esecuzione dell'algoritmo che il miglior percorso è quello libero, congestionando a turno uno o l'altro. Questo avviene se ogni nodo esegue l'algoritmo allo stesso momento, infatti evitando questo scenario è possibile almeno in parte limitare questo rischio."
-  },
-  {
-    "id": 63,
-    "capitolo": "Network Layer",
-    "tipo": "esercizio",
-    "fronte": "Disegna una rete da 4 nodi come un grafo non orientato connesso, dai ad ogni collegamento un valore diverso e chiama ogni nodo con una lettera. Esegui l'algoritmo di LSR da uno dei nodi e popola la sua tabella di routing.",
-    "retro": ""
-  },
-  {
-    "id": 64,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Problemi di RIP",
-    "retro": ""
-  },
-  {
-    "id": 65,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Perchè si è passati da RIP a OSPF",
-    "retro": ""
-  },
-  {
-    "id": 66,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Vantaggi del RIP",
-    "retro": ""
-  },
-  {
-    "id": 67,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Uso della subnet mask",
-    "retro": ""
-  },
-  {
-    "id": 68,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "In una LAN in un host, se diamo una maschera sbagliata descrivere dettagliatamente cosa succede",
-    "retro": ""
-  },
-  {
-    "id": 69,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Come faccio a conoscere, dal mio pc, l'indirizzo IP di un altro terminale collegato? Se usassi tutte le possibili configurazioni della maschera di rete?",
-    "retro": ""
-  },
-  {
-    "id": 70,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Frammentazione in IPv4 e IPv6",
-    "retro": ""
-  },
-  {
-    "id": 71,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "A cosa serve il campo offset nei pacchetti IPv4",
-    "retro": "Il Fragmentation offset da 13 bit, nei pacchetti IPv4, è utilizzato insieme ai campi Identifier e flags per la ricostruzione dei pacchetti originali quando vengono frammentati e inviati indipendentemente a destinazione, dove  vengono riassembati prima dei data payload, e passato successivamente al livello di trasporto dell'host di destinazione. La combinazione dei tre campi avviene in questo modo, se un router intermedio ha necessità di frammentare un pacchetto, a causa degli MTU, viene segnato un ID identico a tutti i frammenti generati dal pacchetto originale, l'offset poi ne specifica la posizione esatta in cui i dati devono essere inseriti rispetto all'inizio del datagramma originale. I flags vengono infine utilizzati per indicare al destinatario l'ultimo pacchetto di una determinata frammentazione"
-  },
-  {
-    "id": 72,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "NAT",
-    "retro": ""
-  },
-  {
-    "id": 73,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "ARP e sicurezza",
-    "retro": ""
-  },
-  {
-    "id": 74,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "DHCPv4",
-    "retro": "DHCP è un protocollo per l'assegnazione dinamica automatica di informazioni di rete tra le quali IP e maschera al collegamento di un nuovo host in una rete. Il server DHCP, che su richiesta fornisce IP, alla ricezione di una DHCP discover request del client, un pacchetto speciale che ha sorgente 0.0.0.0 e destinazione 255.255.255.255, il DHCP server risponde con un offerta DHCP, che contiene un campo yiaddr, ossia la proposta di IP. Se il client accetta, risponde con un DHCP ACK dove conferma i parametri richiesti. Insieme ai campi IP e maschera di rete, il DHCP server può anche fornire il server DNS e l'indirizzo di gateway, tramite il meccanismo delle DHCP Options"
-  },
-  {
-    "id": 75,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "DHCP cosa assegna oltre IP",
-    "retro": ""
-  },
-  {
-    "id": 76,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Header IPv6 vs header IPv4",
-    "retro": "IPv4 ha gli header di dimensione variabile, con un minimo di 20 bytes. Possiede le seguenti informazioni\n Versione, Lunghezza header, lunghezza dati, Identificatore, flag e offset di frammentazione, TTL, protocollo trasporto, checksup, IP sorgente e destinatario. Finalmente, delle opzioni variabili \n In IPv6 le differenze sono: la dimensione è fissa (40bytes), gli IP address sono da 128 bit invece di 32, La frammentazione non è prevista (rimossi Identification, Flags e Offset), viene rimosso il checksum e i campi Options vengono modificati in Header di estensione. In IPv6 viene inoltre aggiunto un Flow Label per etichettare specifici flussi, e il campo Next Header generalizza il campo transport protocol, aprendo la possibilità ad header aggiuntivi specifici, oppure indicando il prossimo header come tcp/udp in modo classico"
-  },
-  {
-    "id": 77,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Frammentazione e maschera IPv6",
-    "retro": ""
-  },
-  {
-    "id": 78,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Campi next Header IPv6",
-    "retro": ""
-  },
-  {
-    "id": 79,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Il flow label, vantaggi",
-    "retro": ""
-  },
-  {
-    "id": 80,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Indirizzi di un canale IPv6 ottenuto dal MAC address",
-    "retro": ""
-  },
-  {
-    "id": 81,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Header opzionali di IPv6",
-    "retro": ""
-  },
-  {
-    "id": 82,
-    "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Parlare di IPv6, indirizzi globali, locali e di sito",
-    "retro": "in IPv6 gli indirizzi globali detti anche unicast, sono pubblici, univoci, uno o più di essi rappresenta una determinata entità nella rete internet, gli indirizzi locali sono validi all'interno di una LAN e sono generati dal MAC, iniziano per fe80:, pacchetti verso questi indirizzi non sono mai inoltrati dai router all'esterno di una LAN, e hanno maschera /10. Sono usati oggi per autoconfigurazione. Gli indirizzi di sito sono progettati per le reti private interne ad un organizzazione, e non sono stradabili su internet. "
-  },
-  {
-    "id": 83,
-    "capitolo": "Data Link Layer",
-    "tipo": "teoria",
-    "fronte": "Problema del framing, descrivere le soluzioni relatve più usate",
-    "retro": "Il problema del framing consiste nel discernere in un canale l'effettivo invio di comunicazioni, riuscire a distinguere univocamente i frame dal segnale, un esempio classico può essere riassunto con la domanda '________ questo segnale è una mancanza di comunicazione, o è una sfilza di 0, e quanti 0 ci sono?' Le soluzioni a questo problema più usate sono inviare più bit di quelli necessari agli effetivi dati, lasciando combinazioni di bit, o segnali specifici, riservate non ai dati ma all'inizio di una comunicazione, al termine di essa e utili alla sincronizzazione di mittente e ricevente. Questa tecnica è usata dagli standard 4B5B e 8B10B. Inoltre un altro problema di data framing è la difficoltà di distinzione univoca di certi segnali per proprietà dipendenti dalla forma del segnale. Questo problema è risolto col campionamento delle forme, e l'esclusione di alcune forme particolarmente difficili da discernere. Infine in Ethernet è usato un pattern speciale sia per la sincronizzazione dei clock che per la delimitazione dell'inizio del primo frame. Alcune soluzioni storiche non più utilizzate sono il byte counting, l'invio preliminare del numero di byte, che nel caso di perdita di sincronizzazione manda fuori fase tutti i frame successivi, byte stuffing, l'invio di lettera controllo per il fine della conversazione, che constringe a sostituire l'effettiva lettera se presente nella comunicazione con due occorrenze della stessa."
-  },
-  {
-    "id": 84,
-    "capitolo": "Data Link Layer",
-    "tipo": "teoria",
-    "fronte": "Codifica 4b 5b, perchè risolve il problema del framing",
-    "retro": "4B5B risolve il framing perchè permette univocamente di identificare la presenza di comunicazione o l'assenza della stessa, permettendo di sincronizzare mittente e ricevente. 4B5B fornisce ogni 5 bit trasmessi 4 bit di dati effettivi, questo permette di assegnare a combinazioni specifiche di 5 bit dei segnali speciali, come quello di inizio e fine trasmissione. Inoltre, alcuni segnali sono scartati interamente e si prediligono i segnali con più facilità di riconoscimento anche in caso di errori, un esempio di dati non facilmente riconoscibile per un ricevitore può essere un segnale con molti 0 di seguito. Il problema del framing infatti è per un ricevitore distinguere univocamente i messaggi, o precisamente la delimitazione inequivocabile dei frame. in particolare, le 32 combinazioni possibili che si ottendono con 5 bit passano a 16 quando si considerano solo 4 bit significativi. Questo permette a 4B5B di assegnare 16 segnali univoci rispetto ai dati, e 16 segnali di controllo comunicazione, o avanzanti. Ogni segnale in questo caso è considerabile una forma univoca, e 4B5B assegna ad ogni segnale rispetto ai dati un simbolo esadecimale corrispondente."
-  },
-  {
-    "id": 85,
-    "capitolo": "Data Link Layer",
-    "tipo": "teoria",
-    "fronte": "Parlare della teoria della correzione e rilevazione degli errori e dimostrare che (m+1) < 2r – r",
-    "retro": ""
-  },
-  {
-    "id": 86,
-    "capitolo": "Data Link Layer",
-    "tipo": "esercizio",
-    "fronte": "CRC: calcola il CRC della stringa 101110 avendo come polinomio generatore G(x) = 1001 e r = 3, illustrane il calcolo in Z2 e mostra gli effettivi dati trasmessi",
-    "retro": "Il calcolo del CRC funziona come segue.\n d = numero di bit da mandare, r = numero di bit di ridondanza (CRC).\n La stringa trasmessa è lunga d+r (la stringa originale + i bit del CRC). In Z2, il campo modulo 2, le operazioni di somma e sottrazione sono eseguite tramite lo XOR. Procederemo al calcolo del resto della divisione tra la stringa originale shiftata a sinistra di r bit, e il polinomio generatore, useremo il metodo delle divisioni successive\n\n```\n       1 0 1 0 1 1\n     -------------\n1001 ) 1 0 1 1 1 0 0 0 0\n       1 0 0 1\n       -------\n         1 0 1\n         0 0 0\n         -----\n         1 0 1 0\n         1 0 0 1\n         -------\n           1 1 0\n           0 0 0\n           -----\n           1 1 0 0\n           1 0 0 1\n           -------\n             1 0 1 0\n             1 0 0 1\n             -------\n               0 1 1\n```\n\nI bit trasmessi sono 101110011."
-  },
-  {
-    "id": 87,
-    "capitolo": "Data Link Layer",
-    "tipo": "esercizio",
-    "fronte": "Stringa in Z2",
-    "retro": ""
-  },
-  {
-    "id": 88,
-    "capitolo": "Data Link Layer",
-    "tipo": "esercizio",
-    "fronte": "Stringa codificata con CRC e successivamente Hamming",
-    "retro": ""
-  },
-  {
-    "id": 89,
-    "capitolo": "Data Link Layer",
-    "tipo": "esercizio",
-    "fronte": "In un messaggio di 15 bit, verifica tramite i codici di Hamming se sono presenti errori e eventualmente correggili. Infine, indica qual è il payload inviato senza ridondanza\n Stringa: 101100100101100.",
-    "retro": "Nel codice di Hamming, i bit di parità si trovano alle posizioni potenze di 2, ovvero 1,2,4,8, i restanti bit sono di dati.\n Il controllo di parità avviene come segue\n1 (control)\n2 (control)\n3 (1+2)\n4 (control)\n5 (1+4)\n6 (2+4)\n7 (1+2+4)\n8(control)\n9 (8+1)\n10 (8+2)\n11 (8+1+2)\n12 (8+4)\n13 (8+1+4)\n14 (8+2+4)\n15 (8+1+2+4)\n Ogni bit di dati è quindi controllato dalla rappresentazione della sua posizione tramite somma di potenze di due, che saranno i bit di controllo.\n Facendo poi xor di potenza e delle posizioni che quella potenza di due individua, se lo XOR totale fa 0, non abbiamo errori, altrimenti la posizione dell'errore è nella posizione decimale di ciò che esce in binario combinando i risultati dei bit di controllo.\n- b1 (pos 1, 3, 5, 7, 9, 11, 13, 15). Somma XOR: 1⊕1⊕0⊕1⊕0⊕0⊕1⊕0 = 0.\n - b2 (pos 2, 3, 6, 7, 10, 11, 14, 15). Somma XOR: 0⊕1⊕0⊕1⊕1⊕0⊕0⊕0 = 1.\n - b4 (pos 4, 5, 6, 7, 12, 13, 14, 15). Somma XOR: 1⊕0⊕0⊕1⊕1⊕1⊕0⊕0 = 0.\n - b8 (pos 8, 9, 10, 11, 12, 13, 14, 15). Somma XOR: 0⊕0⊕1⊕0⊕1⊕1⊕0⊕0 = 1.\n3. Individuazione del bit errato: la combinazione dei bit di parità (b8, b4, b2, b1) genera il valore binario 1010, che in decimale equivale a 8+2 = 10.\n4. Correzione: Il bit in posizione 10 è errato. Essendo un '1', viene corretto in '0', ottenendo la codeword originale corretta: 101100100001100"
-  },
-  {
-    "id": 90,
-    "capitolo": "Network Layer",
-    "tipo": "esercizio",
-    "fronte": "Calcola il valore della finestra W per avere una Larghezza di banda (throughput) minima di 512Kb/s, in una rete con le seguenti caratteristiche:\n Ritardo di propagazione 100ms\nLarghezza di banda all'andata 1Mb/s\n Ritorno 10Kb/s\n intestazione 1000 bytes\n payload 9000 bytes\n ACK 100bytes\n",
-    "retro": "Dimensione del pacchetto 1000+9000 = 10000 bytes. \n Convertiamo in bit e dividiamo per Bw all'andata per il tempo di trasmissione del frame all'andata. T_ndata(frame) = 10000*8 / 10^6 = 8*10^-2 s\n Calcoliamo il tempo dell'ACK al ritorno. T_ritorno(ACK) = 100*8 / 10^4 = 8*10^-2 s\n Calcoliamo il RTT\nRTT = T_andata(frame)+T_propagazione+T_ritorno(ACK)+T_propagazione = 80+100+80+100 ms = 360 ms\n Ora si calcola il troughput per singolo pacchetto (W=1) in termini di dati utili (payload)\n W(1) = payload in bit / RTT = 9000*8 / 360*10^-3 = 72000/0.36 = 200000 bit/s (bps) = 200Kbps\n Per avere una throughput come richiesto, si adegua la finestra al numero di pacchetti necessario ->\n 512/200 = circa 2.5, arrotondato per eccesso-> \n W = 3 (600kbps)"
-  },
-  {
-    "id": 91,
-    "capitolo": "Data Link Layer",
-    "tipo": "teoria",
-    "fronte": "Parla della correzione degli errori in Gigabit Ethernet",
-    "retro": ""
-  },
-  {
-    "id": 92,
-    "capitolo": "Data Link Layer",
-    "tipo": "teoria",
-    "fronte": "CSMA/CD",
-    "retro": "La famiglia di regole CSMA/CD che serve ad un nodo per decidere se trasmettere o no in un canale broadcast o ad accesso condiviso (MA multiple access), è la seguente:\n 1. Se il canale è occupato, attendi finchè non si libera,\n 2. se il canale è libero inizia a trasmettere immediatamente (1 e 2 sono chiamate Carrier Sensing (CS), cioè ascolta il canale prima di trasmettere)\n 3. Se qualcuno sta parlando allo stesso momento, smetti di parlare e rinizia dopo un'attesa randomica appropriata, questo aspetto è chiamato Collision Detection (CD). Oggi si è passato a canali switch e full duplex, per questo CSMA/CD è obsoleto."
-  },
-  {
-    "id": 93,
-    "capitolo": "Data Link Layer",
-    "tipo": "teoria",
-    "fronte": "Dimensione minima frame Ethernet",
-    "retro": ""
-  },
-  {
-    "id": 94,
-    "capitolo": "Data Link Layer",
-    "tipo": "esercizio",
-    "fronte": "Disegnata una struttura di rete, spiega il funzionamento del broadcasting usando lo spanning Tree",
-    "retro": ""
-  },
-  {
-    "id": 95,
-    "capitolo": "Data Link Layer",
-    "tipo": "teoria",
-    "fronte": "Differenze tra Hub, Switch e Router",
-    "retro": ""
-  },
-  {
-    "id": 96,
-    "capitolo": "Data Link Layer",
-    "tipo": "teoria",
-    "fronte": "Differenza tra Token Ring e Token Bus",
-    "retro": ""
-  },
-  {
-    "id": 97,
-    "capitolo": "Data Link Layer",
-    "tipo": "teoria",
-    "fronte": "Cosa è preferibile tra CSMA/CD e Token Ring",
-    "retro": ""
-  },
-  {
-    "id": 98,
-    "capitolo": "Data Link Layer",
-    "tipo": "teoria",
-    "fronte": "Differenza tra Multimode e Single mode fiber",
-    "retro": ""
-  }
+        "id": 27,
+        "capitolo": "Application Layer",
+        "tipo": "teoria",
+        "fronte": "A cosa serve e come funziona il DNS?",
+        "retro": "Il DNS è un protocollo responsabile della traduzione dal cosiddetto dominio all'indirizzo IP di un server.\n Ha come scopo quindi la traduzione di testo, in particolare un numero di caratteri massimo di 255, suddividendo la stringa originale in Top Level domain (.it, .com, .edu), e dominio si secondo livello. E' un servizio distribuito critico per l'utilizzo di internet di tutti i giorni. Il suo funzionamento è basato su record testuali, un database che contiene le traduzioni da testo a IP e altre funzioni secondarie. Un tempo era un semplice file di testo che veniva copiato in tutte le macchine DNS, ora la struttura del DNS è considerabile gerarchica o ad albero, infatti la ricerca di un IP è basata spesso sulla scomposizione di un dominio, dal TLD, che ne indica gerarchicamente il server DNS con maggiore autorità, ed è considerabile come radice dell'albero, al dominio di secondo livello, che ne identifica la zona, all'effettiva zona server del dominio di secondo livello, che contiene invece la traduzione interna degli host e dei sottodomini. \n Un pacchetto DNS, che è UDP e viene inviato contemporaneamente a più percorsi per la risoluzione del dominio, segue esattamente il percorso ad albero citato, ad eccezione di usi di cache per server spesso visitati (banalmente, google.com non ha bisogno di attesa DNS dall'america)."
+    },
+    {
+        "id": 28,
+        "capitolo": "Application Layer",
+        "tipo": "teoria",
+        "fronte": "Perchè le mail si ottengono mediante DNS?",
+        "retro": ""
+    },
+    {
+        "id": 29,
+        "capitolo": "Transport Layer",
+        "tipo": "teoria",
+        "fronte": "UDP",
+        "retro": ""
+    },
+    {
+        "id": 30,
+        "capitolo": "Transport Layer",
+        "tipo": "teoria",
+        "fronte": "Gestione del timer in TCP",
+        "retro": ""
+    },
+    {
+        "id": 31,
+        "capitolo": "Transport Layer",
+        "tipo": "esercizio",
+        "fronte": "Simula Go-Back-N",
+        "retro": "Nel protocollo GBN, dopo l'invio di un certo numero di pacchetti senza l'attesa di ACK, si ha come constraint un numero massimo, N, di pacchetti senza ACK inviabili dall'ultimo effettivo ACK ricevuto. In presenza di un pacchetto perso o dopo un timeout di attesa di un ACK, il mittente rimanda tutti i pacchetti che sono stati mandati ma di cui non sono stati ricevuti gli ACK. Avendo una finestra di grandezza N=5, si può simulare il comportamento di un mittente nel seguente modo:\n (SN = sequence number) SN15- acked, (finestra --->) SN16, SN17, SN18, SN19 (<--- inviati) (inviabili -->) SN20 (<---- fine finestra, pacchetti senza ACK)\n prima dell'invio di SN20 si verifica il timeout del timer di SN16. Il mittente rimanda tutti i pacchetti da SN16 a SN19."
+    },
+    {
+        "id": 32,
+        "capitolo": "Transport Layer",
+        "tipo": "esercizio",
+        "fronte": "Simula stop_n_wait",
+        "retro": ""
+    },
+    {
+        "id": 33,
+        "capitolo": "Transport Layer",
+        "tipo": "teoria",
+        "fronte": "Avendo un canale, da 100 mbit, la somma dei due throughput. Posso andare oltre. Come è possibile? Risp: è possibile a motivo dei buffer dei router che possono immagazzinare i pacchetti e in un dato momento il throughput istantaneo è maggiore della somma dei due.",
+        "retro": ""
+    },
+    {
+        "id": 34,
+        "capitolo": "Transport Layer",
+        "tipo": "esercizio",
+        "fronte": "Esercizi sulla banda (formule)",
+        "retro": ""
+    },
+    {
+        "id": 35,
+        "capitolo": "Transport Layer",
+        "tipo": "teoria",
+        "fronte": "Apertura e chiusura connessioni in TCP",
+        "retro": "La gestione delle connessioni TCP è la seguente:\n Il client invia un pacchetto chiamato SYN request, in quanto è un pacchetto senza dati, con il flag SYN messo a 1, il sequence number randomico (c_sn). Il server alla ricezione di questo pacchetto alloca le risorse e le variabili necessarie alla connessione e invia a sua volta un SN randomico (s_sn), mette il SYN a 1 e l'ack a c_sn+ 1, indicando al client che accetta la connessione. Questo segmento viene chiamato SYNACK. Infine il client alla ricezione del SYNACK alloca le risorse necessarie alla connessione e termina il three way handshake con l'ultimo pacchetto speciale senza dati, che contiene s_sn+1 nel campo ACK. e il SYN a 0. Terminati questi 3 step, client e server possono inviare segmenti contenenti dati.\n La terminazione avviene nel seguente modo: Uno tra il client e il server decide di voler terminare la connessione, e viene mandata un segmento con il FIN bit flag a 1. Il mittente di questo flag entra in uno stato chiamato FIN_WAIT_1. A questo punto, l'altro peer della connessione, alla ricezione del FIN, manda un ACK. l'iniziatore della terminazione, entra nello stato FIN_WAIT_2, in cui non invia niente ed  aspetta un'altro pacchetto con FIN settato ad 1. A questo punto, lo stato diventa TIME_WAIT, in cui si invia un ACK al FIN, si attende un timer, dopo di che la connessione è chiusa e le risorse rilasciate. Il timer finale servirebbe a poter rimandare l'ultimo ACK se venisse ricevuto un altro FIN in caso di perdita dell'ack.\n Ci sono varie motivazioni per cui molteplici passaggi sono dovuti sia all'inizio che al termine della connessione. principalmente all'inizio serve sincronizzare i numeri di sequenza sia lato server che lato client e questi ultimi sono necessari ad evitare l'allocazione inutile di risorse per connessioni che non sono nuove e attuali. La chiusura invece si deve occupare del concetto (formalmente irrisolvibile) di connessione semichiusa, in cui uno tra server e client ha terminato l'invio dati dalla sua parte, ma potrebbe essere ancora disposto a riceverli. Come in una comunicazione con walkie talkie, se qualcuno termina con 'passo e chiudo' e il ricevitore chiude anche con 'passo e chiudo', e si vuol essere sicuri della ricezione, è necessaria una conferma dall'altra parte, e il processo continuerebbe in perpetuo, lasciando definitivamente uno dei due ignari dell'ultima conferma. nel caso di connessioni TCP la situazione è analoga, si tenta di chiudere per non lasciare l'altro capo in attesa, ma si impiega una soluzione best-effort"
+    },
+    {
+        "id": 36,
+        "capitolo": "Transport Layer",
+        "tipo": "teoria",
+        "fronte": "Attacco syn flood DDOS",
+        "retro": ""
+    },
+    {
+        "id": 37,
+        "capitolo": "Transport Layer",
+        "tipo": "teoria",
+        "fronte": "Non è esatto parlare di congestione in caso di UDP, perchè?",
+        "retro": ""
+    },
+    {
+        "id": 38,
+        "capitolo": "Transport Layer",
+        "tipo": "teoria",
+        "fronte": "Fast Retransmit in TCP, cos'è e come funziona",
+        "retro": ""
+    },
+    {
+        "id": 39,
+        "capitolo": "Transport Layer",
+        "tipo": "teoria",
+        "fronte": "Diagramma congestione. Traffico generato, traffico utile.",
+        "retro": ""
+    },
+    {
+        "id": 40,
+        "capitolo": "Transport Layer",
+        "tipo": "teoria",
+        "fronte": "Controllo del flusso e controllo della congestione.",
+        "retro": "Il controllo di flusso cerca di risolvere la problematica di differenza di capacità di calcolo tra mittente e destinatario, e cerca di impedire ad un trasmettitore veloce di sommergere un ricevitore lento, il controllo della congestione cerca invece di non sovraccaricare i router e i nodi intermedi nel percorso di routing. Si ha congestione infatti quando la memoria dei buffer di un router intermedio termina e i pacchetti vengono buttati. \n Seppur problemi diversi, le azioni intraprese da entrambi i controlli sono simili (rallentare il mittente)\n Per il controllo di flusso si applica un servizio di 'sincronizzazione di velocità', in TCP ad esempio questo viene implementato mantenendo una finestra di ricezione dinamica, che dà al mittente un'idea di quanto spazio libero ha il ricevitore, in particolare si calcola la differenza tra l'ultimo byte per cui è stato fatto ACK, e l'ultimo byte mandato, e si mantiene la differenza sempre minore della grandezza della finestra, questo garantisce che il buffer del ricevitore non sia mai saturo.\n Il controllo di congestione, essendo una problematica di percorso e di rete in generale, riguarda un numero maggiore di device contemporaneamente, e viene gestito su due piani: a livello end-to-end e con l'assistenza dell'intera rete. L'approccio di TCP in questo caso, a livello E2E implementa un approccio di aumento della velocità di trasmissione lento, con rapida diminuzione in caso di errori (AIMD), e viene usata un'ulteriore finestra chiamata finestra di congestione che viene aggiunta ai cacoli del mittente. A livello di rete invece saranno i router a notificare esplicitamente con un apposito flag chiamato ECN lo stato della rete in quel percorso. Un'altro meccanosimo di controllo della connessione è la fairness, che è la proprietà di condividere equamente un canale di rete in caso di congestione, che è effettivamente a livello di rete, ma viene raggiunto grazie alla funzione di AIMD di TCP diuscussa prima, ed è dimostrabile matematicamente."
+    },
+    {
+        "id": 41,
+        "capitolo": "Transport Layer",
+        "tipo": "teoria",
+        "fronte": "Controllo del flusso, finestra del flusso",
+        "retro": ""
+    },
+    {
+        "id": 42,
+        "capitolo": "Transport Layer",
+        "tipo": "teoria",
+        "fronte": "Controllo della congestione TCP tahoe",
+        "retro": ""
+    },
+    {
+        "id": 43,
+        "capitolo": "Transport Layer",
+        "tipo": "teoria",
+        "fronte": "Spiegare la differenza tra Tahoe e Reno",
+        "retro": ""
+    },
+    {
+        "id": 44,
+        "capitolo": "Transport Layer",
+        "tipo": "teoria",
+        "fronte": "Controllo di flusso e controllo della congestione in TCP Tahoe",
+        "retro": ""
+    },
+    {
+        "id": 45,
+        "capitolo": "Transport Layer",
+        "tipo": "teoria",
+        "fronte": "Fairness TCP Reno",
+        "retro": ""
+    },
+    {
+        "id": 46,
+        "capitolo": "Transport Layer",
+        "tipo": "teoria",
+        "fronte": "Fairness TCP dimostrazione",
+        "retro": "TCP grazie a due sue proprietà di gestione della congestione acquista anche la proprietà di fairness, ossia di suddividere il canale equamente tra i diversi utilizzatori. Questa proprietà è dimostrabile matematicamente nel seguente modo:\n considerando un grafico a due dimensioni avente sugli assi i throughput di due connessioni A e B che condividono un canale di capacità massima R tale che A+B <= R, individuiamo una retta fondamentale, la prima bisettrice, dove il throughput di A = al throughput di B. La connessione è fair se tende a questa retta. \n AIMD fa si che si abbia crescita lineare (x+1,y+1) dove x e y sono le due connessioni, il coefficente di questa crescita è 1, parallelo alla prima bisettrice. Negli avvenimenti di congesione, si ha una descrescita esponenziale, (x/2, y/2), sostituendo nell'equazione di retta y=ax+b, y/2=ax/2+b, y=ax+2b, ax+b = ax+2b, 2b = b, b=0 -> y = ax retta passante per l'origine. Tendendo verso l'origine nei casi di MD, e orientandosi verso la prima bisettrice nei casi di AI, le due connessioni A e B senza comunicare tra loro hanno equilibrato i loro troughput in modo tale che la tendenza alla fairness è dmostrata. La dimostrazione è analoaga per >2 connessioni."
+    },
+    {
+        "id": 47,
+        "capitolo": "Transport Layer",
+        "tipo": "teoria",
+        "fronte": "Dimostrare dettagliatamente la proprietà fairness di TCP Reno",
+        "retro": ""
+    },
+    {
+        "id": 48,
+        "capitolo": "Data Link Layer",
+        "tipo": "teoria",
+        "fronte": "Come si ricava la larghezza di banda di un cavo?",
+        "retro": ""
+    },
+    {
+        "id": 49,
+        "capitolo": "Data Link Layer",
+        "tipo": "teoria",
+        "fronte": "Perchè la fibra ottica è migliore rispetto ai cavi tradizionali?",
+        "retro": "I cavi in fibra ottica hanno diversi vantaggi\n L'interferenza non è possibile in quanto ciò che viene trasmesso è un segnale luminoso, non un impulso elettromagnetico\n La materia prima, la fibra ottica, è meno costosa del rame, seppur la manutenzione e l'elettronica in grado di ricevere e generare i segnali sia storicamente più costosa.\n Le capacità trasmissive, sia in termini di velocità che in termini di distanza, sono di diversi ordini di grandezza maggiori rispetto ai cavi in rame, si parla di un massimo di pochi Gbps per il rame, e di Tbps per la fibra ottica, e di 100 metri per i cavi in rame, mentre si parla di kilometri nel caso di fibra\n l'errore nella fibra ottica è molto basso.\n infine il cavo in fibra ottica è impossibile da intercettare senza tagliarlo, a differenza del rame "
+    },
+    {
+        "id": 50,
+        "capitolo": "Data Link Layer",
+        "tipo": "teoria",
+        "fronte": "Svantaggi della fibra ottica",
+        "retro": "Seppur lo stato dell'arte dei cavi internet oggi sia la fibra ottica, anch'essa ha svantaggi. Il costo dell'hardware trasmettitore e ricevente, è un esempio, nonchè il costo dell taglio di un cavo , cosiddetto CRIMPing , dovuto all'equipaggiamento specializzato necessario a queste operazioni. \n Inoltre i cavi in fibra ottica sono vulnerabili a piegamenti oltre un certo raggio di curvatura.\n Oltre agli alti costi e alla fragilità strutturale, troviamo come difetti degni di nota il potenziale rimbalzo del segnale arrivato a destinzaione, che necessita appropriati apparati per evitare l'avvenimento, nonchè l'intrinseca natura unidirezionale del segnale che necessita di tecniche specifiche di due cavi separati per l'uso full-duplex"
+    },
+    {
+        "id": 51,
+        "capitolo": "Data Link Layer",
+        "tipo": "teoria",
+        "fronte": "Cos'è una costellazione",
+        "retro": ""
+    },
+    {
+        "id": 52,
+        "capitolo": "Data Link Layer",
+        "tipo": "teoria",
+        "fronte": "Perchè non si possono fare costellazioni con 96 punti",
+        "retro": ""
+    },
+    {
+        "id": 53,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "Approcci Networking: Datagrammi vs Circuiti Virtuali",
+        "retro": "nel networking l'approccio a Datagrammi fa si che ogni pacchetto venga instradato in modo indipendente e possa seguire vie diverse verso la destinazione, in una rete a circuito virtuale viene usato un circuito logico creato ad-hoc per la connessione.\n Nel primo caso ogni pacchetto ha l'intero indirizzo IP del destinatario. Se un percorso diventa indisponibile il datagramma vi girerà attorno. Ha come svantaggi l'ordinamento dei pacchetti a destinazione (disordinato) e il problema della congestione. \n Nel caso di circuiti virtuali, dopo una fase di creazione del canale, i router intermedi dovranno usare solo visualizzare l'ID del flusso per la corretta instradazione, saranno le tabelle a memorizzare la provenienza e la destinazione in base all'ID del flusso. La creazione preventiva permette di 'preallocare le risorse' o verificare che esse siano disponibili prima della prenotazione di esse per un determinato periodo di tempo (l'esistenza del circuito). In questo caso, riduco il pericolo di congestione, semplifico l'inoltro e garantisco l'ordine di ricezione, ma in caso di rottura di un nodo del circuito tutto il circuito va in fault"
+    },
+    {
+        "id": 54,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "Congestione Datagram e congestione virtual circuit",
+        "retro": "La congestione è il problema di sovraccaricamento dei router intermedi in un percorso di rete, che può causare la perdita di pacchetti se questi, ad esempio, incontrano un router con un buffer pieno. \n Nel caso di networking a datagrammi, questo è un problema classico, che viene gestito a livello di rete e a livello E2E, sostanzialmente diminuendo la velocità di trasmissione del mittente secondo varie tecniche. Nel caso di virtual circuit, lo stesso problema potrebbe presentarsi, ma è meno probabile, perchè al momento di creazione di un circuito virtuale, le specifiche sulla connessione sono preventivamente negoziate e il circuito viene creato su misura alle specifiche. Potrebbe comunque verificarsi congestione nei casi in cui le specifiche sono diverse rispetto all'attuale connessione. \n Dal punto di vista del networking a datagrammi viene gestito su due piani: a livello end-to-end e con l'assistenza dell'intera rete. L'approccio di TCP ad esempio, a livello E2E implementa un approccio di aumento della velocità di trasmissione lento, con rapida diminuzione in caso di errori (AIMD), e viene usata un'ulteriore finestra chiamata finestra di congestione che viene aggiunta ai cacoli del mittente. A livello di rete invece saranno i router a notificare esplicitamente con un apposito flag chiamato ECN lo stato della rete in quel percorso. Un'altro meccanosimo di controllo della connessione è la fairness, che è la proprietà di condividere equamente un canale di rete in caso di congestione, che è effettivamente a livello di rete, ma viene raggiunto grazie alla funzione di AIMD di TCP diuscussa prima, ed è dimostrabile matematicamente."
+    },
+    {
+        "id": 55,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "Differenza tra data plane e control plane",
+        "retro": "Il data plane e il control plane sono i due livelli diversi del concetto di routing. Il data plane è il livello locale, per-router che si occupa del forwarding: decidere dove inoltrare un pacchetto. Analogamente ad una strada (rete), questo piano è la decisione da prendere non appena si incontra un incrocio (il router). Il control plane invece è il livello della rete, deve avere informazioni su tutta la rete e dare al data plane le informazioni più aggiornate per il miglior instradamento (routing). In questo secondo caso, si tratta di trovare il percorso intero, sapere quali nodi attraversare, nella stessa analogia di prima, è avere info sul traffico stradale e usare le info per fare le migliori scelte ad ogni incrocio."
+    },
+    {
+        "id": 56,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "Flooding e metodi di controllo",
+        "retro": ""
+    },
+    {
+        "id": 57,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "Distance vector",
+        "retro": ""
+    },
+    {
+        "id": 58,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "Problemi distance vector e convergenza",
+        "retro": ""
+    },
+    {
+        "id": 59,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "Avvelenamento al contrario",
+        "retro": ""
+    },
+    {
+        "id": 60,
+        "capitolo": "Network Layer",
+        "tipo": "esercizio",
+        "fronte": "Simula distance vector nella seguente rete:\n x<->z(7), x<->y(2), z<->y(1)",
+        "retro": "**per un esempio guardare pagina 391 del libro Computer Networking a Top Down Approach, provo ad incollarlo alla fine ma non sono sicuro della formattazione**\n spiegazione dettagliata, non la scriverei nel compito se non dopo l'esercizio finito (tempo permettendo) [Distance Vector è un algoritmo di routing iterativo, asincrono e distribuito. E' speculare all'algoritmo di Bellman-Ford per la Multiple source shortest path nei grafi, ha i seguenti passaggi fondamentali:\n Ogni nodo x inizia con un valore $D_{x}(y)$, stima del costo per il percorso da se stesso a y, e si mantiene un entry per tutti i nodi nel network. Ogni nodo conserva le seguenti info:\n Per ogni vicino v, il costo c(x,v);\n Ogni entry nel vettore delle distanze D, nonchè la stima attuale per costo per arrivare ad una generica destinazione y nel network;\n il distance vector D_v di ognuno dei vicini v.\n Nell'algoritmo, ogni tot di tempo, quando un nodo x riceve un vettore da un vicino, aggiorna il proprio D secondo la formula D_x(y) = min{ c(x,v) + D_v(y)} per ogni v, e lo manda ai vicini se cambia. ]\n\n---\n\n**Esempio Svolto (dal testo):**\n\n**1. Topologia di rete:**\nTre nodi (x, y, z) collegati con i seguenti costi:\n* $c(x,y) = 2$\n* $c(y,z) = 1$\n* $c(x,z) = 7$\n\n**2. Inizializzazione :**\nOgni nodo conosce il costo verso i vicini diretti. Verso le altre destinazioni il costo è $\\infty$.\n* Tabella nodo x: vettore da x $[0, 2, 7]$\n* Tabella nodo y: vettore da y $[2, 0, 1]$\n* Tabella nodo z: vettore da z $[7, 1, 0]$\n\n**3. Primo Aggiornamento :**\nI nodi si scambiano i vettori di distanza. Ogni nodo calcola i nuovi percorsi minimi usando l'equazione di Bellman-Ford.\nEsempio di ricalcolo per il nodo x:\n$$D_x(x) = 0$$\n$$D_x(y) = \\min\\{c(x,y) + D_y(y), c(x,z) + D_z(y)\\} = \\min\\{2 + 0, 7 + 1\\} = 2$$\n$$D_x(z) = \\min\\{c(x,y) + D_y(z), c(x,z) + D_z(z)\\} = \\min\\{2 + 1, 7 + 0\\} = 3$$\n\nSi nota come il nodo x abbia scoperto che passare per y costa meno (costo 3) per arrivare a z, rispetto al collegamento diretto (costo 7). Lo stesso accade per z.\n* Nuova tabella x: vettore aggiornato a $[0, 2, 3]$\n* Nuova tabella y: vettore rimane $[2, 0, 1]$\n* Nuova tabella z: vettore aggiornato a $[3, 1, 0]$\n\n**4. Convergenza :**\nI nodi inviano i nuovi vettori aggiornati ai loro vicini (x invia a y e z, z invia a x e y). I nodi ricalcolano le distanze, ma poiché le stime non possono più essere migliorate (i minimi restano invariati), l'algoritmo non produce ulteriori modifiche. Si è raggiunto lo stato stazionario."
+    },
+    {
+        "id": 61,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "Parlami dei problemi di Distance Vector",
+        "retro": "Infinity Counting e Poisoned Reverse + not robust against malicious nodes"
+    },
+    {
+        "id": 62,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "Parlami di Link State Routing e del problema della sincronizzazione in caso di oscillazioni",
+        "retro": "Link state routing è l'algoritmo di Routing che dopoo il 1979 sostituì Distance Vector. \n In questo algoritmo, ogni router investiga i costi della comunicazione con i suoi vicini e dopo il calcolo li manda in broadcast per far in modo che ogni router faccia i suoi calcoli. \n L'algoritmo usato è basato su Dijkstra e a differenza del suo predecessore prende in conto altre al delay della trasmissione anche la capacità del canale.\n L'algoritmo è il seguente: Si ha uno stato iniziale di costo verso i nodi, per ogni coppia di nodi v e u se essi sono vicini si considera il costo da v ad u come la loro distanza,altrimenti il costo iniziale è impostato a infinito; successivamente, in modo iterativo, si seleziona il nodo con il percorso dal costo complessivamente minimo, lo si aggiunge all'insieme dei nodi elaborati e si aggiornano i costi dei percorsi verso i suoi vicini, ripetendo il processo finché non si calcola l'albero dei cammini minimi per l'intera topologia della rete\n Il link state routing è ancora utilizzato oggi all'interno di sistemi autononi, col protocollo OSPF. Una problematica del Link State Routing, in casi di pesi simili tra due percorsi emerge quando viene deciso ad ogni esecuzione dell'algoritmo che il miglior percorso è quello libero, congestionando a turno uno o l'altro. Questo avviene se ogni nodo esegue l'algoritmo allo stesso momento, infatti evitando questo scenario è possibile almeno in parte limitare questo rischio."
+    },
+    {
+        "id": 63,
+        "capitolo": "Network Layer",
+        "tipo": "esercizio",
+        "fronte": "Disegna una rete da 4 nodi come un grafo non orientato connesso, dai ad ogni collegamento un valore diverso e chiama ogni nodo con una lettera. Esegui l'algoritmo di LSR da uno dei nodi e popola la sua tabella di routing.",
+        "retro": ""
+    },
+    {
+        "id": 64,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "Problemi di RIP",
+        "retro": ""
+    },
+    {
+        "id": 65,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "Perchè si è passati da RIP a OSPF",
+        "retro": ""
+    },
+    {
+        "id": 66,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "Vantaggi del RIP",
+        "retro": ""
+    },
+    {
+        "id": 67,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "Uso della subnet mask",
+        "retro": ""
+    },
+    {
+        "id": 68,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "In una LAN in un host, se diamo una maschera sbagliata descrivere dettagliatamente cosa succede",
+        "retro": ""
+    },
+    {
+        "id": 69,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "Come faccio a conoscere, dal mio pc, l'indirizzo IP di un altro terminale collegato? Se usassi tutte le possibili configurazioni della maschera di rete?",
+        "retro": ""
+    },
+    {
+        "id": 70,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "Frammentazione in IPv4 e IPv6",
+        "retro": ""
+    },
+    {
+        "id": 71,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "A cosa serve il campo offset nei pacchetti IPv4",
+        "retro": "Il Fragmentation offset da 13 bit, nei pacchetti IPv4, è utilizzato insieme ai campi Identifier e flags per la ricostruzione dei pacchetti originali quando vengono frammentati e inviati indipendentemente a destinazione, dove  vengono riassembati prima dei data payload, e passato successivamente al livello di trasporto dell'host di destinazione. La combinazione dei tre campi avviene in questo modo, se un router intermedio ha necessità di frammentare un pacchetto, a causa degli MTU, viene segnato un ID identico a tutti i frammenti generati dal pacchetto originale, l'offset poi ne specifica la posizione esatta in cui i dati devono essere inseriti rispetto all'inizio del datagramma originale. I flags vengono infine utilizzati per indicare al destinatario l'ultimo pacchetto di una determinata frammentazione"
+    },
+    {
+        "id": 72,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "NAT",
+        "retro": ""
+    },
+    {
+        "id": 73,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "ARP e sicurezza",
+        "retro": ""
+    },
+    {
+        "id": 74,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "DHCPv4",
+        "retro": "DHCP è un protocollo per l'assegnazione dinamica automatica di informazioni di rete tra le quali IP e maschera al collegamento di un nuovo host in una rete. Il server DHCP, che su richiesta fornisce IP, alla ricezione di una DHCP discover request del client, un pacchetto speciale che ha sorgente 0.0.0.0 e destinazione 255.255.255.255, il DHCP server risponde con un offerta DHCP, che contiene un campo yiaddr, ossia la proposta di IP. Se il client accetta, risponde con un DHCP ACK dove conferma i parametri richiesti. Insieme ai campi IP e maschera di rete, il DHCP server può anche fornire il server DNS e l'indirizzo di gateway, tramite il meccanismo delle DHCP Options"
+    },
+    {
+        "id": 75,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "DHCP cosa assegna oltre IP",
+        "retro": ""
+    },
+    {
+        "id": 76,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "Header IPv6 vs header IPv4",
+        "retro": "IPv4 ha gli header di dimensione variabile, con un minimo di 20 bytes. Possiede le seguenti informazioni\n Versione, Lunghezza header, lunghezza dati, Identificatore, flag e offset di frammentazione, TTL, protocollo trasporto, checksup, IP sorgente e destinatario. Finalmente, delle opzioni variabili \n In IPv6 le differenze sono: la dimensione è fissa (40bytes), gli IP address sono da 128 bit invece di 32, La frammentazione non è prevista (rimossi Identification, Flags e Offset), viene rimosso il checksum e i campi Options vengono modificati in Header di estensione. In IPv6 viene inoltre aggiunto un Flow Label per etichettare specifici flussi, e il campo Next Header generalizza il campo transport protocol, aprendo la possibilità ad header aggiuntivi specifici, oppure indicando il prossimo header come tcp/udp in modo classico"
+    },
+    {
+        "id": 77,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "Frammentazione e maschera IPv6",
+        "retro": ""
+    },
+    {
+        "id": 78,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "Campi next Header IPv6",
+        "retro": ""
+    },
+    {
+        "id": 79,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "Il flow label, vantaggi",
+        "retro": ""
+    },
+    {
+        "id": 80,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "Indirizzi di un canale IPv6 ottenuto dal MAC address",
+        "retro": ""
+    },
+    {
+        "id": 81,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "Header opzionali di IPv6",
+        "retro": ""
+    },
+    {
+        "id": 82,
+        "capitolo": "Network Layer",
+        "tipo": "teoria",
+        "fronte": "Parlare di IPv6, indirizzi globali, locali e di sito",
+        "retro": "in IPv6 gli indirizzi globali detti anche unicast, sono pubblici, univoci, uno o più di essi rappresenta una determinata entità nella rete internet, gli indirizzi locali sono validi all'interno di una LAN e sono generati dal MAC, iniziano per fe80:, pacchetti verso questi indirizzi non sono mai inoltrati dai router all'esterno di una LAN, e hanno maschera /10. Sono usati oggi per autoconfigurazione. Gli indirizzi di sito sono progettati per le reti private interne ad un organizzazione, e non sono stradabili su internet. "
+    },
+    {
+        "id": 83,
+        "capitolo": "Data Link Layer",
+        "tipo": "teoria",
+        "fronte": "Problema del framing, descrivere le soluzioni relatve più usate",
+        "retro": "Il problema del framing consiste nel discernere in un canale l'effettivo invio di comunicazioni, riuscire a distinguere univocamente i frame dal segnale, un esempio classico può essere riassunto con la domanda '________ questo segnale è una mancanza di comunicazione, o è una sfilza di 0, e quanti 0 ci sono?' Le soluzioni a questo problema più usate sono inviare più bit di quelli necessari agli effetivi dati, lasciando combinazioni di bit, o segnali specifici, riservate non ai dati ma all'inizio di una comunicazione, al termine di essa e utili alla sincronizzazione di mittente e ricevente. Questa tecnica è usata dagli standard 4B5B e 8B10B. Inoltre un altro problema di data framing è la difficoltà di distinzione univoca di certi segnali per proprietà dipendenti dalla forma del segnale. Questo problema è risolto col campionamento delle forme, e l'esclusione di alcune forme particolarmente difficili da discernere. Infine in Ethernet è usato un pattern speciale sia per la sincronizzazione dei clock che per la delimitazione dell'inizio del primo frame. Alcune soluzioni storiche non più utilizzate sono il byte counting, l'invio preliminare del numero di byte, che nel caso di perdita di sincronizzazione manda fuori fase tutti i frame successivi, byte stuffing, l'invio di lettera controllo per il fine della conversazione, che constringe a sostituire l'effettiva lettera se presente nella comunicazione con due occorrenze della stessa."
+    },
+    {
+        "id": 84,
+        "capitolo": "Data Link Layer",
+        "tipo": "teoria",
+        "fronte": "Codifica 4b 5b, perchè risolve il problema del framing",
+        "retro": "4B5B risolve il framing perchè permette univocamente di identificare la presenza di comunicazione o l'assenza della stessa, permettendo di sincronizzare mittente e ricevente. 4B5B fornisce ogni 5 bit trasmessi 4 bit di dati effettivi, questo permette di assegnare a combinazioni specifiche di 5 bit dei segnali speciali, come quello di inizio e fine trasmissione. Inoltre, alcuni segnali sono scartati interamente e si prediligono i segnali con più facilità di riconoscimento anche in caso di errori, un esempio di dati non facilmente riconoscibile per un ricevitore può essere un segnale con molti 0 di seguito. Il problema del framing infatti è per un ricevitore distinguere univocamente i messaggi, o precisamente la delimitazione inequivocabile dei frame. in particolare, le 32 combinazioni possibili che si ottendono con 5 bit passano a 16 quando si considerano solo 4 bit significativi. Questo permette a 4B5B di assegnare 16 segnali univoci rispetto ai dati, e 16 segnali di controllo comunicazione, o avanzanti. Ogni segnale in questo caso è considerabile una forma univoca, e 4B5B assegna ad ogni segnale rispetto ai dati un simbolo esadecimale corrispondente."
+    },
+    {
+        "id": 85,
+        "capitolo": "Data Link Layer",
+        "tipo": "teoria",
+        "fronte": "Parlare della teoria della correzione e rilevazione degli errori e dimostrare che (m+1) < 2r – r",
+        "retro": ""
+    },
+    {
+        "id": 86,
+        "capitolo": "Data Link Layer",
+        "tipo": "esercizio",
+        "fronte": "CRC: calcola il CRC della stringa 101110 avendo come polinomio generatore G(x) = 1001 e r = 3, illustrane il calcolo in Z2 e mostra gli effettivi dati trasmessi",
+        "retro": "Il calcolo del CRC funziona come segue.\n d = numero di bit da mandare, r = numero di bit di ridondanza (CRC).\n La stringa trasmessa è lunga d+r (la stringa originale + i bit del CRC). In Z2, il campo modulo 2, le operazioni di somma e sottrazione sono eseguite tramite lo XOR. Procederemo al calcolo del resto della divisione tra la stringa originale shiftata a sinistra di r bit, e il polinomio generatore, useremo il metodo delle divisioni successive\n\n```\n       1 0 1 0 1 1\n     -------------\n1001 ) 1 0 1 1 1 0 0 0 0\n       1 0 0 1\n       -------\n         1 0 1\n         0 0 0\n         -----\n         1 0 1 0\n         1 0 0 1\n         -------\n           1 1 0\n           0 0 0\n           -----\n           1 1 0 0\n           1 0 0 1\n           -------\n             1 0 1 0\n             1 0 0 1\n             -------\n               0 1 1\n```\n\nI bit trasmessi sono 101110011."
+    },
+    {
+        "id": 87,
+        "capitolo": "Data Link Layer",
+        "tipo": "esercizio",
+        "fronte": "Stringa in Z2",
+        "retro": ""
+    },
+    {
+        "id": 88,
+        "capitolo": "Data Link Layer",
+        "tipo": "esercizio",
+        "fronte": "Stringa codificata con CRC e successivamente Hamming",
+        "retro": "(AI) L'applicazione sequenziale serve a garantire robustezza combinando rilevazione (CRC) e correzione (Hamming) degli errori. La procedura risolutiva è la seguente:\n1. Calcolo del CRC: Dati i bit originari D e un polinomio generatore G(x) di grado r, si esegue uno shift a sinistra di r posizioni di D. Si calcola il resto della divisione polinomiale (in Z2 tramite XOR) per G(x). Il resto costituisce i bit di CRC. La nuova stringa intermedia da trasmettere diventa M = D + CRC.\n2. Dimensionamento Hamming: La stringa M (dati + CRC) diventa il nuovo payload di lunghezza m. Si calcola il numero di bit di ridondanza r' necessari tramite la disuguaglianza (m + r' + 1) <= 2^r'.\n3. Posizionamento: Si costruisce la stringa finale posizionando i bit di parità (P1, P2, P4...) alle potenze di due e inserendo i bit di M nelle posizioni rimanenti.\n4. Calcolo parità: Ogni bit di parità viene calcolato effettuando lo XOR dei bit le cui posizioni, in binario, presentano un '1' in corrispondenza della potenza di due valutata.\n5. Logica di Ricezione: Al ricevitore si applica prima Hamming per individuare e correggere un eventuale errore sul singolo bit. Successivamente, si divide la stringa M corretta per il polinomio G(x): se il resto è 0, il frame è integro; altrimenti si è verificato un errore multiplo (burst error) non gestibile da Hamming ma rilevato dal CRC. Procedura ed esempio:\n1. Calcolo del CRC: Dati originari D = 1011, Polinomio G(x) = 1101 (grado r=3). Shift a sinistra di 3 bit: 1011000. Divisione modulo 2 (XOR) tra 1011000 e 1101 dà resto CRC = 100. La stringa intermedia M = 1011100 (7 bit).\n2. Dimensionamento Hamming: La stringa M (m=7) richiede r' bit di ridondanza. Usando (m + r' + 1) <= 2^r', otteniamo r' = 4. Totale bit da inviare = 11.\n3. Posizionamento: Si mettono i bit di parità (p1, p2, p4, p8) alle potenze di due e i bit di M nei restanti spazi. Struttura: [p1, p2, 1, p4, 0, 1, 1, p8, 1, 0, 0].\n4. Calcolo parità: \n - p1 controlla posizioni 1,3,5,7,9,11 (p1⊕1⊕0⊕1⊕1⊕0 = 0 -> p1=1)\n - p2 controlla posizioni 2,3,6,7,10,11 (p2⊕1⊕1⊕1⊕0⊕0 = 0 -> p2=1)\n - p4 controlla posizioni 4,5,6,7 (p4⊕0⊕1⊕1 = 0 -> p4=0)\n - p8 controlla posizioni 8,9,10,11 (p8⊕1⊕0⊕0 = 0 -> p8=1)\n5. Stringa finale trasmessa: 11100111100. In ricezione, si decodifica prima Hamming per correggere un eventuale bit alterato, e poi si divide per G(x) per accertarsi tramite CRC che non ci siano stati burst error multipli."  
+    },
+    {
+        "id": 89,
+        "capitolo": "Data Link Layer",
+        "tipo": "esercizio",
+        "fronte": "In un messaggio di 15 bit, verifica tramite i codici di Hamming se sono presenti errori e eventualmente correggili. Infine, indica qual è il payload inviato senza ridondanza\n Stringa: 101100100101100.",
+        "retro": "Nel codice di Hamming, i bit di parità si trovano alle posizioni potenze di 2, ovvero 1,2,4,8, i restanti bit sono di dati.\n Il controllo di parità avviene come segue\n1 (control)\n2 (control)\n3 (1+2)\n4 (control)\n5 (1+4)\n6 (2+4)\n7 (1+2+4)\n8(control)\n9 (8+1)\n10 (8+2)\n11 (8+1+2)\n12 (8+4)\n13 (8+1+4)\n14 (8+2+4)\n15 (8+1+2+4)\n Ogni bit di dati è quindi controllato dalla rappresentazione della sua posizione tramite somma di potenze di due, che saranno i bit di controllo.\n Facendo poi xor di potenza e delle posizioni che quella potenza di due individua, se lo XOR totale fa 0, non abbiamo errori, altrimenti la posizione dell'errore è nella posizione decimale di ciò che esce in binario combinando i risultati dei bit di controllo.\n- b1 (pos 1, 3, 5, 7, 9, 11, 13, 15). Somma XOR: 1⊕1⊕0⊕1⊕0⊕0⊕1⊕0 = 0.\n - b2 (pos 2, 3, 6, 7, 10, 11, 14, 15). Somma XOR: 0⊕1⊕0⊕1⊕1⊕0⊕0⊕0 = 1.\n - b4 (pos 4, 5, 6, 7, 12, 13, 14, 15). Somma XOR: 1⊕0⊕0⊕1⊕1⊕1⊕0⊕0 = 0.\n - b8 (pos 8, 9, 10, 11, 12, 13, 14, 15). Somma XOR: 0⊕0⊕1⊕0⊕1⊕1⊕0⊕0 = 1.\n3. Individuazione del bit errato: la combinazione dei bit di parità (b8, b4, b2, b1) genera il valore binario 1010, che in decimale equivale a 8+2 = 10.\n4. Correzione: Il bit in posizione 10 è errato. Essendo un '1', viene corretto in '0', ottenendo la codeword originale corretta: 101100100001100"
+    },
+    {
+        "id": 90,
+        "capitolo": "Network Layer",
+        "tipo": "esercizio",
+        "fronte": "Calcola il valore della finestra W per avere una Larghezza di banda (throughput) minima di 512Kb/s, in una rete con le seguenti caratteristiche:\n Ritardo di propagazione 100ms\nLarghezza di banda all'andata 1Mb/s\n Ritorno 10Kb/s\n intestazione 1000 bytes\n payload 9000 bytes\n ACK 100bytes\n",
+        "retro": "Dimensione del pacchetto 1000+9000 = 10000 bytes. \n Convertiamo in bit e dividiamo per Bw all'andata per il tempo di trasmissione del frame all'andata. T_ndata(frame) = 10000*8 / 10^6 = 8*10^-2 s\n Calcoliamo il tempo dell'ACK al ritorno. T_ritorno(ACK) = 100*8 / 10^4 = 8*10^-2 s\n Calcoliamo il RTT\nRTT = T_andata(frame)+T_propagazione+T_ritorno(ACK)+T_propagazione = 80+100+80+100 ms = 360 ms\n Ora si calcola il troughput per singolo pacchetto (W=1) in termini di dati utili (payload)\n W(1) = payload in bit / RTT = 9000*8 / 360*10^-3 = 72000/0.36 = 200000 bit/s (bps) = 200Kbps\n Per avere una throughput come richiesto, si adegua la finestra al numero di pacchetti necessario ->\n 512/200 = circa 2.5, arrotondato per eccesso-> \n W = 3 (600kbps)"
+    },
+    {
+        "id": 91,
+        "capitolo": "Data Link Layer",
+        "tipo": "teoria",
+        "fronte": "Parla della correzione degli errori in Gigabit Ethernet",
+        "retro": ""
+    },
+    {
+        "id": 92,
+        "capitolo": "Data Link Layer",
+        "tipo": "teoria",
+        "fronte": "CSMA/CD",
+        "retro": "La famiglia di regole CSMA/CD che serve ad un nodo per decidere se trasmettere o no in un canale broadcast o ad accesso condiviso (MA multiple access), è la seguente:\n 1. Se il canale è occupato, attendi finchè non si libera,\n 2. se il canale è libero inizia a trasmettere immediatamente (1 e 2 sono chiamate Carrier Sensing (CS), cioè ascolta il canale prima di trasmettere)\n 3. Se qualcuno sta parlando allo stesso momento, smetti di parlare e rinizia dopo un'attesa randomica appropriata, questo aspetto è chiamato Collision Detection (CD). Oggi si è passato a canali switch e full duplex, per questo CSMA/CD è obsoleto."
+    },
+    {
+        "id": 93,
+        "capitolo": "Data Link Layer",
+        "tipo": "teoria",
+        "fronte": "Dimensione minima frame Ethernet",
+        "retro": ""
+    },
+    {
+        "id": 94,
+        "capitolo": "Data Link Layer",
+        "tipo": "esercizio",
+        "fronte": "Disegnata una struttura di rete, spiega il funzionamento del broadcasting usando lo spanning Tree",
+        "retro": ""
+    },
+    {
+        "id": 95,
+        "capitolo": "Data Link Layer",
+        "tipo": "teoria",
+        "fronte": "Differenze tra Hub, Switch e Router",
+        "retro": ""
+    },
+    {
+        "id": 96,
+        "capitolo": "Data Link Layer",
+        "tipo": "teoria",
+        "fronte": "Differenza tra Token Ring e Token Bus",
+        "retro": ""
+    },
+    {
+        "id": 97,
+        "capitolo": "Data Link Layer",
+        "tipo": "teoria",
+        "fronte": "Cosa è preferibile tra CSMA/CD e Token Ring",
+        "retro": ""
+    },
+    {
+        "id": 98,
+        "capitolo": "Data Link Layer",
+        "tipo": "teoria",
+        "fronte": "Differenza tra Multimode e Single mode fiber",
+        "retro": ""
+    }
 
 ]
