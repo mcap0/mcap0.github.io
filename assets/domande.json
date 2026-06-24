@@ -487,7 +487,7 @@
         "capitolo": "Network Layer",
         "tipo": "teoria",
         "fronte": "Frammentazione in IPv4 e IPv6",
-        "retro": ""
+        "retro": "in IPv4 c'è frammentazione, a causa dei diversi MTU nei circuiti. IPv4 per questo motivo è frammentabile dal mittente o da ogni router intermedio. IPv6 non è frammentabile in corsa, quindi i circuiti che non hanno una MTU adatta ad IPv6 non vengono usati, o la frammentazione viene considerata all'invio. In IPv4 per permettere la frammentazione si impiegano 3 campi, Identification, Flags e Offset, in particolarese un router intermedio ha necessità di frammentare un pacchetto, a causa degli MTU, viene segnato un ID identico a tutti i frammenti generati dal pacchetto originale, l'offset poi ne specifica la posizione esatta in cui i dati devono essere inseriti rispetto all'inizio del datagramma originale. I flags vengono infine utilizzati per indicare al destinatario l'ultimo pacchetto di una determinata frammentazione "
     },
     {
         "id": 71,
