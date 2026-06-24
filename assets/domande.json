@@ -501,7 +501,7 @@
         "capitolo": "Network Layer",
         "tipo": "teoria",
         "fronte": "NAT",
-        "retro": ""
+        "retro": "Lo scopo di NAT è di collegare una rete interna con indirizzi privati alle rete pubbliche attraverso la traduzione degli indirizzi privati con l'indirizzo del router o di un gateway. L'implementazione è la seguente\n un pacchetto che esce dalla LAN vede sostituito l'IP privato dal router col suo IP pubblico, salvando l'associazione in una tabella NAT usando porte specifiche per specifiche connessioni. All'arrivo della risposta il router riscrive l'IP di destinazione con il corrispondente IP privato. "
     },
     {
         "id": 73,
