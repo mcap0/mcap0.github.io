@@ -423,21 +423,21 @@
     "id": 61,
     "capitolo": "Network Layer",
     "tipo": "teoria",
-    "fronte": "Link State Routing, come fa link state a scoprire la rete?",
-    "retro": ""
+    "fronte": "Parlami dei problemi di Distance Vector",
+    "retro": "Infinity Counting e Poisoned Reverse + not robust against malicious nodes"
   },
   {
     "id": 62,
     "capitolo": "Network Layer",
     "tipo": "teoria",
-    "fronte": "Parlami di Link State Routing",
-    "retro": ""
+    "fronte": "Parlami di Link State Routing e del problema della sincronizzazione in caso di oscillazioni",
+    "retro": "Link state routing è l'algoritmo di Routing che dopoo il 1979 sostituì Distance Vector. \n In questo algoritmo, ogni router investiga i costi della comunicazione con i suoi vicini e dopo il calcolo li manda in broadcast per far in modo che ogni router faccia i suoi calcoli. \n L'algoritmo usato è basato su Dijkstra e a differenza del suo predecessore prende in conto altre al delay della trasmissione anche la capacità del canale.\n L'algoritmo è il seguente: Si ha uno stato iniziale di costo verso i nodi, per ogni coppia di nodi v e u se essi sono vicini si considera il costo da v ad u come la loro distanza,altrimenti il costo iniziale è impostato a infinito; successivamente, in modo iterativo, si seleziona il nodo con il percorso dal costo complessivamente minimo, lo si aggiunge all'insieme dei nodi elaborati e si aggiornano i costi dei percorsi verso i suoi vicini, ripetendo il processo finché non si calcola l'albero dei cammini minimi per l'intera topologia della rete\n Il link state routing è ancora utilizzato oggi all'interno di sistemi autononi, col protocollo OSPF. Una problematica del Link State Routing, in casi di pesi simili tra due percorsi emerge quando viene deciso ad ogni esecuzione dell'algoritmo che il miglior percorso è quello libero, congestionando a turno uno o l'altro. Questo avviene se ogni nodo esegue l'algoritmo allo stesso momento, infatti evitando questo scenario è possibile almeno in parte limitare questo rischio."
   },
   {
     "id": 63,
     "capitolo": "Network Layer",
-    "tipo": "teoria",
-    "fronte": "Come fa Link state a conoscere i vicini?",
+    "tipo": "esercizio",
+    "fronte": "Disegna una rete da 4 nodi come un grafo non orientato connesso, dai ad ogni collegamento un valore diverso e chiama ogni nodo con una lettera. Esegui l'algoritmo di LSR da uno dei nodi e popola la sua tabella di routing.",
     "retro": ""
   },
   {
