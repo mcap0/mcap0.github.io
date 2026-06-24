@@ -515,7 +515,7 @@
     "capitolo": "Network Layer",
     "tipo": "teoria",
     "fronte": "DHCPv4",
-    "retro": ""
+    "retro": "DHCP è un protocollo per l'assegnazione dinamica automatica di informazioni di rete tra le quali IP e maschera al collegamento di un nuovo host in una rete. Il server DHCP, che su richiesta fornisce IP, alla ricezione di una DHCP discover request del client, un pacchetto speciale che ha sorgente 0.0.0.0 e destinazione 255.255.255.255, il DHCP server risponde con un offerta DHCP, che contiene un campo yiaddr, ossia la proposta di IP. Se il client accetta, risponde con un DHCP ACK dove conferma i parametri richiesti. Insieme ai campi IP e maschera di rete, il DHCP server può anche fornire il server DNS e l'indirizzo di gateway, tramite il meccanismo delle DHCP Options"
   },
   {
     "id": 75,
