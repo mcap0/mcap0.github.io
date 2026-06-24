@@ -326,7 +326,7 @@
         "capitolo": "Transport Layer",
         "tipo": "teoria",
         "fronte": "Dimostrare dettagliatamente la proprietà fairness di TCP Reno",
-        "retro": ""
+        "retro": "TCP Reno grazie a due sue proprietà di gestione della congestione acquista anche la proprietà di fairness, ossia di suddividere il canale equamente tra i diversi utilizzatori. Questa proprietà è dimostrabile matematicamente nel seguente modo:\n considerando un grafico a due dimensioni avente sugli assi i throughput di due connessioni A e B che condividono un canale di capacità massima R tale che A+B <= R, individuiamo una retta fondamentale, la prima bisettrice, dove il throughput di A = al throughput di B. La connessione è fair se tende a questa retta. \n AIMD fa si che si abbia crescita lineare (x+1,y+1) dove x e y sono le due connessioni, il coefficente di questa crescita è 1, parallelo alla prima bisettrice. Negli avvenimenti di congesione, si ha una descrescita esponenziale, (x/2, y/2), sostituendo nell'equazione di retta y=ax+b, y/2=ax/2+b, y=ax+2b, ax+b = ax+2b, 2b = b, b=0 -> y = ax retta passante per l'origine. Tendendo verso l'origine nei casi di MD, e orientandosi verso la prima bisettrice nei casi di AI, le due connessioni A e B senza comunicare tra loro hanno equilibrato i loro troughput in modo tale che la tendenza alla fairness è dmostrata. La dimostrazione è analoaga per >2 connessioni."
     },
     {
         "id": 48,
