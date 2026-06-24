@@ -571,7 +571,7 @@
     "capitolo": "Network Layer",
     "tipo": "teoria",
     "fronte": "Parlare di IPv6, indirizzi globali, locali e di sito",
-    "retro": ""
+    "retro": "in IPv6 gli indirizzi globali detti anche unicast, sono pubblici, univoci, uno o più di essi rappresenta una determinata entità nella rete internet, gli indirizzi locali sono validi all'interno di una LAN e sono generati dal MAC, iniziano per fe80:, pacchetti verso questi indirizzi non sono mai inoltrati dai router all'esterno di una LAN, e hanno maschera /10. Sono usati oggi per autoconfigurazione. Gli indirizzi di sito sono progettati per le reti private interne ad un organizzazione, e non sono stradabili su internet. "
   },
   {
     "id": 83,
