@@ -508,7 +508,7 @@
         "capitolo": "Network Layer",
         "tipo": "teoria",
         "fronte": "ARP e sicurezza",
-        "retro": ""
+        "retro": "Il protocollo ARP serve al routing interno ad una LAN, in particolare a ricercare a quale indirizzo fisico corrisponde un indirizzo IP, come suggerisce il nome la traduzione di indirizzi, da IP a MAC. \n Questa azione consente di popolare le tabelle di indirizzamento degli host, e funziona come segue: \n una ARP request è un pacchetto in broadcast che chiede chi nel link fisico possieda uno specifico indirizzo IP, la ARP reply è la risposta dell'host con lo specifico indirizzo IP, che vedendo il pacchetto indirizzato a se risponde con il suo MAC address. Successivamente il mittente scriverà nel sua tabella di indirizzamento IP e MAC che gli sono stati appena comunicati. \n Problemi di sicurezza includono: la mancanza di autenticazione, chiunque può fare 'spoofing' ossia pretendere di essere un'host in modo malizioso, e la implementazione stateless di ARP, ossia una risposta ARP non necessità una richiesta precedente, io posso craftare un pacchetto ARP in cui mi fingo il gateway, e inviarla ad un host, e quest'ultimo secondo l'implementazione standard inserirà il mio link fisico con l'IP del gateway. Questo permette attacchi del tipo man in the middle."
     },
     {
         "id": 74,
