@@ -347,7 +347,7 @@
     "capitolo": "Data Link Layer",
     "tipo": "teoria",
     "fronte": "Svantaggi della fibra ottica",
-    "retro": ""
+    "retro": "Seppur lo stato dell'arte dei cavi internet oggi sia la fibra ottica, anch'essa ha svantaggi. Il costo dell'hardware trasmettitore e ricevente, è un esempio, nonchè il costo dell taglio di un cavo , cosiddetto CRIMPing , dovuto all'equipaggiamento specializzato necessario a queste operazioni. \n Inoltre i cavi in fibra ottica sono vulnerabili a piegamenti oltre un certo raggio di curvatura.\n Oltre agli alti costi e alla fragilità strutturale, troviamo come difetti degni di nota il potenziale rimbalzo del segnale arrivato a destinzaione, che necessita appropriati apparati per evitare l'avvenimento, nonchè l'intrinseca natura unidirezionale del segnale che necessita di tecniche specifiche di due cavi separati per l'uso full-duplex"
   },
   {
     "id": 51,
