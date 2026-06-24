@@ -227,8 +227,8 @@
         "id": 33,
         "capitolo": "Transport Layer",
         "tipo": "teoria",
-        "fronte": "Avendo un canale, da 100 mbit, la somma dei due throughput. Posso andare oltre. Come è possibile? Risp: è possibile a motivo dei buffer dei router che possono immagazzinare i pacchetti e in un dato momento il throughput istantaneo è maggiore della somma dei due.",
-        "retro": ""
+        "fronte": "Avendo un canale, da 100 mbit, la somma dei due throughput. Posso andare oltre. Come è possibile? ",
+        "retro": " è possibile a motivo dei buffer dei router che possono immagazzinare i pacchetti e in un dato momento il throughput istantaneo è maggiore della somma dei due."
     },
     {
         "id": 34,
@@ -471,9 +471,9 @@
     {
         "id": 68,
         "capitolo": "Network Layer",
-        "tipo": "teoria",
-        "fronte": "In una LAN in un host, se diamo una maschera sbagliata descrivere dettagliatamente cosa succede",
-        "retro": ""
+        "tipo": "esercizio",
+        "fronte": "Un admin pazzo sbaglia la mask nella configurazione di un host. Cosa succede?",
+        "retro": "La machera serve ad individuare l0instradamento, locale o non. si può sbagliare maschera in due modi:\n 1. Maschera maggiore alla originale\n 2. minore \n Consideriamo l'esempio di una maschera corretta come /24, e vediamo prima l'esempio di maschera maggione. \n con la maschera /25, gli indirizzi locali da 1.1.1.0-1.1.1.256 diventano 1.1.1.0-1.1.1.127, se interno a questo range, l'host riterrà come locali i 128 indirizzi del /25 e esterni gli indirizzi del tipo .200, ma se il gateway è interno al suo 127 sarà il router ad instradare il traffico. se il gateway fosse nel range oltre il 127, l'host non riuscirebbe a raggiungerlo, anche se in quel caso sarebbe stato facilmente riconoscibile l'errore, poichè l'host non si sarebbe connesso ad internet. \n nel secondo caso, una maschera minore /23, che prende 512 indirizzi invece di 256, fa si che un host mal configurato creda nella sua rete locale tutti gli indirizzi da 1.1.0.0-1.1.1.255, non riuscendo a instradare correttamente i 256 host con uno zero alla terza posizione, che dovrebbe essere esterni ed inviati al router ma l'host effettuerà invece una richiesta ARP"
     },
     {
         "id": 69,
