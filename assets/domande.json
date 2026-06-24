@@ -193,7 +193,7 @@
         "capitolo": "Application Layer",
         "tipo": "teoria",
         "fronte": "Perchè le mail si ottengono mediante DNS?",
-        "retro": ""
+        "retro": "un indirizzo mail ha nella sua seconda parte un dominio e non un indirizzo IP, il server SMTP mittente deve scoprire il server di posta responsabile al recapito di quella mail, e gestisce richiedendo il recordo testuale MX al DNS server del dominio di destinazione. Senza questo procedimento, il server SMTP non saprebbe a quale macchina fisica inoltrare il messaggio di posta elettronica"
     },
     {
         "id": 29,
