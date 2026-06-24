@@ -578,7 +578,7 @@
     "capitolo": "Data Link Layer",
     "tipo": "teoria",
     "fronte": "Problema del framing, descrivere le soluzioni relatve più usate",
-    "retro": ""
+    "retro": "Il problema del framing consiste nel discernere in un canale l'effettivo invio di comunicazioni, riuscire a distinguere univocamente i frame dal segnale, un esempio classico può essere riassunto con la domanda '________ questo segnale è una mancanza di comunicazione, o è una sfilza di 0, e quanti 0 ci sono?' Le soluzioni a questo problema più usate sono inviare più bit di quelli necessari agli effetivi dati, lasciando combinazioni di bit, o segnali specifici, riservate non ai dati ma all'inizio di una comunicazione, al termine di essa e utili alla sincronizzazione di mittente e ricevente. Questa tecnica è usata dagli standard 4B5B e 8B10B. Inoltre un altro problema di data framing è la difficoltà di distinzione univoca di certi segnali per proprietà dipendenti dalla forma del segnale. Questo problema è risolto col campionamento delle forme, e l'esclusione di alcune forme particolarmente difficili da discernere. Infine in Ethernet è usato un pattern speciale sia per la sincronizzazione dei clock che per la delimitazione dell'inizio del primo frame. Alcune soluzioni storiche non più utilizzate sono il byte counting, l'invio preliminare del numero di byte, che nel caso di perdita di sincronizzazione manda fuori fase tutti i frame successivi, byte stuffing, l'invio di lettera controllo per il fine della conversazione, che constringe a sostituire l'effettiva lettera se presente nella comunicazione con due occorrenze della stessa."
   },
   {
     "id": 84,
