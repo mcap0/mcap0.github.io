@@ -585,7 +585,7 @@
     "capitolo": "Data Link Layer",
     "tipo": "teoria",
     "fronte": "Codifica 4b 5b, perchè risolve il problema del framing",
-    "retro": ""
+    "retro": "4B5B risolve il framing perchè permette univocamente di identificare la presenza di comunicazione o l'assenza della stessa, permettendo di sincronizzare mittente e ricevente. 4B5B fornisce ogni 5 bit trasmessi 4 bit di dati effettivi, questo permette di assegnare a combinazioni specifiche di 5 bit dei segnali speciali, come quello di inizio e fine trasmissione. Inoltre, alcuni segnali sono scartati interamente e si prediligono i segnali con più facilità di riconoscimento anche in caso di errori, un esempio di dati non facilmente riconoscibile per un ricevitore può essere un segnale con molti 0 di seguito. Il problema del framing infatti è per un ricevitore distinguere univocamente i messaggi, o precisamente la delimitazione inequivocabile dei frame. in particolare, le 32 combinazioni possibili che si ottendono con 5 bit passano a 16 quando si considerano solo 4 bit significativi. Questo permette a 4B5B di assegnare 16 segnali univoci rispetto ai dati, e 16 segnali di controllo comunicazione, o avanzanti. Ogni segnale in questo caso è considerabile una forma univoca, e 4B5B assegna ad ogni segnale rispetto ai dati un simbolo esadecimale corrispondente."
   },
   {
     "id": 85,
