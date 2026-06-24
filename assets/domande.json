@@ -207,7 +207,7 @@
         "capitolo": "Transport Layer",
         "tipo": "teoria",
         "fronte": "Gestione del timer in TCP",
-        "retro": ""
+        "retro": "Il timer TCP server a stimare l'RTT per aspettare una quantità di tempo adeguato una risposta prima di constatare la perdita o il ritardo di un pacchetto. Il funzionamento è divisibile in 4 fasi\n 1. Calcolo del campione RTT, \n2. Calcolo della media Stimata RTT, in media ponderata con gli RTT passati, ExpectedRTT \n3. Calcolo della deviazione standard della variabilità del RTT basata in modo ponderato di più su dati recenti che vecchi, DevRTT\n4. Calcolo del timer RTO (retransmission Timeout) come RTO = ExpectedRTT + (4+DevRTT)"
     },
     {
         "id": 31,
