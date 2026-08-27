@@ -4,7 +4,6 @@ date: 2026-08-27 14:28:19 +0200
 categories: [App]
 tags: ["social", "app", "android", "whitelister", "social media"]
 math: true
-pin: true
 ---
 
 Ho creato un'applicazione che blocca i reel su Instagram.
@@ -17,5 +16,13 @@ In programma: whitelisting del feed, guarda solo ciò che vuoi tu, rimuovi i con
 
 L'applicazione è open source sul mio GitHub al seguente [link](https://github.com/mcap0/whitelister). E' presente anche sul Play Store alla cifra simbolica di 0.99$.
 
+# Funzionamento
 
+Instagram non diventa inutilizzabile, al contrario, ti permette di farci ciò che vuoi. 
+
+Appena clicchi su un reel, potrai vederlo, nessuno te lo vieta. Ma se inizi a scrollare, il secondo reel verrà sempre bloccato.
+
+Per funzionare, questa applicazione necessità l'attivazione dei permessi su accessibilità (per operare su un'altra app come Instagram). Il codice open source garantisce che chiunque può visionarlo per verificarne la correttezza.
+
+Attivata la funzionalità, che sia dai reel, dal feed o dai messaggi di un tuo amico, non arriverai mai al secondo reel, perchè Whitelister ti bloccherà.
 
