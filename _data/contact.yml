@@ -27,6 +27,10 @@
   icon: "fab fa-whatsapp"
   url: "https://wa.me/393288634121"
 
+- type: buy-me-a-coffee
+  icon: "fas fa-coffee"
+  url: "https://www.buymeacoffee.com/matteocapo"
+
 
 #
 # - type: stack-overflow
