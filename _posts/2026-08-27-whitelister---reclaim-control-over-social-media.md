@@ -2,7 +2,7 @@
 title: "Whitelister - Reclaim control over social media"
 date: 2026-08-27 14:28:19 +0200
 categories: [App]
-tags: ["social", "app", "android", "whitelister"]
+tags: ["social", "app", "android", "whitelister", "social media"]
 math: true
 ---
 
