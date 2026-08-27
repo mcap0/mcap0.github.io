@@ -4,6 +4,7 @@ date: 2026-08-27 14:28:19 +0200
 categories: [App]
 tags: ["social", "app", "android", "whitelister", "social media"]
 math: true
+pin: true
 ---
 
 Ho creato un'applicazione che blocca i reel su Instagram.
