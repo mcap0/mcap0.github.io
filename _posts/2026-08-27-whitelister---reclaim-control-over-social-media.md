@@ -9,9 +9,11 @@ pin: true
 
 Ho creato un'applicazione che blocca i reel su Instagram.
 
-Questa crescerà e aggiungerà funzioni aggiuntive, basate sul far fare ai social media ciò che si vuole e sull'annullare le trappole per l'attenzione messe in atto dalle compagnie dei social media.
+L'idea mi è venuta principalmente perchè mi serviva esattamente questo. Le applicazioni simili (totalmente inutili e a 10/EUR al mese...) non possono competere. 
 
-L'idea mi è venuta guardando le altre applicazioni simili, e guardando video dell'influencer yoga Etai Atula. Ho pensato che sarebbe bello poter avere solo i suoi video sul feed, e mi sono risposto che è ciò che dovrebbero fare i social media: farti vedere ciò che vuoi, SOLO ciò che vuoi. Cosa che, guarda caso, sui social media è ad oggi IMPOSSIBILE.
+Guardando video dell'influencer yoga Etai Atula ho pensato a quanto sarebbe bello poter avere solo i suoi video sul mio feed, effettivamente è ciò che dovrebbero fare i social media: farti vedere ciò che vuoi. Cosa che, guarda caso, sui social media è ad oggi IMPOSSIBILE.
+
+Questa crescerà e aggiungerà funzioni ugualmente utili, basate sul riprendere il controllo sui social media e sul rendere inutili le trappole per l'attenzione poste dalle compagnie dei social media per derubarti di giornate intere, nonchè felicità, salute mentale e umanità.
 
 In programma: whitelisting del feed, guarda solo ciò che vuoi tu, rimuovi i contenuti consigliati.
 
@@ -23,7 +25,8 @@ Instagram non diventa inutilizzabile, al contrario, ti permette di farci ciò ch
 
 Appena clicchi su un reel, potrai vederlo, nessuno te lo vieta. Ma se inizi a scrollare, il secondo reel verrà sempre bloccato.
 
-Per funzionare, questa applicazione necessità l'attivazione dei permessi su accessibilità (per operare su un'altra app come Instagram). Il codice open source garantisce che chiunque può visionarlo per verificarne la correttezza.
+>Per funzionare, questa applicazione necessità l'attivazione dei permessi di accessibilità (per operare su un'altra app come Instagram). Il codice open source garantisce che chiunque può visionarlo per verificarne la correttezza.
 
 Attivata la funzionalità, che sia dai reel, dal feed o dai messaggi di un tuo amico, non arriverai mai al secondo reel, perchè Whitelister ti bloccherà.
 
+[buy me a coffee](https://www.buymeacoffee.com/matteocapo)
