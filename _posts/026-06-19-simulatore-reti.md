@@ -3,7 +3,6 @@ title: "Simulatore Esami: Reti di Calcolatori"
 date: 2026-06-19 16:40:00 +0200
 categories: [Strumenti, Studio]
 tags: [reti, esame, flashcard, simulazione]
-pin: true
 ---
 
 Ho creato un simulatore interattivo per preparare l'esame scritto di Reti di Calcolatori. 
