@@ -14,10 +14,10 @@ I am particularly proud of this project, which includes a sample report based on
 [PT REPORT](/assets/pdf/[Sky_Couriers]_Penentration_Test_Report.pdf).
 [APPENDIX A](/assets/pdf/[APPENDIX_A]_VA_SKY_Couriers_Scan_Report.pdf).
 
-<object data="/assets/pdf/mio-documento.pdf" type="application/pdf" width="100%" height="800px" style="border-radius: 8px; border: 1px solid var(--main-border-color);">
+<object data="/assets/pdf/[Sky_Couriers]_Penentration_Test_Report.pdf" type="application/pdf" width="100%" height="800px" style="border-radius: 8px; border: 1px solid var(--main-border-color);">
+<object data="/assets/pdf/[APPENDIX_A]_VA_SKY_Couriers_Scan_Report.pdf" type="application/pdf" width="100%" height="800px" style="border-radius: 8px; border: 1px solid var(--main-border-color);">
   <p>
-    Il tuo browser non supporta la visualizzazione diretta dei PDF. 
-    <a href="/assets/pdf/[Sky_Couriers]_Penentration_Test_Report.pdf">Clicca here to download the PDF.</a>
-    <a href="/assets/pdf/[APPENDIX_A]_VA_SKY_Couriers_Scan_Report.pdf">Clicca here to download the PDF.</a>
+    <a href="/assets/pdf/[Sky_Couriers]_Penentration_Test_Report.pdf">Clicca here to open the report in another tab.</a>
+    <a href="/assets/pdf/[APPENDIX_A]_VA_SKY_Couriers_Scan_Report.pdf">Clicca here to open the appendix in another tab.</a>
   </p>
 </object>
